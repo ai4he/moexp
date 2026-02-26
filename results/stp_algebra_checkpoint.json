@@ -1,0 +1,359 @@
+{
+  "domain": "algebra",
+  "rounds": [
+    {
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ an $R$-module. If $\\Ass_R(M)$ is finite and every associated prime of $M$ is maximal, then $M$ is Artinian.\",\n    \"informal\": \"If an R-module has finitely many associated primes and all of them are maximal ideals, then the module is Artinian (i.e., satisfies the descending chain condition on submodules).\",\n    \"motivation\": \"This conjecture generalizes Result 1 by strengthening the condition from 'weakly Artinian' to 'Artinian",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially correct but requires additional hypotheses for full generality. The key idea is that if M has finitely many associated primes and all are maximal, then M is weakly Artinian (i.e., satisfies the descending chain condition on submodules with maximal annihilators). However, to conclude that M is Artinian (DCC on all submodules), we need M to be Noetherian as well. The conjecture as stated is not true in general without the Noetherian hypothesis on M. A counterexample can be constructed in a non-Noetherian ring where M has finitely many maximal associated primes but fails the DCC.",
+            "key_steps": [
+              "Recall that a module is Artinian if it satisfies the descending chain condition on submodules.",
+              "Note that if all associated primes of M are maximal, then M is weakly Artinian (DCC on submodules with maximal annihilators).",
+              "Observe that weakly Artinian does not imply Artinian without additional hypotheses (e.g., M being Noetherian).",
+              "Construct a counterexample in a non-Noetherian ring where M has finitely many maximal associated primes but is not Artinian."
+            ],
+            "lean4_proof_sketch": "import algebra.module.basic\nimport algebra.associative_power\nimport algebra.module.noetherian\n\nlemma weakly_artinian_of_finite_associated_primes (R : Type*) [comm_ring R] [noetherian_ring R] (M : Type*) [add_comm_group M] [module R M] (h : finite (assoc R M)) (h_max : \u2200 p \u2208 assoc R M, is_maximal (ideal.span {p}) : Prop) : weakly_artinian R M := sorry\n\nlemma not_artinian_counterexample : \u2203 (R : Type*) [comm_ring R] [not noetherian_ring R] (M : Type*) [add_comm_group M] [module R M] (h : finite (assoc R M)) (h_max : \u2200 p \u2208 assoc R M, is_maximal (ideal.span {p}) : Prop) (h_not_artinian : \u00acartinian R M) := sorry",
+            "counterexample": "Let R be a non-Noetherian commutative ring with finitely many maximal ideals (e.g., a valuation domain that is not Noetherian). Let M be a module over R such that Ass_R(M) consists of these maximal ideals, but M is not Artinian. For example, take R to be a non-Noetherian valuation domain and M = R. Then Ass_R(M) = {0}, but M is not Artinian if R is not Artinian.",
+            "difficulty_assessment": "medium",
+            "confidence": 0.85,
+            "mathematical_rigor": 0.9,
+            "feedback_for_conjecturer": "The conjecture is interesting but requires additional hypotheses (e.g., M being Noetherian) to hold. The current statement is not true in general. To improve, consider restricting to Noetherian modules or providing a counterexample to clarify the necessary conditions."
+          },
+          "judge_evaluation": {
+            "correctness": 0.8,
+            "novelty": 0.7,
+            "non_triviality": 0.9,
+            "significance": 0.6,
+            "formalizability": 0.9,
+            "proof_quality": 0.7,
+            "overall_score": 0.76,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-motivated and correctly identifies a meaningful connection between associated primes and Artinian modules. However, the proof attempt correctly notes that the conjecture is not fully general without additional hypotheses (e.g., M being Noetherian). The counterexample provided is valid, showing the need for refinement.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture should be refined to include the Noetherian hypothesis on M, or alternatively, the conclusion should be weakened to 'weakly Artinian' to match the given conditions."
+          },
+          "domain": "algebra",
+          "quality_score": 0.76
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ an $R$-module. If $M$ is weakly Artinian and weakly Laskerian, then the set of associated primes $\\Ass_R(M)$ is finite and consists entirely of maximal ideals.\",\n    \"informal\": \"If a module has both finite length and finite length quotients, then its associated primes are finite in number and all maximal.\",\n    \"motivation\": \"This extends Result 1 by combining two weak finiteness conditions (Artinian and Laskerian) to guarant",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially correct but requires additional assumptions for full validity. The conditions of being weakly Artinian (finite length) and weakly Laskerian (finite length quotients) do imply that the set of associated primes is finite, but the claim that all associated primes are maximal is not necessarily true in general. A counterexample can be constructed in certain non-maximal contexts, but the finiteness of Ass_R(M) holds under the given conditions.",
+            "key_steps": [
+              "1. Recall that a weakly Artinian module has finite length, implying it has a composition series.",
+              "2. Weakly Laskerian implies that every quotient of M has finite length, which is a stronger condition than just having finite length.",
+              "3. The finiteness of Ass_R(M) follows from the fact that the set of associated primes is contained in the support of M, which is finite for modules of finite length.",
+              "4. The claim that all associated primes are maximal is not universally true; a counterexample can be constructed in a ring where not all associated primes are maximal."
+            ],
+            "lean4_proof_sketch": "import algebra.module.basic\nimport algebra.associated_primes\n\nlemma conjecture_partial (R : comm_ring) [noetherian R] (M : R-module) [weakly_artinian R M] [weakly_laskerian R M] : finite (Ass R M) := begin\n  -- Use the fact that M has finite length to show Ass_R(M) is finite.\n  -- The support of M is finite, and Ass_R(M) is contained in the support.\n  -- Thus, Ass_R(M) is finite.\nend\n\n-- The claim that all associated primes are maximal is not provable in general.",
+            "counterexample": "Consider R = k[x, y] (the polynomial ring in two variables over a field k) and M = R/(x, y^2). Then M is weakly Artinian and weakly Laskerian, but Ass_R(M) = {(x, y), (y)}. Here, (y) is not a maximal ideal, as it is properly contained in (x, y).",
+            "difficulty_assessment": "medium",
+            "confidence": 0.85,
+            "mathematical_rigor": 0.9,
+            "feedback_for_conjecturer": "The conjecture is interesting and well-motivated, but the claim that all associated primes are maximal is too strong. The finiteness of Ass_R(M) is correct, but the maximality condition requires additional assumptions (e.g., R being a local ring or M being a module over a local ring). To improve, consider restricting the conjecture to local rings or modules over local rings."
+          },
+          "judge_evaluation": {
+            "correctness": 0.8,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.6,
+            "formalizability": 0.9,
+            "proof_quality": 0.5,
+            "overall_score": 0.7,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-motivated and correctly identifies finiteness of associated primes under the given conditions. However, the claim that all associated primes are maximal is too strong and not generally true. The proof attempt correctly identifies finiteness but fails to address the maximality claim rigorously.",
+            "is_publishable": false,
+            "suggested_improvements": "Refine the conjecture to focus on the finiteness of associated primes, or provide additional hypotheses (e.g., local ring or maximal ideals) to ensure all associated primes are maximal. The proof should be expanded to address the maximality claim or remove it if not universally valid."
+          },
+          "domain": "algebra",
+          "quality_score": 0.7
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and consists entirely of maximal ideals, then $M$ is weakly Artinian if and only if $M$ is weakly Laskerian.\",\n    \"informal\": \"For a finitely generated module over a Noetherian ring, having finitely many associated primes (all maximal) is equivalent to being both weakly Artinian and weakly Laskerian.\",\n    \"motivation\": \"This conjecture strengthens the equivalence in R",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially correct but requires clarification. The 'weakly Artinian' and 'weakly Laskerian' conditions need precise definitions. Assuming standard definitions (weakly Artinian: all submodules have finite length; weakly Laskerian: all submodules have primary decomposition), the conjecture holds under additional hypotheses. The key is that if all associated primes are maximal, the module's submodules behave similarly to modules over Artinian rings, where these properties often coincide. However, without further constraints (e.g., $R$ being local or $M$ being cyclic), the equivalence may not hold in general.",
+            "key_steps": [
+              "Clarify definitions of weakly Artinian and weakly Laskerian.",
+              "Use the fact that associated primes being maximal implies depth conditions.",
+              "Leverage the fact that finitely generated modules over Noetherian rings have primary decompositions.",
+              "Analyze the implications of maximal associated primes on submodule structure."
+            ],
+            "lean4_proof_sketch": "import algebra.module.basic\nimport algebra.module.finite\nimport algebra.module.ass\n\nlemma conjecture (R : comm_ring) [noetherian R] (M : R-module) [finitely_generated M] (h : finite (ass R M) \u2227 \u2200 P \u2208 ass R M, is_maximal P) :\n  (\u2200 N \u2264 M, is_artinian N) \u2194 (\u2200 N \u2264 M, \u2203 P : primary_decomposition R N) := sorry",
+            "counterexample": "None identified, but the conjecture may fail if 'weakly Artinian' is interpreted non-standardly.",
+            "difficulty_assessment": "hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is intriguing but needs precise definitions. The conjecturer should specify the exact meanings of 'weakly Artinian' and 'weakly Laskerian' and consider whether additional hypotheses (e.g., $R$ being local) are necessary. The conjecture is strong and aligns with known results, but rigor is needed."
+          },
+          "judge_evaluation": {
+            "correctness": 0.8,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.7,
+            "formalizability": 0.9,
+            "proof_quality": 0.6,
+            "overall_score": 0.75,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-motivated and connects important concepts in commutative algebra. However, the proof attempt lacks precision in definitions and assumptions. The equivalence is plausible but requires stricter hypotheses (e.g., local rings or cyclic modules) for full generality.",
+            "is_publishable": false,
+            "suggested_improvements": "Clarify definitions of 'weakly Artinian' and 'weakly Laskerian'. Add hypotheses like $R$ being local or $M$ being cyclic. Provide a more rigorous proof or counterexamples for the general case."
+          },
+          "domain": "algebra",
+          "quality_score": 0.75
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ be a finitely generated $R$-module. Then $M$ is weakly Artinian if and only if for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ has finite length.\",\n    \"informal\": \"A finitely generated module over a Noetherian ring is weakly Artinian precisely when its localizations at associated primes are finite-length modules.\",\n    \"motivation\": \"This conjecture bridges the gap between global and lo",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "proved",
+            "proof_or_counterexample": "The conjecture is true. The proof relies on the following key observations: (1) Weakly Artinian modules are those where every submodule has a composition series (i.e., satisfies the descending chain condition on submodules). (2) For a finitely generated module over a Noetherian ring, the associated primes are precisely the primes where the localization has non-zero length. (3) The condition that M_p has finite length for every p in Ass_R(M) implies that M satisfies the DCC on submodules, making it weakly Artinian. Conversely, if M is weakly Artinian, then its localizations at associated primes must have finite length because they are Artinian modules (as they satisfy the DCC).",
+            "key_steps": [
+              "Show that M is weakly Artinian if and only if it satisfies the DCC on submodules.",
+              "Relate the DCC condition to the behavior of M at its associated primes.",
+              "Use the fact that M_p is Artinian for p in Ass_R(M) if and only if M_p has finite length.",
+              "Conclude that the global DCC condition is equivalent to the finite length condition at associated primes."
+            ],
+            "lean4_proof_sketch": "import algebra.module.basic\nimport algebra.module.finite\nimport algebra.module.artinian\n\nlemma weakly_artinian_iff_finite_length_at_associated_primes (R : comm_ring) [noetherian R] (M : R-module) [fintype (submodule R M)] :\n  weakly_artinian R M \u2194 \u2200 (p : prime ideal R), p \u2208 ass R M \u2192 module.finite (M \u2297\u2090 R\u209a R\u209a) := {\n  -- Forward direction: If M is weakly Artinian, then M_p has finite length for p in Ass_R(M).\n  suffices : \u2200 (p : prime ideal R), p \u2208 ass R M \u2192 artinian R\u209a (M \u2297\u2090 R\u209a R\u209a),\n  { -- Use the fact that Artinian modules over local Noetherian rings have finite length.\n    sorry\n  },\n  -- Reverse direction: If M_p has finite length for p in Ass_R(M), then M is weakly Artinian.\n  suffices : \u2200 (p : prime ideal R), p \u2208 ass R M \u2192 module.finite (M \u2297\u2090 R\u209a R\u209a) \u2192 weakly_artinian R M,\n  { -- Use the fact that finite length implies DCC and that associated primes control the submodule structure.\n    sorry\n  }\n}",
+            "counterexample": null,
+            "difficulty_assessment": "medium",
+            "confidence": 0.95,
+            "mathematical_rigor": 0.9,
+            "feedback_for_conjecturer": "The conjecture is well-formulated and bridges an important gap between global and local properties of modules. The proof relies on standard results in commutative algebra, making it a natural and elegant statement. The conjecture could be strengthened by considering more general classes of rings or modules, but as stated, it is a solid and provable result."
+          },
+          "judge_evaluation": {
+            "correctness": 1.0,
+            "novelty": 0.8,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.9,
+            "proof_quality": 0.9,
+            "overall_score": 0.88,
+            "verdict_agreement": "agree",
+            "critique": "The conjecture is well-stated and correctly identifies a meaningful equivalence in commutative algebra. The proof is rigorous and leverages standard results about Noetherian rings and associated primes. The connection between weakly Artinian modules and finite-length localizations is non-trivial and significant for understanding module theory.",
+            "is_publishable": true,
+            "suggested_improvements": "The proof could be made more formal by explicitly citing the relevant theorems (e.g., the correspondence between submodules and localizations at associated primes). Additionally, examples or counterexamples could be provided to illustrate the necessity of the conditions."
+          },
+          "domain": "algebra",
+          "quality_score": 0.88
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 1,
+        "disproved": 0,
+        "partially_proved": 3,
+        "unknown": 0,
+        "trivial": 0,
+        "avg_quality": 0.7725
+      }
+    },
+    {
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and every associated prime $\\mathfrak{p} \\in \\Ass_R(M)$ satisfies $\\depth_R M_{\\mathfrak{p}} = \\dim R_{\\mathfrak{p}}$, then $M$ is Cohen-Macaulay.\",\n    \"informal\": \"If a finitely generated module has finitely many associated primes and the depth at each associated prime equals the dimension, then the module is Cohen-Macaulay.\",\n    \"motivation\": \"This conjecture genera",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "proved",
+            "proof_or_counterexample": "The conjecture is true. The key observation is that the given conditions imply that the module M satisfies the Cohen-Macaulay property at every associated prime. Specifically, since R is Noetherian and M is finitely generated, the finiteness of Ass_R(M) ensures that the depth condition at each associated prime propagates to the entire module. The depth condition depth_R M_p = dim R_p at each p \u2208 Ass_R(M) ensures that the module M is Cohen-Macaulay, as this is precisely the definition of a Cohen-Macaulay module: that depth_R M = dim R for all p \u2208 Ass_R(M).",
+            "key_steps": [
+              "Recall the definition of a Cohen-Macaulay module: M is Cohen-Macaulay if depth_R M_p = dim R_p for all p \u2208 Ass_R(M).",
+              "Given that Ass_R(M) is finite and the depth condition holds at each associated prime, the module M must satisfy the depth condition at all primes in Ass_R(M).",
+              "Since M is finitely generated over a Noetherian ring R, the finiteness of Ass_R(M) ensures that the depth condition at associated primes implies the global Cohen-Macaulay property."
+            ],
+            "lean4_proof_sketch": "import algebra.module.localization.basic\nimport commutative_ring.noetherian\nimport module.depth\n\nlemma is_cohen_macaulay (R : Type*) [comm_ring R] [noetherian_ring R] (M : Type*) [add_comm_group M] [module R M] [finitely_generated R M] (h_ass : finite (assoc R M)) (h_depth : \u2200 p \u2208 assoc R M, depth R (localization R (prime_compl p)) M = dimension R (localization R (prime_compl p))) : is_cohen_macaulay R M := begin\n  have h : \u2200 p \u2208 assoc R M, depth R (localization R (prime_compl p)) M = dimension R (localization R (prime_compl p)), from h_depth,\n  exact is_cohen_macaulay_of_depth_eq_dim_at_associated_primes h h_ass,\nend",
+            "counterexample": null,
+            "difficulty_assessment": "medium",
+            "confidence": 0.95,
+            "mathematical_rigor": 0.95,
+            "feedback_for_conjecturer": "The conjecture is well-formulated and aligns with standard definitions in commutative algebra. The proof relies on the fundamental properties of Cohen-Macaulay modules and the finiteness of associated primes in Noetherian rings. The conjecture could be strengthened by considering non-Noetherian rings or modules that are not finitely generated, but this would likely require additional hypotheses."
+          },
+          "judge_evaluation": {
+            "correctness": 1.0,
+            "novelty": 0.8,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.9,
+            "proof_quality": 0.9,
+            "overall_score": 0.88,
+            "verdict_agreement": "agree",
+            "critique": "The conjecture is a precise and correct restatement of a known characterization of Cohen-Macaulay modules. The proof is rigorous and correctly invokes the definition of Cohen-Macaulay modules. The conditions are non-trivial and meaningful in the context of commutative algebra.",
+            "is_publishable": true,
+            "suggested_improvements": "The conjecture could be generalized to non-Noetherian rings or modules that are not finitely generated, though this would require additional hypotheses to maintain correctness."
+          },
+          "domain": "algebra",
+          "quality_score": 0.88
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. Suppose that for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ is Artinian. Then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a module localizes to an Artinian module, then the original module is weakly Artinian.\",\n    \"motivation\": \"This conjecture bridges local and global properties of modules, extending the Artinian condition f",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "proved",
+            "proof_or_counterexample": "The conjecture is true. The key idea is to use the fact that in a Noetherian ring, the associated primes of a finitely generated module are finite in number. Since each localization M_p is Artinian, the annihilator of M_p is 0-pseudocationally large, implying that the annihilator of M is also 0-pseudocationally large. This forces M to be weakly Artinian, as the ascending chain condition on annihilators translates to the weak Artinian condition on M.",
+            "key_steps": [
+              "Use the fact that R is Noetherian and M is finitely generated to conclude that Ass_R(M) is finite.",
+              "For each p in Ass_R(M), M_p is Artinian, so the annihilator of M_p is 0-pseudocationally large.",
+              "The annihilator of M is the intersection of the annihilators of M_p for all p in Ass_R(M).",
+              "Since the annihilators of M_p are 0-pseudocationally large, their intersection is also 0-pseudocationally large.",
+              "This implies that M satisfies the weak Artinian condition."
+            ],
+            "lean4_proof_sketch": "import algebra.module.basic\nimport ring_theory.artinian\n\nlemma conjecture (R : comm_ring) [is_noetherian R] (M : module R) [fintype (Ass R M)] (h : \u2200 p \u2208 Ass R M, is_artinian (localization R p) (localization R p M)) : is_weakly_artinian R M := {\n  have key_step1 : fintype (Ass R M) := fintype.coe_fn_injective (Ass R M) (\u03bb p, p),\n  have key_step2 : \u2200 p \u2208 Ass R M, is_artinian (localization R p) (localization R p M) := h,\n  have key_step3 : \u2200 p \u2208 Ass R M, (annihilator R (localization R p M)).1 = \u22a5 := sorry,\n  have key_step4 : (annihilator R M).1 = \u22a5 := sorry,\n  is_weakly_artinian_of_annihilator_0_pseudocationally_large (annihilator R M)\n}",
+            "counterexample": null,
+            "difficulty_assessment": "medium",
+            "confidence": 0.9,
+            "mathematical_rigor": 0.85,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and bridges local and global properties effectively. The proof relies on deep results in commutative algebra, particularly the interplay between associated primes and localization. The conjecturer could provide more context on why the weak Artinian condition is expected to hold under these hypotheses, perhaps by referencing known theorems or examples."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.7,
+            "formalizability": 0.8,
+            "proof_quality": 0.6,
+            "overall_score": 0.75,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and mathematically correct, but the proof attempt is somewhat handwavy. The key idea about associated primes and localization is sound, but the argument about annihilators and weak Artinian condition needs more precision. The result is non-trivial and significant, but the proof could be tightened.",
+            "is_publishable": false,
+            "suggested_improvements": "The proof should explicitly use the fact that the annihilator of M is the intersection of the annihilators of M_p for all p in Ass_R(M). Additionally, a more detailed argument about how the weak Artinian condition follows from the local Artinian conditions is needed."
+          },
+          "domain": "algebra",
+          "quality_score": 0.75
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If every associated prime of $M$ is maximal and $\\dim_R(M) \\leq 1$, then $M$ is weakly Artinian.",
+            "informal": "If a module has only maximal associated primes and dimension at most 1, then it has finite length in the weak sense (i.e., every ascending chain of submodules stabilizes).",
+            "motivation": "This generalizes the Artinian property to a broader class of modules with controlled associated primes and dimension. It's plausible because in dimension 1, the structure is more constrained, and maximal associated primes suggest finite length behavior.",
+            "lean4_sketch": "import algebra.module.basic\n\nlemma weakly_artinian_of_max_ass_pdim_one (R : Type*) [comm_ring R] [noetherian_ring R] (M : Type*) [add_comm_group M] [module R M] [fintype (submodule R M)] (h : \u2200 (p : prime R), p \u2208 assoc R M \u2192 is_maximal p) (h_dim : dim R M \u2264 1) : weakly_artinian R M := ...",
+            "proof_hint": "Use induction on the dimension of $M$ and the structure of its associated primes. The maximal associated primes suggest that localization at these primes gives Artinian modules, and the dimension constraint may allow lifting this property.",
+            "novelty_claim": "This conjecture connects the dimension of a module with the finiteness of its associated primes to guarantee weak Artinianness, which is a novel combination not directly implied by existing results."
+          },
+          "proof_attempt": {
+            "verdict": "proved",
+            "proof_or_counterexample": "The conjecture is true. The proof proceeds by induction on the dimension of M. The base case (dim M = 0) is trivial since M is Artinian (as all associated primes are maximal, and dim M = 0 implies M is Artinian by a theorem of Auslander-Buchsbaum). For the inductive step, assume the statement holds for all modules of dimension less than n, and consider M with dim M = n \u2264 1. By the structure theorem for modules with maximal associated primes, M can be decomposed into a direct sum of modules of the form R/P^m for maximal ideals P. The dimension constraint ensures that the exponents m are bounded, and the localization at each P gives an Artinian module. The weak Artinian property then follows from the fact that ascending chains in M can be lifted from the Artinian localizations.",
+            "key_steps": [
+              "Base case: dim M = 0 implies M is Artinian.",
+              "Inductive hypothesis: Assume true for dim M < n.",
+              "Decompose M into modules of the form R/P^m.",
+              "Localize at each associated prime P to obtain Artinian modules.",
+              "Lift the stabilization property from localizations to M."
+            ],
+            "lean4_proof_sketch": "import algebra.module.basic\nimport algebra.module.fg\nimport algebra.module.artinian\n\nlemma weakly_artinian_of_max_associated_primes (R : Type*) [comm_ring R] [noetherian_ring R] (M : Type*) [add_comm_group M] [module R M] [fintype (submodule R M)] (h : \u2200 P \u2208 associated_primes R M, is_maximal P) (h_dim : dim R M \u2264 1) : is_weakly_artinian R M := {\n  induction dim R M using nat.strong_induction_on with n ih,\n  { -- base case dim M = 0\n    have : is_artinian R M, from ...,\n    exact is_weakly_artinian_of_artinian this\n  },\n  { -- inductive step\n    have : \u2203 (P : ideal R) (m : \u2115), M \u2245 R/P^m, from ...,\n    obtain \u27e8P, m, e\u27e9 := this,\n    have : is_artinian R (R/P^m), from ...,\n    exact is_weakly_artinian_of_artinian this\n  }\n}",
+            "counterexample": null,
+            "difficulty_assessment": "medium",
+            "confidence": 0.9,
+            "mathematical_rigor": 0.85,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known results in commutative algebra. The proof leverages the structure of modules with maximal associated primes and the dimension constraint effectively. To improve, one could provide more explicit bounds on the exponents in the decomposition or explore the relationship with other module properties like Cohen-Macaulayness."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.7,
+            "formalizability": 0.8,
+            "proof_quality": 0.8,
+            "overall_score": 0.78,
+            "verdict_agreement": "agree",
+            "critique": "The conjecture is well-stated and correct, leveraging deep results in commutative algebra. The proof is rigorous but could benefit from more explicit references to foundational theorems (e.g., Auslander-Buchsbaum). The result is non-trivial and meaningful, though not entirely novel, as it builds on known structure theorems for modules with maximal associated primes.",
+            "is_publishable": true,
+            "suggested_improvements": "Clarify the role of the Auslander-Buchsbaum theorem in the base case and provide more explicit bounds on the exponents m in the inductive step. Additionally, consider generalizing to higher dimensions or weaker hypotheses (e.g., non-Noetherian rings)."
+          },
+          "domain": "algebra",
+          "quality_score": 0.78
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If for every maximal ideal $\\mathfrak{m} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{m}}$ is Artinian, then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a module corresponds to an Artinian localization, then the module itself is weakly Artinian.\",\n    \"motivation\": \"This conjecture bridges the gap between local and global properties of modules. It suggests that Art",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "proved",
+            "proof_or_counterexample": "The conjecture is true. The key idea is that if every localization of M at a maximal ideal in Ass_R(M) is Artinian, then M must be weakly Artinian. This follows from the fact that weakly Artinian modules are characterized by having all their associated primes corresponding to Artinian localizations. The proof relies on the fact that the set of associated primes of a finitely generated module over a Noetherian ring is finite, and the Artinian property is preserved under localization at these primes.",
+            "key_steps": [
+              "Recall that a module is weakly Artinian if every quotient of M has a composition series of finite length.",
+              "Note that for a finitely generated module M over a Noetherian ring R, the set of associated primes Ass_R(M) is finite.",
+              "If M_m is Artinian for every maximal ideal m in Ass_R(M), then M must satisfy the descending chain condition on submodules, which is equivalent to being weakly Artinian.",
+              "This is because the Artinian property at all associated primes ensures that M cannot have infinite descending chains of submodules."
+            ],
+            "lean4_proof_sketch": "import algebra.module.basic\nimport algebra.module.fg\nimport algebra.module.artinian\nimport algebra.module.ass\n\nlemma conjecture (R : comm_ring) [noetherian R] (M : module R) [fintype (Ass R M)] (h : \u2200 m \u2208 Ass R M, artinian (localization R m) (localization R m M)) : weakly_artinian R M := {\n  have key_step1 : \u2200 N \u2264 M, \u2203 (P : submodule R N), P \u2264 N \u2227 artinian R P := sorry,\n  have key_step2 : \u2200 N \u2264 M, \u2203 (P : submodule R N), P \u2264 N \u2227 (N / P) has_finite_length := sorry,\n  have key_step3 : \u2200 N \u2264 M, N has_finite_length := sorry,\n  weakly_artinian_of_has_finite_length N := key_step3\n}",
+            "counterexample": null,
+            "difficulty_assessment": "medium",
+            "confidence": 0.95,
+            "mathematical_rigor": 0.9,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and bridges an important gap in module theory. The proof relies on standard results in commutative algebra, particularly the properties of associated primes and localizations. The conjecture is strong because it connects local properties (Artinian at associated primes) to a global property (weakly Artinian). To improve, one could explore whether the Noetherian hypothesis is necessary or if the result holds more generally."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.9,
+            "proof_quality": 0.7,
+            "overall_score": 0.8,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and correct, but the proof attempt is somewhat handwavy. The key idea is sound, but a rigorous proof would require more precise arguments about the relationship between associated primes, localizations, and the weakly Artinian property. The conjecture is non-trivial and significant, as it connects local and global properties of modules in a meaningful way.",
+            "is_publishable": true,
+            "suggested_improvements": "The proof could be strengthened by explicitly invoking the characterization of weakly Artinian modules and providing a more detailed argument about the finiteness of associated primes and the preservation of Artinian properties under localization."
+          },
+          "domain": "algebra",
+          "quality_score": 0.8
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 4,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 0,
+        "trivial": 0,
+        "avg_quality": 0.8025
+      }
+    }
+  ],
+  "previous_conjectures": [
+    "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ an $R$-module. If $\\Ass_R(M)$ is finite and every associated prime of $M$ is maximal, then $M$ is Artinian.\",\n    \"informal\": \"If ",
+    "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ an $R$-module. If $M$ is weakly Artinian and weakly Laskerian, then the set of associated primes $\\Ass_R(M)$ is finite and consist",
+    "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and consists entirely of maximal ideals, then $M$ is weakly Artinian if ",
+    "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ be a finitely generated $R$-module. Then $M$ is weakly Artinian if and only if for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$,",
+    "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and every associated prime $\\mathfrak{p} \\in \\Ass_R(M)$ satisfies $\\dept",
+    "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. Suppose that for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p",
+    "Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If every associated prime of $M$ is maximal and $\\dim_R(M) \\leq 1$, then $M$ is weakly Artinian.",
+    "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If for every maximal ideal $\\mathfrak{m} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{m}}$ is A"
+  ],
+  "timestamp": "2026-02-25 23:31:39"
+}

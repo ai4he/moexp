@@ -323,14 +323,92 @@ Return a JSON array of 3-5 theorem objects, each with:
 Return ONLY valid JSON, no markdown formatting or code fences."""
 
 
+def _fix_latex_json(text: str) -> str:
+    """Fix common issues with LaTeX in JSON: unescaped backslashes."""
+    import re
+    # Inside JSON string values, LaTeX commands like \geq need to be \\geq
+    # But we need to be careful not to double-escape already escaped ones
+    # Strategy: find string values and fix backslashes
+    try:
+        json.loads(text)
+        return text  # Already valid
+    except json.JSONDecodeError:
+        pass
+
+    # Replace single backslashes that aren't already escaped
+    # Common LaTeX commands that appear in math
+    latex_cmds = [
+        'geq', 'leq', 'mathbb', 'mathcal', 'mathfrak', 'mathrm',
+        'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'varepsilon',
+        'theta', 'lambda', 'mu', 'nu', 'pi', 'sigma', 'tau', 'phi',
+        'omega', 'infty', 'partial', 'nabla', 'forall', 'exists',
+        'times', 'otimes', 'oplus', 'cdot', 'circ', 'cup', 'cap',
+        'subset', 'subseteq', 'supset', 'supseteq', 'in', 'notin',
+        'rightarrow', 'leftarrow', 'Rightarrow', 'Leftarrow',
+        'langle', 'rangle', 'lfloor', 'rfloor', 'lceil', 'rceil',
+        'frac', 'sqrt', 'sum', 'prod', 'int', 'oint', 'lim',
+        'dim', 'ker', 'coker', 'Hom', 'Ext', 'Tor',
+        'text', 'operatorname', 'overline', 'underline', 'hat', 'tilde',
+        'quad', 'qquad', 'hspace', 'vspace',
+        'begin', 'end', 'left', 'right',
+        'QQ', 'ZZ', 'RR', 'CC', 'FF', 'PP',
+        'ell', 'wp', 'aleph', 'beth',
+    ]
+
+    for cmd in latex_cmds:
+        # Replace \cmd with \\cmd where not already escaped
+        text = re.sub(r'(?<!\\)\\' + cmd + r'(?![a-zA-Z])', r'\\\\' + cmd, text)
+
+    # Also handle \\ in common patterns
+    text = text.replace('\\_', '\\\\_')
+
+    return text
+
+
 def parse_json_response(response: str) -> list:
-    """Parse JSON array from LLM response, handling code fences."""
+    """Parse JSON array or object from LLM response, handling code fences and LaTeX."""
     if not response:
         return []
 
+    import re
     clean = response.strip()
 
-    # Remove code fences
+    def try_parse(text: str):
+        """Try parsing JSON, with LaTeX fix fallback."""
+        text = text.strip()
+        if not text:
+            return None
+        try:
+            result = json.loads(text)
+            if isinstance(result, dict):
+                return [result]
+            elif isinstance(result, list):
+                return [x for x in result if isinstance(x, dict)]
+            return None
+        except json.JSONDecodeError:
+            pass
+        # Try fixing LaTeX escaping
+        try:
+            fixed = _fix_latex_json(text)
+            result = json.loads(fixed)
+            if isinstance(result, dict):
+                return [result]
+            elif isinstance(result, list):
+                return [x for x in result if isinstance(x, dict)]
+        except (json.JSONDecodeError, Exception):
+            pass
+        return None
+
+    # Handle code fences (```json ... ``` or ``` ... ```)
+    fence_pattern = re.compile(r'```(?:json)?\s*\n(.*?)\n\s*```', re.DOTALL)
+    fence_matches = fence_pattern.findall(clean)
+    if fence_matches:
+        for match in fence_matches:
+            result = try_parse(match)
+            if result:
+                return result
+
+    # Simple fence removal
     if clean.startswith("```"):
         lines = clean.split("\n")
         clean = "\n".join(lines[1:])
@@ -339,25 +417,32 @@ def parse_json_response(response: str) -> list:
     clean = clean.strip()
 
     # Try parsing as-is
-    try:
-        result = json.loads(clean)
-        if isinstance(result, list):
-            return result
-        elif isinstance(result, dict):
-            return [result]
-    except json.JSONDecodeError:
-        pass
+    result = try_parse(clean)
+    if result:
+        return result
 
-    # Try finding JSON array in the response
-    import re
-    match = re.search(r'\[.*\]', clean, re.DOTALL)
-    if match:
-        try:
-            result = json.loads(match.group())
-            if isinstance(result, list):
-                return result
-        except json.JSONDecodeError:
-            pass
+    # Try finding JSON object in the response
+    obj_match = re.search(r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}', clean, re.DOTALL)
+    if obj_match:
+        result = try_parse(obj_match.group())
+        if result:
+            return result
+
+    # Try most aggressive: find outermost { ... }
+    brace_start = clean.find('{')
+    brace_end = clean.rfind('}')
+    if brace_start >= 0 and brace_end > brace_start:
+        result = try_parse(clean[brace_start:brace_end + 1])
+        if result:
+            return result
+
+    # Try finding JSON array
+    arr_start = clean.find('[')
+    arr_end = clean.rfind(']')
+    if arr_start >= 0 and arr_end > arr_start:
+        result = try_parse(clean[arr_start:arr_end + 1])
+        if result:
+            return result
 
     return []
 
@@ -568,14 +653,29 @@ def run_stp_round(
         )
         conj_response = llm_generate(conj_prompt, api_keys, provider=provider,
                                       temperature=0.9, max_tokens=2048)
+        if not conj_response:
+            print(f"      Empty API response for conjecture generation")
+            continue
         conjecture = parse_json_response(conj_response)
         if not conjecture:
-            print(f"      Failed to parse conjecture response")
-            continue
-        conjecture = conjecture[0] if isinstance(conjecture, list) else conjecture
+            # Fallback: try to use the raw response as the conjecture text
+            # Extract text between code fences if present
+            raw = conj_response
+            if "```" in raw:
+                import re
+                fence = re.search(r'```(?:json)?\s*\n(.*?)\n\s*```', raw, re.DOTALL)
+                if fence:
+                    raw = fence.group(1)
+            print(f"      Using fallback conjecture extraction")
+            conjecture = {"conjecture": raw[:500], "informal": "", "proof_hint": "", "lean4_sketch": ""}
+        else:
+            conjecture = conjecture[0] if isinstance(conjecture, list) else conjecture
+            if not isinstance(conjecture, dict):
+                conjecture = {"conjecture": str(conjecture)[:500], "informal": "", "proof_hint": "", "lean4_sketch": ""}
 
         conj_text = conjecture.get("conjecture", "")
         if not conj_text:
+            print(f"      No conjecture text found in parsed response")
             continue
 
         time.sleep(2)
@@ -589,9 +689,9 @@ def run_stp_round(
         )
         proof_response = llm_generate(proof_prompt, api_keys, provider=provider,
                                        temperature=0.3, max_tokens=4096)
-        proof_result = parse_json_response(proof_response)
+        proof_result = parse_json_response(proof_response) if proof_response else []
         if not proof_result:
-            proof_result = {"verdict": "unknown", "raw_response": proof_response[:500]}
+            proof_result = {"verdict": "unknown", "raw_response": (proof_response or "")[:500]}
         else:
             proof_result = proof_result[0] if isinstance(proof_result, list) else proof_result
 
@@ -610,9 +710,9 @@ def run_stp_round(
         )
         judge_response = llm_generate(judge_prompt, api_keys, provider=actual_judge,
                                        temperature=0.2, max_tokens=2048)
-        judge_result = parse_json_response(judge_response)
+        judge_result = parse_json_response(judge_response) if judge_response else []
         if not judge_result:
-            judge_result = {"overall_score": 0.5}
+            judge_result = {"overall_score": 0.5, "critique": "Judge unavailable"}
         else:
             judge_result = judge_result[0] if isinstance(judge_result, list) else judge_result
 

@@ -1,5 +1,65 @@
 [
   {
+    "domain": "algebra",
+    "quality_score": 0.98,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ be a finitely generated $R$-module. Then $M$ is weakly Artinian if and only if for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ has finite length.\",\n    \"informal\": \"A finitely generated module over a Noetherian ring is weakly Artinian precisely when its localizations at associated primes are finite-length modules.\",\n    \"motivation\": \"This conjecture bridges the gap between global and lo",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.98,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and every associated prime $\\mathfrak{p} \\in \\Ass_R(M)$ satisfies $\\depth_R M_{\\mathfrak{p}} = \\dim R_{\\mathfrak{p}}$, then $M$ is Cohen-Macaulay.\",\n    \"informal\": \"If a finitely generated module has finitely many associated primes and the depth at each associated prime equals the dimension, then the module is Cohen-Macaulay.\",\n    \"motivation\": \"This conjecture genera",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.9,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If for every maximal ideal $\\mathfrak{m} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{m}}$ is Artinian, then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a module corresponds to an Artinian localization, then the module itself is weakly Artinian.\",\n    \"motivation\": \"This conjecture bridges the gap between local and global properties of modules. It suggests that Art",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.88,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $D$ be a transitive discriminant form over $\\mathbb{Z}_p$ for some prime $p$. Then the $p$-adic completion of the ring of integers of the maximal unramified extension of $\\mathbb{Q}_p$ acts on the discriminant form via a continuous homomorphism $\\Gamma \\to \\mathrm{Aut}(D)$, where $\\Gamma$ is the Galois group of the maximal unramified extension.\",\n    \"informal\": \"The Galois group of the maximal unramified extension of $\\mathbb{Q}_p$ acts continuously on any transitive di",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.88,
+    "conjecture_latex": "Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If every associated prime of $M$ is maximal and $\\dim_R(M) \\leq 1$, then $M$ is weakly Artinian.",
+    "informal": "If a module has only maximal associated primes and dimension at most 1, then it has finite length in the weak sense (i.e., every ascending chain of submodules stabilizes).",
+    "lean4_sketch": "import algebra.module.basic\n\nlemma weakly_artinian_of_max_ass_pdim_one (R : Type*) [comm_ring R] [noetherian_ring R] (M : Type*) [add_comm_group M] [module R M] [fintype (submodule R M)] (h : \u2200 (p : prime R), p \u2208 assoc R M \u2192 is_maximal p) (h_dim : dim R M \u2264 1) : weakly_artinian R M := ...",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.88,
+    "conjecture_latex": "Let $\\mathcal{V}$ be a finite set of discrete random variables with a strictly positive probability distribution. Then, for any two disjoint subsets $\\mathcal{X}, \\mathcal{Z} \\subseteq \\mathcal{V}$, the conditional independence of $\\mathcal{X}$ and $\\mathcal{Z}$ given any third subset $\\mathcal{Y} \\subseteq \\mathcal{V}$ implies that $\\mathcal{X}$ and $\\mathcal{Z}$ are marginally independent.",
+    "informal": "If two groups of variables are independent when you know a third group, then they must also be independent without that knowledge, assuming the distribution is strictly positive.",
+    "lean4_sketch": "import Mathlib.Probability.Basic\nimport Mathlib.Data.Set.Basic\n\nopen Probability\n\nconjecture strictly_positive_implies_marginal_independence (V : Type*) [Finite V] [DecidableEq V] (P : ProbabilityMeasure V) (hP : StrictlyPositive P) (X Z Y : Set V) (hXZ_disjoint : Disjoint X Z) (hXZY_disjoint : Disjoint (X \u222a Z) Y) (h_cond_ind : ConditionalIndependent X Z Y P) : MarginalIndependent X Z P := sorry",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
     "domain": "analysis",
     "quality_score": 0.86,
     "conjecture_latex": "The condition $\\lambda < 1$ is necessary for $T + f$ to be a homeomorphism of $U$ onto an open subset $V$ of $X$",
@@ -7,6 +67,36 @@
     "lean4_sketch": "import analysis\nimport operator_algebras\n... ",
     "strategy": "boundary_exploration",
     "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.86,
+    "conjecture_latex": "```json\n{\n    \"conjecture\": \"Let $\\mathcal{X} = \\{X_1, \\ldots, X_n\\}$ be a collection of i.i.d. random variables with finite second moment. Suppose there exists $\\beta \\in (0,1]$ such that for all $t > 0$, $\\mathbb{P}[\\max_{1 \\leq i \\leq n} |X_i| > t] \\leq \\exp(-\\beta t^2)$. Then, for any $\\epsilon > 0$, there exists $C > 0$ such that $\\mathbb{P}\\left[\\left|\\frac{1}{n}\\sum_{i=1}^n X_i^2 - \\mathbb{E}[X_1^2]\\right| > \\epsilon\\right] \\leq C \\exp(-n \\beta \\epsilon^2/4)$.\",\n    \"informal\": \"For i.i.d",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.85,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. Suppose that for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ is Artinian. Then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a module localizes to an Artinian module, then the original module is weakly Artinian.\",\n    \"motivation\": \"This conjecture bridges local and global properties of modules, extending the Artinian condition f",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.83,
+    "conjecture_latex": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and a momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose that $\\Phi(M)$ contains a strongly elliptic element $\\xi \\in \\mathfrak{g}^*$ such that the linearized flow at every critical point of $\\Phi^\\xi$ is flat. Then the action of $G$ on $M$ is proper if and only if the bar resolution of the $G$-equivariant K-theory of $M$ is $\\mathbb{S}^G$-good.",
+    "informal": "A Hamiltonian group action on a compact symplectic manifold is proper if and only if certain technical conditions on the momentum map and K-theory hold, linking symplectic geometry with equivariant homotopy theory.",
+    "lean4_sketch": "import Mathlib.Symplectic.Geometry import Mathlib.Topology.GroupAction import Mathlib.Homotopy.Theory.BarResolution theorem proper_action_iff_S_good (M : Type _) [compact_space M] [symplectic_manifold M] (G : Type _) [group G] (action : G \\to \\operatorname{Symp}(M)) (\\Phi : M \\to \\mathfrak{g}^*) (h\\_strongly_elliptic : \\exists \\xi, strongly_elliptic \\xi \\\\ (\\Phi M)) (h\\_flat : \\forall p, is_critical_point (\\Phi^\\xi) p \\\\\\rightarrow flat (linearized_flow (\\phi^t_{\\Phi^\\xi}) p)) : proper action \\\\iff \\mathbb{S}^G-good (bar_resolution (equivariant_K_theory M)) := sorry",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
@@ -51,12 +141,102 @@
   },
   {
     "domain": "geometry_topology",
+    "quality_score": 0.81,
+    "conjecture_latex": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$). Then the Floer cohomology $CF^*(L_0, L_1)$ for any pair of Lagrangian submanifolds $L_0, L_1 \\subset M$ with transverse intersection is isomorphic to the singular cohomology $H^*(M)$ as graded $\\mathbb{Z}$-modules.",
+    "informal": "For symplectic manifolds with strongly elliptic momentum images, the Floer cohomology of any two Lagrangians equals the singular cohomology of the manifold.",
+    "lean4_sketch": "import Mathlib.SymplecticGeometry.Floer import Mathlib.AlgebraicTopology.Cohomology theorem strongly_elliptic_floer_is_cohomology (M : Type) [SymplecticManifold M] (G : Type) [CompactLieGroup G] (\u03a6 : M \u2192 LieAlgebraDual G) (h : \u03a6 '' M \u2286 strongly_elliptic_set (LieAlgebraDual G)) (L\u2080 L\u2081 : LagrangianSubmanifold M) (h_trans : L\u2080 \u2229 L\u2081 = \u2205 \u2228 L\u2080 \u2229 L\u2081 = \u2205) : CF^*(L\u2080, L\u2081) \u2245 H^* M := ...",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.8,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a 3-dimensional Gorenstein normal domain over an algebraically closed field of characteristic zero. Suppose $R$ is a hypersurface singularity with an isolated singularity at the origin. Then the stable category $\\stab R$ is equivalent to the derived category of perfect complexes over $R$ if and only if the singularity is rational.\",\n    \"informal\": \"For a certain class of 3D singularities, the stable category of maximal Cohen-Macaulay modules is equivalent to the ",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.8,
+    "conjecture_latex": "Let $w$ be a smooth permutation in $\\fs_n$ and let $G_w$ be its inversion graph. Then, the chromatic polynomial $\\chi_{G_w}(t)$ divides the chromatic polynomial of the cycle graph $C_n$ for all $n \\geq 3$.",
+    "informal": "The coloring properties of inversion graphs of smooth permutations are constrained in a way that their chromatic polynomials must divide those of cycle graphs.",
+    "lean4_sketch": "import Mathlib.Combinatorics.Permutation import Mathlib.Graph.ChromaticPolynomial theorem smooth_perm_chromatic_divisor (n : \u2115) (w : SmoothPerm n) : ChromaticPolynomial (InversionGraph w) \u2223 ChromaticPolynomial (CycleGraph n) := sorry",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
     "quality_score": 0.78,
     "conjecture_latex": "The OSC is necessary for $\\dim_H E_i = \\delta$ in a GIFS",
     "informal": "The Open Set Condition is necessary for the Hausdorff dimension of the limit set to equal the similarity dimension",
     "lean4_sketch": "import Mathlib.Topology\nexample (E_i : Nat \u2192 Set) (GIFS : GraphDirectedIteratedFunctionSystem) (hDimEq : \u2200 i, HausdorffDimension (E_i) = SimilarityDimension GIFS) : OSC GIFS",
     "strategy": "boundary_exploration",
     "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.78,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a Gorenstein local ring of dimension $d \\geq 3$ with isolated singularity. Then the stable category $\\stab R$ is $d$-Calabi-Yau if and only if $R$ is $F$-pure.\",\n    \"informal\": \"For a Gorenstein ring with isolated singularities, the stable category of maximal Cohen-Macaulay modules is Calabi-Yau of the same dimension as the ring precisely when the ring is F-pure.\",\n    \"motivation\": \"This conjecture connects two important concepts in commutative algebra and repre",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.78,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $X$ be a smooth projective variety over an algebraically closed field $k$ of characteristic zero, and let $D$ be a reduced effective divisor on $X$ such that $X \\setminus D$ is affine. Then the canonical map $\\\\mathrm{can}_X: \\\\mathrm{CH}^{LW}_0(S_X) \\\\to \\\\mathrm{CH}_0(S_X)$ is an isomorphism.\",\n    \"informal\": \"For a smooth projective variety with a reduced divisor whose complement is affine, the canonical map between zero-cycle Chow groups is an isomorphism.\",\n    \"mo",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.78,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $\\sigma$ be an irreducible smooth representation of $\\GL_2(\\mathbb{Q}_p)$ with a Serre weight $\\sigmabar$ for $\\rbar$. Suppose $M_\\infty(\\sigma^\\circ)$ is a free $R_\\infty(\\sigma)$-module of rank one. Then, for any finite extension $E/\\mathbb{Q}_p$ with ring of integers $\\mathcal{O}_E$, the natural map $R_\\infty(\\sigma) \\otimes_{\\mathbb{Z}_p} \\mathcal{O}_E \\to \\End_{\\mathcal{O}_E}(M_\\infty(\\sigma^\\circ) \\otimes_{\\mathbb{Z}_p} \\mathcal{O}_E)$ is injective.\",\n    \"informal",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.78,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $\\sigma$ be a smooth representation of $\\GL_2(\\mathbb{Q}_p)$ and $\\sigmabar$ its reduction modulo $\\varpi$. If $\\sigmabar$ is a Serre weight of $\\rbar$, then the natural map $R_{\\infty}(\\sigma) \\to \\End_{\\cH(\\sigmabar)}(M_{\\infty}(\\sigmabar))$ is surjective.\",\n    \"informal\": \"When a p-adic representation reduces to a Serre weight, the Hecke algebra acting on its patched module fully controls the endomorphisms of that module.\",\n    \"motivation\": \"This conjecture bridges ",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "analysis",
+    "quality_score": 0.78,
+    "conjecture_latex": "Let $\\gamma_{-k}$ be defined as in Result 1. Suppose the sequence $(\\alpha_j)_{j=1}^M$ satisfies $\\alpha_j > 1$ for all $j$ and $\\lim_{j \\to \\infty} \\alpha_j = \\alpha > 1$. Then for any $\\epsilon > 0$, there exists $k_0 \\in \\mathbb{N}$ such that for all $k \\geq k_0$, we have $\\tilde{\\gamma}_{-k} = \\frac{1}{k}\\sum_{j=1}^M \\frac{\\sin(\\pi\\alpha_j)}{\\pi} H_j \\overline{\\chi_j}^k + O(k^{-(\\alpha - \\epsilon)})$.",
+    "informal": "If the exponents in the asymptotic expansion are bounded below by 1 and converge to some value greater than 1, then the error term in the expansion can be made to decay faster than any negative power of the index.",
+    "lean4_sketch": "import Mathlib.Analysis.SpecialFunctions.Basic import Mathlib.Analysis.Asymptotics.Basic variable (\u03b1_j : \u2115 \u2192 \u211d) (H_j : \u2115 \u2192 \u2102) (\u03c7_j : \u2115 \u2192 \u2102) variable (\u03b3 : \u2115 \u2192 \u2102) hypothesis (\u03b1_j_gt_one : \u2200 j, \u03b1_j > 1) hypothesis (\u03b1_j_conv : Tendsto (\u03bb j, \u03b1_j) atTop (nhds \u03b1)) hypothesis (\u03b1_gt_one : \u03b1 > 1) theorem asymptotic_refinement (\u03b5 : \u211d) (\u03b5_pos : \u03b5 > 0) : \u2203 k\u2080 : \u2115, \u2200 k \u2265 k\u2080, \u03b3 (-k) = (1/k) * (\u2211 j in Finset.univ, (sin (\u03c0 * \u03b1_j j) / \u03c0) * H_j j * conj (\u03c7_j j) ^ k) + O(k ^ - (\u03b1 - \u03b5))",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.78,
+    "conjecture_latex": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$). Then the equivariant Floer homology $HF^G_{*}(M)$ is isomorphic to the singular homology $H_{*}(M/G)$ with coefficients in $\\mathbb{Z}[G]$, where $G$ acts trivially on the coefficients.",
+    "informal": "For a symplectic manifold with a Hamiltonian group action where the momentum image is strongly elliptic, the equivariant Floer homology should match the singular homology of the quotient space with group coefficients.",
+    "lean4_sketch": "import Mathlib.Symplectic.Floer import Mathlib.Topology.SingularHomology import Mathlib.GroupAction theorem equivariant_floer_is_singular_homology (M : Type*) (G : Type*) [symplectic_manifold M] [compact_space M] [group G] (action : G \u2192 Symplectomorphism M) (phi : M \u2192 LieAlg.dual G) (h_strongly_elliptic : \u2200 x \u2208 phi '' M, strongly_elliptic x) : equivariant_floer_homology G action M \u2243 singular_homology (quotient_space M G) (coefficients G) := sorry",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
@@ -77,6 +257,76 @@
     "lean4_sketch": "example (u : C([r, T], \u210d_p^s(\u211d^d))) (t : \u211d), \u2203 (w : \u210d_p^s(\u211d^d)), \u2227 (S : \u210d_p^s(\u211d^d) \u2192 \u210d_p^s(\u211d^d)), \u2225u(t)\u2225 = \u2225w + \u222b[r, t] S[...]\u2225",
     "strategy": "composition",
     "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.76,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ an $R$-module. If $\\Ass_R(M)$ is finite and every associated prime of $M$ is maximal, then $M$ is Artinian.\",\n    \"informal\": \"If an R-module has finitely many associated primes and all of them are maximal ideals, then the module is Artinian (i.e., satisfies the descending chain condition on submodules).\",\n    \"motivation\": \"This conjecture generalizes Result 1 by strengthening the condition from 'weakly Artinian' to 'Artinian",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.75,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ are such that their images in the Kummer variety lie on a trisecant line. Then the fiber of the Gauss map $\\G$ over $\\G(x)$ contains exactly three points of highest multiplicity, and these points are symmetric with respect to the origin in $J(C)$.\",\n    \"informal\": \"For certain pairs of smooth points on the theta divisor, the Ga",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.75,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $D$ be a transitive discriminant form over $\\mathbb{Z}_p$ for an odd prime $p$. Then the following are equivalent:\\n1. $D$ is isomorphic to $p^{\\pm 1}$.\\n2. The associated quadratic form $Q_D$ is anisotropic over $\\mathbb{Q}_p$.\\n3. The discriminant form $D$ is indecomposable and satisfies $|D| = p$.\",\n    \"informal\": \"A transitive discriminant form over $\\mathbb{Z}_p$ is isomorphic to $p^{\\pm 1}$ if and only if its quadratic form is anisotropic over $\\mathbb{Q}_p$ and t",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.75,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $D$ be a transitive discriminant form over $\\mathbb{Z}_p$ for some prime $p$. If $D$ is non-trivial and $D_p$ is either $p^{+2}$ for $p \\equiv 3 \\mod 4$ or $p^{-2}$ for $p \\equiv 1 \\mod 4$, then there exists a unique (up to isomorphism) quadratic space $(V, Q)$ over $\\mathbb{Q}_p$ such that the discriminant form of $(V, Q)$ is isomorphic to $D$.\",\n    \"informal\": \"A special kind of quadratic form over the p-adic numbers has a unique associated quadratic space if its disc",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.75,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and consists entirely of maximal ideals, then $M$ is weakly Artinian if and only if $M$ is weakly Laskerian.\",\n    \"informal\": \"For a finitely generated module over a Noetherian ring, having finitely many associated primes (all maximal) is equivalent to being both weakly Artinian and weakly Laskerian.\",\n    \"motivation\": \"This conjecture strengthens the equivalence in R",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.75,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $\\mathcal{V} = \\{V_1, \\ldots, V_n\\}$ be a finite set of independent, identically distributed (i.i.d.) random variables with $\\mathbb{E}[V_i] = 0$ and $\\mathbb{E}[V_i^2] = 1$. For any two disjoint subsets $\\mathcal{X}, \\mathcal{Z} \\subseteq \\mathcal{V}$ with $|\\mathcal{X}| = |\\mathcal{Z}| = k$, define $S_{\\mathcal{X}} = \\sum_{V_i \\in \\mathcal{X}} V_i$ and $S_{\\mathcal{Z}} = \\sum_{V_j \\in \\mathcal{Z}} V_j$. Then, for all $k \\geq 1$ and $\\epsilon > 0$, there exists a consta",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.75,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $\\mathcal{V} = \\{V_1, \\ldots, V_n\\}$ be a collection of independent, identically distributed (i.i.d.) random variables with $\\mathbb{E}[V_i] = 0$, $\\mathbb{E}[V_i^2] = 1$, and $\\mathbb{P}(V_i > t) = \\mathcal{O}(t^{-\\alpha})$ for some $\\alpha > 2$ as $t \\to \\infty$. Then, for any $\\epsilon > 0$, there exists a constant $C > 0$ such that for all $n \\geq 1$, the following holds: $\\mathbb{P}\\left(\\left|\\sum_{i=1}^n V_i\\right| \\geq n^{1/2 + \\epsilon}\\right) \\leq C n^{-\\beta}$",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
@@ -191,312 +441,62 @@
   },
   {
     "domain": "discrete_math",
-    "quality_score": 0.71,
-    "conjecture_latex": "The group associated to the singular model $\\S = \\{(-1,-1,1), (0,1,-1), (1,0,1)\\}$ with valuations $u, v, w$ of $x, y, z$ respectively is isomorphic to $G_4$ if and only if $w > v > -u > 0$",
-    "informal": "A theorem that connects the concept of singular models with group isomorphism, providing a condition for the group associated to the singular model to be isomorphic to $G_4$",
-    "lean4_sketch": "example (S : singular_model) (h : S.valuations = [u, v, w]) : S.group <-> G_4",
-    "strategy": "theorem_generation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "probability_statistics",
-    "quality_score": 0.7,
-    "conjecture_latex": "The density $f$ of the $X_i$'s satisfies $\\eqref{slowdecay}$, with $\\rho_0=r$, $c=r^{(D-d)/2}\\beta_D\\beta_{D-d}$ and $\\gamma=(D-d)/2$, and this density is related to the volume of a $d$-dimensional simplex inscribed in the unit sphere $\\bS^{d-1}$",
-    "informal": "The density of a random variable is related to the volume of a $d$-dimensional simplex inscribed in the unit sphere",
-    "lean4_sketch": "import geometry\nimport probability_theory\ntheorem density_simplex_relation (d : \\mathbb{N}) : \\exists (f : \\text{density function}) (S : \\text{simplex}), f \\text{satisfies } \\eqref{slowdecay} \\land \\text{vol}(S) = \\text{max}(\\text{vol}(T))\\forall T \\subseteq \\bS^{d-1}",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "algebraic_geometry",
-    "quality_score": 0.69,
-    "conjecture_latex": "For any $\\mathbb{Q}$-divisor $B$ on a scheme $X$, there exists a $\\mathbb{Q}$-divisor $B_\\epsilon \\sim_{\\mathbb{Q}} B + \\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt for any rational $\\epsilon > 0$ and ample divisor $A$ on $X$",
-    "informal": "Generalized klt pairs can be constructed with a $\\mathbb{Q}$-divisor that is $\\mathbb{Q}$-linearly equivalent to $B + \\epsilon A$ for any rational $\\epsilon > 0$ and ample divisor $A$",
-    "lean4_sketch": "example (X : Scheme) (Z : Scheme) (B : Divisor X) (M : Divisor X) (A : Divisor X) (\u03b5 : \u211a) (h : \u03b5 > 0) : \u2203 (B\u03b5 : Divisor X), generalized_klt (X/Z, B\u03b5 + M) \u2227 B\u03b5 \u223c[\u211a] B + \u03b5 * A",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "algebra",
-    "quality_score": 0.69,
-    "conjecture_latex": "If $R$ is an isolated singularity and $M$ is a balanced big $\\CM$ $R$-module admitting a right resolution by modules in $\\Add\\omega$, then $M$ is fully decomposable.",
-    "informal": "For an isolated singularity, any balanced big Cohen-Macaulay module with a right resolution by modules in $\\Add\\omega$ is fully decomposable.",
-    "lean4_sketch": "import Mathlib\nexample (R : Type) [comm_ring R] (M : module R) [balanced_big_cm M] (\u03c9 : R) : is_isolated_singularity R \u2192 is_fully_decomposable M",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "number_theory",
-    "quality_score": 0.69,
-    "conjecture_latex": "$\\forall \\; k \\geq 1$, $\\exists \\; m \\geq 1$ such that $X_{\\mathbb{F}_{q^m}}$ admits a CM lifting, where $X$ is a $K3$ surface of finite height over $\\mathbb{F}_q$",
-    "informal": "The existence of a CM lifting for a K3 surface over a finite field",
-    "lean4_sketch": "example (X : K3_surface (\u2119\u2131_q)) (h : finite_height X) : \u2203 (m : \u2115+), X \u2131_q^m : CM_lifting := by apply K3_surface_theory",
-    "strategy": "theorem_generation",
-    "source": "multi_strategy",
+    "quality_score": 0.73,
+    "conjecture_latex": "Conjecture: For any connected clutter $M$ with no loops and no isolated vertices, the number of connected minors of $M$ is at least $2^{|E(M)|/2}$.",
+    "informal": "In any connected clutter without loops or isolated vertices, the number of distinct connected minors grows exponentially with the number of edges.",
+    "lean4_sketch": "import Mathlib.Combinatorics.Clutter.Basic\n\nlemma connected_minors_lower_bound (M : Clutter) (hM : Connected M) (h_no_loops : \u2200 e \u2208 M, \u00ac IsLoop M e) (h_no_isolated : \u2200 v \u2208 M, \u00ac IsIsolated M v) : \u2203 (N : Clutter), Connected N \u2227 N \u2264m M \u2227 Nat.log\u2082 (Nat.factorial (Fin (Nat.floorDiv (Nat.card (M.edges) 2))) 0) \u2264 Nat.card (connected_minors M) := sorry",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
     "domain": "discrete_math",
-    "quality_score": 0.69,
-    "conjecture_latex": "For $n \\equiv 0$ mod $4$, $IK_n$ is a $G$-graph",
-    "informal": "An extension of the result that $IK_n$ is not a $G$-graph for $n \\equiv 2$ mod $4$, to the case where $n$ is a multiple of $4$",
-    "lean4_sketch": "example (n : nat) (h : n % 4 = 0) : is_G_graph (IK n) := by { apply G_graph.mk, assumption }",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
+    "quality_score": 0.73,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $G$ be a graph with maximum degree $\\Delta(G) \\geq 5$. Then, the $1$-vertex-strongly-distinguishing total chromatic number $\\\\chi_{1-vsdt}(G)$ satisfies $\\\\chi_{1-vsdt}(G) \\\\leq 3\\\\Delta(G) + 1$ for all graphs $G$ with no isolated edges.\",\n    \"informal\": \"For any graph with maximum degree at least 5 and no isolated edges, the number of colors needed to distinguish vertices and edges by their neighborhoods (with one vertex fixed) is at most three times the maximum degree",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
     "domain": "discrete_math",
-    "quality_score": 0.69,
-    "conjecture_latex": "If $G$ is a $2$-connected plane graph with $v(G) \\geq 3$ and $b(G) + q(G) \\geq 2$, then $d(G) \\geq 0$",
-    "informal": "A weaker condition than 2-connectedness might still guarantee non-negativity of the deficiency of a plane graph",
-    "lean4_sketch": "example (G : graph) (h : is_2_connected G) (h2 : v G \u2265 3) (h3 : b G + q G \u2265 2) : d G \u2265 0 := by admit",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "discrete_math",
-    "quality_score": 0.69,
-    "conjecture_latex": "For any poset $P$ and any group $G$ acting on $P$, the action of $G$ on $P$ is $k$-refined if and only if the action of $G$ on $P_{\\geq x}$ is $k$-refined for all $x \\in P$",
-    "informal": "A theorem that connects the concept of $k$-refined actions with posets, providing a condition for the action of a group on a poset to be $k$-refined based on the action on the upper sets",
-    "lean4_sketch": "example (P : poset) (G : group) (h : G.act_on P) : G.act_k_refined <-> forall x, G.act_k_refined_on P.geq x",
-    "strategy": "theorem_generation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "geometry_topology",
-    "quality_score": 0.69,
-    "conjecture_latex": "Let $(\\mathcal{A}, \\Gamma, \\mathcal{G})$ be a GIFS satisfying the OSC. If $\\delta$ is the similarity dimension and $\\Gamma$ is weakly connected, then $\\dim_H E_i = \\delta$ for all $i=1,2,\\dots,N$.",
-    "informal": "Hausdorff dimension of GIFS attractors under weaker connectivity conditions",
-    "lean4_sketch": "example (delta : real) (hdelta : delta > 0) (Gamma : graph) (hGamma : Gamma.weakly_connected) : forall (i : nat) (hi : i < N), dim_H (E i) = delta",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "geometry_topology",
-    "quality_score": 0.69,
-    "conjecture_latex": "If $u: (\\Sigma, \\partial \\Sigma; j) \\to (W, N; J)$ is a holomorphic map and $F \\in \\Pr_{R-\\Mod} \\mathbf{X}$, then $u(\\Sigma)$ intersects $U$ implies $u(\\Sigma) \\subseteq U$ and $\\uHom^p(F, i(G))$ is a sheaf",
-    "informal": "Holomorphic maps and sheaves are related through the intersection of a compact subset and a model neighborhood",
-    "lean4_sketch": "import complex_analysis import sheaf_theory",
-    "strategy": "composition",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "geometry_topology",
-    "quality_score": 0.69,
-    "conjecture_latex": "If $\\Gamma$ is weakly connected, then $\\dim_H E_i = \\delta$ for a GIFS satisfying the OSC",
-    "informal": "The Hausdorff dimension of the limit set equals the similarity dimension even if the graph is only weakly connected",
-    "lean4_sketch": "import Mathlib.GraphTheory\nexample (E_i : Nat \u2192 Set) (GIFS : GraphDirectedIteratedFunctionSystem) (hOSC : OSC GIFS) (hWeaklyConnected : WeaklyConnected \u0393) : \u2200 i, HausdorffDimension (E_i) = SimilarityDimension GIFS",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "geometry_topology",
-    "quality_score": 0.69,
-    "conjecture_latex": "For any connected, simply-connected $3$-manifold $M$, the Betti numbers of its double coset $AB$ satisfy the following identities: $c_{0,k} = c_{1,k+1} + 1$ and $c_{0,j} = c_{1,j+1}$ for all $j \\geq k+1$.",
-    "informal": "Betti numbers of double cosets in $3$-manifolds have specific identities.",
-    "lean4_sketch": "example (M : Type) [connected_space M] [simply_connected_space M] : \u2203 (A B : Type) [group A] [group B], \u2200 (k j : \u2115), c_0_k = c_1_{k+1} + 1 \u2227 c_0_j = c_1_{j+1}, by { apply exists_Betti_numbers identities }}",
-    "strategy": "cross_domain_analogy",
-    "source": "multi_strategy",
+    "quality_score": 0.73,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $w \\in \\widetilde{S}_n$ be an affine permutation of order $n$. Then the chromatic polynomial of the inversion graph of $w$ satisfies $\\\\chi_{G_w}(t) = (t - e_1)(t - e_2)\\\\dotsm(t - e_n)$, where $e_1, e_2, \\\\dots, e_n$ are integers with $e_i \\\\geq 0$ for all $i$.\",\n    \"informal\": \"The chromatic polynomial of the inversion graph of any affine permutation has a factored form similar to that of smooth permutations.\",\n    \"motivation\": \"This conjecture generalizes Result 1 f",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
     "domain": "analysis",
-    "quality_score": 0.69,
-    "conjecture_latex": "If $A$ is a bounded operator and $B$ is a self-adjoint operator, then $A + B$ is a homeomorphism of $U$ onto an open subset $V$ of $X$",
-    "informal": "A homeomorphism result with a weakened hypothesis on the operator A",
-    "lean4_sketch": "import operator_algebras\nimport topology\n... ",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "analysis",
-    "quality_score": 0.69,
-    "conjecture_latex": "$\\forall \\, \\omega : [0, \\infty) \\to [0, \\infty)$ continuous and non-decreasing with $\\omega(0) = 0$, $\\exists \\, k > 0$ such that $\\omega(t) \\geq kt$ for all $t \\geq 0$, then $\\exists \\, M > 0$ such that for all open sets $W \\subset \\R^{N-1}$, $\\|g\\|_{\\infty} \\leq M \\|\\omega\\|_{\\infty}$ for all $g : \\overline{W} \\to \\R$ satisfying $|g(\\bar x) - g(\\bar y)| \\leq \\omega(|\\bar x - \\bar y|)$",
-    "informal": "A modulus of continuity can control the Lipschitz constant of a function.",
-    "lean4_sketch": "import Topology.Algebra\nimport Analysis.Lipschitz\n... ",
-    "strategy": "cross_domain_analogy",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "probability_statistics",
-    "quality_score": 0.69,
-    "conjecture_latex": "Let $\\mathbf{u}\\in C([r,T],\\mathbb{H}_{p}^{s}\\mathbb{(}\\mathbf{R}^{d}))$ be an $\\mathbb{H}_{p}^{s}$-solution of $(\\ref{af1})$. If the noise satisfies Assumption $\\ref{ass:noiseTraceSumm}$ and $\\bigl\\Vert\\input\\bigr\\Vert_{s}\\leq U\\;\\prior\\text{-a.s.}$ for $s>1+\\sigma_{0}$, then the posterior distribution $\\posterior$ is consistent in $\\mathcal{H}^{1}$",
-    "informal": "The posterior distribution of an $\\mathbb{H}_{p}^{s}$-solution of a SPDE is consistent in $\\mathcal{H}^{1}$ under certain noise assumptions",
-    "lean4_sketch": "import measure_theory\nimport stochastic_processes\ntheorem posterior_consistency (u : \\mathbb{H}_{p}^{s}\\mathbb{(}\\mathbf{R}^{d})) (noise : Assumption \\ref{ass:noiseTraceSumm}) : \\posterior \\text{consistent in } \\mathcal{H}^{1}",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "probability_statistics",
-    "quality_score": 0.69,
-    "conjecture_latex": "If $\\bigl\\Vert\\input\\bigr\\Vert_{s} \\leq U$ for $s > \\sigma_0$, then $\\posterior$ is consistent in $\\mathcal{H}^1$",
-    "informal": "The posterior is consistent in $\\mathcal{H}^1$ even if the prior is not bounded",
-    "lean4_sketch": "import functional_analysis\nimport probability\n... ",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
+    "quality_score": 0.73,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $X$ be a Banach space and $T: X \\to X$ a bounded linear operator. Suppose the spectrum $\\sigma(T)$ is discrete and consists of a sequence of eigenvalues $\\{\\lambda_n\\}$ with $\\lim_{n \\to \\infty} |\\lambda_n| = \\infty$. If the Riesz projections $P_n$ corresponding to $\\lambda_n$ satisfy $\\|P_n\\| = O(|\\lambda_n|^{-\\alpha})$ for some $\\alpha > 0$, then $T$ is similar to a compact operator.\",\n    \"informal\": \"If an operator has eigenvalues growing to infinity and its Riesz pr",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
     "domain": "algebraic_geometry",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\exists \\ a \\mathbb{Q}$-divisor $B_{\\epsilon}$ such that $(X/Z,B_{\\epsilon} + M)$ is generalized klt and $B_{\\epsilon} \\sim_{\\mathbb{Q}} B + \\epsilon A$ for any rational $\\epsilon > 0$",
-    "informal": "Generalized klt pairs can be constructed with a $\\mathbb{Q}$-divisor that is $\\mathbb{Q}$-linearly equivalent to $B + \\epsilon A$ for any rational $\\epsilon > 0$",
-    "lean4_sketch": "example (X : Scheme) (Z : Scheme) (B : Divisor X) (M : Divisor X) (\u03b5 : \u211a) (h : \u03b5 > 0) : \u2203 (B\u03b5 : Divisor X), generalized_klt (X/Z, B\u03b5 + M) \u2227 B\u03b5 \u223c[\u211a] B + \u03b5 * A",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "algebraic_geometry",
-    "quality_score": 0.67,
-    "conjecture_latex": "Let $(X/Z,B+M)$ be a generalized dlt pair and $A$ be an ample divisor on $X$. Then there exists a $\\mathbb{Q}$-divisor $B_\\epsilon \\sim_{\\mathbb{Q}} B + \\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt for any rational $\\epsilon > 0$",
-    "informal": "Generalized klt pairs can be constructed with a $\\mathbb{Q}$-divisor that is $\\mathbb{Q}$-linearly equivalent to $B + \\epsilon A$ for any rational $\\epsilon > 0$",
-    "lean4_sketch": "example (X : Scheme) (Z : Scheme) (B : Divisor X) (M : Divisor X) (A : Divisor X) (\u03b5 : \u211a) (h : \u03b5 > 0) : \u2203 (B\u03b5 : Divisor X), generalized_klt (X/Z, B\u03b5 + M) \u2227 B\u03b5 \u223c[\u211a] B + \u03b5 * A",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "algebraic_geometry",
-    "quality_score": 0.67,
-    "conjecture_latex": "Let $\\mathcal{L}$ be a line bundle on $C$ with the factorization type $(m,b)$. If $\\mathcal{L}$ is base point free, then there exists a surjective morphism $\\tau: H_{d-1}^{\\aone}({\\mathbb A}^n - \\cup_{i=1}^r L_i) \\longrightarrow {\\underline{{\\bf K}}^{MW}_d}^{\\oplus r}$, where $L_1,\\ldots,L_r$ are a collection of coordinate subspaces of codimension $d$ ($d \\geq 2$) in ${\\mathbb A}^n$.",
-    "informal": "Combining the base point free condition with the surjective morphism in A^1-homotopy groups",
-    "lean4_sketch": "import topology.algebraic_topology\nimport algebraic_geometry.line_bundle\ntheorem composition (m b : nat) (L : line_bundle C) [base_point_free L] : exists (tau : surjective_morphism (H_d_aone (A^n - cup L_i)) (K_MW_d ^ r)), true",
-    "strategy": "composition",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "algebraic_geometry",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\lim_{n\\to\\infty} h^i (C,\\mathcal{L}_n) = h^i ({\\mathbb P}^1,\\mathcal{O}_{{\\mathbb P}^1} (m)) + h^i ({\\mathbb P}^1,\\mathcal{O}_{{\\mathbb P}^1} (m+b-g-1))$",
-    "informal": "The cohomology groups of line bundles on a curve stabilize as the degree of the line bundle increases",
-    "lean4_sketch": "import AlgebraicGeometry\n\nlemma stabilization_of_cohomology (C : Curve) (m b : \u2115) (n : \u2115) : \u2203 k, h^i (C, \u2112_n) = h^i (\u2119^1, \ud835\udcaa_\u2119^1 (m)) + h^i (\u2119^1, \ud835\udcaa_\u2119^1 (m + b - g - 1))",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "algebraic_geometry",
-    "quality_score": 0.67,
-    "conjecture_latex": "Let $X$ be a smooth projective variety and $Y$ a closed subvariety. If the normal bundle of $Y$ is nef, then the level of the congruence subgroup $\\Gamma(Y)$ is less than or equal to the level of $\\Gamma(X)$",
-    "informal": "A connection between the level of a congruence subgroup and the nefness of a normal bundle",
-    "lean4_sketch": "import Mathlib\n\nexample (X : Scheme) (Y : ClosedSubvariety X) [Nef Y.normalSheaf] : \\Gamma(Y).level \\leq \\Gamma(X).level",
-    "strategy": "cross_domain_analogy",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "algebra",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\lim_{n\\to\\infty} \\frac{d(G)}{\\frac{\\ct n}{\\sqrt{\\log{n}}}} = 1$",
-    "informal": "The limit of the ratio of the degree of a transitive permutation group to the given bound as the degree approaches infinity is 1.",
-    "lean4_sketch": "import Mathlib\nexample (G : Type) [group G] (n : \u2115) : \u2203 (c : \u211d), is_limit (\u03bb (n : \u2115), d (G) / (c * n / sqrt (log n))) 1",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "number_theory",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\exists w \\in W_{l^n \\times l^n}$ such that the conjugation by $w^{-1}x$ is the automorphism $C_{w^{-1}x}=\\sigma \\otimes 1$ on $W_{l^n \\times l^n}$, and it is of order $l^{n+1}$",
-    "informal": "A generalization of the automorphism and order of an element in a matrix algebra",
-    "lean4_sketch": "import Mathlib\nnamespace conj_automorph\ntheorem exists_conj_automorph (l : Nat) (n : Nat) : \\exists w : W_{l^n \\times l^n}, \\exists x, conjugation_by w^{-1}x = C_{w^{-1}x} := \\sigma \\otimes 1, order (w^{-1}x) = l^{n+1}",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "number_theory",
-    "quality_score": 0.67,
-    "conjecture_latex": "There exists a $w \\in W_{l^n\\times l^n}$ such that the conjugation by $w^{-1}x$ is the automorphism $C_{w^{-1}x}=\\sigma\\otimes 1$ on $W_{l^n\\times l^n}$, and $T_\\pfrak$ stabilizes both $\\MM_k^m(\\rho^*_t)$ and $\\SSS_k^m(\\rho^*_t)$",
-    "informal": "Combining the results on matrix algebra and Hecke operators to study the relationship between conjugation and stabilization of modular forms",
-    "lean4_sketch": "import Mathlib\n\ntheorem conj_hecke_stabilization\n  (l : \u2115+) (n : \u2115) (x : W (l^n \u00d7 l^n)) (\u03c3 : Gal (l^n \u00d7 l^n))\n  (\u03c1 : Aut (W (l^n \u00d7 l^n))) (T : HeckeOp) (k m : \u2115) :\n  \u2203 w, conjugation_by w\u207b\u00b9 * x = C_w\u207b\u00b9x \u2227 T_stabilizes MM_k\u207f (\u03c1_t) \u2227 T_stabilizes SSS_k\u207f (\u03c1_t)",
-    "strategy": "composition",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "number_theory",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\exists \\; C_0 > 0$ such that $\\forall \\; \\phi' \\in C^\\infty_c(G(\\mathbb{A}_f))$ that is $C$-regular, $\\forall \\; M \\in \\mathcal{L}$, $M \\neq G$, $\\forall \\; \\pi_f \\in \\Pi(M(\\mathbb{A}_f))$, and $\\forall \\; X \\in \\mathfrak{a}_{M,f}$, we have $\\Vert \\phi' \\Vert_{\\infty} \\leq C_0 \\cdot \\max_{\\ell \\in \\mathcal{L}(M)} \\vert \\lambda_\\ell(\\phi') \\vert^{1/2}$",
-    "informal": "A bound on the norm of a function in terms of the maximum of its Fourier coefficients",
-    "lean4_sketch": "example (\u03c6' : C\u221ec(G(\u2119A_f))) (h : is_C_regular \u03c6') : \u2225\u03c6'\u2225\u2098 < C0 * max (\u03bb : \u2112(M)) |\u03bb(\u03c6')|^(1/2) := by apply Plancherel_theorem",
-    "strategy": "theorem_generation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "number_theory",
-    "quality_score": 0.67,
-    "conjecture_latex": "The $\\Lambda$-modules $\\hat H^1_f(K_\\infty, T)$ and $S_\\infty$ are canonically isomorphic",
-    "informal": "An isomorphism between two Lambda-modules",
-    "lean4_sketch": "example (T : p_adic_representation) (K_\u221e : Galois_extension) : \u2203 (\u03b9 : Hat H\u00b9_f (K_\u221e, T) \u2245 S_\u221e), \u03b9 : is_isomorphism := by apply Iwasawa_theory",
-    "strategy": "theorem_generation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "discrete_math",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\forall n \\in \\mathbb{N}, \\exists m \\in \\mathbb{N}$ such that $s(m,r)$ is the sum of the weights of all lattice paths from $(0,0)$ to $(r-1,m-r)$ and $s(m,r) = \\binom{m}{r}$",
-    "informal": "A generalization of Stirling numbers of the first kind to any natural number m and r, where the sum of the weights of lattice paths can be expressed as a binomial coefficient",
-    "lean4_sketch": "example (n : nat) : exists m, s m n = choose m n := by { apply exists.intro, exact 1 }",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "discrete_math",
-    "quality_score": 0.67,
-    "conjecture_latex": "For any poset $P$ and group $G$ acting on $P$, if the action of $G$ on $P$ is $k$-refined for some $k \\in \\mathbb{N}$, then for every $x \\in P$, the action of the group $\\text{stab}(x)$ on $P_{\\geq x}$ is $k$-refined",
-    "informal": "A generalization of the result that the action of the group $\\text{stab}(x)$ on $P_{\\geq x}$ is $k$-refined, to any poset and group action",
-    "lean4_sketch": "example (P : poset) (G : group) (h : is_k_refined G P) (x : P) : is_k_refined (stab x) (P_ge x) := by { apply k_refined.mk, assumption }",
-    "strategy": "pattern_interpolation",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "discrete_math",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\lim_{n \\to \\infty} \\frac{s(n,r)}{n!} = 0$ for $1 \\leq r \\leq n$",
-    "informal": "The Stirling numbers of the first kind grow slower than the factorial function as n approaches infinity",
-    "lean4_sketch": "example (n : \u2115) (r : \u2115) (h : 1 \u2264 r) (h2 : r \u2264 n) : \u2203 c, \u2200 n \u2265 c, s n r < n! := by admit",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
-    "verification_status": "pending"
-  },
-  {
-    "domain": "discrete_math",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\forall n \\geq 3, \\exists k \\in \\mathbb{N}$ such that $IK_n$ is a $G$-graph if and only if $n \\equiv k$ mod $4$",
-    "informal": "A theorem that connects the concept of $G$-graphs with modular arithmetic, providing a condition for $IK_n$ to be a $G$-graph based on the residue of $n$ modulo $4$",
-    "lean4_sketch": "example (n : nat) (h : n >= 3) : exists k, IK_n.is_G_graph <-> n % 4 = k",
-    "strategy": "theorem_generation",
-    "source": "multi_strategy",
+    "quality_score": 0.72,
+    "conjecture_latex": "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$. Suppose $x, y \\in \\Theta^{\\mathrm{sm}}$ are such that their images in the Kummer variety lie on a trisecant line. Then the fiber $\\G^{-1}(\\G(x))$ contains at least $g-1$ distinct points of multiplicity $\\geq 2$, and these points form a complete intersection in the fiber with respect to the canonical resolution of $\\G$.\",\n    \"informal\": \"For high-genus curves, if two points in the smooth part of t",
+    "informal": "",
+    "lean4_sketch": "",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   },
   {
     "domain": "geometry_topology",
-    "quality_score": 0.67,
-    "conjecture_latex": "$\\lim_{n\\to\\infty} \\dim_H E_i = \\delta$ for a GIFS satisfying the OSC",
-    "informal": "The Hausdorff dimension of the limit set approaches the similarity dimension as the number of iterations increases",
-    "lean4_sketch": "import Mathlib.Topology.Dimension\nexample (E_i : Nat \u2192 Set) (GIFS : GraphDirectedIteratedFunctionSystem) (hOSC : OSC GIFS) : \u2200 i, lim (n \u2192 \u221e) (HausdorffDimension (E_i n)) = SimilarityDimension GIFS",
-    "strategy": "boundary_exploration",
-    "source": "multi_strategy",
+    "quality_score": 0.72,
+    "conjecture_latex": "Let $M$ be a smooth manifold with a Hamiltonian $G$-action, where $G$ is a compact Lie group. Suppose $\\Phi(M) \\subset \\gse$ (i.e., the image of the momentum map is contained in the strongly elliptic elements of the Lie algebra $\\mathfrak{g}$). Then, the bar resolution $\\overline{X}$ of the $\\cW$-space $X = M$ is $\\mathbb{S}^{\\cW}$-good, and the Atiyah--Segal completion map $\\K_G^{\\bullet}(M) \\otimes \\C \\to \\H^{\\bullet}_G(M; \\C[\\beta, \\beta^{-1}])$ is an isomorphism.",
+    "informal": "For a smooth manifold with a proper Hamiltonian action by a compact group, if the momentum map image avoids certain pathological elements, then a certain algebraic resolution is well-behaved and a key map in equivariant K-theory becomes an isomorphism.",
+    "lean4_sketch": "import Mathlib.Topology.Symplectic import Mathlib.AlgebraicTopology.BarResolution import Mathlib.Geometry.Topology.CAT0 -- Define the bar resolution and the Atiyah-Segal completion map -- State the conjecture as an implication between these structures",
+    "strategy": "stp",
+    "source": "stp",
     "verification_status": "pending"
   }
 ]

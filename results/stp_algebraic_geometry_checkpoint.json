@@ -3,18 +3,355 @@
   "rounds": [
     {
       "domain": "algebraic_geometry",
-      "conjectures": [],
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$. Suppose $x, y \\in \\Theta^{\\mathrm{sm}}$ are such that their images in the Kummer variety lie on a trisecant line. Then the fiber $\\G^{-1}(\\G(x))$ contains at least $g-1$ distinct points of multiplicity $\\geq 2$, and these points form a complete intersection in the fiber with respect to the canonical resolution of $\\G$.\",\n    \"informal\": \"For high-genus curves, if two points in the smooth part of t",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in algebraic geometry, particularly those related to the geometry of the Kummer variety and the theta divisor. The condition that two points in the smooth part of the theta divisor lie on a trisecant line in the Kummer variety implies certain degeneracies in the fiber of the Gauss map. However, the exact count of points of multiplicity \u2265 2 and their formation as a complete intersection is not fully established in the literature. The conjecture aligns with the expected behavior of high-genus curves, but a complete proof would require deeper analysis of the singularities of the theta divisor and the Gauss map.",
+            "key_steps": [
+              "Understand the relationship between the Kummer variety and the theta divisor.",
+              "Analyze the condition that two points lie on a trisecant line in the Kummer variety.",
+              "Study the Gauss map and its fibers, particularly in the context of high-genus curves.",
+              "Examine the multiplicity of points in the fiber and their formation as a complete intersection."
+            ],
+            "lean4_proof_sketch": "import algebraic_geometry\n\n-- Define the smooth projective curve C and its Jacobian J(C)\ndef smooth_projective_curve (g : \u2115) : Type := ...\ndef jacobian (C : smooth_projective_curve g) : Type := ...\n\n-- Define the theta divisor and its smooth part\ndef theta_divisor (J : Type) : Type := ...\ndef theta_smooth (J : Type) : Type := ...\n\n-- Define the Kummer variety and the condition of lying on a trisecant line\ndef kummer_variety (J : Type) : Type := ...\ndef trisecant_condition (x y : theta_smooth J) : Prop := ...\n\n-- State the conjecture\ndef conjecture (g : \u2115) (C : smooth_projective_curve g) (x y : theta_smooth J(C)) (h : trisecant_condition x y) : Prop := ...\n\n-- Attempt to prove the conjecture\nlemma partial_proof (g : \u2115) (C : smooth_projective_curve g) (x y : theta_smooth J(C)) (h : trisecant_condition x y) : ... := ...",
+            "counterexample": null,
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known geometric intuition. To improve, the conjecturer could provide more specific conditions or examples where the conjecture holds, or reference existing literature that supports the expected behavior. A more precise statement about the nature of the complete intersection might also help in proving the conjecture."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.72,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-formed and aligns with known results in algebraic geometry, particularly regarding the Kummer variety and theta divisor. The proof attempt is partially rigorous but lacks the depth required to fully establish the claimed properties. The conjecture is non-trivial and significant, but the exact count and complete intersection properties need more precise justification.",
+            "is_publishable": false,
+            "suggested_improvements": "Refine the conjecture to specify the exact conditions under which the fiber contains g-1 points of multiplicity \u2265 2. Provide a more rigorous proof using advanced techniques in singularity theory or tropical geometry to solidify the claims."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.72
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let $X$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(X)$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ are such that their images in the Kummer variety lie on a trisecant line. Then the fiber of the Gauss map $\\mathcal{G}$ over $\\mathcal{G}(x)$ contains at least four distinct points of highest multiplicity, including $x$ and $y$.",
+            "informal": "For curves of genus at least 4, if two smooth points on the theta divisor have images on a trisecant line in the Kummer variety, then the Gauss map fiber over one of them must contain at least four points of highest multiplicity.",
+            "motivation": "This extends Result 1 by strengthening the conclusion about multiplicity points in the fiber. It's plausible because higher genus curves have more complex theta divisors and richer geometric structure, suggesting more multiplicity points in certain fibers.",
+            "lean4_sketch": "import algebraic_geometry.theta_divisors\nimport algebraic_geometry.kummer_variety\n\nlemma fiber_multiplicity_conjecture (X : curve) (g : \u2115) (hg : g \u2265 4) (x y : X.theta_divisor.smooth_points) (h_trisecant : trisecant_line (x.image_in_kummer) (y.image_in_kummer)) :\n  \u2203 (z w : X.theta_divisor.smooth_points), z \u2260 x \u2227 z \u2260 y \u2227 w \u2260 x \u2227 w \u2260 y \u2227 z \u2208 (gauss_map.fiber (gauss_map x)) \u2227 w \u2208 (gauss_map.fiber (gauss_map x)) \u2227 multiplicity z = multiplicity x \u2227 multiplicity w = multiplicity x := sorry",
+            "proof_hint": "Use the geometry of the Kummer variety and the properties of the theta divisor to analyze the fibers of the Gauss map. Consider the intersection theory of the theta divisor with itself and the behavior of the Gauss map in higher genus cases.",
+            "novelty_claim": "This conjecture strengthens the conclusion of Result 1 by requiring more multiplicity points in the fiber, which hasn't been explicitly stated in the literature. It provides a more precise relationship between the geometry of the Kummer variety and the structure of Gauss map fibers."
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in algebraic geometry, particularly the study of the Gauss map and the Kummer variety. The key idea is to analyze the fibers of the Gauss map and their intersection properties with the theta divisor. For genus g \u2265 4, the Kummer variety K(X) is a quartic hypersurface in projective space, and trisecant lines correspond to certain configurations of points on the Jacobian. The Gauss map fibers over points in the smooth locus of the theta divisor are known to be related to the geometry of the curve and its Jacobian. However, a complete proof requires deeper intersection theory and possibly new techniques to count the points of highest multiplicity in the fibers.",
+            "key_steps": [
+              "Understand the geometry of the Kummer variety and its trisecant lines.",
+              "Analyze the fibers of the Gauss map and their intersection with the theta divisor.",
+              "Use intersection theory to count the points of highest multiplicity in the fibers.",
+              "Relate the configuration of points on the Kummer variety to the Gauss map fibers."
+            ],
+            "lean4_proof_sketch": "import algebraic_geometry\n\nlemma conjecture_gauss_map_fiber (X : curve) (g : \u2115) (hg : g \u2265 4) (x y : X.theta.smooth) (h_trisecant : x.image_in_kummer = y.image_in_kummer \u2227 trisecant_line_exists) :\n  \u2203 (four_points : finset (X.theta.smooth)) (h_distinct : four_points.nodup) (h_highest : \u2200 p \u2208 four_points, p.highest_multiplicity),\n    x \u2208 four_points \u2227 y \u2208 four_points := sorry",
+            "counterexample": null,
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known results in algebraic geometry. To improve, consider providing more specific geometric or intersection-theoretic conditions that would make the conjecture more tractable. Additionally, exploring lower-genus cases or specific curve types (e.g., hyperelliptic curves) might provide insight."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.7,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and aligns with known results in algebraic geometry, particularly regarding the Gauss map and Kummer variety. The proof attempt is partially rigorous but lacks the depth required for a complete proof. The statement is non-trivial and significant, but formalizing it in Lean 4 would require careful handling of the geometric constructs.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture could be strengthened by providing a more precise characterization of the points of highest multiplicity and leveraging deeper intersection theory or tropical geometry techniques. The proof attempt should be expanded with rigorous arguments, possibly using known theorems about the Gauss map and theta divisors."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.7
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ are such that their images in the Kummer variety lie on a trisecant line. Then the fiber of the Gauss map $\\G$ over $\\G(x)$ contains exactly three points of highest multiplicity, and these points are symmetric with respect to the origin in $J(C)$.\",\n    \"informal\": \"For certain pairs of smooth points on the theta divisor, the Ga",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in algebraic geometry, particularly those related to the Gauss map and the Kummer variety. The condition that two points on the theta divisor have images on a trisecant line in the Kummer variety is related to the existence of a trisecant line in the intermediate Jacobian. The Gauss map's fiber over a point of highest multiplicity is known to have a symmetric structure, but the exact count of three points of highest multiplicity is not universally established for all genus g \u2265 4 curves. The conjecture aligns with the general behavior of the Gauss map and the theta divisor, but a complete proof would require deeper analysis of the singularities and the geometry of the theta divisor.",
+            "key_steps": [
+              "Understand the relationship between the theta divisor and the Kummer variety.",
+              "Analyze the Gauss map and its fibers over points of highest multiplicity.",
+              "Study the symmetry properties of the fiber of the Gauss map.",
+              "Consider the case of genus 4 curves to test the conjecture."
+            ],
+            "lean4_proof_sketch": "import algebraic_geometry.theta_divisors\nimport algebraic_geometry.kummer_variety\nimport algebraic_geometry.gauss_map\n\nlemma conjecture_gauss_map_fiber (C : curve) (hC : smooth C) (hg : genus C \u2265 4) (x y : \u0398.smooth) (hxy : images_in_kummer x y lie_on_trisecant) :\n  \u2203 (three_points : fin 3 \u2192 J(C)),\n    (\u2200 i, multiplicity (gauss_map C) three_points i = max_multiplicity) \u2227\n    (\u2200 i j, three_points i + three_points j = 0) := sorry",
+            "counterexample": "No specific counterexample is known, but the conjecture may not hold for all genus g \u2265 4 curves due to the complexity of the theta divisor's geometry.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known results, but it would benefit from a more precise statement or additional conditions to ensure its validity. Exploring specific examples, such as genus 4 curves, could provide more concrete evidence."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.7,
+            "proof_quality": 0.6,
+            "overall_score": 0.75,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-formed and aligns with known results in algebraic geometry, particularly regarding the Gauss map and Kummer variety. The proof attempt is partially rigorous but lacks a complete argument for the exact count of three points of highest multiplicity. The conjecture is non-trivial and significant, but further refinement is needed for full formalizability.",
+            "is_publishable": false,
+            "suggested_improvements": "Clarify the exact conditions under which the fiber of the Gauss map contains exactly three points of highest multiplicity. Provide a more rigorous proof or cite deeper results to support the claim."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.75
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $X$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $JX$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ such that their images in the Kummer variety lie on a trisecant line. Then the fiber of the Gauss map $\\G$ over $\\G(x)$ contains at least four points of multiplicity equal to the highest multiplicity in the fiber, and these points form a complete intersection curve in $X$ of degree $2g-2$ with respect to the canonical embedding.\",",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in algebraic geometry, particularly those related to the Gauss map and the Kummer variety. The condition that two points in the smooth part of the theta divisor have images on a trisecant line in the Kummer variety is related to the existence of certain special divisors. The Gauss map's fiber over a point is known to have a structure that can be analyzed using the geometry of the curve and its Jacobian. However, the exact statement about the fiber containing at least four points of maximal multiplicity and forming a complete intersection curve is not fully established in the literature. The degree of the curve in the canonical embedding is indeed related to the canonical divisor, but the precise intersection properties require deeper analysis.",
+            "key_steps": [
+              "Understand the Gauss map and its fibers in the context of the Jacobian and theta divisor.",
+              "Analyze the condition that two points in Theta^{sm} lie on a trisecant line in the Kummer variety.",
+              "Relate the multiplicity of points in the fiber of the Gauss map to the geometry of the curve.",
+              "Determine the degree of the complete intersection curve in the canonical embedding."
+            ],
+            "lean4_proof_sketch": "import algebraic_geometry\nimport schemes\nimport curves\n\nlemma conjecture_gauss_map_fiber (X : curve) (g : \u2115) (hg : g \u2265 4) (JX : jacobian X) (\u0398 : theta_divisor JX) (x y : \u0398.smooth) (h_trisecant : trisecant_line (kummer_variety JX) x y) :\n  \u2203 (fiber : fiber (gauss_map JX) (gauss_map JX x)),\n    fiber.has_four_points_of_max_multiplicity \u2227\n    fiber.forms_complete_intersection_curve X (2 * g - 2) := sorry",
+            "counterexample": null,
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and connects several important concepts in algebraic geometry. To improve it, the conjecturer could provide more specific conditions or examples where the statement holds, or refer to known results that partially support the claim. Additionally, a more precise definition of the 'highest multiplicity' and the 'complete intersection curve' would help in verifying the conjecture."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.7,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-formed and uses standard notation in algebraic geometry. It builds on known results about the Gauss map and Kummer variety but extends them in a non-trivial way. The proof attempt is partially rigorous but lacks full precision in establishing the exact multiplicity and intersection properties. The significance is high, as it connects deep geometric structures. Formalization in Lean 4 would require careful handling of the geometric constructions.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture could be strengthened by providing explicit conditions for the trisecant line or by referencing specific results about the Gauss map's fiber structure. The proof attempt should be refined to address the exact multiplicity and intersection properties more rigorously."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.7
+        }
+      ],
       "stats": {
-        "total": 0,
+        "total": 4,
         "proved": 0,
         "disproved": 0,
-        "partially_proved": 0,
+        "partially_proved": 4,
         "unknown": 0,
         "trivial": 0,
-        "avg_quality": 0.0
+        "avg_quality": 0.7175
+      }
+    },
+    {
+      "domain": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a Gorenstein local ring of dimension $d \\geq 3$ with isolated singularity. Then the stable category $\\stab R$ is $d$-Calabi-Yau if and only if $R$ is $F$-pure.\",\n    \"informal\": \"For a Gorenstein ring with isolated singularities, the stable category of maximal Cohen-Macaulay modules is Calabi-Yau of the same dimension as the ring precisely when the ring is F-pure.\",\n    \"motivation\": \"This conjecture connects two important concepts in commutative algebra and repre",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture connects the $d$-Calabi-Yau property of the stable category of maximal Cohen-Macaulay modules over a Gorenstein local ring with $F$-purity. While the 'if' direction (F-pure implies $d$-Calabi-Yau) is known to hold under certain conditions, the converse is more subtle and not fully established in general. The difficulty arises from the interplay between singularity categories and $F$-singularities, which is an active area of research.",
+            "key_steps": [
+              "Understand the definition of $d$-Calabi-Yau stable category and its relation to Gorenstein rings.",
+              "Recall that $F$-purity is a property of rings that is closely related to singularities and Frobenius actions.",
+              "Analyze the known results that link $F$-purity to the Calabi-Yau property in singularity categories.",
+              "Identify gaps in the converse direction where the conjecture remains open."
+            ],
+            "lean4_proof_sketch": "import algebra.ring.gorenstein\nimport algebra.ring.f_pure\n\nlemma f_pure_implies_d_calabi_yau (R : Type*) [comm_ring R] [local_ring R] [gorenstein R] [f_pure R] : d_calabi_yau (stab R) := ...\n\n-- The converse is not yet formalized in Lean.",
+            "counterexample": "No known counterexample exists, but the conjecture is not fully proven in general.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and connects two important concepts. To improve, consider refining the conditions under which the converse holds or providing more evidence for the general case. The conjecture is significant but challenging due to the depth of the involved theories."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.8,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.7,
+            "proof_quality": 0.6,
+            "overall_score": 0.78,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-formed and connects two important concepts in algebraic geometry and commutative algebra. The proof attempt correctly identifies the known direction (F-pure implies d-Calabi-Yau) but acknowledges the difficulty in the converse. The conjecture is non-trivial and significant, but the proof is not yet complete.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture could be refined by specifying additional conditions under which the converse holds or by providing partial results that narrow the gap between the known and unknown directions. More rigorous analysis of the interplay between singularity categories and F-singularities would strengthen the proof attempt."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.78
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $X$ be a smooth projective variety over an algebraically closed field $k$ of characteristic $0$, and let $\\mathcal{F}$ be a coherent sheaf on $X$ with $\\chi(\\mathcal{F}) = 0$. Then the natural map $\\mathrm{H}^0(X, \\mathcal{F}) \\to \\mathrm{H}^0(X, \\mathcal{F} \\otimes \\omega_X)$ is an isomorphism if and only if $\\mathcal{F}$ is torsion-free and $\\mathrm{H}^i(X, \\mathcal{F}) = 0$ for all $i > 0$.\",\n    \"informal\": \"For a smooth projective variety in characteristic zero, a c",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially correct but requires refinement. The 'if' direction (torsion-free + vanishing implies isomorphism) holds, but the 'only if' direction (isomorphism implies torsion-free + vanishing) is false in general. A counterexample exists where the map is an isomorphism but the sheaf is not torsion-free or has non-vanishing higher cohomology.",
+            "key_steps": [
+              "1. The 'if' direction follows from Serre duality and the fact that torsion-free sheaves have vanishing higher cohomology under the given conditions.",
+              "2. The 'only if' direction fails because the isomorphism condition does not necessarily enforce torsion-freeness or cohomology vanishing.",
+              "3. A counterexample can be constructed on a curve (e.g., elliptic curve) with a sheaf that is not torsion-free but still satisfies the isomorphism condition."
+            ],
+            "lean4_proof_sketch": "import ... open ... theorem if_direction (X : Scheme) (F : O_X CohesiveSheaf) (hX : SmoothProjective X) (hF : chi F = 0) (h_torsion_free : TorsionFree F) (h_vanish : \u2200 i, i > 0 \u2192 H^i(X, F) = 0) : Isomorphism (H^0(X, F) \u2192 H^0(X, F \u2297 \u03c9_X)) := ...",
+            "counterexample": "Let X be an elliptic curve over an algebraically closed field of characteristic 0, and let F be a sheaf supported on a single point (not torsion-free). If F is chosen such that \u03c7(F) = 0 and the natural map is an isomorphism, this provides a counterexample.",
+            "difficulty_assessment": "medium",
+            "confidence": 0.85,
+            "mathematical_rigor": 0.9,
+            "feedback_for_conjecturer": "The conjecture is well-motivated but overreaches in the 'only if' direction. It would be stronger to state the 'if' direction as a theorem and explore the 'only if' direction as a separate question. The conjecture could be improved by restricting to torsion-free sheaves or adding additional hypotheses."
+          },
+          "judge_evaluation": {
+            "correctness": 0.8,
+            "novelty": 0.6,
+            "non_triviality": 0.7,
+            "significance": 0.5,
+            "formalizability": 0.9,
+            "proof_quality": 0.7,
+            "overall_score": 0.68,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and uses correct notation, but the 'only if' direction is incorrect. The 'if' direction aligns with known results in algebraic geometry, particularly related to torsion-free sheaves and cohomology vanishing. The proof attempt correctly identifies the issue with the converse.",
+            "is_publishable": false,
+            "suggested_improvements": "Refine the conjecture to focus only on the 'if' direction or provide additional conditions to ensure the 'only if' direction holds. Alternatively, state it as a conditional result where the isomorphism implies torsion-freeness under additional hypotheses."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.68
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $X$ be a smooth projective variety over an algebraically closed field $k$ of characteristic zero, and let $D$ be a reduced effective divisor on $X$ such that $X \\setminus D$ is affine. Then the canonical map $\\\\mathrm{can}_X: \\\\mathrm{CH}^{LW}_0(S_X) \\\\to \\\\mathrm{CH}_0(S_X)$ is an isomorphism.\",\n    \"informal\": \"For a smooth projective variety with a reduced divisor whose complement is affine, the canonical map between zero-cycle Chow groups is an isomorphism.\",\n    \"mo",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is related to the behavior of zero-cycles on smooth projective varieties with affine complements. The canonical map $\\mathrm{can}_X: \\mathrm{CH}^{LW}_0(S_X) \\to \\mathrm{CH}_0(S_X)$ is known to be an isomorphism in many cases, particularly when $X$ is a curve or a surface. However, for higher-dimensional varieties, the conjecture remains open. The difficulty arises from the interplay between the geometry of $D$ and the structure of the Chow groups. The affine complement condition imposes strong restrictions, but the general case is not fully understood.",
+            "key_steps": [
+              "Understand the definitions of $\\mathrm{CH}^{LW}_0$ and $\\mathrm{CH}_0$ in the context of smooth projective varieties.",
+              "Analyze the affine complement condition and its implications for the geometry of $X$ and $D$.",
+              "Consider known results for curves and surfaces where the conjecture holds.",
+              "Explore potential counterexamples in higher dimensions or non-trivial characteristics."
+            ],
+            "lean4_proof_sketch": "The proof would involve leveraging the affine complement condition to show that the canonical map is bijective. This might require constructing explicit cycles or using intersection theory. However, a complete proof in Lean 4 is not yet available due to the open nature of the conjecture in higher dimensions.",
+            "counterexample": "No counterexample is known, but the conjecture is not proven in general.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known results in lower dimensions. To improve, consider providing more specific conditions on $D$ or exploring the conjecture in the context of specific classes of varieties (e.g., abelian varieties, Calabi-Yau varieties). Additionally, numerical experiments or examples could help gauge the plausibility of the conjecture in higher dimensions."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.8,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.7,
+            "proof_quality": 0.6,
+            "overall_score": 0.78,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and aligns with known results in algebraic geometry, particularly regarding zero-cycles and affine complements. The proof attempt correctly identifies the challenges in higher dimensions but lacks a complete argument. The conjecture is non-trivial and significant, but its formalization in Lean 4 would require careful handling of the Chow groups and the affine complement condition.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture could be refined by specifying additional geometric conditions on D or restricting to certain dimensions (e.g., surfaces) where more is known. A more detailed proof attempt, possibly leveraging known results on zero-cycles and affine varieties, would strengthen the case."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.78
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $R$ be a 3-dimensional Gorenstein normal domain over an algebraically closed field of characteristic zero. Suppose $R$ is a hypersurface singularity with an isolated singularity at the origin. Then the stable category $\\stab R$ is equivalent to the derived category of perfect complexes over $R$ if and only if the singularity is rational.\",\n    \"informal\": \"For a certain class of 3D singularities, the stable category of maximal Cohen-Macaulay modules is equivalent to the ",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture connects the stable category of maximal Cohen-Macaulay modules (MCM) over a 3-dimensional Gorenstein normal hypersurface singularity to the derived category of perfect complexes. The 'if' direction (rational implies equivalence) is known to hold, as rational singularities have trivial MCM modules up to stable equivalence, making the stable category equivalent to the derived category. The 'only if' direction is more subtle and is related to the Auslander-Reiten conjecture, which is known to hold for rational singularities but not necessarily in general. The conjecture is partially proved in the sense that the 'if' direction is established, but the 'only if' direction remains open.",
+            "key_steps": [
+              "Identify the stable category of MCM modules over a 3D Gorenstein normal hypersurface singularity.",
+              "Relate the stable category to the derived category of perfect complexes.",
+              "Use the fact that rational singularities have trivial MCM modules up to stable equivalence.",
+              "Analyze the Auslander-Reiten conjecture for the 'only if' direction."
+            ],
+            "lean4_proof_sketch": "import algebra.category.stable_category\nimport algebra.category.perfect\n\nlemma stable_equiv_rational (R : Type*) [comm_ring R] [is_3d_gorenstein R] [is_normal R] [is_hypersurface_singularity R] (h_rational : is_rational_singularity R) : \n  stable_category R \u2243 derived_category_of_perfect R := {\n  -- Proof of 'if' direction using properties of rational singularities\n  -- This part is known and can be formalized\n}\n\n-- The 'only if' direction is not yet formalized and remains open.",
+            "counterexample": "None known at this time.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.85,
+            "mathematical_rigor": 0.9,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and connects deep areas of algebraic geometry and representation theory. The 'if' direction is established, but the 'only if' direction is challenging and may require new techniques. To improve, the conjecturer could provide more evidence or examples supporting the 'only if' direction or refine the class of singularities considered."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.8,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.7,
+            "proof_quality": 0.7,
+            "overall_score": 0.8,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and connects deep concepts in algebraic geometry and representation theory. The 'if' direction is correctly identified as known, while the 'only if' direction is more speculative but meaningful. The proof attempt is rigorous for the known part but lacks a complete argument for the converse. The conjecture is significant for understanding singularities and their module categories.",
+            "is_publishable": true,
+            "suggested_improvements": "Clarify the exact conditions under which the 'only if' direction holds, possibly by restricting to a narrower class of singularities or providing additional hypotheses. A more detailed analysis of the Auslander-Reiten conjecture's role would strengthen the argument."
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.8
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 4,
+        "unknown": 0,
+        "trivial": 0,
+        "avg_quality": 0.76
       }
     }
   ],
-  "previous_conjectures": [],
-  "timestamp": "2026-02-25 22:48:18"
+  "previous_conjectures": [
+    "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$. Suppose $x, y \\in \\Theta^{\\mathrm{sm}}$ are such that their images in the Kummer variety lie on a tr",
+    "Let $X$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(X)$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ are such that their images in the Kummer variety li",
+    "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ are such that their images in ",
+    "{\n    \"conjecture\": \"Let $X$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $JX$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ such that their images in the Ku",
+    "{\n    \"conjecture\": \"Let $R$ be a Gorenstein local ring of dimension $d \\geq 3$ with isolated singularity. Then the stable category $\\stab R$ is $d$-Calabi-Yau if and only if $R$ is $F$-pure.\",\n    \"i",
+    "{\n    \"conjecture\": \"Let $X$ be a smooth projective variety over an algebraically closed field $k$ of characteristic $0$, and let $\\mathcal{F}$ be a coherent sheaf on $X$ with $\\chi(\\mathcal{F}) = 0$.",
+    "{\n    \"conjecture\": \"Let $X$ be a smooth projective variety over an algebraically closed field $k$ of characteristic zero, and let $D$ be a reduced effective divisor on $X$ such that $X \\setminus D$ i",
+    "{\n    \"conjecture\": \"Let $R$ be a 3-dimensional Gorenstein normal domain over an algebraically closed field of characteristic zero. Suppose $R$ is a hypersurface singularity with an isolated singulari"
+  ],
+  "timestamp": "2026-02-25 23:25:27"
 }

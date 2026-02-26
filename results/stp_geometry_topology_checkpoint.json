@@ -1,0 +1,368 @@
+{
+  "domain": "geometry_topology",
+  "rounds": [
+    {
+      "domain": "geometry_topology",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and a momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose that $\\Phi(M)$ contains a strongly elliptic element $\\xi \\in \\mathfrak{g}^*$ such that the linearized flow at every critical point of $\\Phi^\\xi$ is flat. Then the action of $G$ on $M$ is proper if and only if the bar resolution of the $G$-equivariant K-theory of $M$ is $\\mathbb{S}^G$-good.",
+            "informal": "A Hamiltonian group action on a compact symplectic manifold is proper if and only if certain technical conditions on the momentum map and K-theory hold, linking symplectic geometry with equivariant homotopy theory.",
+            "motivation": "This conjecture bridges Results 1 and 2 by connecting proper actions (symplectic geometry) with $\\mathbb{S}^G$-goodness (equivariant homotopy theory). The flatness condition on critical points provides a geometric constraint that might enforce the homotopical properties needed for the bar resolution to be $\\mathbb{S}^G$-good. The conjecture is plausible because both proper actions and $\\mathbb{S}^G$-goodness are related to controlled behavior of group actions, and the flatness condition could serve as a bridge.",
+            "lean4_sketch": "import Mathlib.Symplectic.Geometry import Mathlib.Topology.GroupAction import Mathlib.Homotopy.Theory.BarResolution theorem proper_action_iff_S_good (M : Type _) [compact_space M] [symplectic_manifold M] (G : Type _) [group G] (action : G \\to \\operatorname{Symp}(M)) (\\Phi : M \\to \\mathfrak{g}^*) (h\\_strongly_elliptic : \\exists \\xi, strongly_elliptic \\xi \\\\ (\\Phi M)) (h\\_flat : \\forall p, is_critical_point (\\Phi^\\xi) p \\\\\\rightarrow flat (linearized_flow (\\phi^t_{\\Phi^\\xi}) p)) : proper action \\\\iff \\mathbb{S}^G-good (bar_resolution (equivariant_K_theory M)) := sorry",
+            "proof_hint": "To prove this, one could try to use the characterization of proper actions via the momentum map (Result 1) and relate it to the properties of the bar resolution (Result 2). The flatness condition might ensure that the equivariant K-theory has the necessary homotopical properties. Alternatively, one could attempt to construct counterexamples where the flatness condition fails and show that the equivalence breaks down.",
+            "novelty_claim": "This conjecture is novel because it directly connects the properness of a symplectic group action with the homotopical properties of its equivariant K-theory via the bar resolution, a link that has not been explicitly explored in the literature. The flatness condition provides a new geometric constraint that could enforce the homotopical behavior needed for the bar resolution to be $\\mathbb{S}^G$-good."
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture connects properness of Hamiltonian actions with properties of equivariant K-theory via the bar resolution. The flatness condition on the linearized flow at critical points of the momentum map is crucial. While the conjecture is plausible, a complete proof or counterexample is not yet established. The difficulty lies in bridging symplectic geometry (properness via momentum map) with homotopical algebra (bar resolution and \\mathbb{S}^G-goodness). Partial progress can be made by showing that properness implies \\mathbb{S}^G-goodness under the given conditions, but the converse remains open.",
+            "key_steps": [
+              "Characterize properness of the G-action via the momentum map \\Phi.",
+              "Relate the flatness condition to the homotopical properties of the bar resolution.",
+              "Show that \\mathbb{S}^G-goodness of the bar resolution implies properness under the given conditions.",
+              "Attempt to construct counterexamples where the flatness condition fails and properness does not imply \\mathbb{S}^G-goodness."
+            ],
+            "lean4_proof_sketch": "import Mathlib.SymplecticGeometry.HamiltonianAction\nimport Mathlib.Topology.EquivariantKTheory\n\nlemma proper_action_iff_SG_good (M : Type _) [CompactSpace M] [SymplecticManifold M] (G : Type _) [LieGroup G] (action : G \u2192 M \u2192 M) (\u03a6 : M \u2192 LieAlgebra G\u22c6) (h_strongly_elliptic : \u2203 \u03be, StronglyElliptic \u03be) (h_flat : \u2200 p, IsCriticalPoint (\u03a6 \u03be) p \u2192 Flat (LinearizedFlow (action p) \u03be)) : Proper action \u2194 SGGood (BarResolution (EquivariantKTheory G M)) := sorry",
+            "counterexample": "No specific counterexample is known, but potential candidates could involve non-compact or non-flat examples where the momentum map's critical points do not satisfy the flatness condition.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and connects deep areas of geometry and topology. To improve, consider refining the flatness condition or providing more explicit examples where the equivalence holds or fails. A more detailed analysis of the bar resolution's behavior under the given conditions would also be helpful."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.8,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.7,
+            "proof_quality": 0.6,
+            "overall_score": 0.78,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-formed and connects deep areas of symplectic geometry and equivariant K-theory. The flatness condition is a strong assumption that likely restricts the class of manifolds considered. The proof attempt is plausible but incomplete, particularly on the converse direction. The conjecture is significant but requires more precise conditions or examples to fully assess.",
+            "is_publishable": false,
+            "suggested_improvements": "Provide concrete examples or counterexamples to test the conjecture. Strengthen the assumptions or clarify the relationship between properness and the bar resolution. A more rigorous proof of the converse direction is needed."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.78
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. If all critical points of $\\Phi$ are flat (as in Result 4), then the equivariant K-theory map $\\K_G^\\bullet(M) \\otimes \\C \\to \\H^\\bullet_G(M; \\C[\\beta, \\beta^{-1}])$ (as in Result 5) is an isomorphism.\",\n    \"informal\": \"If a symplectic manifold's momentum map has only 'flat' critical points (no small periodic orbits in the linearized flow), then a key map in",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture connects two deep areas of symplectic geometry and equivariant topology. The 'flatness' condition on critical points of the momentum map suggests that the Hamiltonian action is well-behaved near these points, which is crucial for understanding the equivariant K-theory map. While the conjecture aligns with known results in symplectic reduction and localization in equivariant cohomology, a complete proof would require establishing a precise relationship between the flatness condition and the behavior of the equivariant K-theory map. The difficulty lies in bridging the gap between the symplectic and topological perspectives.",
+            "key_steps": [
+              "Understand the flatness condition on critical points of the momentum map.",
+              "Analyze how this condition affects the Hamiltonian action and its fixed points.",
+              "Relate the flatness condition to the equivariant K-theory map.",
+              "Compare with known results in symplectic reduction and localization.",
+              "Attempt to construct a counterexample or prove the isomorphism under the given conditions."
+            ],
+            "lean4_proof_sketch": "The proof would involve formalizing the relationship between the flatness condition and the equivariant K-theory map, likely using techniques from symplectic geometry and algebraic topology. A Lean 4 proof would require defining the relevant structures (symplectic manifold, Hamiltonian action, momentum map, equivariant K-theory) and then proving the isomorphism under the given conditions.",
+            "counterexample": "No counterexample is known at this time, but constructing one would require a symplectic manifold with a Hamiltonian action where the momentum map has flat critical points but the equivariant K-theory map is not an isomorphism.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and connects important areas of geometry and topology. To improve it, the conjecturer could provide more precise definitions of 'flat' critical points and clarify the relationship between the symplectic and topological conditions. Additionally, exploring specific examples or lower-dimensional cases could help validate or refine the conjecture."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.7,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-motivated and connects symplectic geometry with equivariant K-theory, but the proof attempt lacks rigor. The 'flatness' condition is not precisely defined, and the relationship to equivariant K-theory is not fully established. The conjecture is significant but requires more precise formulation.",
+            "is_publishable": false,
+            "suggested_improvements": "Precisely define 'flat' critical points, clarify the relationship between the momentum map and equivariant K-theory, and provide a more rigorous proof attempt."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.7
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$) and $G$ acts properly on $M$. Then the bar resolution $\\overline{X}$ of the $\\\\cW$-space $X = BG$ (the classifying space of $G$) is $\\\\mathbb{S}^{\\\\cW}$-good, and the Atiyah--Segal completion map $\\\\K_G^\\\\bullet(M) \\\\otimes \\\\C \\\\to \\\\H^\\\\bullet_G(M; \\\\C[\\\\beta, \\\\beta^{-1}])$ i",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture connects symplectic geometry, proper actions, and equivariant K-theory. The condition that the momentum map image lies in the strongly elliptic subset suggests strong curvature conditions, which may imply certain stability properties. The bar resolution's goodness and the Atiyah-Segal completion map's behavior are deep topics in equivariant homotopy theory. While the conjecture is plausible, a complete proof would require advanced techniques from symplectic geometry, proper actions, and equivariant K-theory, which are not yet fully developed in this context.",
+            "key_steps": [
+              "Understand the implications of the momentum map image lying in the strongly elliptic subset.",
+              "Analyze the proper action condition and its impact on the bar resolution.",
+              "Study the Atiyah-Segal completion map in the context of symplectic manifolds.",
+              "Connect the symplectic and topological conditions to the bar resolution's properties."
+            ],
+            "lean4_proof_sketch": "Not applicable due to the conjecture's open nature.",
+            "counterexample": "None known, but constructing one would require a symplectic manifold with a Hamiltonian action where the conditions hold but the conclusion fails.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated but highly non-trivial. To improve, consider breaking it into smaller, more tractable sub-conjectures or providing more explicit conditions on the symplectic manifold or the group action."
+          },
+          "judge_evaluation": {
+            "correctness": 0.8,
+            "novelty": 0.7,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.7,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-motivated and connects deep areas of geometry and topology. The proof attempt acknowledges the complexity but lacks rigorous development. The condition on the momentum map image is strong but needs clearer geometric interpretation. The bar resolution's goodness and Atiyah-Segal completion map are advanced topics requiring more precise hypotheses.",
+            "is_publishable": false,
+            "suggested_improvements": "Refine the hypotheses (e.g., specify the structure of the strongly elliptic subset), provide more concrete examples, and develop the proof using known results in equivariant K-theory and symplectic geometry."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.7
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let $M$ be a smooth manifold with a Hamiltonian $G$-action, where $G$ is a compact Lie group. Suppose $\\Phi(M) \\subset \\gse$ (i.e., the image of the momentum map is contained in the strongly elliptic elements of the Lie algebra $\\mathfrak{g}$). Then, the bar resolution $\\overline{X}$ of the $\\cW$-space $X = M$ is $\\mathbb{S}^{\\cW}$-good, and the Atiyah--Segal completion map $\\K_G^{\\bullet}(M) \\otimes \\C \\to \\H^{\\bullet}_G(M; \\C[\\beta, \\beta^{-1}])$ is an isomorphism.",
+            "informal": "For a smooth manifold with a proper Hamiltonian action by a compact group, if the momentum map image avoids certain pathological elements, then a certain algebraic resolution is well-behaved and a key map in equivariant K-theory becomes an isomorphism.",
+            "motivation": "This conjecture unifies concepts from symplectic geometry (momentum maps, proper actions) with algebraic topology (bar resolutions, equivariant K-theory). The hypothesis ensures the action is well-behaved, which might force the algebraic structures to align in a way that simplifies the completion map. This could provide new tools for studying Hamiltonian actions via topological invariants.",
+            "lean4_sketch": "import Mathlib.Topology.Symplectic import Mathlib.AlgebraicTopology.BarResolution import Mathlib.Geometry.Topology.CAT0 -- Define the bar resolution and the Atiyah-Segal completion map -- State the conjecture as an implication between these structures",
+            "proof_hint": "Approach via equivariant localization techniques or by constructing a spectral sequence relating the equivariant K-theory and cohomology. The proper action and strongly elliptic hypothesis may allow lifting techniques or obstructions to periodic orbits to control the algebraic structures.",
+            "novelty_claim": "This conjecture connects symplectic geometry (Result 1) with homotopical algebra (Result 2) and equivariant K-theory (Result 5) in a novel way. Unlike prior results, it proposes an isomorphism in the completion map under specific geometric hypotheses, which is not a direct consequence of any single existing theorem."
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially proved under additional hypotheses. The strongly elliptic condition on the momentum map image suggests that the action is well-behaved, but the full conjecture requires deeper analysis of the bar resolution and the Atiyah--Segal completion map. The proper action and compactness of G ensure that the bar resolution is well-defined, but the $\\mathbb{S}^\\cW$-goodness is non-trivial. The isomorphism in equivariant K-theory and cohomology is plausible but not fully established in general. The conjecture is likely true for torus actions or under additional assumptions on the group G.",
+            "key_steps": [
+              "Verify that the proper Hamiltonian G-action and strongly elliptic condition ensure the bar resolution is well-behaved.",
+              "Analyze the $\\mathbb{S}^\\cW$-goodness of the bar resolution under the given hypotheses.",
+              "Construct a spectral sequence relating $K_G^\\bullet(M) \\otimes \\C$ and $H_G^\\bullet(M; \\C[\\beta, \\beta^{-1}])$ using equivariant localization.",
+              "Check if the strongly elliptic condition prevents pathological behavior in the spectral sequence."
+            ],
+            "lean4_proof_sketch": "import Mathlib.Topology.Manifold.SmoothMap\nimport Mathlib.Topology.Manifold.HamiltonianAction\nimport Mathlib.AlgebraicTopology.BarResolution\n\nlemma bar_resolution_good (M : Type*) [SmoothManifold M] (G : Type*) [CompactLieGroup G] (action : G \\to\\to Homeomorph M) (momentum_map : M \\to\\to \\gse) (h_strongly_elliptic : \\forall x, momentum_map x \\in \\gse) : \\mathbb{S}^\\cW-good (bar_resolution (\\cW-space M)) := sorry\n\nlemma atiyah_segal_isomorphism (M : Type*) [SmoothManifold M] (G : Type*) [CompactLieGroup G] (action : G \\to\\to Homeomorph M) (momentum_map : M \\to\\to \\gse) (h_strongly_elliptic : \\forall x, momentum_map x \\in \\gse) : \\isomorphism (K_G^\\bullet M \\otimes \\C) (H_G^\\bullet M; \\C[\\beta, \\beta^{-1}]) := sorry",
+            "counterexample": "No counterexample is known, but the conjecture may fail for non-compact groups or non-strongly elliptic momentum maps.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and connects deep areas of geometry and topology. To improve, consider restricting to torus actions or adding hypotheses on the group G. The proof may require advanced techniques from equivariant localization or spectral sequences. The conjecture is a good candidate for further study."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.72,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and connects deep concepts in geometric representation theory and equivariant topology. The proof attempt is plausible but lacks full rigor, especially regarding the $\\mathbb{S}^\\cW$-goodness of the bar resolution and the isomorphism in equivariant K-theory. The strongly elliptic condition is a strong assumption, but its implications for the bar resolution and Atiyah--Segal completion map need deeper analysis.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture should be refined with more precise hypotheses (e.g., restricting to torus actions or abelian groups) and a more rigorous proof of the $\\mathbb{S}^\\cW$-goodness and the isomorphism. Additionally, examples or counterexamples should be provided to test the conjecture's validity."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.72
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 4,
+        "unknown": 0,
+        "trivial": 0,
+        "avg_quality": 0.725
+      }
+    },
+    {
+      "domain": "geometry_topology",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$). Then the Floer cohomology $CF^*(L_0, L_1)$ for any pair of Lagrangian submanifolds $L_0, L_1 \\subset M$ with transverse intersection is isomorphic to the singular cohomology $H^*(M)$ as graded $\\mathbb{Z}$-modules.",
+            "informal": "For symplectic manifolds with strongly elliptic momentum images, the Floer cohomology of any two Lagrangians equals the singular cohomology of the manifold.",
+            "motivation": "This conjecture generalizes known results about monotone symplectic manifolds and suggests a deep connection between Hamiltonian group actions and Lagrangian Floer theory. The strongly elliptic condition provides a natural geometric constraint that might enforce this isomorphism.",
+            "lean4_sketch": "import Mathlib.SymplecticGeometry.Floer import Mathlib.AlgebraicTopology.Cohomology theorem strongly_elliptic_floer_is_cohomology (M : Type) [SymplecticManifold M] (G : Type) [CompactLieGroup G] (\u03a6 : M \u2192 LieAlgebraDual G) (h : \u03a6 '' M \u2286 strongly_elliptic_set (LieAlgebraDual G)) (L\u2080 L\u2081 : LagrangianSubmanifold M) (h_trans : L\u2080 \u2229 L\u2081 = \u2205 \u2228 L\u2080 \u2229 L\u2081 = \u2205) : CF^*(L\u2080, L\u2081) \u2245 H^* M := ...",
+            "proof_hint": "One might approach this by showing that the strongly elliptic condition implies that all Floer differentials vanish, reducing the Floer complex to the singular cohomology. Alternatively, one could attempt to construct a spectral sequence converging from Floer cohomology to singular cohomology and show that the strongly elliptic condition forces degeneracy at the first page.",
+            "novelty_claim": "This conjecture differs from known results by connecting strongly elliptic Hamiltonian actions directly to the structure of Lagrangian Floer cohomology, rather than just the symplectic topology of the manifold itself. It also provides a potential bridge between geometric representation theory and symplectic topology."
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in symplectic geometry and Floer theory, but a complete proof or counterexample is not yet established. The strongly elliptic condition on the momentum image is known to impose strong constraints on the symplectic geometry of M, but its precise implications for Floer cohomology are not fully understood. The conjecture aligns with expectations from mirror symmetry and the behavior of Lagrangian submanifolds in toric symplectic manifolds, but a general proof remains elusive.",
+            "key_steps": [
+              "Understand the strongly elliptic condition and its implications for the symplectic manifold M.",
+              "Analyze how the strongly elliptic condition affects the Floer differential in the Floer complex.",
+              "Attempt to construct a spectral sequence from Floer cohomology to singular cohomology and study its degeneracy.",
+              "Consider examples of symplectic manifolds with strongly elliptic momentum images and compute their Floer cohomology."
+            ],
+            "lean4_proof_sketch": "The Lean 4 proof would involve formalizing the definitions of symplectic manifolds, Hamiltonian actions, momentum maps, and Floer cohomology. The strongly elliptic condition would need to be formalized, and its implications for the Floer differential would be analyzed. A spectral sequence would be constructed, and its degeneracy would be proven under the strongly elliptic condition.",
+            "counterexample": "No counterexample is known at this time. The conjecture is plausible but not yet proven.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.6,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known results in symplectic geometry. To improve, consider refining the strongly elliptic condition or providing more concrete examples where the conjecture holds. A more detailed analysis of the Floer differential under the strongly elliptic condition would be helpful."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.8,
+            "non_triviality": 0.9,
+            "significance": 0.8,
+            "formalizability": 0.7,
+            "proof_quality": 0.5,
+            "overall_score": 0.76,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and aligns with known results in symplectic geometry, but the proof attempt is incomplete. The strongly elliptic condition is a strong assumption, but its implications for Floer cohomology are not fully explored.",
+            "is_publishable": false,
+            "suggested_improvements": "Refine the conjecture to specify the class of Lagrangian submanifolds or provide more concrete examples where the isomorphism holds. Strengthen the proof by leveraging known results on Hamiltonian actions and Floer theory."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.76
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$). Then the equivariant Floer homology $HF^G_{*}(M)$ is isomorphic to the singular homology $H_{*}(M/G)$ with coefficients in $\\mathbb{Z}[G]$, where $G$ acts trivially on the coefficients.",
+            "informal": "For a symplectic manifold with a Hamiltonian group action where the momentum image is strongly elliptic, the equivariant Floer homology should match the singular homology of the quotient space with group coefficients.",
+            "motivation": "This conjecture connects symplectic geometry (Floer homology) with algebraic topology (singular homology of quotients). The strong ellipticity condition suggests nice behavior of critical points, which might allow for such a correspondence. It generalizes known results about moment maps and equivariant cohomology.",
+            "lean4_sketch": "import Mathlib.Symplectic.Floer import Mathlib.Topology.SingularHomology import Mathlib.GroupAction theorem equivariant_floer_is_singular_homology (M : Type*) (G : Type*) [symplectic_manifold M] [compact_space M] [group G] (action : G \u2192 Symplectomorphism M) (phi : M \u2192 LieAlg.dual G) (h_strongly_elliptic : \u2200 x \u2208 phi '' M, strongly_elliptic x) : equivariant_floer_homology G action M \u2243 singular_homology (quotient_space M G) (coefficients G) := sorry",
+            "proof_hint": "One approach is to use the strongly elliptic condition to show that the equivariant Floer complex is quasi-isomorphic to a complex computing the singular homology of the quotient. This might involve analyzing critical points of the moment map and their contributions to both invariants.",
+            "novelty_claim": "This conjecture is novel because it directly relates equivariant Floer homology (a symplectic invariant) to singular homology of the quotient (a topological invariant) under strong ellipticity assumptions, which hasn't been established in this generality before."
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in symplectic geometry and equivariant Floer theory. The strongly elliptic condition on the momentum image implies that the action is generically free and the quotient space M/G is well-behaved. However, the full isomorphism between equivariant Floer homology and singular homology of the quotient is not yet established in general. The conjecture aligns with the Atiyah-Bott conjecture for Hamiltonian actions, but the strongly elliptic condition provides additional structure that might simplify the analysis. The difficulty lies in connecting the Floer-theoretic invariants to topological invariants of the quotient space in a rigorous manner.",
+            "key_steps": [
+              "Understand the strongly elliptic condition and its implications for the Hamiltonian G-action.",
+              "Analyze the critical points of the momentum map and their contributions to equivariant Floer homology.",
+              "Compare the equivariant Floer complex to a complex computing the singular homology of M/G.",
+              "Use the strongly elliptic condition to establish a quasi-isomorphism between these complexes."
+            ],
+            "lean4_proof_sketch": "import Mathlib.Symplectic.Geometry\nimport Mathlib.Topology.Homology\n\nlemma equivariant_floer_is_homology (M : Type) [SymplecticManifold M] (G : Type) [Group G] (action : G \u2192 M \u2192 M) (phi : M \u2192 LieAlgebra G) (h_strongly_elliptic : StronglyElliptic (phi M)) :\n  EquivariantFloerHomology G M \u2243 SingularHomology (Quotient M G) := sorry",
+            "counterexample": "No known counterexample exists, but the conjecture has not been fully proven in general.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with existing conjectures in the field. To improve, consider providing more specific conditions under which the isomorphism holds or exploring examples where the strongly elliptic condition simplifies the analysis. The conjecture is strong and could lead to significant advances if proven."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.7,
+            "proof_quality": 0.5,
+            "overall_score": 0.73,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-stated and aligns with known results in symplectic geometry, but the proof attempt is incomplete. The strongly elliptic condition is a strong assumption that likely simplifies the problem, but the connection to equivariant Floer homology and singular homology of the quotient remains non-trivial.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture could be strengthened by providing more precise conditions under which the isomorphism holds or by giving a partial proof for specific cases (e.g., torus actions or free actions). A more rigorous proof attempt would require deeper analysis of the relationship between Floer theory and the topology of the quotient space."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.73
+        },
+        {
+          "conjecture": {
+            "conjecture": "{\n    \"conjecture\": \"Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ and all critical points of $\\Phi$ are non-degenerate. Then the Floer cohomology $CF^*(L_0, L_1)$ of any pair of Lagrangian submanifolds $L_0, L_1 \\subset M$ with $\\Phi(L_0) = \\Phi(L_1) = \\{\\xi\\}$ for $\\xi \\in \\gse$ is isomorphic to the Morse cohomology of the fixed point set of the $G$-action at $\\xi$.\",\n    \"informal\": \"For a s",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in symplectic geometry and Floer theory, but a complete proof is not yet established. The key idea is to relate the Floer cohomology of Lagrangian submanifolds to the Morse cohomology of the fixed point set via the symplectic action and momentum map. However, the non-degeneracy condition on critical points and the assumption that the image of the momentum map lies in the set of semistable points (gse) are crucial. The difficulty lies in establishing a precise correspondence between the Floer trajectories and the Morse flow lines, especially in the presence of a group action.",
+            "key_steps": [
+              "Understand the relationship between the momentum map and the symplectic action.",
+              "Analyze the non-degeneracy condition on critical points of the momentum map.",
+              "Relate the Floer cohomology of Lagrangian submanifolds to the Morse cohomology of the fixed point set.",
+              "Use the symplectic action to construct a correspondence between Floer trajectories and Morse flow lines.",
+              "Verify the conditions under which this correspondence is an isomorphism."
+            ],
+            "lean4_proof_sketch": "Theorem conjecture (M : Type) (G : Type) (gse : Type) (\u03a6 : M \u2192 gse) (L0 L1 : LagrangianSubmanifold M) (hL0 : \u03a6 \u2218 L0 = {\u03be}) (hL1 : \u03a6 \u2218 L1 = {\u03be}) (hcritical : NonDegenerateCriticalPoints \u03a6) : CF* L0 L1 \u2243 MorseCohomology (FixedPointSet G \u03be) := by ...",
+            "counterexample": "No counterexample is known at this time.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known results in symplectic geometry. To improve, consider providing more specific conditions on the Lagrangian submanifolds or the group action. Additionally, exploring examples where the conjecture holds or fails could provide deeper insight."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.7,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-formed and uses standard notation in symplectic geometry. It is novel in its attempt to connect Floer cohomology of Lagrangians to Morse cohomology of fixed points under a Hamiltonian action. The non-triviality and significance are high, as it bridges two important areas. However, the proof attempt is incomplete, and the formalizability is limited due to the complexity of the geometric and topological constructions involved.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture could be refined by specifying the precise conditions under which the isomorphism holds, such as additional assumptions on the Lagrangians or the group action. A more detailed analysis of the correspondence between Floer trajectories and Morse flow lines would strengthen the proof attempt."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.7
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M)$ is contained in the strongly elliptic subset $\\gse$ of $\\mathfrak{g}^*$. Then the equivariant Floer homology $HF_{G}(M)$ is isomorphic to the ordinary Floer homology $HF(M)$ when restricted to the component containing the minimum of $\\Phi$.",
+            "informal": "For a symplectic manifold with a Hamiltonian group action where the momentum image is strongly elliptic, the group-equivariant Floer homology agrees with ordinary Floer homology at the minimum of the momentum map.",
+            "motivation": "This conjecture bridges equivariant and non-equivariant Floer theories in a setting where the group action has particularly nice geometric properties (strongly elliptic momentum image). It suggests that the additional structure from the group action might not affect the Floer homology at the minimum, which is a natural point of interest.",
+            "lean4_sketch": "import symplectic.geometry\nimport floer_theory\nimport group_actions\n\nlemma equivariant_floer_agreement (M : Type) [symplectic_manifold M] (G : Type) [compact_lie_group G] (phi : M \u2192 LieAlgebra G) (h : phi '' M \u2286 strongly_elliptic_subset) :\n  equivariant_floer_homology G M = ordinary_floer_homology M := sorry",
+            "proof_hint": "One might approach this by showing that the strongly elliptic condition implies that the group action is trivial near the minimum of the momentum map, or that the equivariant and non-equivariant Floer complexes become isomorphic when restricted to this region. Techniques from symplectic reduction and equivariant cohomology could be useful.",
+            "novelty_claim": "This conjecture differs from known results by precisely relating equivariant and ordinary Floer homology in a specific geometric setting (strongly elliptic momentum image), which hasn't been established in the literature. It provides a potential bridge between these two theories in a non-trivial case."
+          },
+          "proof_attempt": {
+            "verdict": "partially_proved",
+            "proof_or_counterexample": "The conjecture is partially supported by known results in symplectic geometry and equivariant Floer homology. The strongly elliptic condition on the momentum image suggests that the group action is locally trivial near the minimum of the momentum map, which could imply that the equivariant and non-equivariant Floer complexes become isomorphic in this region. However, a complete proof would require a detailed analysis of the equivariant Floer complex and its relation to the symplectic reduction at the minimum. The conjecture aligns with known results about the behavior of Floer homology under symplectic reduction, but a rigorous proof would need to address the global behavior of the momentum map and the equivariant Floer complex.",
+            "key_steps": [
+              "Understand the strongly elliptic condition and its implications for the group action.",
+              "Analyze the symplectic reduction at the minimum of the momentum map.",
+              "Compare the equivariant and non-equivariant Floer complexes in this setting.",
+              "Use techniques from equivariant cohomology and symplectic reduction to establish the isomorphism."
+            ],
+            "lean4_proof_sketch": "import Mathlib.SymplecticGeometry.FloerHomology\nimport Mathlib.Topology.EquivariantCohomology\n\nlemma equivariant_floer_isomorphism (M : Type) [SymplecticManifold M] (G : Type) [Group G] (action : G \u2192 M \u2192 M) (\u03a6 : M \u2192 LieAlgebra G) (h_strongly_elliptic : StronglyElliptic (\u03a6 M)) :\n  Isomorphism (HF_G M) (HF M) := sorry",
+            "counterexample": "No counterexample is known at this time.",
+            "difficulty_assessment": "very_hard",
+            "confidence": 0.7,
+            "mathematical_rigor": 0.8,
+            "feedback_for_conjecturer": "The conjecture is well-motivated and aligns with known results in symplectic geometry. To improve, the conjecturer could provide more specific conditions under which the isomorphism holds or explore examples where the strongly elliptic condition is satisfied. A more detailed analysis of the equivariant Floer complex and its relation to the symplectic reduction would also be helpful."
+          },
+          "judge_evaluation": {
+            "correctness": 0.9,
+            "novelty": 0.7,
+            "non_triviality": 0.8,
+            "significance": 0.8,
+            "formalizability": 0.6,
+            "proof_quality": 0.5,
+            "overall_score": 0.72,
+            "verdict_agreement": "partially_agree",
+            "critique": "The conjecture is well-motivated and aligns with known results in symplectic geometry, but the proof attempt lacks rigorous detail. The strongly elliptic condition is a strong assumption, but its implications for equivariant Floer homology need deeper analysis.",
+            "is_publishable": false,
+            "suggested_improvements": "The conjecture should be refined to clarify the relationship between the equivariant and non-equivariant Floer complexes under the given conditions. A more detailed proof would require explicit construction of the isomorphism and analysis of the symplectic reduction at the minimum."
+          },
+          "domain": "geometry_topology",
+          "quality_score": 0.72
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 4,
+        "unknown": 0,
+        "trivial": 0,
+        "avg_quality": 0.7275
+      }
+    }
+  ],
+  "previous_conjectures": [
+    "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and a momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose that $\\Phi(M)$ contains a strongly elliptic element $\\xi \\in \\mathfrak{g",
+    "{\n    \"conjecture\": \"Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. If all critical points of $\\Phi$ are flat (as in Result 4), t",
+    "{\n    \"conjecture\": \"Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset ",
+    "Let $M$ be a smooth manifold with a Hamiltonian $G$-action, where $G$ is a compact Lie group. Suppose $\\Phi(M) \\subset \\gse$ (i.e., the image of the momentum map is contained in the strongly elliptic ",
+    "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$).",
+    "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$).",
+    "{\n    \"conjecture\": \"Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ and all critical points of $\\P",
+    "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M)$ is contained in the strongly elliptic subset $\\gse$ of $\\mathfra"
+  ],
+  "timestamp": "2026-02-25 23:33:47"
+}
