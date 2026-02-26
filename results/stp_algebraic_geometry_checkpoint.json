@@ -1,0 +1,20 @@
+{
+  "domain": "algebraic_geometry",
+  "rounds": [
+    {
+      "domain": "algebraic_geometry",
+      "conjectures": [],
+      "stats": {
+        "total": 0,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 0,
+        "trivial": 0,
+        "avg_quality": 0.0
+      }
+    }
+  ],
+  "previous_conjectures": [],
+  "timestamp": "2026-02-25 22:48:18"
+}

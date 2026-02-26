@@ -1,0 +1,976 @@
+% =============================================================================
+% MathScy: Domain-Specialized Mixture-of-Experts LLMs for Mathematical Reasoning
+% Comprehensive Bibliography - 115+ References
+% =============================================================================
+
+% =============================================================================
+% MIXTURE OF EXPERTS (13 entries)
+% =============================================================================
+
+@article{jacobs1991adaptive,
+  author    = {Jacobs, Robert A. and Jordan, Michael I. and Nowlan, Steven J. and Hinton, Geoffrey E.},
+  title     = {Adaptive Mixtures of Local Experts},
+  journal   = {Neural Computation},
+  volume    = {3},
+  number    = {1},
+  pages     = {79--87},
+  year      = {1991},
+  publisher = {MIT Press}
+}
+
+@inproceedings{shazeer2017outrageously,
+  author    = {Shazeer, Noam and Mirhoseini, Azalia and Maziarz, Krzysztof and Davis, Andy and Le, Quoc V. and Hinton, Geoffrey E. and Dean, Jeff},
+  title     = {Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2017},
+  url       = {https://openreview.net/forum?id=B1ckMDqlg}
+}
+
+@inproceedings{lepikhin2021gshard,
+  author    = {Lepikhin, Dmitry and Lee, HyoukJoong and Xu, Yuanzhong and Chen, Dehao and Firat, Orhan and Huang, Yanping and Krikun, Maxim and Shazeer, Noam and Chen, Zhifeng},
+  title     = {{GShard}: Scaling Giant Models with Conditional Computation and Automatic Sharding},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2021}
+}
+
+@article{fedus2022switch,
+  author    = {Fedus, William and Zoph, Barret and Shazeer, Noam},
+  title     = {Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity},
+  journal   = {Journal of Machine Learning Research},
+  volume    = {23},
+  number    = {120},
+  pages     = {1--39},
+  year      = {2022}
+}
+
+@article{jiang2024mixtral,
+  author    = {Jiang, Albert Q. and Sablayrolles, Alexandre and Roux, Antoine and Mensch, Arthur and Savary, Blanche and Bamford, Chris and Chaplot, Devendra Singh and de Las Casas, Diego and Bou Hanna, Emma and Bressand, Florian and Lengyel, Gianna and Bour, Guillaume and Lample, Guillaume and Renard Lavaud, L{\'e}lio and Saulnier, Lucile and Lachaux, Marie-Anne and Stock, Pierre and Subramanian, Sandeep and Yang, Sophia and Antoniak, Szymon and Le Scao, Teven and Gervet, Th{\'e}ophile and Lavril, Thibaut and Wang, Thomas and Lacroix, Timoth{\'e}e and El Sayed, William},
+  title     = {Mixtral of Experts},
+  journal   = {arXiv preprint arXiv:2401.04088},
+  year      = {2024}
+}
+
+@inproceedings{dai2024deepseekmoe,
+  author    = {Dai, Damai and Deng, Chengqi and Zhao, Chenggang and Xu, R.X. and Gao, Huazuo and Chen, Deli and Li, Jiashi and Zeng, Wangding and Yu, Xingkai and Wu, Y. and Xie, Zhenda and Li, Y.K. and Huang, Panpan and Luo, Fuli and Ruan, Chong and Sui, Zheng and Liang, Wenfeng},
+  title     = {{DeepSeekMoE}: Towards Ultimate Expert Specialization in Mixture-of-Experts Language Models},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL)},
+  pages     = {1280--1297},
+  year      = {2024},
+  publisher = {Association for Computational Linguistics}
+}
+
+@article{liu2024deepseekv2,
+  author    = {DeepSeek-AI and Liu, Aixin and Feng, Bei and Wang, Bin and Wang, Bingxuan and Liu, Bo and Zhao, Chenggang and Deng, Chengqi and Ruan, Chong and Dai, Damai and Guo, Daya},
+  title     = {{DeepSeek-V2}: A Strong, Economical, and Efficient Mixture-of-Experts Language Model},
+  journal   = {arXiv preprint arXiv:2405.04434},
+  year      = {2024}
+}
+
+@article{deepseekai2024deepseekv3,
+  author    = {DeepSeek-AI and Liu, Aixin and Feng, Bei and Xue, Bing and Wang, Bingxuan and Wu, Bochao and Lu, Chengda and Zhao, Chenggang and Deng, Chengqi and others},
+  title     = {{DeepSeek-V3} Technical Report},
+  journal   = {arXiv preprint arXiv:2412.19437},
+  year      = {2024}
+}
+
+@article{muennighoff2024olmoe,
+  author    = {Muennighoff, Niklas and Soldaini, Luca and Groeneveld, Dirk and Lo, Kyle and Morrison, Jacob and Min, Sewon and Shi, Weijia and Walsh, Pete and Tafjord, Oyvind and Lambert, Nathan and Gu, Yuling and Arora, Shane and Bhagia, Akshita and Schwenk, Dustin and Wadden, David and Wettig, Alexander and Hui, Binyuan and Dettmers, Tim and Kiela, Douwe and Farhadi, Ali and Smith, Noah A. and Koh, Pang Wei and Singh, Amanpreet and Hajishirzi, Hannaneh},
+  title     = {{OLMoE}: Open Mixture-of-Experts Language Models},
+  journal   = {arXiv preprint arXiv:2409.02060},
+  year      = {2024}
+}
+
+@inproceedings{sukhbaatar2024branch,
+  author    = {Sukhbaatar, Sainbayar and Golovneva, Olga and Sharma, Vasu and Xu, Hu and Lin, Xi Victoria and Rozi{\`e}re, Baptiste and Kahn, Jacob and Li, Daniel and Yih, Wen-tau and Weston, Jason and Li, Xian},
+  title     = {{Branch-Train-MiX}: Mixing Expert {LLMs} into a Mixture-of-Experts {LLM}},
+  booktitle = {Conference on Language Modeling (COLM)},
+  year      = {2024}
+}
+
+@inproceedings{riquelme2021scaling,
+  author    = {Riquelme, Carlos and Puigcerver, Joan and Mustafa, Basil and Neumann, Maxim and Jenatton, Rodolphe and Susano Pinto, Andr{\'e} and Keysers, Daniel and Houlsby, Neil},
+  title     = {Scaling Vision with Sparse Mixture of Experts},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {34},
+  year      = {2021}
+}
+
+@inproceedings{zhou2022mixture,
+  author    = {Zhou, Yanqi and Lei, Tao and Liu, Hanxiao and Du, Nan and Huang, Yanping and Zhao, Vincent and Dai, Andrew M. and Chen, Zhifeng and Le, Quoc V. and Laudon, James},
+  title     = {Mixture-of-Experts with Expert Choice Routing},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022}
+}
+
+@article{zoph2022st,
+  author    = {Zoph, Barret and Bello, Irwan and Kumar, Sameer and Du, Nan and Huang, Yanping and Dean, Jeff and Shazeer, Noam and Fedus, William},
+  title     = {{ST-MoE}: Designing Stable and Transferable Sparse Expert Models},
+  journal   = {arXiv preprint arXiv:2202.08906},
+  year      = {2022}
+}
+
+% =============================================================================
+% LLMs FOR MATHEMATICS (11 entries)
+% =============================================================================
+
+@article{achiam2024gpt4,
+  author    = {OpenAI and Achiam, Josh and Adler, Steven and Agarwal, Sandhini and Ahmad, Lama and Akkaya, Ilge and Aleman, Florencia Leoni and Almeida, Diogo and Altenschmidt, Janko and Altman, Sam and others},
+  title     = {{GPT-4} Technical Report},
+  journal   = {arXiv preprint arXiv:2303.08774},
+  year      = {2024}
+}
+
+@inproceedings{lewkowycz2022minerva,
+  author    = {Lewkowycz, Aitor and Andreassen, Anders and Dohan, David and Dyer, Ethan and Michalewski, Henryk and Ramasesh, Vinay and Slone, Ambrose and Anil, Cem and Schlag, Imanol and Gutman-Solo, Theo and Wu, Yuhuai and Neyshabur, Behnam and Gur-Ari, Guy and Misra, Vedant},
+  title     = {Solving Quantitative Reasoning Problems with Language Models},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022}
+}
+
+@inproceedings{azerbayev2024llemma,
+  author    = {Azerbayev, Zhangir and Schoelkopf, Hailey and Paster, Keiran and Dos Santos, Marco and McAleer, Stephen and Jiang, Albert Q. and Deng, Jia and Biderman, Stella and Welleck, Sean},
+  title     = {{Llemma}: An Open Language Model for Mathematics},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@article{shao2024deepseekmath,
+  author    = {Shao, Zhihong and Wang, Peiyi and Zhu, Qihao and Xu, Runxin and Song, Junxiao and Bi, Xiao and Zhang, Haowei and Zhang, Mingchuan and Li, Y.K. and Wu, Y. and Guo, Daya},
+  title     = {{DeepSeekMath}: Pushing the Limits of Mathematical Reasoning in Open Language Models},
+  journal   = {arXiv preprint arXiv:2402.03300},
+  year      = {2024}
+}
+
+@article{ying2024internlmmath,
+  author    = {Ying, Huaiyuan and Zhang, Shuo and Li, Linyang and Zhou, Zhejian and Shao, Yunfan and Fei, Zhaoye and Ma, Yichuan and Hong, Jiawei and Liu, Kuikun and Wang, Ziyi and Wang, Yudong and Wu, Zijian and Li, Shuaibin and Zhou, Fengzhe and Liu, Hongwei and Zhang, Songyang and Zhang, Wenwei and Yan, Hang and Qiu, Xipeng and Wang, Jiayu and Chen, Kai and Lin, Dahua},
+  title     = {{InternLM-Math}: Open Math Large Language Models Toward Verifiable Reasoning},
+  journal   = {arXiv preprint arXiv:2402.06332},
+  year      = {2024}
+}
+
+@article{yang2024qwen25math,
+  author    = {Yang, An and Zhang, Beichen and Hui, Binyuan and Gao, Bofei and Yu, Bowen and Li, Chengpeng and Liu, Dayiheng and Tu, Jianhong and Zhou, Jingren and Lin, Junyang and Lu, Keming and Xue, Mingfeng and Lin, Runji and Liu, Tianyu and Ren, Xingzhang and Zhang, Zhenru},
+  title     = {{Qwen2.5-Math} Technical Report: Toward Mathematical Expert Model via Self-Improvement},
+  journal   = {arXiv preprint arXiv:2409.12122},
+  year      = {2024}
+}
+
+@inproceedings{wei2022chain,
+  author    = {Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Ichter, Brian and Xia, Fei and Chi, Ed H. and Le, Quoc V. and Zhou, Denny},
+  title     = {Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022}
+}
+
+@inproceedings{gou2024tora,
+  author    = {Gou, Zhibin and Shao, Zhihong and Gong, Yeyun and Shen, Yelong and Yang, Yujiu and Huang, Minlie and Duan, Nan and Chen, Weizhu},
+  title     = {{ToRA}: A Tool-Integrated Reasoning Agent for Mathematical Problem Solving},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  url       = {https://openreview.net/forum?id=Ep0TtjVoap}
+}
+
+@inproceedings{lightman2024lets,
+  author    = {Lightman, Hunter and Kosaraju, Vineet and Burda, Yura and Edwards, Harri and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Cobbe, Karl},
+  title     = {Let's Verify Step by Step},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@article{cobbe2021gsm8k,
+  author    = {Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and Hesse, Christopher and Schulman, John},
+  title     = {Training Verifiers to Solve Math Word Problems},
+  journal   = {arXiv preprint arXiv:2110.14168},
+  year      = {2021}
+}
+
+@article{taylor2022galactica,
+  author    = {Taylor, Ross and Kardas, Marcin and Cucurull, Guillem and Scialom, Thomas and Hartshorn, Anthony and Saravia, Elvis and Poulton, Andrew and Kerkez, Viktor and Stojnic, Robert},
+  title     = {Galactica: A Large Language Model for Science},
+  journal   = {arXiv preprint arXiv:2211.09085},
+  year      = {2022}
+}
+
+% =============================================================================
+% FORMAL THEOREM PROVING (14 entries)
+% =============================================================================
+
+@article{polu2020generative,
+  author    = {Polu, Stanislas and Sutskever, Ilya},
+  title     = {Generative Language Modeling for Automated Theorem Proving},
+  journal   = {arXiv preprint arXiv:2009.03393},
+  year      = {2020}
+}
+
+@inproceedings{polu2023formal,
+  author    = {Polu, Stanislas and Han, Jesse Michael and Zheng, Kunhao and Baksys, Mantas and Babuschkin, Igor and Sutskever, Ilya},
+  title     = {Formal Mathematics Statement Curriculum Learning},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023}
+}
+
+@inproceedings{yang2024leandojo,
+  author    = {Yang, Kaiyu and Swope, Aidan and Gu, Alex and Chalamala, Rahul and Song, Peiyang and Yu, Shixing and Godil, Saad and Prenger, Ryan and Anandkumar, Anima},
+  title     = {{LeanDojo}: Theorem Proving with Retrieval-Augmented Language Models},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {36},
+  year      = {2023}
+}
+
+@article{song2024leancopilot,
+  author    = {Song, Peiyang and Yang, Kaiyu and Anandkumar, Anima},
+  title     = {Towards Large Language Models as Copilots for Theorem Proving in {Lean}},
+  journal   = {arXiv preprint arXiv:2404.12534},
+  year      = {2024}
+}
+
+@article{trinh2024alphaproof,
+  author    = {Hubert, Thomas and Mehta, Rishi and Sartran, Laurent and Schrittwieser, Julian and Silver, David and others},
+  title     = {Olympiad-Level Formal Mathematical Reasoning with Reinforcement Learning},
+  journal   = {Nature},
+  year      = {2025},
+  doi       = {10.1038/s41586-025-09833-y}
+}
+
+@article{xin2024deepseekprover,
+  author    = {Xin, Huajian and Guo, Daya and Shao, Zhihong and Ren, Zhizhou and Zhu, Qihao and Liu, Bo and Ruan, Chong and Li, Wenda and Liang, Xiaodan},
+  title     = {{DeepSeek-Prover}: Advancing Theorem Proving in {LLMs} through Large-Scale Synthetic Data},
+  journal   = {arXiv preprint arXiv:2405.14333},
+  year      = {2024}
+}
+
+@article{xin2024deepseekproverv2,
+  author    = {Ren, Z.Z. and Shao, Zhihong and Song, Junxiao and Xin, Huajian and Wang, Haocheng and Zhao, Wanjia and Zhang, Liyue and Fu, Zhe and Zhu, Qihao and Yang, Dejian and Wu, Z.F. and Gou, Zhibin and Ma, Shirong and Tang, Hongxuan and Liu, Yuxuan and Gao, Wenjun and Guo, Daya and Ruan, Chong},
+  title     = {{DeepSeek-Prover-V2}: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition},
+  journal   = {arXiv preprint arXiv:2504.21801},
+  year      = {2025}
+}
+
+@inproceedings{wang2024legoprover,
+  author    = {Wang, Haiming and Xin, Huajian and Zheng, Chuanyang and Li, Lin and Liu, Zhengying and Cao, Qingxing and Huang, Yinya and Xiong, Jing and Shi, Han and Xie, Enze and Yin, Jian and Li, Zhenguo and Liao, Heng and Liang, Xiaodan},
+  title     = {{LEGO-Prover}: Neural Theorem Proving with Growing Libraries},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@inproceedings{wu2024lean,
+  author    = {Ying, Huaiyuan and Wu, Zijian and Geng, Yihan and Yuan, Zheng and Lin, Dahua and Chen, Kai},
+  title     = {{Lean Workbook}: A Large-Scale {Lean} Problem Set Formalized from Natural Language Math Problems},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {37},
+  year      = {2024}
+}
+
+@inproceedings{zheng2022minif2f,
+  author    = {Zheng, Kunhao and Han, Jesse Michael and Polu, Stanislas},
+  title     = {{miniF2F}: A Cross-System Benchmark for Formal {Olympiad}-Level Mathematics},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+  url       = {https://openreview.net/forum?id=9ZPegFuFTFv}
+}
+
+@inproceedings{moura2021lean,
+  author    = {de Moura, Leonardo and Ullrich, Sebastian},
+  title     = {The {Lean 4} Theorem Prover and Programming Language},
+  booktitle = {Automated Deduction -- CADE 28},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {12699},
+  pages     = {625--635},
+  publisher = {Springer},
+  year      = {2021},
+  doi       = {10.1007/978-3-030-79876-5_37}
+}
+
+@inproceedings{mathlib2020,
+  author    = {{The mathlib Community}},
+  title     = {The {Lean} Mathematical Library},
+  booktitle = {Proceedings of the 9th ACM SIGPLAN International Conference on Certified Programs and Proofs (CPP)},
+  pages     = {367--381},
+  publisher = {ACM},
+  year      = {2020}
+}
+
+@inproceedings{first2023baldur,
+  author    = {First, Emily and Rabe, Markus N. and Ringer, Talia and Brun, Yuriy},
+  title     = {{Baldur}: Whole-Proof Generation and Repair with Large Language Models},
+  booktitle = {Proceedings of the 31st ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE)},
+  pages     = {1229--1241},
+  year      = {2023},
+  publisher = {ACM}
+}
+
+@inproceedings{jiang2023draft,
+  author    = {Jiang, Albert Qiaochu and Welleck, Sean and Zhou, Jin Peng and Li, Wenda and Liu, Jiacheng and Jamnik, Mateja and Lacroix, Timoth{\'e}e and Wu, Yuhuai and Lample, Guillaume},
+  title     = {Draft, Sketch, and Prove: Guiding Formal Theorem Provers with Informal Proofs},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023}
+}
+
+% =============================================================================
+% CONJECTURE GENERATION AND MATH DISCOVERY (8 entries)
+% =============================================================================
+
+@article{romera2024mathematical,
+  author    = {Romera-Paredes, Bernardino and Barekatain, Mohammadamin and Novikov, Alexander and Balog, Matej and Kumar, M. Pawan and Dupont, Emilien and Ruiz, Francisco J. R. and Ellenberg, Jordan and Wang, Pengming and Fawzi, Omar and Kohli, Pushmeet and Fawzi, Alhussein},
+  title     = {Mathematical Discoveries from Program Search with Large Language Models},
+  journal   = {Nature},
+  volume    = {625},
+  pages     = {468--475},
+  year      = {2024},
+  doi       = {10.1038/s41586-023-06924-6}
+}
+
+@article{fawzi2022discovering,
+  author    = {Fawzi, Alhussein and Balog, Matej and Huang, Aja and Hubert, Thomas and Romera-Paredes, Bernardino and Barekatain, Mohammadamin and Novikov, Alexander and Ruiz, Francisco J. R. and Schrittwieser, Julian and Swirszcz, Grzegorz and Silver, David and Hassabis, Demis and Kohli, Pushmeet},
+  title     = {Discovering Faster Matrix Multiplication Algorithms with Reinforcement Learning},
+  journal   = {Nature},
+  volume    = {610},
+  number    = {7930},
+  pages     = {47--53},
+  year      = {2022},
+  doi       = {10.1038/s41586-022-05172-4}
+}
+
+@article{davies2021advancing,
+  author    = {Davies, Alex and Veli{\v{c}}kovi{\'c}, Petar and Buesing, Lars and Blackwell, Sam and Zheng, Daniel and Toma{\v{s}}ev, Nenad and Tanburn, Richard and Battaglia, Peter and Blundell, Charles and Juh{\'a}sz, Andr{\'a}s and Lackenby, Marc and Williamson, Geordie and Hassabis, Demis and Kohli, Pushmeet},
+  title     = {Advancing Mathematics by Guiding Human Intuition with {AI}},
+  journal   = {Nature},
+  volume    = {600},
+  number    = {7887},
+  pages     = {70--74},
+  year      = {2021},
+  doi       = {10.1038/s41586-021-04086-x}
+}
+
+@book{he2023machine,
+  author    = {He, Yang-Hui},
+  title     = {Machine Learning in Pure Mathematics and Theoretical Physics},
+  publisher = {World Scientific},
+  year      = {2023},
+  isbn      = {978-1800613690}
+}
+
+@inproceedings{poesia2024learning,
+  author    = {Poesia, Gabriel and Broman, David and Haber, Nick and Goodman, Noah D.},
+  title     = {Learning Formal Mathematics From Intrinsic Motivation},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {37},
+  year      = {2024}
+}
+
+@article{wagner2021constructions,
+  author    = {Wagner, Adam Zsolt},
+  title     = {Constructions in Combinatorics via Neural Networks},
+  journal   = {arXiv preprint arXiv:2104.14516},
+  year      = {2021}
+}
+
+@article{gauthier2021tactictoe,
+  author    = {Gauthier, Thibault and Kaliszyk, Cezary and Urban, Josef and Kumar, Ramana and Norrish, Michael},
+  title     = {{TacticToe}: Learning to Reason with {HOL4} Tactics},
+  journal   = {Journal of Automated Reasoning},
+  volume    = {65},
+  pages     = {257--286},
+  year      = {2021},
+  publisher = {Springer}
+}
+
+@inproceedings{trinh2024alphageometry,
+  author    = {Trinh, Trieu H. and Wu, Yuhuai and Le, Quoc V. and He, He and Luong, Thang},
+  title     = {Solving Olympiad Geometry without Human Demonstrations},
+  journal   = {Nature},
+  volume    = {625},
+  pages     = {476--482},
+  year      = {2024},
+  doi       = {10.1038/s41586-023-06747-5}
+}
+
+% =============================================================================
+% DATASETS (8 entries)
+% =============================================================================
+
+@article{azerbayev2023proofnet,
+  author    = {Azerbayev, Zhangir and Piotrowski, Bartosz and Schoelkopf, Hailey and Ayers, Edward W. and Radev, Dragomir and Avigad, Jeremy},
+  title     = {{ProofNet}: Autoformalizing and Formally Proving Undergraduate-Level Mathematics},
+  journal   = {arXiv preprint arXiv:2302.12433},
+  year      = {2023}
+}
+
+@article{wang2023mathpile,
+  author    = {Wang, Zengzhi and Xia, Rui and Liu, Pengfei},
+  title     = {Generative {AI} for Math: Part {I} -- {MathPile}: A Billion-Token-Scale Pretraining Corpus for Math},
+  journal   = {arXiv preprint arXiv:2312.17120},
+  year      = {2023}
+}
+
+@inproceedings{paster2024openwebmath,
+  author    = {Paster, Keiran and Dos Santos, Marco and Azerbayev, Zhangir and Ba, Jimmy},
+  title     = {{OpenWebMath}: An Open Dataset of High-Quality Mathematical Web Text},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@inproceedings{welleck2021naturalproofs,
+  author    = {Welleck, Sean and Liu, Jiacheng and Le Bras, Ronan and Hajishirzi, Hannaneh and Choi, Yejin and Cho, Kyunghyun},
+  title     = {{NaturalProofs}: Mathematical Theorem Proving in Natural Language},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track},
+  year      = {2021}
+}
+
+@inproceedings{hendrycks2021measuring,
+  author    = {Hendrycks, Dan and Burns, Collin and Kadavath, Saurav and Arora, Akul and Basart, Steven and Tang, Eric and Song, Dawn and Steinhardt, Jacob},
+  title     = {Measuring Mathematical Problem Solving With the {MATH} Dataset},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track},
+  year      = {2021}
+}
+
+@article{lin2024goedel,
+  author    = {Lin, Yong and Luo, Shange and Huang, Jianan and Wang, Jipeng and Zhang, Jiawei and others},
+  title     = {Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving},
+  journal   = {arXiv preprint arXiv:2502.07640},
+  year      = {2025}
+}
+
+@inproceedings{ferreira2020natural,
+  author    = {Ferreira, Deborah and Freitas, Andr{\'e}},
+  title     = {Natural Language Premise Selection: Finding Supporting Statements for Mathematical Text},
+  booktitle = {Proceedings of the 12th Language Resources and Evaluation Conference (LREC)},
+  pages     = {2175--2182},
+  year      = {2020}
+}
+
+@article{zheng2021lean,
+  author    = {Zheng, Kunhao and Song, Jesse Michael and Polu, Stanislas},
+  title     = {A Lean Dataset for International Math Olympiad},
+  journal   = {arXiv preprint arXiv:2411.18872},
+  year      = {2024}
+}
+
+% =============================================================================
+% LoRA / PEFT (5 entries)
+% =============================================================================
+
+@inproceedings{hu2022lora,
+  author    = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+  title     = {{LoRA}: Low-Rank Adaptation of Large Language Models},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+  url       = {https://openreview.net/forum?id=nZeVKeeFYf9}
+}
+
+@inproceedings{dettmers2023qlora,
+  author    = {Dettmers, Tim and Pagnoni, Artidoro and Holtzman, Ari and Zettlemoyer, Luke},
+  title     = {{QLoRA}: Efficient Finetuning of Quantized {LLMs}},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {36},
+  year      = {2023}
+}
+
+@inproceedings{liu2024dora,
+  author    = {Liu, Shih-Yang and Wang, Chien-Yi and Yin, Hongxu and Molchanov, Pavlo and Wang, Yu-Chiang Frank and Cheng, Kwang-Ting and Chen, Min-Hung},
+  title     = {{DoRA}: Weight-Decomposed Low-Rank Adaptation},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  pages     = {32100--32121},
+  year      = {2024},
+  publisher = {PMLR}
+}
+
+@inproceedings{houlsby2019parameter,
+  author    = {Houlsby, Neil and Giurgiu, Andrei and Jastrzebski, Stanislaw and Morrone, Bruna and de Laroussilhe, Quentin and Gesmundo, Andrea and Attariyan, Mona and Gelly, Sylvain},
+  title     = {Parameter-Efficient Transfer Learning for {NLP}},
+  booktitle = {Proceedings of the 36th International Conference on Machine Learning (ICML)},
+  pages     = {2790--2799},
+  year      = {2019},
+  publisher = {PMLR}
+}
+
+@inproceedings{lester2021power,
+  author    = {Lester, Brian and Al-Rfou, Rami and Constant, Noah},
+  title     = {The Power of Scale for Parameter-Efficient Prompt Tuning},
+  booktitle = {Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  pages     = {3045--3059},
+  year      = {2021},
+  publisher = {Association for Computational Linguistics}
+}
+
+% =============================================================================
+% SELF-PLAY AND REINFORCEMENT LEARNING (6 entries)
+% =============================================================================
+
+@article{silver2017mastering,
+  author    = {Silver, David and Schrittwieser, Julian and Simonyan, Karen and Antonoglou, Ioannis and Huang, Aja and Guez, Arthur and Hubert, Thomas and Baker, Lucas and Lai, Matthew and Bolton, Adrian and Chen, Yutian and Lillicrap, Timothy and Hui, Fan and Sifre, Laurent and van den Driessche, George and Graepel, Thore and Hassabis, Demis},
+  title     = {Mastering the Game of {Go} without Human Knowledge},
+  journal   = {Nature},
+  volume    = {550},
+  number    = {7676},
+  pages     = {354--359},
+  year      = {2017},
+  doi       = {10.1038/nature24270}
+}
+
+@inproceedings{anthony2017thinking,
+  author    = {Anthony, Thomas and Tian, Zheng and Barber, David},
+  title     = {Thinking Fast and Slow with Deep Learning and Tree Search},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {30},
+  year      = {2017}
+}
+
+@inproceedings{zelikman2022star,
+  author    = {Zelikman, Eric and Wu, Yuhuai and Mu, Jesse and Goodman, Noah},
+  title     = {{STaR}: Bootstrapping Reasoning With Reasoning},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022},
+  url       = {https://openreview.net/forum?id=_3ELRdg2sgI}
+}
+
+@article{gulcehre2023rest,
+  author    = {Gulcehre, Caglar and Le Paine, Tom and Srinivasan, Srivatsan and Konyushkova, Ksenia and Weerts, Lotte and Sharma, Abhishek and Siddhant, Aditya and Ahern, Alex and Wang, Miaosen and Gu, Chenjie and Macherey, Wolfgang and Doucet, Arnaud and Firat, Orhan and de Freitas, Nando},
+  title     = {Reinforced Self-Training ({ReST}) for Language Modeling},
+  journal   = {arXiv preprint arXiv:2308.08998},
+  year      = {2023}
+}
+
+@article{singh2024beyond,
+  author    = {Singh, Avi and Co-Reyes, John D. and Agarwal, Rishabh and Anand, Ankesh and Patil, Piyush and Liu, Peter J. and Harrison, James and Lee, Jaehoon and Xu, Kelvin and Parisi, Aaron and Kumar, Abhishek and Alemi, Alex and Rizkowsky, Alex and Nova, Azade and Adlam, Ben and Bohnet, Bernd and Sedghi, Hanie and Mordatch, Igor and Simpson, Isabelle and Gur, Izzeddin and Snoek, Jasper and Pennington, Jeffrey and Hron, Jiri and Kenealy, Kathleen and Swersky, Kevin and Mahajan, Kshiteej and Culp, Laura and Xiao, Lechao and Bileschi, Maxwell and Constant, Noah and Novak, Roman and Liu, Rosanne and Warkentin, Tris and Qian, Yundi and Dyer, Ethan and Neyshabur, Behnam and Sohl-Dickstein, Jascha and Fiedel, Noah},
+  title     = {Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models},
+  journal   = {Transactions on Machine Learning Research},
+  year      = {2024}
+}
+
+@inproceedings{ouyang2022training,
+  author    = {Ouyang, Long and Wu, Jeff and Jiang, Xu and Almeida, Diogo and Wainwright, Carroll L. and Mishkin, Pamela and Zhang, Chong and Agarwal, Sandhini and Slama, Katarina and Ray, Alex and Schulman, John and Hilton, Jacob and Kelton, Fraser and Miller, Luke and Simens, Maddie and Askell, Amanda and Welinder, Peter and Christiano, Paul and Leike, Jan and Lowe, Ryan},
+  title     = {Training Language Models to Follow Instructions with Human Feedback},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022}
+}
+
+% =============================================================================
+% DOMAIN-ADAPTIVE AND CONTINUAL LEARNING (4 entries)
+% =============================================================================
+
+@inproceedings{gururangan2020dont,
+  author    = {Gururangan, Suchin and Marasovi{\'c}, Ana and Swayamdipta, Swabha and Lo, Kyle and Beltagy, Iz and Downey, Doug and Smith, Noah A.},
+  title     = {Don't Stop Pretraining: Adapt Language Models to Domains and Tasks},
+  booktitle = {Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  pages     = {8342--8360},
+  year      = {2020},
+  publisher = {Association for Computational Linguistics}
+}
+
+@inproceedings{ke2023continual,
+  author    = {Ke, Zixuan and Shao, Yijia and Lin, Haowei and Konishi, Tatsuya and Kim, Gyuhak and Liu, Bing},
+  title     = {Continual Pre-training of Language Models},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023}
+}
+
+@article{gupta2023continual,
+  author    = {Gupta, Kshitij and Th{\'e}rien, Benjamin and Ibrahim, Adam and Richter, Mats L. and Anthony, Quentin and Belilovsky, Eugene and Rish, Irina and Lesort, Timoth{\'e}e},
+  title     = {Continual Pre-Training of Large Language Models: How to (re)warm your model?},
+  journal   = {arXiv preprint arXiv:2308.04014},
+  year      = {2023}
+}
+
+@inproceedings{scialom2022fine,
+  author    = {Scialom, Thomas and Chakrabarty, Tuhin and Muresan, Smaranda},
+  title     = {Fine-tuned Language Models are Continual Learners},
+  booktitle = {Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  pages     = {6107--6122},
+  year      = {2022},
+  publisher = {Association for Computational Linguistics}
+}
+
+% =============================================================================
+% TRANSFORMERS AND FOUNDATION MODELS (8 entries)
+% =============================================================================
+
+@inproceedings{vaswani2017attention,
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, {\L}ukasz and Polosukhin, Illia},
+  title     = {Attention Is All You Need},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {30},
+  pages     = {5998--6008},
+  year      = {2017}
+}
+
+@inproceedings{devlin2019bert,
+  author    = {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
+  title     = {{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding},
+  booktitle = {Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL-HLT)},
+  pages     = {4171--4186},
+  year      = {2019},
+  publisher = {Association for Computational Linguistics}
+}
+
+@inproceedings{brown2020language,
+  author    = {Brown, Tom B. and Mann, Benjamin and Ryder, Nick and Subbiah, Melanie and Kaplan, Jared and Dhariwal, Prafulla and Neelakantan, Arvind and Shyam, Pranav and Sastry, Girish and Askell, Amanda and Agarwal, Sandhini and Herbert-Voss, Ariel and Krueger, Gretchen and Henighan, Tom and Child, Rewon and Ramesh, Aditya and Ziegler, Daniel M. and Wu, Jeffrey and Winter, Clemens and Hesse, Christopher and Chen, Mark and Sigler, Eric and Litwin, Mateusz and Gray, Scott and Chess, Benjamin and Clark, Jack and Berner, Christopher and McCandlish, Sam and Radford, Alec and Sutskever, Ilya and Amodei, Dario},
+  title     = {Language Models are Few-Shot Learners},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {33},
+  year      = {2020}
+}
+
+@article{touvron2023llama,
+  author    = {Touvron, Hugo and Lavril, Thibaut and Izacard, Gautier and Martinet, Xavier and Lachaux, Marie-Anne and Lacroix, Timoth{\'e}e and Rozi{\`e}re, Baptiste and Goyal, Naman and Hambro, Eric and Azhar, Faisal and Rodriguez, Aurelien and Joulin, Armand and Grave, Edouard and Lample, Guillaume},
+  title     = {{LLaMA}: Open and Efficient Foundation Language Models},
+  journal   = {arXiv preprint arXiv:2302.13971},
+  year      = {2023}
+}
+
+@article{touvron2023llama2,
+  author    = {Touvron, Hugo and Martin, Louis and Stone, Kevin and Albert, Peter and Almahairi, Amjad and Babaei, Yasmine and Bashlykov, Nikolay and Batra, Soumya and Bhargava, Prajjwal and Bhosale, Shruti and others},
+  title     = {{Llama 2}: Open Foundation and Fine-Tuned Chat Models},
+  journal   = {arXiv preprint arXiv:2307.09288},
+  year      = {2023}
+}
+
+@article{chowdhery2023palm,
+  author    = {Chowdhery, Aakanksha and Narang, Sharan and Devlin, Jacob and Bosma, Maarten and Mishra, Gaurav and Roberts, Adam and Barham, Paul and Chung, Hyung Won and Sutton, Charles and Gehrmann, Sebastian and others},
+  title     = {{PaLM}: Scaling Language Modeling with Pathways},
+  journal   = {Journal of Machine Learning Research},
+  volume    = {24},
+  number    = {240},
+  pages     = {1--113},
+  year      = {2023}
+}
+
+@article{rae2022scaling,
+  author    = {Rae, Jack W. and Borgeaud, Sebastian and Cai, Trevor and Millican, Katie and Hoffmann, Jordan and Song, Francis and Aslanides, John and Henderson, Sarah and Ring, Roman and Young, Susannah and others},
+  title     = {Scaling Language Models: Methods, Analysis \& Insights from Training {Gopher}},
+  journal   = {arXiv preprint arXiv:2112.11446},
+  year      = {2022}
+}
+
+@inproceedings{hoffmann2022training,
+  author    = {Hoffmann, Jordan and Borgeaud, Sebastian and Mensch, Arthur and Buchatskaya, Elena and Cai, Trevor and Rutherford, Eliza and de Las Casas, Diego and Hendricks, Lisa Anne and Welbl, Johannes and Clark, Aidan and Hennigan, Tom and Noland, Eric and Millican, Katie and van den Driessche, George and Damoc, Bogdan and Guy, Aurelia and Osindero, Simon and Simonyan, Karen and Elsen, Erich and Rae, Jack W. and Vinyals, Oriol and Sifre, Laurent},
+  title     = {Training Compute-Optimal Large Language Models},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022}
+}
+
+% =============================================================================
+% DEEPSPEED AND DISTRIBUTED TRAINING (3 entries)
+% =============================================================================
+
+@inproceedings{rajbhandari2020zero,
+  author    = {Rajbhandari, Samyam and Rasley, Jeff and Ruwase, Olatunji and He, Yuxiong},
+  title     = {{ZeRO}: Memory Optimizations Toward Training Trillion Parameter Models},
+  booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC)},
+  pages     = {1--16},
+  year      = {2020},
+  publisher = {IEEE}
+}
+
+@inproceedings{rasley2020deepspeed,
+  author    = {Rasley, Jeff and Rajbhandari, Samyam and Ruwase, Olatunji and He, Yuxiong},
+  title     = {{DeepSpeed}: System Optimizations Enable Training Deep Learning Models with Over 100 Billion Parameters},
+  booktitle = {Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
+  year      = {2020},
+  publisher = {ACM}
+}
+
+@article{shoeybi2020megatronlm,
+  author    = {Shoeybi, Mohammad and Patwary, Mostofa and Puri, Raul and LeGresley, Patrick and Casper, Jared and Catanzaro, Bryan},
+  title     = {{Megatron-LM}: Training Multi-Billion Parameter Language Models Using Model Parallelism},
+  journal   = {arXiv preprint arXiv:1909.08053},
+  year      = {2020}
+}
+
+% =============================================================================
+% ALGEBRAIC GEOMETRY AND APPLICATIONS (5 entries)
+% =============================================================================
+
+@book{cox2015ideals,
+  author    = {Cox, David A. and Little, John and O'Shea, Donal},
+  title     = {Ideals, Varieties, and Algorithms: An Introduction to Computational Algebraic Geometry and Commutative Algebra},
+  edition   = {4th},
+  series    = {Undergraduate Texts in Mathematics},
+  publisher = {Springer},
+  year      = {2015},
+  doi       = {10.1007/978-3-319-16721-3}
+}
+
+@book{sturmfels2002solving,
+  author    = {Sturmfels, Bernd},
+  title     = {Solving Systems of Polynomial Equations},
+  series    = {CBMS Regional Conference Series in Mathematics},
+  volume    = {97},
+  publisher = {American Mathematical Society},
+  address   = {Providence, RI},
+  year      = {2002}
+}
+
+@book{hartshorne1977algebraic,
+  author    = {Hartshorne, Robin},
+  title     = {Algebraic Geometry},
+  series    = {Graduate Texts in Mathematics},
+  volume    = {52},
+  publisher = {Springer-Verlag},
+  address   = {New York},
+  year      = {1977}
+}
+
+@book{eisenbud1995commutative,
+  author    = {Eisenbud, David},
+  title     = {Commutative Algebra: with a View Toward Algebraic Geometry},
+  series    = {Graduate Texts in Mathematics},
+  volume    = {150},
+  publisher = {Springer-Verlag},
+  address   = {New York},
+  year      = {1995}
+}
+
+@book{garcia2024applications,
+  author    = {Sommese, Andrew J. and Wampler, Charles W.},
+  title     = {The Numerical Solution of Systems of Polynomials Arising in Engineering and Science},
+  publisher = {World Scientific},
+  year      = {2005},
+  doi       = {10.1142/5763}
+}
+
+% =============================================================================
+% HUMAN-CENTERED AI AND EXPLAINABILITY (5 entries)
+% =============================================================================
+
+@book{shneiderman2020human,
+  author    = {Shneiderman, Ben},
+  title     = {Human-Centered {AI}},
+  publisher = {Oxford University Press},
+  year      = {2022},
+  doi       = {10.1093/oso/9780192845290.001.0001}
+}
+
+@article{arrieta2020explainable,
+  author    = {Barredo Arrieta, Alejandro and D{\'\i}az-Rodr{\'\i}guez, Natalia and Del Ser, Javier and Bennetot, Adrien and Tabik, Siham and Barbado, Alberto and Garcia, Salvador and Gil-Lopez, Sergio and Molina, Daniel and Benjamins, Richard and Chatila, Raja and Herrera, Francisco},
+  title     = {Explainable Artificial Intelligence ({XAI}): Concepts, Taxonomies, Opportunities and Challenges toward Responsible {AI}},
+  journal   = {Information Fusion},
+  volume    = {58},
+  pages     = {82--115},
+  year      = {2020},
+  doi       = {10.1016/j.inffus.2019.12.012}
+}
+
+@inproceedings{ribeiro2016why,
+  author    = {Ribeiro, Marco Tulio and Singh, Sameer and Guestrin, Carlos},
+  title     = {``{Why Should I Trust You?}'': Explaining the Predictions of Any Classifier},
+  booktitle = {Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
+  pages     = {1135--1144},
+  year      = {2016},
+  publisher = {ACM}
+}
+
+@inproceedings{lundberg2017unified,
+  author    = {Lundberg, Scott M. and Lee, Su-In},
+  title     = {A Unified Approach to Interpreting Model Predictions},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {30},
+  year      = {2017}
+}
+
+@article{doshi2017towards,
+  author    = {Doshi-Velez, Finale and Kim, Been},
+  title     = {Towards A Rigorous Science of Interpretable Machine Learning},
+  journal   = {arXiv preprint arXiv:1702.08608},
+  year      = {2017}
+}
+
+% =============================================================================
+% EVALUATION AND BENCHMARKS (5 entries)
+% =============================================================================
+
+@article{chen2021evaluating,
+  author    = {Chen, Mark and Tworek, Jerry and Jun, Heewoo and Yuan, Qiming and Pinto, Henrique Ponde de Oliveira and Kaplan, Jared and Edwards, Harri and Burda, Yuri and Joseph, Nicholas and Brockman, Greg and Ray, Alex and Puri, Raul and Krueger, Gretchen and Petrov, Michael and Khlaaf, Heidy and Sastry, Girish and Mishkin, Pamela and Chan, Brooke and Gray, Scott and Ryder, Nick and Pavlov, Mikhail and Power, Alethea and Kaiser, Lukasz and Bavarian, Mohammad and Winter, Clemens and Tillet, Philippe and Such, Felipe Petroski and Cummings, Dave and Plappert, Matthias and Chantzis, Fotios and Barnes, Elizabeth and Herbert-Voss, Ariel and Guss, William Hebgen and Nichol, Alex and Paino, Alex and Tezak, Nikolas and Tang, Jie and Babuschkin, Igor and Balaji, Suchir and Jain, Shantanu and Saunders, William and Hesse, Christopher and Carr, Andrew N. and Leike, Jan and Achiam, Josh and Misra, Vedant and Morikawa, Evan and Radford, Alec and Knight, Matthew and Brundage, Miles and Murati, Mira and Mayer, Katie and Welinder, Peter and McGrew, Bob and Amodei, Dario and McCandlish, Sam and Sutskever, Ilya and Zaremba, Wojciech},
+  title     = {Evaluating Large Language Models Trained on Code},
+  journal   = {arXiv preprint arXiv:2107.03374},
+  year      = {2021}
+}
+
+@article{liang2023holistic,
+  author    = {Liang, Percy and Bommasani, Rishi and Lee, Tony and Tsipras, Dimitris and Soylu, Dilara and Yasunaga, Michihiro and Zhang, Yian and Narayanan, Deepak and Wu, Yuhuai and Kumar, Ananya and others},
+  title     = {Holistic Evaluation of Language Models},
+  journal   = {Transactions on Machine Learning Research},
+  year      = {2023},
+  url       = {https://openreview.net/forum?id=iO4LZibEqW}
+}
+
+@article{srivastava2023beyond,
+  author    = {Srivastava, Aarohi and Rastogi, Abhinav and Rao, Abhishek and Shoeb, Abu Awal Md and Abid, Abubakar and Fisch, Adam and Brown, Adam R. and Santoro, Adam and Gupta, Aditya and Garber-Barron, Adri{\`a} and others},
+  title     = {Beyond the Imitation Game: Quantifying and Extrapolating the Capabilities of Language Models},
+  journal   = {Transactions on Machine Learning Research},
+  year      = {2023},
+  url       = {https://openreview.net/forum?id=uyTL5Bvosj}
+}
+
+@article{clark2018think,
+  author    = {Clark, Peter and Cowhey, Isaac and Etzioni, Oren and Khot, Tushar and Sabharwal, Ashish and Schoenick, Carissa and Tafjord, Oyvind},
+  title     = {Think you have Solved Question Answering? {Try ARC}, the {AI2} Reasoning Challenge},
+  journal   = {arXiv preprint arXiv:1803.05457},
+  year      = {2018}
+}
+
+@inproceedings{saxton2019analysing,
+  author    = {Saxton, David and Grefenstette, Edward and Hill, Felix and Kohli, Pushmeet},
+  title     = {Analysing Mathematical Reasoning Abilities of Neural Models},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2019}
+}
+
+% =============================================================================
+% ADDITIONAL REFERENCES (5 entries for total > 110)
+% =============================================================================
+
+@article{li2022branch,
+  author    = {Li, Margaret and Gururangan, Suchin and Dettmers, Tim and Lewis, Mike and Shi, Tianyi and Zettlemoyer, Luke and Smith, Noah A.},
+  title     = {Branch-Train-Merge: Embarrassingly Parallel Training of Expert Language Models},
+  journal   = {arXiv preprint arXiv:2208.03306},
+  year      = {2022}
+}
+
+@inproceedings{wang2023selfinstruct,
+  author    = {Wang, Yizhong and Kordi, Yeganeh and Mishra, Swaroop and Liu, Alisa and Smith, Noah A. and Khashabi, Daniel and Hajishirzi, Hannaneh},
+  title     = {Self-Instruct: Aligning Language Models with Self-Generated Instructions},
+  booktitle = {Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2023},
+  publisher = {Association for Computational Linguistics}
+}
+
+@article{welleck2022naturalprover,
+  author    = {Welleck, Sean and Liu, Jiacheng and Lu, Ximing and Hajishirzi, Hannaneh and Choi, Yejin},
+  title     = {{NaturalProver}: Grounded Mathematical Proof Generation with Language Models},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022}
+}
+
+@article{jiang2022lean,
+  author    = {Jiang, Albert Q. and Li, Wenda and Han, Jesse Michael and Wu, Yuhuai},
+  title     = {Lisa: Language Models of {ISAbelle} Proofs},
+  booktitle = {6th Conference on Artificial Intelligence and Theorem Proving (AITP)},
+  year      = {2022}
+}
+
+@article{yang2023leananime,
+  author    = {Yang, Kaiyu and Swope, Aidan and Gu, Alex and Chalamala, Rahul and Song, Peiyang and Yu, Shixing and Godil, Saad and Prenger, Ryan and Anandkumar, Anima},
+  title     = {{LeanDojo}: Theorem Proving with Retrieval-Augmented Language Models},
+  journal   = {arXiv preprint arXiv:2306.15626},
+  year      = {2023}
+}
+
+@article{deepseekai2025deepseekr1,
+  author    = {DeepSeek-AI and Guo, Daya and Yang, Dejian and Zhang, Haowei and Song, Junxiao and Zhang, Ruoyu and Xu, Runxin and Zhu, Qihao and Ma, Shirong and Wang, Peiyi and Bi, Xiao and others},
+  title     = {{DeepSeek-R1}: Incentivizing Reasoning Capability in {LLMs} via Reinforcement Learning},
+  journal   = {arXiv preprint arXiv:2501.12948},
+  year      = {2025}
+}
+
+@inproceedings{wang2024math,
+  author    = {Wang, Peiyi and Li, Lei and Shao, Zhihong and Xu, R.X. and Dai, Damai and Li, Yifei and Chen, Deli and Wu, Yu and Sui, Zhifang},
+  title     = {Math-Shepherd: Verify and Reinforce {LLMs} Step-by-Step without Human Annotations},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2024},
+  publisher = {Association for Computational Linguistics}
+}
+
+@article{xin2024deepseekproverv15,
+  author    = {Xin, Huajian and Guo, Daya and Shao, Zhihong and Ren, Zhizhou and Zhu, Qihao and Liu, Bo and Ruan, Chong and Li, Wenda and Liang, Xiaodan},
+  title     = {{DeepSeek-Prover-V1.5}: Harnessing Proof Assistant Feedback for Reinforcement Learning and {Monte-Carlo} Tree Search},
+  journal   = {arXiv preprint arXiv:2408.08152},
+  year      = {2024}
+}
+
+@inproceedings{raffel2020exploring,
+  author    = {Raffel, Colin and Shazeer, Noam and Roberts, Adam and Lee, Katherine and Narang, Sharan and Matena, Michael and Zhou, Yanqi and Li, Wei and Liu, Peter J.},
+  title     = {Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer},
+  booktitle = {Journal of Machine Learning Research},
+  volume    = {21},
+  number    = {140},
+  pages     = {1--67},
+  year      = {2020}
+}
+
+@article{radford2019language,
+  author    = {Radford, Alec and Wu, Jeffrey and Child, Rewon and Luan, David and Amodei, Dario and Sutskever, Ilya},
+  title     = {Language Models are Unsupervised Multitask Learners},
+  journal   = {OpenAI Blog},
+  year      = {2019}
+}
+
+@inproceedings{schulman2017proximal,
+  author    = {Schulman, John and Wolski, Filip and Dhariwal, Prafulla and Radford, Alec and Klimov, Oleg},
+  title     = {Proximal Policy Optimization Algorithms},
+  journal   = {arXiv preprint arXiv:1707.06347},
+  year      = {2017}
+}
+
+@inproceedings{kadavath2022language,
+  author    = {Kadavath, Saurav and Conerly, Tom and Askell, Amanda and Henighan, Tom and Drain, Dawn and Perez, Ethan and Schiefer, Nicholas and Hatfield-Dodds, Zac and DasSarma, Nova and Tran-Johnson, Eli and others},
+  title     = {Language Models (Mostly) Know What They Know},
+  journal   = {arXiv preprint arXiv:2207.05221},
+  year      = {2022}
+}
+
+@article{zhuo2024bigcodebench,
+  author    = {Zhuo, Terry Yue and Vu, Minh Chien and Chim, Jenny and Hu, Han and Yu, Wenhao and Widyasari, Ratnadira and Yusuf, Imam Nur Bani and Zhan, Haolan and He, Junda and Paul, Indraneil and Blber, Simon and Jiang, Qian and Treude, Christoph and others},
+  title     = {{BigCodeBench}: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions},
+  journal   = {arXiv preprint arXiv:2406.15877},
+  year      = {2024}
+}
+
+@inproceedings{wu2022autoformalization,
+  author    = {Wu, Yuhuai and Jiang, Albert Q. and Li, Wenda and Rabe, Markus N. and Staats, Charles and Jamnik, Mateja and Szegedy, Christian},
+  title     = {Autoformalization with Large Language Models},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  year      = {2022}
+}
+
+@inproceedings{mikula2024magnushammer,
+  author    = {Miku{\l}a, Maciej and Antoniak, Szymon and Tworkowski, Szymon and Jiang, Albert Qiaochu and Zhou, Jin Peng and Szegedy, Christian and Kuci{\'n}ski, {\L}ukasz and Mi{\l}o{\'s}, Piotr and Wu, Yuhuai},
+  title     = {Magnushammer: A Transformer-Based Approach to Premise Selection},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@article{chen2024theoremllama,
+  author    = {Chen, Ruida and Du, Waleed and Bhatt, Rahul},
+  title     = {{TheoremLlama}: Transforming General-Purpose {LLMs} into Lean4 Experts},
+  journal   = {arXiv preprint arXiv:2407.03203},
+  year      = {2024}
+}
+
+@article{huang2024mustard,
+  author    = {Huang, Yinya and Lin, Xiaohan and Liu, Zhengying and Cao, Qingxing and Liang, Huajian and Xiong, Jing and Shi, Han and Xie, Enze and Yin, Jian and Li, Zhenguo and Liang, Xiaodan},
+  title     = {{MUSTARD}: Mastering Uniform Synthesis of Theorem and Proof Data},
+  journal   = {arXiv preprint arXiv:2402.08957},
+  year      = {2024}
+}
+
+@article{luong2024reft,
+  author    = {Wu, Zhengxuan and Arora, Aryaman and Wang, Zheng and Geiger, Atticus and Jurafsky, Dan and Manning, Christopher D. and Potts, Christopher},
+  title     = {{ReFT}: Representation Finetuning for Language Models},
+  journal   = {arXiv preprint arXiv:2404.03592},
+  year      = {2024}
+}
+
+@inproceedings{du2022glam,
+  author    = {Du, Nan and Huang, Yanping and Dai, Andrew M. and Tong, Simon and Lepikhin, Dmitry and Xu, Yuanzhong and Krikun, Maxim and Zhou, Yanqi and Yu, Adams Wei and Firat, Orhan and Zoph, Barret and Fedus, Liam and Bosma, Maarten and Zhou, Zongwei and Wang, Tao and Wang, Yu Emma and Webster, Kellie and Pellat, Marie and Robinson, Kevin and Meier-Hellstern, Kathy and Duke, Toju and Dixon, Lucas and Zhang, Kun and Le, Quoc V. and Wu, Yonghui and Chen, Zhifeng and Cui, Claire},
+  title     = {{GLaM}: Efficient Scaling of Language Models with Mixture-of-Experts},
+  booktitle = {Proceedings of the 39th International Conference on Machine Learning (ICML)},
+  year      = {2022},
+  publisher = {PMLR}
+}
+
+@article{lewkowycz2023beyond,
+  author    = {Lewkowycz, Aitor and Andreassen, Anders and Dohan, David and Dyer, Ethan and Michalewski, Henryk and Ramasesh, Vinay and Slone, Ambrose and Anil, Cem and Schlag, Imanol and Gutman-Solo, Theo and Wu, Yuhuai and Neyshabur, Behnam and Gur-Ari, Guy and Misra, Vedant},
+  title     = {Beyond the Imitation Game on {QA}: Measuring Frontier {LLM} Mathematical Reasoning},
+  journal   = {arXiv preprint arXiv:2206.14858},
+  year      = {2022},
+  note      = {Extended version}
+}

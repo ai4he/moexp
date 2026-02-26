@@ -1,0 +1,33 @@
+{
+  "total_examples": 241586,
+  "train_size": 217427,
+  "val_size": 24159,
+  "domains": {
+    "discrete_math": 6201,
+    "computational": 14435,
+    "algebra": 26218,
+    "algebraic_geometry": 5751,
+    "analysis": 26501,
+    "differential_equations": 6927,
+    "dynamical_systems": 6172,
+    "geometry_topology": 49782,
+    "logic_foundations": 17184,
+    "mathematical_physics": 15262,
+    "number_theory": 7560,
+    "optimization_control": 12119,
+    "other": 26646,
+    "probability_statistics": 10492,
+    "quantum_info": 10336
+  },
+  "tasks": {
+    "contextualize": 117289,
+    "statement_classification": 117289,
+    "generalization": 2338,
+    "theorem_understanding": 2338,
+    "concept_identification": 2332
+  },
+  "sources": {
+    "arxiv_extraction": 234578,
+    "gemini_extraction": 7008
+  }
+}

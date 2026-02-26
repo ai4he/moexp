@@ -1,0 +1,61 @@
+# Large data files
+final_data_dedup_6.5m.jsonl
+dataset_stats.json
+
+# Cache and models (too large for git)
+cache/
+models/
+logs/
+.ipynb_checkpoints/
+
+# Large data directory files
+data/domain_*.jsonl
+data/moe_*.jsonl
+data/extracted_knowledge.jsonl
+data/stratified_sample_100.jsonl
+data/math_benchmark/
+data/gsm8k_benchmark/
+data/stp_*.jsonl
+data/domain_shared.jsonl
+
+# Large results
+results/arxiv_extracted_theorems.jsonl
+results/arxiv_extraction_checkpoint.json
+
+# API keys and credentials (sensitive)
+*_key.txt
+*_key*.json
+working_Gemini_API_keys.json
+groqcloud_key.txt
+mistral_key.txt
+openrouter_key.txt
+LLM_API_HPC_Access.docx
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Lean build artifacts
+lean_workspace/.lake/
+lean_workspace/build/
+
+# Claude config
+.claude/

@@ -1,0 +1,44 @@
+{
+  "benchmark": "MATH",
+  "mode": "baseline",
+  "overall": {
+    "accuracy": 0.4,
+    "correct": 4,
+    "total": 10
+  },
+  "per_subject": {
+    "algebra": {
+      "accuracy": 0.4,
+      "correct": 4,
+      "total": 10
+    }
+  },
+  "per_level": {
+    "Level 1": {
+      "accuracy": 0.5,
+      "correct": 1,
+      "total": 2
+    },
+    "Level 2": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1
+    },
+    "Level 3": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "total": 1
+    },
+    "Level 4": {
+      "accuracy": 0.5,
+      "correct": 2,
+      "total": 4
+    },
+    "Level 5": {
+      "accuracy": 0.5,
+      "correct": 1,
+      "total": 2
+    }
+  },
+  "timestamp": "2026-02-25 22:24:33"
+}

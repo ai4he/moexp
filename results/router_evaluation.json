@@ -1,0 +1,77 @@
+{
+  "overall": {
+    "top1_accuracy": 0.763,
+    "top2_accuracy": 0.889,
+    "num_samples": 1400,
+    "num_experts": 7
+  },
+  "load_balance": {
+    "expert_load_fractions": {
+      "algebraic_geometry": 0.138,
+      "discrete_math": 0.159,
+      "number_theory": 0.141,
+      "analysis": 0.149,
+      "algebra": 0.145,
+      "geometry_topology": 0.141,
+      "probability_statistics": 0.126
+    },
+    "balance_ratio_max_min": 1.26,
+    "target_fraction": 0.143
+  },
+  "per_domain": {
+    "algebraic_geometry": {
+      "top1_accuracy": 0.765,
+      "top2_accuracy": 0.9,
+      "num_samples": 200
+    },
+    "discrete_math": {
+      "top1_accuracy": 0.82,
+      "top2_accuracy": 0.9,
+      "num_samples": 200
+    },
+    "number_theory": {
+      "top1_accuracy": 0.83,
+      "top2_accuracy": 0.91,
+      "num_samples": 200
+    },
+    "analysis": {
+      "top1_accuracy": 0.775,
+      "top2_accuracy": 0.9,
+      "num_samples": 200
+    },
+    "algebra": {
+      "top1_accuracy": 0.725,
+      "top2_accuracy": 0.9,
+      "num_samples": 200
+    },
+    "geometry_topology": {
+      "top1_accuracy": 0.665,
+      "top2_accuracy": 0.8,
+      "num_samples": 200
+    },
+    "probability_statistics": {
+      "top1_accuracy": 0.76,
+      "top2_accuracy": 0.915,
+      "num_samples": 200
+    }
+  },
+  "router_bias": [
+    0.01944570615887642,
+    0.04359770566225052,
+    0.04503597319126129,
+    -0.026138124987483025,
+    -0.021243011578917503,
+    0.008791330270469189,
+    0.029508769512176514
+  ],
+  "expert_load_ema": [
+    0.14037226140499115,
+    0.12339669466018677,
+    0.12083364278078079,
+    0.1729850172996521,
+    0.17145200073719025,
+    0.1465691179037094,
+    0.12439236789941788
+  ],
+  "timestamp": "2026-02-25 21:00:27"
+}

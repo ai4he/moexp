@@ -1,0 +1,502 @@
+[
+  {
+    "domain": "analysis",
+    "quality_score": 0.86,
+    "conjecture_latex": "The condition $\\lambda < 1$ is necessary for $T + f$ to be a homeomorphism of $U$ onto an open subset $V$ of $X$",
+    "informal": "A conjecture on the necessity of the condition $\\lambda < 1$ for the homeomorphism result",
+    "lean4_sketch": "import analysis\nimport operator_algebras\n... ",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.81,
+    "conjecture_latex": "For a prime number $p$ and a number field $k$, under certain conditions on an Artin representation $\\chi$ and associated extensions $L_\\chi$ and $K_\\infty$, there exist extensions $L_\\infty/K_\\infty/\\Q$ with $\\Gal(L_\\infty/\\Q)$ isomorphic to $(G\\times (1+5\\Z_5)) \\ltimes \\Z_5[\\sqrt5]^2$, and the $\\Lambda$-modules $\\hat H^1_f(K_\\infty,{T})$ and $S_\\infty$ are canonically isomorphic",
+    "informal": "Combining the results on Galois groups and Iwasawa theory to study the relationship between Artin representations and Selmer groups",
+    "lean4_sketch": "import Mathlib\n\ntheorem artin_iwasawa\n  (p : \u2115+) (k : NumberField) (\u03c7 : ArtinRep) (L\u03c7 : Extension) (K\u221e : Extension)\n  (G : GalGroup) (T : pAdicRep) (S\u221e : SelmerGroup) :\n  \u2203 L\u221e, Gal (L\u221e/\u211a) \u2245 (G \u00d7 (1 + 5 \u21245)) \u22c9 \u21245[\u221a5]\u00b2 \u2227 \u039b_modules (H\u00b9_f (K\u221e, T)) (S\u221e) are canonically isomorphic",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.81,
+    "conjecture_latex": "Let $n \\geq 1$ be an integer dividing a power of $r$. Let $\\lambda_0, \\lambda_1, \\dots, \\lambda_{n-1}$ be in $\\mathbb{Q}$. Then the following statements are equivalent: (1) $\\lambda_0 + \\sum_{\\ell=1}^{n-1} \\lambda_\\ell \\cos(\\frac{\\ell \\theta}{n})$ is in $\\mathcal{O}_K$, (2) $\\lambda_0 \\in \\mathbb{Z}$ and for all $1 \\leq \\ell \\leq n-1$ we have $(\\lambda_\\ell, \\lambda_{n-\\ell}) \\in S_k$, where $0 \\leq k \\leq N-1$ such that $k \\equiv \\ell \\pmod{n}$",
+    "informal": "A characterization of algebraic integers in terms of trigonometric sums",
+    "lean4_sketch": "example (n : \u2115+) (h : n \u2223 r^(\u2115+)) (\u03bb : fin n \u2192 \u211a) : (\u03bb 0 + \u2211(i in fin_range 1 n) \u03bb i * cos (i * \u03b8 / n) : \u2119K) \u2243 (\u03bb 0 : \u2124 \u2227 \u2200 (i : fin n), (\u03bb i, \u03bb (n - i)) : S_k) := by apply cyclotomic_field_theory",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.81,
+    "conjecture_latex": "Let $u: (\\Sigma, \\p\\Sigma; j) \\rightarrow (W, N; J)$ be a holomorphic map, and let $U$ be a compact subset of $W$ that agrees with the model described above. Then, there exists a GIFS $(\\mathcal{A}, \\Gamma, \\mathcal{G})$ satisfying the OSC such that the attractor of the GIFS is homeomorphic to the intersection of $u(\\Sigma)$ and $U$.",
+    "informal": "This theorem establishes a connection between the geometric properties of holomorphic maps and the topological properties of GIFS attractors.",
+    "lean4_sketch": "example (u : holomorphic_map) (U : compact_subset) : \u2203 (\u0393 : GIFS), OSC \u0393, homeomorphic (attractor \u0393) (u (\u03a3) \u2229 U)",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.81,
+    "conjecture_latex": "The condition $\\truth \\in \\text{supp}_{\\mathcal{H}^1}(\\prior)$ is necessary for $\\posterior$ to be consistent in $\\mathcal{H}^1$",
+    "informal": "The condition $\\truth \\in \\text{supp}_{\\mathcal{H}^1}(\\prior)$ is necessary for posterior consistency",
+    "lean4_sketch": "import functional_analysis\nimport probability\n... ",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.78,
+    "conjecture_latex": "The OSC is necessary for $\\dim_H E_i = \\delta$ in a GIFS",
+    "informal": "The Open Set Condition is necessary for the Hausdorff dimension of the limit set to equal the similarity dimension",
+    "lean4_sketch": "import Mathlib.Topology\nexample (E_i : Nat \u2192 Set) (GIFS : GraphDirectedIteratedFunctionSystem) (hDimEq : \u2200 i, HausdorffDimension (E_i) = SimilarityDimension GIFS) : OSC GIFS",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.77,
+    "conjecture_latex": "$\\forall G \\text{ 2-connected plane graph}, \\text{if } d(G) = 0, \\text{ then } G \\text{ is a function graph}$",
+    "informal": "A 2-connected plane graph with zero defect is a function graph",
+    "lean4_sketch": "example (G : graph) (h : is_2_connected G) (h2 : d G = 0) : is_function_graph G",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.77,
+    "conjecture_latex": "$\\mathbf{u}\\in C([r,T],\\mathbb{H}_{p}^{s}(\\mathbf{R}^{d}))\\,\\text{is an}\\,\\mathbb{H}_{p}^{s}\\,\\text{-solution of}\\,(\\ref{af1})\\,\\iff\\,\\mathbf{u}(t)=\\mathbf{w}+\\int_{r}^{t}\\mathcal{S}[...]",
+    "informal": "A function is an H_p^s-solution of the Navier-Stokes equation if and only if it satisfies a certain integral equation",
+    "lean4_sketch": "example (u : C([r, T], \u210d_p^s(\u211d^d))) (t : \u211d), \u2203 (w : \u210d_p^s(\u211d^d)), \u2227 (S : \u210d_p^s(\u211d^d) \u2192 \u210d_p^s(\u211d^d)), \u2225u(t)\u2225 = \u2225w + \u222b[r, t] S[...]\u2225",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.74,
+    "conjecture_latex": "$\\forall \\ba \\in [0, \\pi/2], \\exists c_1, c_2, c_3, t, \\ba$ such that $D(G) = 0$",
+    "informal": "The condition $D(G) = 0$ can be satisfied for any value of $\\ba$ in the interval $[0, \\pi/2]$",
+    "lean4_sketch": "import AlgebraicGeometry\n\nlemma existence_of_solution (\u03b8 : \u211d) : \u2203 c_1, \u2203 c_2, \u2203 c_3, \u2203 t, D(G) = 0",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.74,
+    "conjecture_latex": "$\\Lambda$-modules $\\hat H^1_f(K_\\infty,{T})$ and $S_\\infty$ are canonically isomorphic for any $p$-adic representation $T$",
+    "informal": "A generalization of the isomorphism between Lambda-modules and Selmer groups",
+    "lean4_sketch": "import Mathlib\nnamespace lambda_modules\ntheorem lambda_selmer_isomorphism (T : pAdicRepr) : \\Lambda-modules \\hat H^1_f(K_\\infty,{T}) \\cong S_\\infty",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.74,
+    "conjecture_latex": "Let $X$ be a $K3$ surface of finite height over $\\F_q$. Then there is a positive integer $m \\geq 1$ such that $X_{\\F_{q^m}}$ admits a CM lifting, and the $\\Lambda$-modules $\\hat H^1_f(K_\\infty,{T})$ and $S_\\infty$ are canonically isomorphic",
+    "informal": "Combining the results on K3 surfaces and Iwasawa theory to study the relationship between complex multiplication and Selmer groups",
+    "lean4_sketch": "import Mathlib\n\ntheorem k3_iwasawa\n  (X : K3Surface) (q : \u2115+) (m : \u2115+) (K\u221e : Extension) (T : pAdicRep)\n  (S\u221e : SelmerGroup) :\n  \u2203 m, X_{\u2131_q^m} admits CM lifting \u2227 \u039b_modules (H\u00b9_f (K\u221e, T)) (S\u221e) are canonically isomorphic",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.74,
+    "conjecture_latex": "$\\forall P \\text{ poset}, \\text{if } \\exists G \\text{ group acting on } P \\text{ that is k-refined, then } \\exists x \\in P, \\text{ stab}(x) \\text{ acts k-refined on } P_{\\geq x}$",
+    "informal": "For a poset with a k-refined group action, there exists an element whose stabilizer acts k-refined on the subset of greater elements",
+    "lean4_sketch": "example (P : poset) (G : group) (h : is_k_refined G P) : \u2203 (x : P), is_k_refined (stab x) (P \u2265 x)",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.74,
+    "conjecture_latex": "$\\sup_{\\eta\\in H} n^{1/2}\\,H(P_{\\theta_n(h_n),\\eta},P_{\\theta_0,\\eta}) = O(1)\\,\\implies\\,\\forall\\,\\text{bounded, stochastic sequences}\\,(h_n)$",
+    "informal": "If the Hellinger distance between two probability distributions is bounded, then the sequences are bounded and stochastic",
+    "lean4_sketch": "example (h : \u2115 \u2192 \u211d) (\u03b8 : \u211d) (\u03b7 : \u211d), \u2203 (C : \u211d), 0 < C, \u2227 (n : \u2115), \u2225sup \u03b7 \u2208 H, n^(1/2) * H(P_\u03b8(h_n)\u03b7, P_\u03b8_0\u03b7)\u2225 \u2264 C",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.73,
+    "conjecture_latex": "For any Hurwitz vector $v$ of length $r$ with elements in $D_n$, there exists a braid move that transforms $v$ into $v'$ or $v''$ such that the triple $(yx^a,yx^b,yx^c)$ is equivalent to $(yx^{a'},yx^{a'},yx^{c'})$ or $(yx^{a'},yx^{b'},yx^{b'})$",
+    "informal": "Hurwitz vectors can be transformed into a standard form using braid moves",
+    "lean4_sketch": "example (v : HurwitzVector) : \u2203 (v' : HurwitzVector) (v'' : HurwitzVector), braid_move v v' \u2228 braid_move v v''",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.73,
+    "conjecture_latex": "Let $(X/Z,B+M)$ be a generalized dlt pair and $U\\subset X$ an open subset. Let $A$ be a divisor on $X$ ample over $Z$ and $\\epsilon >0$ a rational number. Then, there exists a $\\qq$-divisor $B_\\epsilon \\sim_\\qq B+\\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt and the loop space of the quotient stack $\\LL(X/G)$ can be computed by the $G$-equivariant fiber product.",
+    "informal": "Combining the generalized klt pair with the loop space of a quotient stack",
+    "lean4_sketch": "import algebraic_geometry.quotient_stack\nimport algebraic_geometry.generalized_klt_pair\ntheorem composition (X Z B M : scheme) [generalized_dlt_pair (X/Z, B+M)] : exists (B_epsilon : qq_divisor X), exists (tau : G_equivariant_fiber_product (LL (X/G))), true",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.73,
+    "conjecture_latex": "$\\exists \\epsilon > 0, \\forall \\delta > 0, \\exists B_\\epsilon \\sim_\\QQ B + \\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt",
+    "informal": "The existence of a generalized klt pair can be guaranteed for small enough perturbations of the boundary divisor",
+    "lean4_sketch": "import AlgebraicGeometry\n\nlemma existence_of_klt_pair (X : Variety) (Z : Variety) (B : Divisor) (M : Divisor) (A : Divisor) (\u03b5 : \u211d) : \u2203 \u03b4, \u2200 \u03b4' > 0, \u2203 B_\u03b5 \u223c_\u211a B + \u03b5 A, (X/Z, B_\u03b5 + M) is generalized klt",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.73,
+    "conjecture_latex": "$\\sum_{\\rho} |\\gamma|^{\\beta-1/2} \\int_{\\mathbb{Y}_1 \\cup \\mathbb{Y}_2} \\exp(\\gamma \\arctan(\\frac{y}{a}) - \\frac{\\pi}{2} |\\gamma|) \\frac{dy}{|z|^{\\alpha+\\beta}} \\ll_{\\alpha} a^{-\\alpha-1}$",
+    "informal": "A refinement of the estimate of an integral involving the Riemann zeta function and Bessel function",
+    "lean4_sketch": "import Mathlib\nnamespace integral_estimates\ntheorem refined_estimate (\\alpha : Real) (\\beta : Real) : \\sum_{\\rho} |\\gamma|^{\\beta-1/2} \\int_{\\mathbb{Y}_1 \\cup \\mathbb{Y}_2} \\exp(\\gamma \\arctan(\\frac{y}{a}) - \\frac{\\pi}{2} |\\gamma|) \\frac{dy}{|z|^{\\alpha+\\beta}} \\ll_{\\alpha} a^{-\\alpha-1}",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.73,
+    "conjecture_latex": "For any $2$-connected plane graph $G$, there exists a canvas $T = (G, C, L)$ such that $d(T) = \\def(G) - s(G)$ is a lower bound for the number of lattice paths from $(0,0)$ to $(r-1, m-r)$",
+    "informal": "A theorem that connects the concept of lattice paths with the defect of a canvas, providing a lower bound for the number of lattice paths based on the defect",
+    "lean4_sketch": "example (G : graph) (h : G.is_2_connected) : exists T, T.def = G.def - T.size",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.73,
+    "conjecture_latex": "Let $\\mathcal{A}$ be a collection of elements with order at least 4. Then, there exists a quasilinkage $Q$ such that $Q$ is symmetric if and only if $\\mathcal{A}$ satisfies a certain combinatorial condition.",
+    "informal": "This theorem provides a characterization of symmetric quasilinkages in terms of the combinatorial properties of the underlying collection of elements.",
+    "lean4_sketch": "example (A : collection) (h : \u2200 (a : A), order (a) \u2265 4) : \u2203 (Q : quasilinkage), symmetric Q Q \u21d4 combinatorial_condition A",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.71,
+    "conjecture_latex": "The group associated to the singular model $\\S = \\{(-1,-1,1), (0,1,-1), (1,0,1)\\}$ with valuations $u, v, w$ of $x, y, z$ respectively is isomorphic to $G_4$ if and only if $w > v > -u > 0$",
+    "informal": "A theorem that connects the concept of singular models with group isomorphism, providing a condition for the group associated to the singular model to be isomorphic to $G_4$",
+    "lean4_sketch": "example (S : singular_model) (h : S.valuations = [u, v, w]) : S.group <-> G_4",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.7,
+    "conjecture_latex": "The density $f$ of the $X_i$'s satisfies $\\eqref{slowdecay}$, with $\\rho_0=r$, $c=r^{(D-d)/2}\\beta_D\\beta_{D-d}$ and $\\gamma=(D-d)/2$, and this density is related to the volume of a $d$-dimensional simplex inscribed in the unit sphere $\\bS^{d-1}$",
+    "informal": "The density of a random variable is related to the volume of a $d$-dimensional simplex inscribed in the unit sphere",
+    "lean4_sketch": "import geometry\nimport probability_theory\ntheorem density_simplex_relation (d : \\mathbb{N}) : \\exists (f : \\text{density function}) (S : \\text{simplex}), f \\text{satisfies } \\eqref{slowdecay} \\land \\text{vol}(S) = \\text{max}(\\text{vol}(T))\\forall T \\subseteq \\bS^{d-1}",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.69,
+    "conjecture_latex": "For any $\\mathbb{Q}$-divisor $B$ on a scheme $X$, there exists a $\\mathbb{Q}$-divisor $B_\\epsilon \\sim_{\\mathbb{Q}} B + \\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt for any rational $\\epsilon > 0$ and ample divisor $A$ on $X$",
+    "informal": "Generalized klt pairs can be constructed with a $\\mathbb{Q}$-divisor that is $\\mathbb{Q}$-linearly equivalent to $B + \\epsilon A$ for any rational $\\epsilon > 0$ and ample divisor $A$",
+    "lean4_sketch": "example (X : Scheme) (Z : Scheme) (B : Divisor X) (M : Divisor X) (A : Divisor X) (\u03b5 : \u211a) (h : \u03b5 > 0) : \u2203 (B\u03b5 : Divisor X), generalized_klt (X/Z, B\u03b5 + M) \u2227 B\u03b5 \u223c[\u211a] B + \u03b5 * A",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.69,
+    "conjecture_latex": "If $R$ is an isolated singularity and $M$ is a balanced big $\\CM$ $R$-module admitting a right resolution by modules in $\\Add\\omega$, then $M$ is fully decomposable.",
+    "informal": "For an isolated singularity, any balanced big Cohen-Macaulay module with a right resolution by modules in $\\Add\\omega$ is fully decomposable.",
+    "lean4_sketch": "import Mathlib\nexample (R : Type) [comm_ring R] (M : module R) [balanced_big_cm M] (\u03c9 : R) : is_isolated_singularity R \u2192 is_fully_decomposable M",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.69,
+    "conjecture_latex": "$\\forall \\; k \\geq 1$, $\\exists \\; m \\geq 1$ such that $X_{\\mathbb{F}_{q^m}}$ admits a CM lifting, where $X$ is a $K3$ surface of finite height over $\\mathbb{F}_q$",
+    "informal": "The existence of a CM lifting for a K3 surface over a finite field",
+    "lean4_sketch": "example (X : K3_surface (\u2119\u2131_q)) (h : finite_height X) : \u2203 (m : \u2115+), X \u2131_q^m : CM_lifting := by apply K3_surface_theory",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.69,
+    "conjecture_latex": "For $n \\equiv 0$ mod $4$, $IK_n$ is a $G$-graph",
+    "informal": "An extension of the result that $IK_n$ is not a $G$-graph for $n \\equiv 2$ mod $4$, to the case where $n$ is a multiple of $4$",
+    "lean4_sketch": "example (n : nat) (h : n % 4 = 0) : is_G_graph (IK n) := by { apply G_graph.mk, assumption }",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.69,
+    "conjecture_latex": "If $G$ is a $2$-connected plane graph with $v(G) \\geq 3$ and $b(G) + q(G) \\geq 2$, then $d(G) \\geq 0$",
+    "informal": "A weaker condition than 2-connectedness might still guarantee non-negativity of the deficiency of a plane graph",
+    "lean4_sketch": "example (G : graph) (h : is_2_connected G) (h2 : v G \u2265 3) (h3 : b G + q G \u2265 2) : d G \u2265 0 := by admit",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.69,
+    "conjecture_latex": "For any poset $P$ and any group $G$ acting on $P$, the action of $G$ on $P$ is $k$-refined if and only if the action of $G$ on $P_{\\geq x}$ is $k$-refined for all $x \\in P$",
+    "informal": "A theorem that connects the concept of $k$-refined actions with posets, providing a condition for the action of a group on a poset to be $k$-refined based on the action on the upper sets",
+    "lean4_sketch": "example (P : poset) (G : group) (h : G.act_on P) : G.act_k_refined <-> forall x, G.act_k_refined_on P.geq x",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.69,
+    "conjecture_latex": "Let $(\\mathcal{A}, \\Gamma, \\mathcal{G})$ be a GIFS satisfying the OSC. If $\\delta$ is the similarity dimension and $\\Gamma$ is weakly connected, then $\\dim_H E_i = \\delta$ for all $i=1,2,\\dots,N$.",
+    "informal": "Hausdorff dimension of GIFS attractors under weaker connectivity conditions",
+    "lean4_sketch": "example (delta : real) (hdelta : delta > 0) (Gamma : graph) (hGamma : Gamma.weakly_connected) : forall (i : nat) (hi : i < N), dim_H (E i) = delta",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.69,
+    "conjecture_latex": "If $u: (\\Sigma, \\partial \\Sigma; j) \\to (W, N; J)$ is a holomorphic map and $F \\in \\Pr_{R-\\Mod} \\mathbf{X}$, then $u(\\Sigma)$ intersects $U$ implies $u(\\Sigma) \\subseteq U$ and $\\uHom^p(F, i(G))$ is a sheaf",
+    "informal": "Holomorphic maps and sheaves are related through the intersection of a compact subset and a model neighborhood",
+    "lean4_sketch": "import complex_analysis import sheaf_theory",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.69,
+    "conjecture_latex": "If $\\Gamma$ is weakly connected, then $\\dim_H E_i = \\delta$ for a GIFS satisfying the OSC",
+    "informal": "The Hausdorff dimension of the limit set equals the similarity dimension even if the graph is only weakly connected",
+    "lean4_sketch": "import Mathlib.GraphTheory\nexample (E_i : Nat \u2192 Set) (GIFS : GraphDirectedIteratedFunctionSystem) (hOSC : OSC GIFS) (hWeaklyConnected : WeaklyConnected \u0393) : \u2200 i, HausdorffDimension (E_i) = SimilarityDimension GIFS",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.69,
+    "conjecture_latex": "For any connected, simply-connected $3$-manifold $M$, the Betti numbers of its double coset $AB$ satisfy the following identities: $c_{0,k} = c_{1,k+1} + 1$ and $c_{0,j} = c_{1,j+1}$ for all $j \\geq k+1$.",
+    "informal": "Betti numbers of double cosets in $3$-manifolds have specific identities.",
+    "lean4_sketch": "example (M : Type) [connected_space M] [simply_connected_space M] : \u2203 (A B : Type) [group A] [group B], \u2200 (k j : \u2115), c_0_k = c_1_{k+1} + 1 \u2227 c_0_j = c_1_{j+1}, by { apply exists_Betti_numbers identities }}",
+    "strategy": "cross_domain_analogy",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "analysis",
+    "quality_score": 0.69,
+    "conjecture_latex": "If $A$ is a bounded operator and $B$ is a self-adjoint operator, then $A + B$ is a homeomorphism of $U$ onto an open subset $V$ of $X$",
+    "informal": "A homeomorphism result with a weakened hypothesis on the operator A",
+    "lean4_sketch": "import operator_algebras\nimport topology\n... ",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "analysis",
+    "quality_score": 0.69,
+    "conjecture_latex": "$\\forall \\, \\omega : [0, \\infty) \\to [0, \\infty)$ continuous and non-decreasing with $\\omega(0) = 0$, $\\exists \\, k > 0$ such that $\\omega(t) \\geq kt$ for all $t \\geq 0$, then $\\exists \\, M > 0$ such that for all open sets $W \\subset \\R^{N-1}$, $\\|g\\|_{\\infty} \\leq M \\|\\omega\\|_{\\infty}$ for all $g : \\overline{W} \\to \\R$ satisfying $|g(\\bar x) - g(\\bar y)| \\leq \\omega(|\\bar x - \\bar y|)$",
+    "informal": "A modulus of continuity can control the Lipschitz constant of a function.",
+    "lean4_sketch": "import Topology.Algebra\nimport Analysis.Lipschitz\n... ",
+    "strategy": "cross_domain_analogy",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.69,
+    "conjecture_latex": "Let $\\mathbf{u}\\in C([r,T],\\mathbb{H}_{p}^{s}\\mathbb{(}\\mathbf{R}^{d}))$ be an $\\mathbb{H}_{p}^{s}$-solution of $(\\ref{af1})$. If the noise satisfies Assumption $\\ref{ass:noiseTraceSumm}$ and $\\bigl\\Vert\\input\\bigr\\Vert_{s}\\leq U\\;\\prior\\text{-a.s.}$ for $s>1+\\sigma_{0}$, then the posterior distribution $\\posterior$ is consistent in $\\mathcal{H}^{1}$",
+    "informal": "The posterior distribution of an $\\mathbb{H}_{p}^{s}$-solution of a SPDE is consistent in $\\mathcal{H}^{1}$ under certain noise assumptions",
+    "lean4_sketch": "import measure_theory\nimport stochastic_processes\ntheorem posterior_consistency (u : \\mathbb{H}_{p}^{s}\\mathbb{(}\\mathbf{R}^{d})) (noise : Assumption \\ref{ass:noiseTraceSumm}) : \\posterior \\text{consistent in } \\mathcal{H}^{1}",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "probability_statistics",
+    "quality_score": 0.69,
+    "conjecture_latex": "If $\\bigl\\Vert\\input\\bigr\\Vert_{s} \\leq U$ for $s > \\sigma_0$, then $\\posterior$ is consistent in $\\mathcal{H}^1$",
+    "informal": "The posterior is consistent in $\\mathcal{H}^1$ even if the prior is not bounded",
+    "lean4_sketch": "import functional_analysis\nimport probability\n... ",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\exists \\ a \\mathbb{Q}$-divisor $B_{\\epsilon}$ such that $(X/Z,B_{\\epsilon} + M)$ is generalized klt and $B_{\\epsilon} \\sim_{\\mathbb{Q}} B + \\epsilon A$ for any rational $\\epsilon > 0$",
+    "informal": "Generalized klt pairs can be constructed with a $\\mathbb{Q}$-divisor that is $\\mathbb{Q}$-linearly equivalent to $B + \\epsilon A$ for any rational $\\epsilon > 0$",
+    "lean4_sketch": "example (X : Scheme) (Z : Scheme) (B : Divisor X) (M : Divisor X) (\u03b5 : \u211a) (h : \u03b5 > 0) : \u2203 (B\u03b5 : Divisor X), generalized_klt (X/Z, B\u03b5 + M) \u2227 B\u03b5 \u223c[\u211a] B + \u03b5 * A",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.67,
+    "conjecture_latex": "Let $(X/Z,B+M)$ be a generalized dlt pair and $A$ be an ample divisor on $X$. Then there exists a $\\mathbb{Q}$-divisor $B_\\epsilon \\sim_{\\mathbb{Q}} B + \\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt for any rational $\\epsilon > 0$",
+    "informal": "Generalized klt pairs can be constructed with a $\\mathbb{Q}$-divisor that is $\\mathbb{Q}$-linearly equivalent to $B + \\epsilon A$ for any rational $\\epsilon > 0$",
+    "lean4_sketch": "example (X : Scheme) (Z : Scheme) (B : Divisor X) (M : Divisor X) (A : Divisor X) (\u03b5 : \u211a) (h : \u03b5 > 0) : \u2203 (B\u03b5 : Divisor X), generalized_klt (X/Z, B\u03b5 + M) \u2227 B\u03b5 \u223c[\u211a] B + \u03b5 * A",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.67,
+    "conjecture_latex": "Let $\\mathcal{L}$ be a line bundle on $C$ with the factorization type $(m,b)$. If $\\mathcal{L}$ is base point free, then there exists a surjective morphism $\\tau: H_{d-1}^{\\aone}({\\mathbb A}^n - \\cup_{i=1}^r L_i) \\longrightarrow {\\underline{{\\bf K}}^{MW}_d}^{\\oplus r}$, where $L_1,\\ldots,L_r$ are a collection of coordinate subspaces of codimension $d$ ($d \\geq 2$) in ${\\mathbb A}^n$.",
+    "informal": "Combining the base point free condition with the surjective morphism in A^1-homotopy groups",
+    "lean4_sketch": "import topology.algebraic_topology\nimport algebraic_geometry.line_bundle\ntheorem composition (m b : nat) (L : line_bundle C) [base_point_free L] : exists (tau : surjective_morphism (H_d_aone (A^n - cup L_i)) (K_MW_d ^ r)), true",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\lim_{n\\to\\infty} h^i (C,\\mathcal{L}_n) = h^i ({\\mathbb P}^1,\\mathcal{O}_{{\\mathbb P}^1} (m)) + h^i ({\\mathbb P}^1,\\mathcal{O}_{{\\mathbb P}^1} (m+b-g-1))$",
+    "informal": "The cohomology groups of line bundles on a curve stabilize as the degree of the line bundle increases",
+    "lean4_sketch": "import AlgebraicGeometry\n\nlemma stabilization_of_cohomology (C : Curve) (m b : \u2115) (n : \u2115) : \u2203 k, h^i (C, \u2112_n) = h^i (\u2119^1, \ud835\udcaa_\u2119^1 (m)) + h^i (\u2119^1, \ud835\udcaa_\u2119^1 (m + b - g - 1))",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebraic_geometry",
+    "quality_score": 0.67,
+    "conjecture_latex": "Let $X$ be a smooth projective variety and $Y$ a closed subvariety. If the normal bundle of $Y$ is nef, then the level of the congruence subgroup $\\Gamma(Y)$ is less than or equal to the level of $\\Gamma(X)$",
+    "informal": "A connection between the level of a congruence subgroup and the nefness of a normal bundle",
+    "lean4_sketch": "import Mathlib\n\nexample (X : Scheme) (Y : ClosedSubvariety X) [Nef Y.normalSheaf] : \\Gamma(Y).level \\leq \\Gamma(X).level",
+    "strategy": "cross_domain_analogy",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "algebra",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\lim_{n\\to\\infty} \\frac{d(G)}{\\frac{\\ct n}{\\sqrt{\\log{n}}}} = 1$",
+    "informal": "The limit of the ratio of the degree of a transitive permutation group to the given bound as the degree approaches infinity is 1.",
+    "lean4_sketch": "import Mathlib\nexample (G : Type) [group G] (n : \u2115) : \u2203 (c : \u211d), is_limit (\u03bb (n : \u2115), d (G) / (c * n / sqrt (log n))) 1",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\exists w \\in W_{l^n \\times l^n}$ such that the conjugation by $w^{-1}x$ is the automorphism $C_{w^{-1}x}=\\sigma \\otimes 1$ on $W_{l^n \\times l^n}$, and it is of order $l^{n+1}$",
+    "informal": "A generalization of the automorphism and order of an element in a matrix algebra",
+    "lean4_sketch": "import Mathlib\nnamespace conj_automorph\ntheorem exists_conj_automorph (l : Nat) (n : Nat) : \\exists w : W_{l^n \\times l^n}, \\exists x, conjugation_by w^{-1}x = C_{w^{-1}x} := \\sigma \\otimes 1, order (w^{-1}x) = l^{n+1}",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.67,
+    "conjecture_latex": "There exists a $w \\in W_{l^n\\times l^n}$ such that the conjugation by $w^{-1}x$ is the automorphism $C_{w^{-1}x}=\\sigma\\otimes 1$ on $W_{l^n\\times l^n}$, and $T_\\pfrak$ stabilizes both $\\MM_k^m(\\rho^*_t)$ and $\\SSS_k^m(\\rho^*_t)$",
+    "informal": "Combining the results on matrix algebra and Hecke operators to study the relationship between conjugation and stabilization of modular forms",
+    "lean4_sketch": "import Mathlib\n\ntheorem conj_hecke_stabilization\n  (l : \u2115+) (n : \u2115) (x : W (l^n \u00d7 l^n)) (\u03c3 : Gal (l^n \u00d7 l^n))\n  (\u03c1 : Aut (W (l^n \u00d7 l^n))) (T : HeckeOp) (k m : \u2115) :\n  \u2203 w, conjugation_by w\u207b\u00b9 * x = C_w\u207b\u00b9x \u2227 T_stabilizes MM_k\u207f (\u03c1_t) \u2227 T_stabilizes SSS_k\u207f (\u03c1_t)",
+    "strategy": "composition",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\exists \\; C_0 > 0$ such that $\\forall \\; \\phi' \\in C^\\infty_c(G(\\mathbb{A}_f))$ that is $C$-regular, $\\forall \\; M \\in \\mathcal{L}$, $M \\neq G$, $\\forall \\; \\pi_f \\in \\Pi(M(\\mathbb{A}_f))$, and $\\forall \\; X \\in \\mathfrak{a}_{M,f}$, we have $\\Vert \\phi' \\Vert_{\\infty} \\leq C_0 \\cdot \\max_{\\ell \\in \\mathcal{L}(M)} \\vert \\lambda_\\ell(\\phi') \\vert^{1/2}$",
+    "informal": "A bound on the norm of a function in terms of the maximum of its Fourier coefficients",
+    "lean4_sketch": "example (\u03c6' : C\u221ec(G(\u2119A_f))) (h : is_C_regular \u03c6') : \u2225\u03c6'\u2225\u2098 < C0 * max (\u03bb : \u2112(M)) |\u03bb(\u03c6')|^(1/2) := by apply Plancherel_theorem",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "number_theory",
+    "quality_score": 0.67,
+    "conjecture_latex": "The $\\Lambda$-modules $\\hat H^1_f(K_\\infty, T)$ and $S_\\infty$ are canonically isomorphic",
+    "informal": "An isomorphism between two Lambda-modules",
+    "lean4_sketch": "example (T : p_adic_representation) (K_\u221e : Galois_extension) : \u2203 (\u03b9 : Hat H\u00b9_f (K_\u221e, T) \u2245 S_\u221e), \u03b9 : is_isomorphism := by apply Iwasawa_theory",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\forall n \\in \\mathbb{N}, \\exists m \\in \\mathbb{N}$ such that $s(m,r)$ is the sum of the weights of all lattice paths from $(0,0)$ to $(r-1,m-r)$ and $s(m,r) = \\binom{m}{r}$",
+    "informal": "A generalization of Stirling numbers of the first kind to any natural number m and r, where the sum of the weights of lattice paths can be expressed as a binomial coefficient",
+    "lean4_sketch": "example (n : nat) : exists m, s m n = choose m n := by { apply exists.intro, exact 1 }",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.67,
+    "conjecture_latex": "For any poset $P$ and group $G$ acting on $P$, if the action of $G$ on $P$ is $k$-refined for some $k \\in \\mathbb{N}$, then for every $x \\in P$, the action of the group $\\text{stab}(x)$ on $P_{\\geq x}$ is $k$-refined",
+    "informal": "A generalization of the result that the action of the group $\\text{stab}(x)$ on $P_{\\geq x}$ is $k$-refined, to any poset and group action",
+    "lean4_sketch": "example (P : poset) (G : group) (h : is_k_refined G P) (x : P) : is_k_refined (stab x) (P_ge x) := by { apply k_refined.mk, assumption }",
+    "strategy": "pattern_interpolation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\lim_{n \\to \\infty} \\frac{s(n,r)}{n!} = 0$ for $1 \\leq r \\leq n$",
+    "informal": "The Stirling numbers of the first kind grow slower than the factorial function as n approaches infinity",
+    "lean4_sketch": "example (n : \u2115) (r : \u2115) (h : 1 \u2264 r) (h2 : r \u2264 n) : \u2203 c, \u2200 n \u2265 c, s n r < n! := by admit",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "discrete_math",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\forall n \\geq 3, \\exists k \\in \\mathbb{N}$ such that $IK_n$ is a $G$-graph if and only if $n \\equiv k$ mod $4$",
+    "informal": "A theorem that connects the concept of $G$-graphs with modular arithmetic, providing a condition for $IK_n$ to be a $G$-graph based on the residue of $n$ modulo $4$",
+    "lean4_sketch": "example (n : nat) (h : n >= 3) : exists k, IK_n.is_G_graph <-> n % 4 = k",
+    "strategy": "theorem_generation",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  },
+  {
+    "domain": "geometry_topology",
+    "quality_score": 0.67,
+    "conjecture_latex": "$\\lim_{n\\to\\infty} \\dim_H E_i = \\delta$ for a GIFS satisfying the OSC",
+    "informal": "The Hausdorff dimension of the limit set approaches the similarity dimension as the number of iterations increases",
+    "lean4_sketch": "import Mathlib.Topology.Dimension\nexample (E_i : Nat \u2192 Set) (GIFS : GraphDirectedIteratedFunctionSystem) (hOSC : OSC GIFS) : \u2200 i, lim (n \u2192 \u221e) (HausdorffDimension (E_i n)) = SimilarityDimension GIFS",
+    "strategy": "boundary_exploration",
+    "source": "multi_strategy",
+    "verification_status": "pending"
+  }
+]

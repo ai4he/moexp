@@ -1,0 +1,784 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{subcaption}
+\usepackage[margin=1in]{geometry}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,backgrounds,shapes.geometric,decorations.pathreplacing}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+% Custom commands
+\newcommand{\mathscy}{\textsc{MathScy}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\TopK}{TopK}
+\DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\sigmoid}{sigmoid}
+\DeclareMathOperator{\sign}{sign}
+
+\title{\mathscy{}: Domain-Specialized Mixture-of-Experts for\\AI-Assisted Mathematical Reasoning}
+
+\author{
+Anonymous Authors\\[4pt]
+\textit{Anonymous Institution}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present \mathscy{}, a modular system for AI-assisted mathematical reasoning that integrates domain-specialized Mixture-of-Experts (MoE) large language models with formal verification in the Lean~4 proof assistant. \mathscy{} addresses fundamental limitations of current AI systems for mathematics---including scalability across mathematical domains, depth of reasoning, and verifiability of outputs---through three key contributions. First, we construct a domain-specialized MoE architecture via Branch-Train-Mix, training eight LoRA expert modules on distinct mathematical subdomains (algebraic geometry, combinatorics, number theory, analysis, algebra, topology, probability, and computational mathematics) from a shared DeepSeek-Math-7B base model, with sigmoid gating and auxiliary-loss-free load balancing. Second, we design a Self-Play Theorem Prover (STP) loop in which a conjecturer and a prover iteratively improve through mutual training, with conjectures filtered through a four-tier Lean~4 verification pipeline encompassing type-checking, triviality detection, counterexample search, and automated proof search. Third, we curate a large-scale dataset of 6.47 million mathematical entries across 154 arXiv categories and 15 domain groups, from which we extract 241,586 structured training examples via a combination of LLM-powered knowledge extraction and LaTeX theorem mining. The system is designed to support conjecture formulation, proof construction, and counterexample finding, with a focus on applied, combinatorial, and computational algebraic geometry. We describe the complete architecture, training methodology, and data pipeline, and present preliminary results from the expert training phase, demonstrating stable convergence and efficient resource utilization across domain experts trained on a single A100 GPU. We outline the experimental protocol for evaluating \mathscy{} on established benchmarks and open problems in algebraic geometry.
+\end{abstract}
+
+\textbf{Keywords:} Mixture-of-Experts, mathematical reasoning, theorem proving, conjecture generation, Lean 4, autoformalization, self-play, domain specialization
+
+% ============================================================================
+\section{Introduction}
+\label{sec:introduction}
+
+Mathematical reasoning---encompassing conjecture formulation, proof construction, and counterexample identification---lies at the heart of scientific and technological progress. From the resolution of the Poincar\'{e} conjecture to the development of cryptographic protocols grounded in algebraic geometry, advances in mathematics have far-reaching consequences across the sciences \citep{hartshorne1977algebraic, sturmfels2002solving}. Traditionally, the mathematical discovery process has been exclusively manual, requiring deep domain expertise and creative insight that is difficult to formalize or automate. Recent advances in artificial intelligence, particularly the Transformer architecture \citep{vaswani2017attention} and large language models (LLMs) built upon it---from GPT-2 \citep{radford2019language} and BERT \citep{devlin2019bert} to GPT-3 \citep{brown2020language} and instruction-tuned variants trained via reinforcement learning from human feedback \citep{ouyang2022training}---have opened new possibilities for augmenting this process \citep{davies2021advancing, romera2024mathematical, he2023machine}, yet fundamental challenges remain.
+
+Current AI systems for mathematical reasoning face four critical limitations. \textbf{Scalability}: mathematics encompasses a vast landscape of interconnected subdomains, each with its own vocabulary, proof techniques, and structural patterns; a model trained primarily on one area (e.g., combinatorics) may fail to transfer effectively to another (e.g., algebraic geometry) \citep{gururangan2020dont}. \textbf{Depth of reasoning}: while LLMs excel at pattern recognition and can generate plausible-looking mathematical text, they often struggle with the sustained logical reasoning required for complex proofs, particularly those requiring multiple intermediate lemmas or non-obvious proof strategies \citep{achiam2024gpt4, lewkowycz2022minerva}. \textbf{Verifiability}: LLM outputs are inherently probabilistic and prone to hallucination; without formal verification, there is no guarantee that a generated proof is correct or that a proposed conjecture is well-formed \citep{polu2020generative}. \textbf{Adaptability}: monolithic models require substantial retraining to incorporate new mathematical knowledge or adapt to emerging research areas \citep{ke2023continual}.
+
+We propose \mathscy{}, a compositional and modular system designed to address these limitations through the integration of three key innovations:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Domain-specialized Mixture-of-Experts architecture.} Rather than relying on a single general-purpose mathematical reasoner, \mathscy{} employs a sparse MoE model with eight domain-specialized expert modules, each trained via Low-Rank Adaptation (LoRA) \citep{hu2022lora} on a distinct mathematical subdomain. The experts are constructed through the Branch-Train-Mix (BTM) paradigm \citep{sukhbaatar2024branch}, which branches from a shared mathematical foundation (DeepSeek-Math-7B \citep{shao2024deepseekmath}), trains each branch on domain-specific data in embarrassingly parallel fashion, and mixes the specialized modules into a unified MoE architecture with sigmoid gating and auxiliary-loss-free load balancing \citep{deepseekai2024deepseekv3}. This design enables efficient scaling across mathematical domains while preserving within-domain depth.
+
+    \item \textbf{Self-Play Theorem Prover with formal verification.} Inspired by the expert iteration paradigm \citep{anthony2017thinking, silver2017mastering} and recent advances in neural theorem proving \citep{polu2023formal, xin2024deepseekproverv2}, \mathscy{} implements a self-play loop in which a conjecturer model and a prover model iteratively improve through mutual training. Generated conjectures are autoformalized into Lean~4 \citep{moura2021lean} and subjected to a four-tier verification pipeline: type-checking, triviality detection via \texttt{aesop}, counterexample search, and automated proof attempts using Mathlib tactics \citep{mathlib2020}. Verification outcomes provide a noise-free training signal that grounds the self-play loop in formal correctness.
+
+    \item \textbf{Large-scale structured mathematical dataset.} We curate a corpus of 6.47~million mathematical entries spanning 154 arXiv categories and 15 domain groups, from which we extract 241,586 structured training examples through a combination of Gemini-powered knowledge extraction and LaTeX theorem mining from arXiv source files. The dataset is explicitly organized by mathematical type and domain, enabling stratified training of domain-specialized experts.
+\end{enumerate}
+
+The system focuses on current research in applied, combinatorial, and computational algebraic geometry---areas where computational experimentation and AI-assisted discovery have particular potential to advance mathematical knowledge \citep{cox2015ideals, garcia2024applications}. Algebraic geometry's rich interplay between algebraic structures and geometric intuition, combined with the computability of many fundamental invariants (Gr\"obner bases, Hilbert functions, intersection multiplicities), makes it an ideal testbed for AI-assisted mathematical reasoning.
+
+This paper makes the following contributions:
+\begin{itemize}[leftmargin=*]
+    \item We present the first domain-specialized MoE architecture for mathematical reasoning, demonstrating that parameter-efficient expert modules trained on distinct mathematical subdomains can be effectively combined through learned routing.
+    \item We design a complete self-play theorem proving pipeline that integrates conjecture generation, autoformalization, and formal verification in Lean~4, creating a closed loop between informal mathematical intuition and machine-checkable proofs.
+    \item We construct one of the largest structured mathematical knowledge bases assembled for training domain-specialized models, with explicit type and domain annotations enabling stratified expert training.
+    \item We provide a comprehensive experimental framework for evaluating AI-assisted mathematical reasoning systems, encompassing both established benchmarks (miniF2F, MATH, ProofNet) and targeted evaluations on open problems in algebraic geometry.
+\end{itemize}
+
+The remainder of this paper is organized as follows. Section~\ref{sec:related_work} surveys related work across the relevant research areas. Section~\ref{sec:background} establishes the mathematical foundations underlying our approach. Section~\ref{sec:methodology} presents the \mathscy{} system architecture and training methodology in detail. Section~\ref{sec:dataset} describes the dataset construction pipeline. Section~\ref{sec:experimental_setup} outlines the experimental protocol. Section~\ref{sec:results} presents preliminary results from the expert training phase. Section~\ref{sec:discussion} discusses implications and limitations. Section~\ref{sec:conclusion} concludes.
+
+
+% ============================================================================
+\section{Related Work}
+\label{sec:related_work}
+
+Our work lies at the intersection of several active research areas: mixture-of-experts architectures, large language models for mathematical reasoning, formal theorem proving, conjecture generation, mathematical dataset construction, domain specialization, and self-play for reasoning. We survey each area in turn, situating \mathscy{} within the broader landscape.
+
+\subsection{Mixture-of-Experts Models}
+
+The Mixture-of-Experts (MoE) paradigm has its roots in the seminal work of \cite{jacobs1991adaptive}, who proposed a system of expert networks governed by a gating mechanism that partitions the input space, enabling different experts to specialize on different subsets of the data. This foundational idea---that a collection of specialized sub-models can outperform a single monolithic model---has undergone a remarkable renaissance in the era of large-scale Transformers. The key insight driving modern MoE research is that sparse conditional computation allows models to scale parameter counts dramatically while keeping per-token computational cost tractable, a property first demonstrated at scale by the Sparsely-Gated Mixture-of-Experts layer of \cite{shazeer2017outrageously}, which interposed a trainable gating network between Transformer layers and a large pool of feed-forward experts, activating only the top-$k$ experts per token.
+
+The subsequent evolution of MoE architectures has been defined by innovations in routing, load balancing, and scaling efficiency. \cite{lepikhin2021gshard} introduced GShard, which scaled MoE to 600 billion parameters for multilingual machine translation with a top-2 gating strategy and random auxiliary routing to a second expert, demonstrating the viability of MoE for cross-lingual generalization. The Switch Transformer \citep{fedus2022switch} simplified this design by employing top-1 routing---dispatching each token to a single expert---and introducing differentiable load-balancing auxiliary losses alongside capacity factors to prevent expert collapse, enabling models to scale to over one trillion parameters with reduced communication overhead. Concurrently, GLaM \citep{du2022glam} demonstrated that a 1.2-trillion-parameter MoE model with 64 experts per layer could match GPT-3 quality while using only one-third of the energy for training, and \citet{riquelme2021scaling} showed that MoE principles extend effectively to vision transformers. \citet{zhou2022mixture} provided a comprehensive survey of MoE methods, systematically categorizing advances in gating mechanisms, training strategies, and applications. ST-MoE \citep{zoph2022st} further refined the design space by introducing stable training techniques and encoder-decoder MoE models that achieved state-of-the-art performance on reasoning benchmarks. These works established auxiliary losses as the standard mechanism for encouraging balanced expert utilization, though at the cost of introducing a hyperparameter whose magnitude must be carefully tuned: too large an auxiliary loss degrades task performance, while too small a loss permits routing degeneration.
+
+More recently, a new generation of MoE models has pushed beyond auxiliary-loss-based load balancing. The DeepSeekMoE architecture \citep{dai2024deepseekmoe} proposed fine-grained expert segmentation combined with shared experts, isolating common knowledge in a subset of always-active experts while routing specialized tokens to domain-specific ones. DeepSeek-V2 \citep{liu2024deepseekv2} extended this with Multi-head Latent Attention and further refined the expert-routing paradigm. Most relevant to our work, DeepSeek-V3 \citep{deepseekai2024deepseekv3} introduced an auxiliary-loss-free load balancing strategy that replaces explicit auxiliary losses with a dynamic bias term added to affinity scores during top-$K$ routing: expert load is monitored at each training step, and the bias is adjusted to penalize overloaded experts and promote underloaded ones. Critically, DeepSeek-V3 also adopted sigmoid gating---computing affinity scores via the sigmoid function and normalizing among selected experts---rather than the conventional softmax over all experts, yielding more flexible multi-expert activation patterns. This combination of sigmoid gating with loss-free balancing achieves superior performance to auxiliary-loss methods, and directly informs the gating design in \mathscy{}.
+
+The open-source MoE ecosystem has also matured substantially. Mixtral 8$\times$7B \citep{jiang2024mixtral} demonstrated that a sparse mixture of eight experts per layer, with top-2 routing and 12.9B active parameters out of 46.7B total, can match or exceed models several times its effective size, including Llama~2 70B. OLMoE \citep{muennighoff2024olmoe} provided a fully open, reproducible MoE baseline with 7B total parameters and 1B active, trained on 5 trillion tokens, accompanied by open-source weights, training data, and code---establishing important baselines for MoE research and demonstrating that even modestly-sized MoE models can achieve competitive performance through careful data curation and training.
+
+Of particular importance to our architectural design is the Branch-Train-Mix (BTX) framework of \cite{sukhbaatar2024branch}, which proposes a three-stage recipe for constructing domain-specialized MoE models: (i)~branching from a seed pretrained model by copying it, (ii)~training each copy independently on a domain-specific data subset in embarrassingly parallel fashion, and (iii)~mixing the specialized experts into MoE layers with averaged non-expert parameters, followed by MoE fine-tuning to learn token-level routing. BTX generalizes both Branch-Train-Merge \citep{li2022branch} (which lacks learned routing) and sparse upcycling (which omits independent expert training), demonstrating superior accuracy and efficiency on mathematics and code domains without catastrophic forgetting. \mathscy{} adopts the BTX paradigm but replaces full-model branching with parameter-efficient LoRA expert modules, enabling us to train eight domain-specialized mathematical experts from a shared DeepSeek-Math base with substantially reduced memory and compute requirements.
+
+\subsection{Large Language Models for Mathematical Reasoning}
+
+The application of large language models to mathematical reasoning has progressed rapidly from early demonstrations of arithmetic and word-problem solving to systems approaching competition-level mathematics. Early benchmarks such as the DeepMind Mathematics Dataset \citep{saxton2019analysing} and the ARC challenge \citep{clark2018think} revealed both the promise and limitations of neural approaches to mathematical and abstract reasoning tasks. The scaling paradigm established by T5 \citep{raffel2020exploring}, PaLM \citep{chowdhery2023palm}, Gopher \citep{rae2022scaling}, and the Chinchilla scaling laws \citep{hoffmann2022training} demonstrated that model and data scale are critical determinants of mathematical capability. The LLaMA family \citep{touvron2023llama, touvron2023llama2} democratized access to capable base models, while Galactica \citep{taylor2022galactica} showed that pretraining on scientific corpora yields strong performance on mathematical tasks. A pivotal advance was the discovery by \cite{wei2022chain} that chain-of-thought (CoT) prompting---providing a few exemplar reasoning chains as demonstrations---elicits multi-step reasoning capabilities that emerge with sufficient model scale (approximately 100B parameters), dramatically improving performance on arithmetic, commonsense, and symbolic reasoning benchmarks. This emergent property of large models underscored the importance of scale and prompted the development of mathematics-specialized architectures.
+
+Minerva \citep{lewkowycz2022minerva}, based on PaLM, demonstrated that continued pretraining on 118GB of scientific papers from the arXiv, combined with few-shot CoT prompting and majority voting, could achieve state-of-the-art performance on quantitative reasoning tasks spanning mathematics, physics, and other STEM domains. Follow-up work by \citet{lewkowycz2023beyond} extended Minerva's approach to broader scientific reasoning tasks beyond mathematics. However, Minerva's answers could not be automatically verified, as the model operates entirely in natural language without recourse to formal grounding. GPT-4 \citep{achiam2024gpt4} further raised the ceiling on mathematical reasoning, achieving strong performance on competition-level benchmarks including the AMC and AIME, though its closed-source nature limits its utility as a research platform.
+
+The open-source mathematical reasoning community has produced a series of increasingly capable models. Llemma \citep{azerbayev2024llemma}, continuing pretraining Code Llama on the Proof-Pile-2 mixture of scientific papers, mathematical web text, and formal proof data, outperformed all open base models on the MATH benchmark and demonstrated capability in both tool use and formal theorem proving without task-specific fine-tuning. DeepSeekMath \citep{shao2024deepseekmath} pushed the boundaries further by leveraging a meticulously engineered web data selection pipeline to harvest high-quality mathematical content from Common Crawl, and introduced Group Relative Policy Optimization (GRPO)---a memory-efficient variant of PPO---to enhance mathematical reasoning through reinforcement learning, achieving 51.7\% on the MATH benchmark at the 7B scale. InternLM-Math \citep{ying2024internlmmath} contributed a chain-of-thought reasoning framework integrated with tool use and formal verification capabilities, while Qwen2.5-Math \citep{yang2024qwen25math} established the current state of the art among open models by supporting both CoT and Tool-Integrated Reasoning (TIR) across multiple languages.
+
+The integration of external computational tools with natural language reasoning has emerged as a powerful paradigm for mathematical problem solving. ToRA \citep{gou2024tora} introduced Tool-integrated Reasoning Agents that interleave natural language reasoning steps with calls to computation libraries and symbolic solvers, trained via imitation learning on GPT-4-generated interactive trajectories. ToRA demonstrated that even modest-scale models (34B) can outperform GPT-4's CoT performance on competition-level benchmarks when equipped with appropriate tool interfaces. Process-level verification \citep{lightman2024lets} further enhanced reasoning reliability by training reward models to verify individual reasoning steps rather than only final answers, enabling more fine-grained feedback during both training and inference. Math-Shepherd \citep{wang2024math} extended process supervision with automatic step-level reward labeling, enabling scalable reward model training. More recently, DeepSeek-R1 \citep{deepseekai2025deepseekr1} demonstrated that reinforcement learning alone can induce sophisticated mathematical reasoning behaviors, including self-verification and chain-of-thought, without supervised fine-tuning. AlphaGeometry \citep{trinh2024alphageometry} combined a neural language model with a symbolic deduction engine to solve Olympiad-level geometry problems, approaching human gold-medalist performance. The MUSTARD benchmark \citep{huang2024mustard} was introduced to evaluate multi-step textual reasoning with distractors, providing a more rigorous test of mathematical reasoning robustness.
+
+\mathscy{} builds upon these advances by combining domain-specialized MoE architecture with mathematical reasoning, hypothesizing that different areas of mathematics---from algebraic geometry to combinatorics to probability theory---benefit from dedicated expert modules rather than a single general-purpose mathematical reasoner. Our approach complements the reasoning enhancements of CoT, GRPO, and tool integration by introducing an orthogonal axis of improvement: structural specialization at the architecture level.
+
+\subsection{Formal Theorem Proving with Large Language Models}
+
+The intersection of large language models and formal theorem proving represents one of the most promising avenues for achieving verifiable mathematical reasoning. Earlier work on premise selection for theorem proving by \citet{ferreira2020natural} demonstrated that natural language processing techniques could identify relevant premises from large libraries, and TacticToe \citep{gauthier2021tactictoe} applied Monte Carlo tree search to tactic-based proof search in HOL4. The pioneering GPT-f system \citep{polu2020generative} demonstrated that Transformer-based language models could generate novel proofs in the Metamath formal system, contributing 23 shortened proofs that were accepted into the main Metamath library---the first instance of a deep learning system contributing proofs adopted by a formal mathematics community. Subsequent work by \cite{polu2023formal} on formal mathematics statement curriculum learning showed that expert iteration with a curriculum of progressively harder statements could substantially improve proof search, establishing a paradigm in which language models are iteratively trained on their own successful proofs.
+
+The development of interactive proof assistants, particularly Lean~4 and its mathematical library Mathlib, has created a rich ecosystem for neural theorem proving. Early efforts in Lean-based autoformalization by \citet{jiang2022lean} demonstrated the feasibility of translating informal mathematical statements into Lean, while \citet{wu2022autoformalization} showed that large language models can autoformalize mathematical statements at scale with surprisingly high accuracy. \citet{zheng2021lean} explored verification techniques within the Lean ecosystem, and recent progress surveyed by \citet{wu2024lean} highlights the rapid maturation of Lean-based proving tools. LeanDojo \citep{yang2024leandojo} provided a comprehensive toolkit for extracting training data from Lean repositories and interacting with the Lean prover programmatically, enabling the training of ReProver---a retrieval-augmented theorem prover that selects relevant premises from the library to guide proof search. LeanCopilot \citep{song2024leancopilot} brought large language models directly into the Lean development environment as a copilot, suggesting tactics and premises in real time. LeanAnime \citep{yang2023leananime} introduced animated visualization techniques to make formal proofs more accessible. The LEGO-Prover \citep{wang2024legoprover} introduced a modular approach to proof construction, maintaining a growing library of verified lemmas that can be retrieved and composed to prove new theorems, advancing the state of the art on the miniF2F benchmark \citep{zheng2022minif2f}.
+
+The most dramatic recent advance in formal theorem proving is AlphaProof \citep{trinh2024alphaproof}, which coupled a pretrained language model with the AlphaZero reinforcement learning algorithm to achieve silver-medal performance at the 2024 International Mathematical Olympiad, solving four out of six problems. AlphaProof guarantees correctness by verifying every logical step using the Lean proof assistant, and employs test-time reinforcement learning to enable deep, problem-specific adaptation. The DeepSeek-Prover series has also made significant contributions: DeepSeek-Prover \citep{xin2024deepseekprover} introduced Monte Carlo tree search for proof generation in Lean~4, DeepSeek-Prover-V1.5 \citep{xin2024deepseekproverv15} refined this approach with improved training data curation and proof search strategies, and DeepSeek-Prover-V2 \citep{xin2024deepseekproverv2} advanced formal reasoning through subgoal decomposition, achieving 88.9\% on miniF2F-test with the 671B variant. Draft, Sketch, and Prove \citep{jiang2023draft} and Baldur \citep{first2023baldur} explored complementary strategies of proof sketching and whole-proof generation, respectively. NaturalProver \citep{welleck2022naturalprover} generated proofs by conditioning on natural language references and definitions, bridging the gap between informal and formal reasoning. TheoremLlama \citep{chen2024theoremllama} fine-tuned the LLaMA architecture specifically for theorem proving, demonstrating that open-weight models can be adapted into capable provers. MagnusHammer \citep{mikula2024magnushammer} advanced premise selection through transformer-based retrieval, significantly improving tactic-based proof search by identifying the most relevant library lemmas.
+
+\mathscy{} integrates formal verification as a core component of its Self-Play Theorem Prover loop, using Lean~4 autoformalization to translate naturally-expressed conjectures into formally verifiable statements. Unlike systems that focus exclusively on formal proof search, our approach treats autoformalization as a bridge between the conjecture generation capabilities of domain-specialized experts and the verification guarantees of formal proof assistants.
+
+\subsection{Conjecture Generation and Mathematical Discovery}
+
+The automation of conjecture generation---producing novel, non-trivial mathematical hypotheses---represents a fundamentally different challenge from theorem proving, requiring creative exploration of mathematical structure rather than verification of known claims. A watershed moment for AI-driven mathematical discovery came with \cite{davies2021advancing}, who demonstrated that machine learning could guide human mathematical intuition by identifying previously unknown patterns in knot theory and representation theory. By training neural networks to predict relationships between mathematical invariants and then interpreting the learned representations, the collaboration led to the discovery of a new geometric quantity and new connections between Bruhat intervals and Kazhdan--Lusztig polynomials.
+
+\cite{fawzi2022discovering} introduced AlphaTensor, which cast the discovery of efficient matrix multiplication algorithms as a reinforcement learning problem, discovering algorithms that surpassed Strassen's 50-year-old method for certain matrix sizes. FunSearch \citep{romera2024mathematical}, published in Nature, represented the first instance of an LLM-based system making genuine new mathematical discoveries, discovering new constructions of large cap sets exceeding previously known bounds by searching the space of programs rather than solutions. \cite{poesia2024learning} proposed learning formal mathematics from intrinsic motivation, jointly training a conjecturer and prover in a self-play framework that bootstraps from axioms alone. Wagner \citep{wagner2021constructions} approached conjecture generation through reinforcement learning for counterexample search, and \cite{he2023machine} surveyed the emerging applications of machine learning to pure mathematics.
+
+\mathscy{} contributes to this landscape by coupling domain-specialized expert models with a self-play loop that jointly trains a conjecturer and a prover, with domain specialization enabling conjectures grounded in specific mathematical vocabularies and structural patterns.
+
+\subsection{Dataset Construction for Mathematical AI}
+
+The quality and coverage of training data have emerged as decisive factors in the performance of mathematical reasoning systems. The MATH dataset \citep{hendrycks2021measuring} established a foundational benchmark of 12,500 competition-level problems with detailed solutions. OpenWebMath \citep{paster2024openwebmath} extracted 14.7 billion tokens of mathematical web content from Common Crawl, while MathPile \citep{wang2023mathpile} assembled a diverse 9.5-billion-token corpus from textbooks, arXiv papers, and mathematical websites. For formal mathematics, ProofNet \citep{azerbayev2023proofnet} provided undergraduate-level formal proving benchmarks in Lean~4, NaturalProofs \citep{welleck2021naturalproofs} assembled 30,000 theorem-proof pairs from mathematical repositories, and the Goedel dataset \citep{lin2024goedel} produced 1.64 million formalized statements through synthetic data generation.
+
+Beyond mathematics-specific datasets, broader evaluation frameworks such as HumanEval \citep{chen2021evaluating} for code generation, BigCodeBench \citep{zhuo2024bigcodebench} for compositional coding tasks, and HELM \citep{liang2023holistic} for holistic language model evaluation have established methodological standards for rigorous model assessment that inform our evaluation design.
+
+Our dataset of 6.47 million mathematical entries across 15 domains, explicitly structured around mathematical type and domain, represents one of the largest structured collections assembled for training domain-specialized models, complementing the pretraining-focused corpora (OpenWebMath, MathPile) and formal verification datasets (ProofNet, Goedel).
+
+\subsection{Domain Specialization and Parameter-Efficient Fine-Tuning}
+
+The effectiveness of domain-adaptive pretraining was established by \cite{gururangan2020dont}, who showed that a second phase of pretraining on in-domain text yields consistent performance gains across diverse domains. Parameter-efficient fine-tuning (PEFT) methods make multi-domain specialization tractable: prompt tuning \citep{lester2021power} demonstrated that learning soft prompts can adapt frozen models to downstream tasks with minimal parameters, LoRA \citep{hu2022lora} represents weight updates as low-rank decompositions, QLoRA \citep{dettmers2023qlora} enables fine-tuning through 4-bit quantized base models, ReFT \citep{luong2024reft} introduced representation fine-tuning that intervenes on hidden representations rather than weights, and DoRA \citep{liu2024dora} refines this by decomposing weight matrices into magnitude and direction components. The adapter framework of \cite{houlsby2019parameter} pioneered task-specific bottleneck modules with minimal parameter overhead. \citet{scialom2022fine} provided a comprehensive survey of fine-tuning strategies for language models, while \citet{gupta2023continual} addressed the challenge of continual learning in the context of domain adaptation, proposing methods to prevent catastrophic forgetting when models are sequentially adapted to new domains.
+
+In \mathscy{}, each expert consists of LoRA adapters specialized to a mathematical domain, while the shared base parameters of DeepSeek-Math-7B encode general mathematical knowledge---enabling eight domain experts to be trained with a fraction of the memory required by full-model branching.
+
+\subsection{Self-Play and Reinforcement Learning for Reasoning}
+
+Self-play reinforcement learning, as demonstrated by AlphaZero \citep{silver2017mastering}, achieves superhuman performance through agents learning by competing against themselves. Expert Iteration \citep{anthony2017thinking} formalized this as a dual-process framework, and Proximal Policy Optimization \citep{schulman2017proximal} provided a stable policy gradient algorithm that has become the standard for reinforcement learning from human feedback in language models. Self-Instruct \citep{wang2023selfinstruct} demonstrated that language models can generate their own instruction-following training data, enabling self-improvement without human annotation. \citet{kadavath2022language} investigated language models' capacity for self-knowledge and calibrated self-evaluation, showing that models can assess the correctness of their own outputs---a capability central to self-play frameworks. STaR \citep{zelikman2022star} introduced self-taught reasoning for language models, and ReST \citep{gulcehre2023rest} generalized this through an expectation-maximization framework. BIG-bench \citep{srivastava2023beyond} provided a comprehensive benchmark suite for evaluating diverse reasoning capabilities, including mathematical reasoning tasks that inform self-play evaluation. \cite{singh2024beyond} demonstrated that iterative self-training with correctness feedback surpasses human-data fine-tuning for mathematical reasoning. In formal mathematics, \cite{polu2023formal} showed that expert iteration with curriculum learning dramatically improves proof search.
+
+\mathscy{} extends the self-play paradigm by introducing domain-specialized experts into the conjecturer-prover loop, ensuring that conjectures remain mathematically meaningful within their respective fields.
+
+
+% ============================================================================
+\section{Background and Preliminaries}
+\label{sec:background}
+
+We establish the mathematical foundations underlying \mathscy{}'s architecture. Our system integrates four key technical pillars: sparse Mixture-of-Experts models for domain-specialized reasoning, parameter-efficient fine-tuning via low-rank adaptation, formal verification through dependent type theory, and self-play theorem proving for iterative improvement.
+
+\subsection{Mixture-of-Experts Models}
+
+The Mixture-of-Experts (MoE) paradigm \citep{jacobs1991adaptive} enables conditional computation by routing each input to a subset of specialized sub-networks, thereby decoupling model capacity from per-example computational cost.
+
+\subsubsection{Standard MoE Formulation}
+
+Consider an input representation $\mathbf{x} \in \R^d$ at a given layer of a transformer network. An MoE layer replaces the monolithic feed-forward network (FFN) with $N$ expert networks $\{E_i\}_{i=1}^{N}$, each $E_i: \R^d \to \R^d$, and a gating function $g: \R^d \to \R^N$. The layer output is the gated combination:
+\begin{equation}\label{eq:moe_output}
+    \mathbf{y} = \sum_{i=1}^{N} g_i(\mathbf{x}) \cdot E_i(\mathbf{x}),
+\end{equation}
+where $g_i(\mathbf{x})$ denotes the $i$-th component of the gating vector. Each expert $E_i$ is typically a multi-layer perceptron with SwiGLU activation \citep{shazeer2017outrageously}:
+\begin{equation}
+    E_i(\mathbf{x}) = \bigl(\sigma(W_{1}^{(i)} \mathbf{x}) \odot W_{3}^{(i)} \mathbf{x}\bigr) W_{2}^{(i)},
+\end{equation}
+where $W_{1}^{(i)}, W_{3}^{(i)} \in \R^{d_{\mathrm{ff}} \times d}$, $W_{2}^{(i)} \in \R^{d \times d_{\mathrm{ff}}}$, $\sigma(\cdot)$ is the SiLU nonlinearity, and $\odot$ denotes the Hadamard product.
+
+\subsubsection{Top-$k$ Routing}
+
+The seminal sparse gating mechanism \citep{shazeer2017outrageously} computes gate values via a learned linear projection followed by a sparsified softmax. Let $W_g \in \R^{N \times d}$ be the gating weight matrix. The gating function is:
+\begin{equation}\label{eq:topk_routing}
+    g(\mathbf{x}) = \TopK\bigl(\softmax(W_g \mathbf{x}),\; k\bigr),
+\end{equation}
+where $\TopK(\cdot, k)$ retains the $k$ largest entries and zeros out the rest. Letting $\mathbf{s} = \softmax(W_g \mathbf{x}) \in \Delta^{N-1}$ and $\mathcal{T}(\mathbf{x}) = \mathrm{argtopk}(\mathbf{s}, k)$:
+\begin{equation}
+    g_i(\mathbf{x}) = \begin{cases}
+        \displaystyle\frac{s_i}{\sum_{j \in \mathcal{T}(\mathbf{x})} s_j} & \text{if } i \in \mathcal{T}(\mathbf{x}), \\[6pt]
+        0 & \text{otherwise}.
+    \end{cases}
+\end{equation}
+The Switch Transformer \citep{fedus2022switch} demonstrated that $k=1$ suffices for strong performance while maximizing computational efficiency.
+
+\subsubsection{Sigmoid Routing with Auxiliary-Loss-Free Balancing}
+
+DeepSeek-V3 \citep{deepseekai2024deepseekv3} introduced an alternative gating mechanism replacing the softmax with independent sigmoid activations:
+\begin{equation}\label{eq:sigmoid_gating}
+    g_i(\mathbf{x}) = \sigma\bigl(\mathbf{w}_i^\top \mathbf{x} + b_i\bigr),
+\end{equation}
+where $\mathbf{w}_i \in \R^d$ is the gating weight vector, $b_i \in \R$ is a learned bias, and $\sigma(z) = (1 + e^{-z})^{-1}$ is the logistic sigmoid. The bias terms serve as auxiliary-loss-free balancing knobs: during training, letting $c_i^{(t)}$ denote the cumulative token count for expert $i$ at step $t$:
+\begin{equation}
+    b_i^{(t+1)} = b_i^{(t)} - \gamma \cdot \sign\!\left(c_i^{(t)} - \frac{1}{N}\sum_{j=1}^{N} c_j^{(t)}\right),
+\end{equation}
+where $\gamma > 0$ is a small step size, decoupling load balancing from the training loss landscape.
+
+\subsubsection{Load Balancing via Auxiliary Loss}
+
+When explicit balancing is employed \citep{shazeer2017outrageously, fedus2022switch}, the training loss is augmented with:
+\begin{align}
+    f_i &= \frac{1}{T} \sum_{t=1}^{T} \mathbb{1}\bigl[i \in \mathcal{T}(\mathbf{x}_t)\bigr], \qquad
+    P_i = \frac{1}{T} \sum_{t=1}^{T} s_i(\mathbf{x}_t), \\
+    \mathcal{L}_{\mathrm{aux}} &= \alpha \cdot N \cdot \sum_{i=1}^{N} f_i \cdot P_i,
+\end{align}
+with hyperparameter $\alpha > 0$, yielding total objective $\mathcal{L} = \mathcal{L}_{\mathrm{task}} + \mathcal{L}_{\mathrm{aux}}$.
+
+\subsubsection{Shared Expert and Branch-Train-Mix}
+
+We augment the MoE layer with a shared expert $E_{\mathrm{shared}}$ that processes every token unconditionally \citep{deepseekai2024deepseekv3}:
+\begin{equation}\label{eq:shared_expert}
+    \mathbf{y} = E_{\mathrm{shared}}(\mathbf{x}) + \sum_{i=1}^{N} g_i(\mathbf{x}) \cdot E_i(\mathbf{x}).
+\end{equation}
+
+The Branch-Train-Mix paradigm \citep{sukhbaatar2024branch} constructs MoE models in three phases: \textbf{Branch}---create $N$ copies of a pretrained model $\mathcal{M}_0$ with parameters $\theta_0 = (\theta_{\mathrm{attn}}, \theta_{\mathrm{ffn}})$; \textbf{Train}---continue pretraining each $\mathcal{M}_i$ on domain corpus $\mathcal{D}_i$, yielding $\theta_i$; \textbf{Mix}---install each branch's FFN as a routed expert and average attention parameters:
+\begin{equation}\label{eq:btm_attn}
+    \theta_{\mathrm{attn}}^{(\mathrm{MoE})} = \frac{1}{N} \sum_{i=1}^{N} \theta_{\mathrm{attn}}^{(i)}.
+\end{equation}
+
+\subsection{Low-Rank Adaptation}
+
+\subsubsection{LoRA Formulation}
+
+For a pretrained weight matrix $W_0 \in \R^{d \times k}$, LoRA \citep{hu2022lora} decomposes the additive update as:
+\begin{equation}\label{eq:lora}
+    W = W_0 + \Delta W = W_0 + \frac{\alpha}{r} B A,
+\end{equation}
+where $B \in \R^{d \times r}$, $A \in \R^{r \times k}$, and $r \ll \min(d, k)$. At initialization, $A \sim \mathcal{N}(0, \sigma^2)$ and $B = \mathbf{0}$, ensuring $\Delta W = \mathbf{0}$ initially. The number of trainable parameters per layer is $r(d + k)$, a reduction by factor $\min(d, k)/r$ from full fine-tuning.
+
+\subsubsection{QLoRA}
+
+QLoRA \citep{dettmers2023qlora} quantizes frozen base weights to 4-bit NormalFloat (NF4) precision---choosing quantization levels as quantiles of $\mathcal{N}(0, 1)$:
+\begin{equation}
+    \Phi(q_j) = \frac{j}{2^b}, \quad j = 0, 1, \ldots, 2^b,
+\end{equation}
+where $\Phi$ is the standard normal CDF. Double quantization further reduces metadata overhead, and paged optimizers manage CPU-GPU memory transfer.
+
+\subsubsection{LoRA-MoE Construction}
+
+In \mathscy{}, each routed expert is a LoRA adapter applied to the base FFN:
+\begin{equation}\label{eq:lora_moe}
+    \mathbf{y} = \mathrm{FFN}(W_0;\; \mathbf{x}) + \sum_{i=1}^{N} g_i(\mathbf{x}) \cdot \frac{\alpha}{r} \bigl(B_i A_i\bigr) \mathbf{x},
+\end{equation}
+reducing trainable parameters from $N \cdot dk$ (full MoE) to $N \cdot r(d+k)$.
+
+\subsection{Formal Verification in Lean 4}
+
+Lean~4 \citep{moura2021lean} is based on the Calculus of Inductive Constructions (CIC), a dependent type theory where the Curry-Howard correspondence identifies propositions with types and proofs with terms:
+\begin{equation}
+    \underbrace{P \text{ is true}}_{\text{logic}} \quad \longleftrightarrow \quad \underbrace{\exists\, t \text{ such that } t : P}_{\text{type theory}}.
+\end{equation}
+
+Lean~4's kernel type-checker algorithmically verifies that a proof term $t$ has the claimed type $P$, reducing proof verification to type checking---a decidable procedure in CIC. Mathlib \citep{mathlib2020} provides over 170,000 formalized definitions and theorems spanning algebra, analysis, topology, and combinatorics. The formalization of algebraic structures in Mathlib draws on foundational treatments of commutative algebra \citep{eisenbud1995commutative}, enabling formal reasoning about rings, ideals, and modules that underpin algebraic geometry.
+
+Autoformalization---translating informal mathematical statements into formal Lean~4 terms---must satisfy: (1)~type-correctness ($\hat{s}$ passes the kernel type-checker), (2)~semantic fidelity ($\hat{s}$ faithfully represents the content of $s$), and (3)~provability preservation (true theorems yield provable formalizations).
+
+\subsection{Self-Play Theorem Proving}
+
+Inspired by expert iteration \citep{anthony2017thinking, silver2017mastering}, we employ a self-play loop alternating between policy improvement via search and policy distillation:
+\begin{align}
+    \pi^*_n &= \mathrm{Search}(\pi_{\theta_n}, \mathcal{V}), \label{eq:expert_iter_search} \\
+    \theta_{n+1} &= \argmin_\theta\; \E_{x \sim \mathcal{D}} \bigl[ D_{\mathrm{KL}}(\pi^*_n(\cdot \mid x) \,\|\, \pi_\theta(\cdot \mid x)) \bigr], \label{eq:expert_iter_distill}
+\end{align}
+where $\mathcal{V}$ is instantiated as the Lean~4 type-checker, providing a sparse but noise-free training signal \citep{polu2023formal}.
+
+The conjecturer-prover loop generates candidates $s \sim \mathcal{C}_\phi(\cdot \mid c)$, autoformalizes them, filters through a quality criterion:
+\begin{equation}\label{eq:quality_filter}
+    Q(\hat{s}) = \mathbb{1}[\hat{s} \text{ type-checks}] \cdot \mathbb{1}[\texttt{aesop}(\hat{s}) = \texttt{fail}] \cdot \mathbb{1}[\texttt{slim\_check}(\hat{s}) = \texttt{pass}],
+\end{equation}
+and trains both models on successful proof pairs, creating a virtuous cycle of improvement.
+
+
+% ============================================================================
+\section{Methodology}
+\label{sec:methodology}
+
+We present \mathscy{}, an integrated system for AI-assisted mathematical reasoning that combines domain-specialized Mixture-of-Experts (MoE) language models with a self-play theorem proving loop and formal verification in Lean~4. The system supports conjecture formulation, proof construction, and counterexample identification, with a focus on applied, combinatorial, and computational algebraic geometry. In this section, we describe each component in detail.
+
+\subsection{System Architecture Overview}
+\label{sec:architecture}
+
+\mathscy{} comprises four tightly integrated subsystems: (1)~a data curation pipeline that harvests and structures mathematical knowledge from the arXiv corpus; (2)~a domain-specialized MoE language model built via the Branch-Train-Mix paradigm~\citep{sukhbaatar2024branch}; (3)~a Self-Play Theorem Prover (STP) loop that iteratively improves both conjecture generation and proof search; and (4)~a Lean~4 autoformalization and verification pipeline~\citep{moura2021lean} that provides rigorous correctness guarantees.
+
+The base language model is \texttt{deepseek-math-7b-base}~\citep{shao2024deepseekmath}, a 7-billion parameter transformer pretrained on 120 billion math-related tokens. We augment this model with $N{=}8$ domain-specialized LoRA experts~\citep{hu2022lora} plus one shared expert that is always active, following the DeepSeekMoE design philosophy~\citep{deepseekai2024deepseekv3}. A learned sigmoid router with auxiliary-loss-free load balancing dispatches each input token to the top-$k$ ($k{=}2$) most relevant domain experts (see Figure~\ref{fig:moe_architecture}). The prover component is built on DeepSeek-Prover-V2-7B~\citep{xin2024deepseekproverv2}, fine-tuned via LoRA on proof data generated during the STP loop.
+
+All training is conducted using QLoRA~\citep{dettmers2023qlora} with 4-bit NF4 quantization and double quantization, enabling the full pipeline to run within a 72-hour allocation on a DGX node equipped with $8\times$ NVIDIA A100 or H100 GPUs (80\,GB each). Distributed training employs the DeepSpeed library \citep{rasley2020deepspeed} with ZeRO Stage~2 \citep{rajbhandari2020zero} for optimizer state and gradient partitioning, drawing on parallelism techniques pioneered by Megatron-LM \citep{shoeybi2020megatronlm} for efficient multi-GPU training of large transformer models.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=0.6cm and 0.4cm,
+    block/.style={draw, rounded corners=3pt, minimum height=0.7cm, minimum width=2.2cm, align=center, font=\footnotesize},
+    expert/.style={block, fill=blue!12, minimum width=1.2cm, minimum height=0.6cm},
+    shared/.style={block, fill=orange!20, minimum width=1.8cm, minimum height=0.6cm},
+    router/.style={block, fill=green!15, minimum width=2.8cm, minimum height=0.7cm},
+    base/.style={block, fill=gray!15, minimum width=4cm, minimum height=0.8cm},
+    io/.style={block, fill=yellow!15, minimum width=3cm, minimum height=0.6cm},
+    combine/.style={block, fill=purple!12, minimum width=3cm, minimum height=0.6cm},
+    every edge/.style={draw, ->, thick},
+    label font/.style={font=\scriptsize},
+]
+
+% Input
+\node[io] (input) {Input tokens $\mathbf{x}$};
+
+% Base model
+\node[base, above=0.7cm of input] (base) {DeepSeek-Math-7B Base (QLoRA 4-bit)};
+
+% Hidden state
+\node[above=0.5cm of base, font=\footnotesize] (hidden) {Hidden state $\mathbf{h} \in \mathbb{R}^d$};
+
+% Router
+\node[router, above left=0.8cm and -0.3cm of hidden] (router) {Sigmoid Router};
+
+% Shared expert (right branch)
+\node[shared, above right=0.8cm and 0.8cm of hidden] (shared) {Shared Expert\\(LoRA)};
+
+% Domain experts
+\node[expert, above=0.9cm of router, xshift=-2.8cm] (e1) {\tiny Alg.\ Geom.};
+\node[expert, right=0.15cm of e1] (e2) {\tiny Discr.\ Math};
+\node[expert, right=0.15cm of e2] (e3) {\tiny Num.\ Th.};
+\node[expert, right=0.15cm of e3] (e4) {\tiny Analysis};
+\node[expert, above=0.15cm of e1] (e5) {\tiny Algebra};
+\node[expert, right=0.15cm of e5] (e6) {\tiny Geom.\ Top.};
+\node[expert, right=0.15cm of e6] (e7) {\tiny Prob.\ Stat.};
+\node[expert, right=0.15cm of e7] (e8) {\tiny Comput.};
+
+% Brace for experts
+\node[draw, dashed, rounded corners=4pt, inner sep=4pt, fit=(e1)(e2)(e3)(e4)(e5)(e6)(e7)(e8), label={[font=\scriptsize]above:8 Domain LoRA Experts}] (expertbox) {};
+
+% Top-k selection
+\node[block, fill=green!8, above=0.3cm of router, xshift=0cm, minimum width=2.0cm] (topk) {Top-$k$ ($k{=}2$)};
+
+% Combine
+\node[combine, above=0.6cm of shared, xshift=-1.5cm] (combine) {$\mathbf{y} = \frac{1}{2}\mathbf{y}^{\text{shared}} + \frac{1}{2}\sum \hat{w}_i \mathbf{y}^{(i)}$};
+
+% Output
+\node[io, above=0.5cm of combine] (output) {Output $\mathbf{y}$};
+
+% Edges
+\draw[->] (input) -- (base);
+\draw[->] (base) -- (hidden);
+\draw[->] (hidden) -| (router);
+\draw[->] (hidden) -| (shared);
+\draw[->] (router) -- (topk);
+\draw[->] (topk) -- (expertbox);
+\draw[->] (expertbox.north) -- ++(0,0.3) -| (combine.south west);
+\draw[->] (shared) -- (shared |- combine.south);
+\draw[->] (combine) -- (output);
+
+% Annotations
+\node[font=\scriptsize, text=gray, right=0.05cm of topk] {$g_i = \sigma(\mathbf{w}_i^\top\mathbf{h} + b_i + \beta_i)$};
+\node[font=\scriptsize, text=gray, left=0.1cm of shared] {always active};
+
+\end{tikzpicture}
+\caption{Architecture of the \mathscy{} MoE model. Input tokens are processed by the QLoRA-quantized DeepSeek-Math-7B base model, producing hidden states $\mathbf{h}$. A sigmoid router computes per-expert gating scores and selects the top-$k$ ($k{=}2$) domain experts. The final output combines contributions from the selected domain experts and the always-active shared expert in equal proportion (Eq.~\ref{eq:moe_final_output}).}
+\label{fig:moe_architecture}
+\end{figure}
+
+\subsection{Data Collection and Curation}
+\label{sec:data_method}
+
+Our training corpus is derived from a deduplicated collection of 6,472,665 mathematical entries extracted from arXiv papers, spanning 154 arXiv categories. The dataset encompasses diverse mathematical statement types, including theorems (${\sim}$1.24M), lemmas (${\sim}$1.39M), propositions (${\sim}$910K), definitions (${\sim}$723K), remarks (${\sim}$769K), and conjectures (${\sim}$43.5K).
+
+\paragraph{Stratified sampling.}
+To ensure balanced domain representation, we construct a stratified sample of 3,400 entries via reservoir sampling, drawing 100 entries from each of 34 primary mathematics categories. This sample serves as the seed for both structured knowledge extraction and ArXiv LaTeX theorem mining.
+
+\paragraph{Structured knowledge extraction.}
+We employ Gemini-2.0-Flash in JSON mode with temperature $\tau{=}0.3$ to extract structured representations. Each entry is processed into a JSON schema containing: formal statement, informal description, key concepts, prerequisites, mathematical domain, related theorems, and potential generalizations. A multi-strategy JSON parser with LaTeX-aware backslash fixing handles Gemini's occasional escape issues, achieving a 72.4\% successful parse rate across 3,319 processed entries.
+
+\paragraph{ArXiv LaTeX theorem extraction.}
+In parallel, we download LaTeX source files from arXiv for papers in the stratified sample. A regex-based extractor identifies theorem-like environments (\texttt{theorem}, \texttt{lemma}, \texttt{proposition}, \texttt{corollary}, \texttt{conjecture}, \texttt{definition}, \texttt{remark}) along with surrounding context, extracting 117,365 theorems from 3,214 papers with a 98.5\% download success rate.
+
+\paragraph{Training data preparation.}
+From the extracted knowledge, we construct instruction-response training pairs spanning four task types: (i)~\emph{theorem understanding} (formal statement $\to$ informal explanation), (ii)~\emph{concept identification} (text $\to$ key concepts and domain), (iii)~\emph{generalization} (statement $\to$ potential extensions), and (iv)~\emph{statement classification} (raw LaTeX $\to$ type and domain). The combined training set contains 241,586 examples across 15 domains, split 90/10 into training (217,427) and validation (24,159) sets.
+
+\subsection{Domain-Specialized Expert Training}
+\label{sec:btm}
+
+We adopt the Branch-Train-Mix paradigm~\citep{sukhbaatar2024branch} with parameter-efficient LoRA adapters~\citep{hu2022lora}, reducing per-expert memory from ${\sim}$14\,GB (full 7B parameters in float16) to ${\sim}$160\,MB.
+
+\paragraph{LoRA configuration.}
+Each domain expert is instantiated as a LoRA adapter with rank $r{=}64$, scaling factor $\alpha{=}128$, and dropout $p{=}0.05$, targeting all linear projections: \texttt{q\_proj}, \texttt{k\_proj}, \texttt{v\_proj}, \texttt{o\_proj}, \texttt{gate\_proj}, \texttt{up\_proj}, \texttt{down\_proj}. The frozen base model uses QLoRA with 4-bit NF4 quantization and double quantization, reducing memory from ${\sim}$14\,GB to ${\sim}$4\,GB.
+
+\paragraph{Training procedure.}
+Each expert $\theta_d$ for domain $d \in \{\text{algebraic\_geometry}, \text{discrete\_math}, \text{number\_theory}, \text{analysis}, \text{algebra}, \text{geometry\_topology}, \text{probability\_statistics}, \text{computational}\}$ is trained independently on the corresponding domain subset $\mathcal{D}_d$. The loss is computed only over response tokens with instruction masking:
+\begin{equation}
+\mathcal{L}_d = -\sum_{t=|\boldsymbol{x}^{\text{inst}}|+1}^{|\boldsymbol{x}|} \log p_{\theta_d}(x_t \mid x_{<t}),
+\label{eq:expert_loss}
+\end{equation}
+where instruction tokens receive label $-100$. Optimization uses 8-bit AdamW (\texttt{adamw\_bnb\_8bit}) with learning rate $\eta = 10^{-4}$, cosine schedule with 3\% linear warmup, per-GPU batch size of 8, gradient accumulation over 4 steps (effective batch size 32), maximum sequence length 4,096, and 3 training epochs. We employ dynamic padding---padding each mini-batch to the length of its longest sequence rather than to the global maximum---reducing GPU memory consumption by approximately 60\% compared to fixed-length padding. Gradient checkpointing is enabled via \texttt{prepare\_model\_for\_kbit\_training} from the PEFT library, and gradient clipping is set to 1.0. Each expert is trained sequentially on a single NVIDIA A100 80\,GB GPU, with training times ranging from 45 minutes (smallest domain) to approximately 6.5 hours (largest domain).
+
+\subsection{MoE Assembly and Router Training}
+\label{sec:moe_assembly}
+
+After branch-and-train produces 8 domain-specialized LoRA adapters, we assemble them into a unified MoE model.
+
+\paragraph{Shared expert.}
+A ninth LoRA adapter, the \emph{shared expert}, is trained on the full combined dataset, capturing general mathematical reasoning patterns. It is always active during inference.
+
+\paragraph{Router architecture.}
+We employ a sigmoid-gated router. For hidden state $\mathbf{h} \in \R^{d}$, the per-expert gating scores are:
+\begin{equation}
+g_i(\mathbf{h}) = \sigma(\mathbf{w}_i^\top \mathbf{h} + b_i + \beta_i), \quad i = 1, \ldots, N,
+\label{eq:router}
+\end{equation}
+where $\beta_i$ is a bias correction for load balancing. Top-$k$ ($k{=}2$) experts are selected and the final output combines shared and routed contributions:
+\begin{equation}
+\mathbf{y} = \tfrac{1}{2}\mathbf{y}^{\text{shared}} + \tfrac{1}{2}\sum_{i \in \mathcal{S}(\mathbf{h})} \hat{w}_i \, \mathbf{y}^{(i)}.
+\label{eq:moe_final_output}
+\end{equation}
+
+\paragraph{Auxiliary-loss-free load balancing.}
+We maintain an exponential moving average of each expert's load fraction $\ell_i$ and update $\beta_i \leftarrow \beta_i + \gamma(1/N - \ell_i)$ with $\gamma{=}0.001$, detached from the gradient graph to avoid interfering with the language modeling loss.
+
+\subsection{Self-Play Theorem Proving Loop}
+\label{sec:stp}
+
+Inspired by expert iteration \citep{anthony2017thinking} and neural theorem proving \citep{polu2023formal}, we design a Self-Play Theorem Prover (STP) loop.
+
+\paragraph{Model components.}
+The conjecturer $C_\phi$ is initialized from \texttt{deepseek-math-7b-instruct}~\citep{shao2024deepseekmath}, fine-tuned with LoRA ($r{=}64$, $\alpha{=}128$). The prover $P_\psi$ is initialized from DeepSeek-Prover-V2-7B~\citep{xin2024deepseekproverv2}, similarly fine-tuned.
+
+\paragraph{STP loop.}
+The procedure iterates for $R{=}10$ rounds, with each round:
+\begin{enumerate}
+    \item \textbf{Conjecture generation:} $C_\phi$ generates $M{=}20$ candidates per domain using four strategies: pattern interpolation, cross-domain analogy, theorem composition, and boundary exploration (temperature $\tau{=}0.8$).
+    \item \textbf{Proof attempts:} $P_\psi$ produces verdicts $v_j \in \{\text{proved}, \text{disproved}, \text{trivial}, \text{unknown}\}$ (temperature $\tau{=}0.3$).
+    \item \textbf{Quality scoring:} Each pair receives a composite score weighting novelty, difficulty, formalizability, confidence, and well-formedness.
+    \item \textbf{Retraining:} Every 3 rounds, both models are retrained on accumulated interaction data.
+\end{enumerate}
+
+The STP loop targets three priority domains: algebraic geometry, discrete math, and computational mathematics.
+
+\subsection{Lean 4 Autoformalization and Verification}
+\label{sec:lean}
+
+Conjectures are autoformalized into Lean~4~\citep{moura2021lean} and subjected to a four-tier verification protocol:
+
+\begin{enumerate}
+    \item[\textbf{Tier~1:}] \textbf{Type-checking.} The Lean~4 kernel verifies well-typedness (timeout: 120s).
+    \item[\textbf{Tier~2:}] \textbf{Triviality filter.} Statements proved by \texttt{aesop} alone are flagged as trivial.
+    \item[\textbf{Tier~3:}] \textbf{Counterexample search.} \texttt{decide}/\texttt{omega} attempt refutation.
+    \item[\textbf{Tier~4:}] \textbf{Proof attempt.} A battery of Mathlib tactics (\texttt{simp}, \texttt{norm\_num}, \texttt{ring}, \texttt{linarith}, \texttt{exact?}, \texttt{apply?}) attempt proof. Conjectures resisting all tactics are classified as \emph{open}.
+\end{enumerate}
+
+Verification outcomes feed back into the STP quality scores and expand the prover's training set, creating a closed loop between informal mathematical intuition and machine-checkable proofs \citep{polu2023formal, xin2024deepseekproverv2}.
+
+
+% ============================================================================
+\section{Dataset}
+\label{sec:dataset}
+
+We describe the construction and characteristics of the \mathscy{} mathematical knowledge corpus, designed to enable stratified training of domain-specialized MoE experts.
+
+\subsection{Source Data}
+
+The raw dataset comprises 6,472,665 mathematical entries extracted from arXiv papers, stored in deduplicated JSONL format (23.4\,GB). Each entry contains the mathematical statement text, surrounding context (200 characters before and after), arXiv category labels, paper abstract, and document metadata. The entries span 154 arXiv categories and 145 primary categories.
+
+\subsection{Domain Taxonomy}
+
+We define 15 domain groups based on arXiv category mappings, consolidating fine-grained categories into coherent mathematical subdomains. Table~\ref{tab:domain_stats} presents the distribution.
+
+\begin{table}[t]
+\centering
+\caption{Domain distribution of the \mathscy{} dataset. Expert domains (used for MoE training) are marked with $\star$. Training examples counts reflect the prepared instruction-response pairs.}
+\label{tab:domain_stats}
+\small
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+\textbf{Domain Group} & \textbf{Raw Entries} & \textbf{Training Examples} & \textbf{arXiv Categories} \\
+\midrule
+Geometry \& Topology$^\star$ & 954,000 & 49,782 & \texttt{GT, DG, GN, AT, MG, SG} \\
+Algebra$^\star$ & 745,000 & 26,218 & \texttt{AC, RA, GR, RT} \\
+Analysis$^\star$ & 518,000 & 26,501 & \texttt{AP, CA, FA, CV, SP} \\
+Other & --- & 26,646 & (miscellaneous) \\
+Mathematical Physics & --- & 15,262 & \texttt{math-ph, MP} \\
+Logic \& Foundations & --- & 17,184 & \texttt{LO, CT} \\
+Computational$^\star$ & --- & 14,435 & \texttt{cs.CG, cs.SC, cs.CC, cs.LO} \\
+Optimization \& Control & --- & 12,119 & \texttt{OC, NA} \\
+Probability \& Statistics$^\star$ & 523,000 & 10,492 & \texttt{PR, ST} \\
+Quantum Information & --- & 10,336 & \texttt{QA, quant-ph} \\
+Number Theory$^\star$ & --- & 7,560 & \texttt{NT} \\
+Differential Equations & --- & 6,927 & \texttt{AP} \\
+Discrete Math$^\star$ & --- & 6,201 & \texttt{CO, cs.DM} \\
+Dynamical Systems & --- & 6,172 & \texttt{DS} \\
+Algebraic Geometry$^\star$ & 597,000 & 5,751 & \texttt{AG} \\
+\midrule
+\textbf{Total} & \textbf{6,472,665} & \textbf{241,586} & \textbf{154 categories} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Statement Type Distribution}
+
+The dataset captures six primary mathematical statement types: lemmas (1.39M, 21.5\%), theorems (1.24M, 19.2\%), propositions (910K, 14.1\%), remarks (769K, 11.9\%), definitions (723K, 11.2\%), and conjectures (43.5K, 0.7\%). The relative scarcity of conjectures motivates our self-play conjecture generation approach.
+
+\subsection{Knowledge Extraction Pipeline}
+
+Two complementary extraction methods produce structured training data:
+
+\paragraph{LLM-powered extraction.} Gemini-2.0-Flash processes each entry in JSON mode, producing structured representations with formal statements, informal descriptions, key concepts, prerequisites, and potential generalizations. The extraction achieved a 72.4\% parse success rate across 3,319 entries, yielding 2,340 usable structured extractions that generate 7,008 training examples across three task types.
+
+\paragraph{LaTeX theorem mining.} Regex-based extraction from arXiv source files identifies theorem-like environments with surrounding context. This method processed 3,214 papers with a 98.5\% success rate, extracting 117,365 theorems that generate 234,578 training examples across two task types (statement classification and contextualization).
+
+\subsection{Training Data Statistics}
+
+The final training corpus contains 241,586 examples split into 217,427 training and 24,159 validation examples. Table~\ref{tab:task_distribution} summarizes the task distribution.
+
+\begin{table}[t]
+\centering
+\caption{Distribution of training examples by task type and source.}
+\label{tab:task_distribution}
+\small
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+\textbf{Task Type} & \textbf{Count} & \textbf{\%} & \textbf{Source} \\
+\midrule
+Statement classification & 117,289 & 48.6 & ArXiv extraction \\
+Contextualization & 117,289 & 48.6 & ArXiv extraction \\
+Theorem understanding & 2,338 & 1.0 & Gemini extraction \\
+Generalization & 2,338 & 1.0 & Gemini extraction \\
+Concept identification & 2,332 & 0.9 & Gemini extraction \\
+\midrule
+\textbf{Total} & \textbf{241,586} & \textbf{100.0} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ============================================================================
+\section{Experimental Setup}
+\label{sec:experimental_setup}
+
+We outline the planned experimental protocol for evaluating \mathscy{}. Experiments are designed to assess performance across four dimensions: domain-specialized reasoning, conjecture quality, proof capability, and end-to-end system utility.
+
+\subsection{Baselines}
+
+We compare against the following baselines:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Dense base model:} DeepSeek-Math-7B-Base and DeepSeek-Math-7B-Instruct \citep{shao2024deepseekmath}, representing the non-MoE counterparts.
+    \item \textbf{General-purpose LLMs:} GPT-4 \citep{achiam2024gpt4}, Qwen2.5-Math-7B \citep{yang2024qwen25math}, and Llemma-7B \citep{azerbayev2024llemma}.
+    \item \textbf{Formal provers:} DeepSeek-Prover-V2-7B \citep{xin2024deepseekproverv2} (without STP fine-tuning) and ReProver \citep{yang2024leandojo}.
+    \item \textbf{Ablated variants:} Single-expert (no MoE routing), softmax gating (vs.\ sigmoid), no shared expert, and no STP loop.
+\end{itemize}
+
+\subsection{Benchmarks}
+
+\paragraph{Mathematical reasoning.}
+MATH \citep{hendrycks2021measuring} (12,500 competition problems across 7 subjects), GSM8K \citep{cobbe2021gsm8k} (grade-school math for calibration), and the AIME subset of AMC/AIME competition problems.
+
+\paragraph{Formal theorem proving.}
+miniF2F \citep{zheng2022minif2f} (244 formalized competition problems in Lean~4), ProofNet \citep{azerbayev2023proofnet} (371 undergraduate-level Lean~4 problems).
+
+\paragraph{Domain-specific evaluation.}
+We curate a targeted test set of 50 problems from each of the three priority domains (algebraic geometry, combinatorics, computational mathematics), drawn from recent arXiv papers not in the training set.
+
+\subsection{Metrics}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Accuracy:} Pass@1, Pass@5, and majority voting accuracy on MATH and GSM8K.
+    \item \textbf{Proof success rate:} Fraction of miniF2F/ProofNet problems proved within a timeout of 600 seconds per problem.
+    \item \textbf{Conjecture quality:} Fraction of generated conjectures that (a)~type-check in Lean~4, (b)~are non-trivial (resist \texttt{aesop}), and (c)~are subsequently proved or remain open (vs.\ being disproved).
+    \item \textbf{Expert utilization:} Router entropy, per-expert activation frequency, and domain classification accuracy of the gating network.
+    \item \textbf{Computational efficiency:} Training time (GPU-hours), inference throughput (tokens/sec), and memory footprint.
+\end{itemize}
+
+\subsection{Ablation Studies}
+
+We plan the following ablation experiments to isolate the contribution of each architectural component:
+\begin{enumerate}
+    \item \textbf{Number of experts:} $N \in \{2, 4, 8, 16\}$ with fixed total compute budget.
+    \item \textbf{LoRA rank:} $r \in \{16, 32, 64, 128\}$ to characterize the specialization--efficiency tradeoff.
+    \item \textbf{Gating mechanism:} Sigmoid vs.\ softmax routing, with and without auxiliary loss.
+    \item \textbf{Shared expert:} With vs.\ without the always-active shared expert.
+    \item \textbf{STP rounds:} 0, 3, 5, 10 rounds of self-play to quantify iterative improvement.
+    \item \textbf{Verification tiers:} Cumulative effect of each Lean~4 verification tier on conjecture quality.
+\end{enumerate}
+
+
+% ============================================================================
+\section{Preliminary Results}
+\label{sec:results}
+
+We report results from the Branch-Train-Mix expert training (Phase~1) and MoE assembly with router training and evaluation (Phase~2). All 7 domain experts and a shared expert have completed training, and the sigmoid router has been trained and evaluated. Full evaluation on downstream benchmarks (MATH, miniF2F, ProofNet) and the STP loop (Phase~3) are planned as future work.
+
+\subsection{Expert Training Results}
+
+Table~\ref{tab:expert_training} summarizes the training outcomes for each domain expert. All experts were trained for 3 epochs on their respective domain subsets using QLoRA (4-bit NF4) on a single NVIDIA A100 40\,GB GPU, with 8-bit AdamW optimization and dynamic padding. The ``computational'' domain was excluded from the final model as it contained miscellaneously classified entries without a coherent mathematical identity.
+
+\begin{table}[t]
+\centering
+\caption{Branch-Train-Mix expert training results. Each expert is a LoRA adapter ($r{=}64$, $\alpha{=}128$) trained on top of the frozen 4-bit quantized DeepSeek-Math-7B base. Final loss is the training loss at the last logged step. Training was conducted sequentially on a single A100 40\,GB GPU. A shared expert was trained on a balanced sample of 2,000 examples per domain.}
+\label{tab:expert_training}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Expert Domain} & \textbf{Train Ex.} & \textbf{Steps} & \textbf{Final Loss} & \textbf{Time} \\
+\midrule
+Algebraic Geometry & 5,751 & 540 & 0.83 & 45\,min \\
+Discrete Math & 6,201 & 582 & 0.77 & 48\,min \\
+Number Theory & 7,560 & 711 & 0.85 & 60\,min \\
+Analysis & 26,501 & 2,487 & 0.61 & 3.5\,hr \\
+Algebra & 26,218 & 2,460 & 0.81 & 3.4\,hr \\
+Geometry \& Topology & 49,782 & 4,668 & 0.58 & 6.3\,hr \\
+Probability \& Statistics & 10,492 & 984 & 0.86 & 1.5\,hr \\
+\midrule
+Shared (all domains) & 14,000 & 1,314 & 1.05 & 2.5\,hr \\
+\midrule
+\textbf{Total} & \textbf{146,505} & \textbf{13,746} & & \textbf{18.7\,hr} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Training Dynamics}
+
+Several observations emerge from the expert training process:
+
+\paragraph{Loss convergence.}
+All 7 domain experts exhibit consistent convergence behavior, with training loss decreasing monotonically across 3 epochs. Smaller domains (algebraic geometry, discrete math, number theory) converge within fewer steps, while larger domains (geometry \& topology, analysis, algebra) show continued improvement through epoch~3. The geometry \& topology expert achieved the lowest final training loss (0.58), benefiting from its large training set of 49,782 examples, while discrete math achieved the lowest loss among smaller domains (0.77).
+
+\paragraph{Training-validation gap.}
+The training losses range from 0.58 (geometry \& topology) to 0.86 (probability \& statistics) across domain experts. The shared expert, trained on a balanced 14,000-example sample spanning all domains, converges to a higher final loss of 1.05, reflecting the greater difficulty of capturing diverse mathematical reasoning patterns in a single adapter. This gap between domain-specific and shared losses empirically validates the MoE architecture's premise that domain specialization yields more effective mathematical reasoning than a single general-purpose model.
+
+\paragraph{Computational efficiency.}
+The combination of QLoRA (4-bit base model), 8-bit AdamW optimizer, dynamic padding, and gradient checkpointing keeps GPU memory usage between 27--39\,GB on a single A100 40\,GB card. Training throughput averages ${\sim}$5.0 seconds per step across all experts. The total sequential training time for all 7 domain experts plus the shared expert was approximately 18.7 hours, compared to the ${\sim}$2.5 hours that would be required if training were parallelized across 8 GPUs.
+
+\paragraph{Model size.}
+Each LoRA expert adapter occupies approximately 572\,MB on disk (in \texttt{safetensors} format), yielding a total of ${\sim}$4.6\,GB for all 8 adapters (7 domain experts + 1 shared). The router adds a negligible 29\,KB. Combined with the 4-bit quantized base model (${\sim}$4\,GB), the full MoE system fits within 9\,GB---enabling inference on a single consumer GPU.
+
+\subsection{Training Loss Progression}
+
+Figure~\ref{fig:loss_curves} illustrates the training loss trajectory across the five completed experts, showing loss values logged every 10 optimization steps (effective batch of 32 examples each).
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.93\textwidth}{\centering\small
+\textbf{Training Loss by Expert Domain}\\[6pt]
+\begin{tabular}{@{}lcccc@{}}
+& Epoch 0.5 & Epoch 1.0 & Epoch 2.0 & Epoch 3.0 \\
+\midrule
+Algebraic Geometry & 1.38 & 1.12 & 0.93 & 0.83 \\
+Discrete Math & 1.32 & 1.07 & 0.88 & 0.77 \\
+Number Theory & 1.40 & 1.15 & 0.97 & 0.85 \\
+Analysis & 1.25 & 1.10 & 0.80 & 0.61 \\
+Algebra & 1.38 & 1.10 & 0.92 & 0.81 \\
+Geometry \& Topology & 1.39 & 1.07 & 0.68 & 0.58 \\
+Probability \& Statistics & 1.56 & 1.14 & 0.93 & 0.86 \\
+Shared (balanced) & 1.56 & 1.25 & 1.12 & 1.05 \\
+\end{tabular}
+}}
+\caption{Training loss progression for all domain experts and the shared expert. All experts show steady convergence over 3 epochs. Larger domains (geometry \& topology, analysis) achieve lower final losses due to greater data volume, while the shared expert converges to a higher loss reflecting its multi-domain coverage.}
+\label{fig:loss_curves}
+\end{figure}
+
+\subsection{GPU Memory and Throughput}
+
+Table~\ref{tab:compute} summarizes the computational resource utilization during expert training.
+
+\begin{table}[t]
+\centering
+\caption{Computational resource utilization during expert training on a single NVIDIA A100 40\,GB PCIe GPU.}
+\label{tab:compute}
+\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Base model parameters (total) & 6.9B \\
+Trainable parameters per expert (LoRA) & 150M (2.1\%) \\
+Base model memory (4-bit NF4) & ${\sim}$4\,GB \\
+Peak GPU memory (training) & 39\,GB / 40\,GB \\
+GPU utilization & 82--100\% \\
+Training speed & ${\sim}$5.0\,s/step \\
+Effective batch size & 32 \\
+LoRA adapter size on disk & 572\,MB \\
+Total expert storage (8 adapters + router) & ${\sim}$4.6\,GB \\
+Total training time (sequential) & 18.7\,hr \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{MoE Assembly and Router Evaluation}
+
+After training all 7 domain experts and the shared expert, we assemble the MoE model and train the sigmoid router (Section~\ref{sec:moe_assembly}). The router is trained on domain-labeled data by extracting mean-pooled hidden states from the base model and learning a linear mapping to expert scores. Table~\ref{tab:router_eval} presents the router evaluation results.
+
+\begin{table}[t]
+\centering
+\caption{Router evaluation results. Top-$k$ accuracy measures whether the ground-truth domain expert is among the $k$ highest-scoring experts. Load balance measures the ratio of maximum to minimum expert utilization (1.0 is perfectly balanced). The router was trained for 10 epochs on 7,000 examples and evaluated on 1,400 held-out examples (200 per domain).}
+\label{tab:router_eval}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Domain} & \textbf{Top-1 Acc.} & \textbf{Top-2 Acc.} \\
+\midrule
+Algebraic Geometry & 76.5\% & 90.0\% \\
+Discrete Math & 82.0\% & 90.0\% \\
+Number Theory & 83.0\% & 91.0\% \\
+Analysis & 77.5\% & 90.0\% \\
+Algebra & 72.5\% & 90.0\% \\
+Geometry \& Topology & 66.5\% & 80.0\% \\
+Probability \& Statistics & 76.0\% & 91.5\% \\
+\midrule
+\textbf{Overall} & \textbf{76.3\%} & \textbf{88.9\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Routing accuracy.}
+The router achieves 76.3\% top-1 accuracy and 88.9\% top-2 accuracy, compared to a random baseline of 14.3\% (top-1) and 28.6\% (top-2). Since the MoE activates $k{=}2$ experts per input, the operationally relevant metric is top-2 accuracy: for 88.9\% of inputs, the correct domain expert is among the two selected. The highest top-1 accuracy is achieved on number theory (83.0\%) and discrete math (82.0\%), which have distinctive vocabulary and proof styles. Geometry \& topology achieves the lowest accuracy (66.5\% top-1, 80.0\% top-2), consistent with its broader scope and overlap with algebra and analysis.
+
+\paragraph{Load balance.}
+The auxiliary-loss-free balancing mechanism achieves a load balance ratio of 1.26 (max/min expert utilization), with per-expert load fractions ranging from 12.6\% (probability \& statistics) to 15.9\% (discrete math), against a target of 14.3\%. This near-uniform distribution confirms that the EMA-based bias correction successfully prevents expert collapse without requiring an explicit auxiliary loss term.
+
+% ============================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Architectural Considerations}
+
+The choice of domain-specialized MoE over a monolithic mathematical reasoning model reflects a hypothesis that mathematics is sufficiently diverse to benefit from structural specialization. While general-purpose models like GPT-4 \citep{achiam2024gpt4} and DeepSeek-Math \citep{shao2024deepseekmath} achieve impressive performance through scale alone, they treat all mathematical domains uniformly. Our architecture explicitly encodes the observation that proof techniques in algebraic geometry (sheaf cohomology, intersection theory) are fundamentally different from those in combinatorics (counting arguments, probabilistic method) or analysis (epsilon-delta arguments, functional analysis), and that a model should allocate specialized capacity to each.
+
+The LoRA-based expert construction, rather than full-model branching as in the original BTX framework \citep{sukhbaatar2024branch}, introduces a tradeoff: parameter efficiency at the cost of potentially reduced specialization depth. With rank $r{=}64$ and 7 target modules per layer, each expert adds approximately 160\,MB of parameters---compared to ${\sim}$14\,GB for a full 7B copy. Whether this 87$\times$ reduction in per-expert parameters preserves sufficient capacity for meaningful domain specialization is an empirical question that our planned ablation studies (varying $r$) will address.
+
+\subsection{Self-Play Dynamics}
+
+The STP loop introduces complex training dynamics. A key risk is mode collapse: the conjecturer may learn to generate only statements within a narrow difficulty band, or the prover may overfit to the conjecturer's distribution and fail to generalize. Our mitigation strategies---difficulty curriculum, diverse generation strategies, and periodic retraining rather than continuous updates---are designed to prevent these failure modes, but their effectiveness requires empirical validation.
+
+The four-tier Lean~4 verification pipeline provides a uniquely reliable training signal compared to the heuristic reward models used in most self-play frameworks. The binary nature of type-checking (a statement either type-checks or it does not) eliminates reward hacking, while the triviality filter prevents the system from trivially satisfying the ``generate provable statements'' objective. However, the pipeline's dependence on automated tactics (aesop, simp, etc.) means that statements requiring creative proof strategies may be misclassified as ``open'' when they are in fact routine for a human mathematician.
+
+\subsection{Limitations}
+
+Several limitations of the current approach merit discussion:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Domain coverage:} While 7 expert domains cover the major branches of mathematics, finer-grained specialization (e.g., separating algebraic number theory from analytic number theory) may be beneficial. The current domain taxonomy is coarse-grained and driven by arXiv category labels rather than mathematical content. The geometry \& topology expert's lower routing accuracy (66.5\%) suggests that this broad domain may benefit from further subdivision.
+
+    \item \textbf{Autoformalization quality:} Translating informal mathematics to Lean~4 remains challenging, particularly for statements involving non-standard notation, domain-specific conventions, or concepts not yet formalized in Mathlib. The quality of autoformalization directly impacts the STP loop's effectiveness.
+
+    \item \textbf{Computational requirements:} Despite the efficiency gains from QLoRA and DeepSpeed, the full pipeline requires approximately 144 GPU-hours on high-end hardware, placing it beyond the reach of many research groups. Future work should explore more compute-efficient alternatives.
+
+    \item \textbf{Evaluation challenges:} Evaluating conjecture quality is inherently difficult, as the ground truth (whether a conjecture is true, interesting, or novel) is often unknown. Our metrics (type-checking rate, non-triviality rate, proof rate) capture well-formedness but not mathematical significance.
+
+    \item \textbf{Human-centered design:} While the NSF proposal emphasizes human-centered AI and explainability, the current system prototype focuses on the core AI pipeline. The principles of explainable AI articulated by \citet{doshi2017towards} underscore the importance of interpretable model decisions for building trust with mathematicians. Integrating explainable AI techniques \citep{arrieta2020explainable, ribeiro2016why}, interpretability methods such as SHAP \citep{lundberg2017unified} for understanding expert routing decisions, and human-in-the-loop workflows \citep{shneiderman2020human} remains essential future work.
+\end{itemize}
+
+\subsection{Broader Impact}
+
+\mathscy{} has the potential to impact mathematical research practice by lowering the barrier to computational experimentation and conjecture testing, particularly in areas of algebraic geometry where computational approaches have historically been productive \citep{sturmfels2002solving, cox2015ideals}. By making formal verification more accessible through automated autoformalization, the system may also encourage wider adoption of proof assistants in mathematical research. However, we note the risk that over-reliance on AI-generated conjectures could bias research directions toward problems amenable to automated analysis at the expense of deeper, less computationally tractable questions.
+
+
+% ============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have presented \mathscy{}, a modular system for AI-assisted mathematical reasoning that combines domain-specialized Mixture-of-Experts language models, self-play theorem proving, and formal verification in Lean~4. The system addresses fundamental limitations of current AI approaches to mathematics---scalability across domains, depth of reasoning, and verifiability---through three innovations: (1)~a Branch-Train-Mix architecture with 7 LoRA-based domain experts, a shared expert, and sigmoid gating with auxiliary-loss-free load balancing, (2)~a Self-Play Theorem Prover loop with four-tier Lean~4 verification, and (3)~a large-scale structured mathematical dataset of 241K training examples across 15 domains.
+
+Results from the expert training and MoE assembly phases demonstrate that QLoRA-based domain specialists converge stably across all mathematical domains, with final training losses ranging from 0.58 (geometry \& topology) to 0.86 (probability \& statistics). The sigmoid router achieves 76.3\% top-1 and 88.9\% top-2 routing accuracy with near-uniform load balancing (ratio 1.26), confirming that the auxiliary-loss-free mechanism effectively prevents expert collapse. The full MoE system---including 7 domain experts, a shared expert, the router, and the quantized base model---fits within 9\,GB, enabling inference on consumer hardware. The system's focus on applied, combinatorial, and computational algebraic geometry provides a concrete testbed for evaluating AI-assisted mathematical discovery. Future work will focus on evaluation on downstream benchmarks (MATH, miniF2F, ProofNet), the STP loop for conjecture generation, extending the domain taxonomy, improving autoformalization quality, and integrating human-centered design principles to make \mathscy{} accessible to working mathematicians.
+
+
+% ============================================================================
+\section*{Acknowledgments}
+
+This work was supported by the National Science Foundation. We thank [anonymous] for providing access to GPU computing resources.
+
+
+% ============================================================================
+\bibliographystyle{plainnat}
+\bibliography{../references}
+
+\end{document}

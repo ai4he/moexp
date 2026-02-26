@@ -1,0 +1,46 @@
+{
+    "description": "STP fine-tuning configuration for MathScy MoE",
+    "base_model": "deepseek-ai/deepseek-math-7b-instruct",
+    "conjecturer": {
+        "data_path": "/scratch/ctoxtli/moexp/data/stp_conjecturer_training.jsonl",
+        "lora_config": {
+            "r": 64,
+            "lora_alpha": 128,
+            "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+            "lora_dropout": 0.05
+        },
+        "training": {
+            "num_epochs": 3,
+            "learning_rate": 1e-4,
+            "batch_size": 4,
+            "gradient_accumulation_steps": 8,
+            "warmup_ratio": 0.05,
+            "max_seq_length": 4096,
+            "reward_model": "quality_score"
+        }
+    },
+    "prover": {
+        "base_model": "deepseek-ai/DeepSeek-Prover-V2-7B",
+        "data_path": "/scratch/ctoxtli/moexp/data/stp_prover_training.jsonl",
+        "lora_config": {
+            "r": 64,
+            "lora_alpha": 128,
+            "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+            "lora_dropout": 0.05
+        },
+        "training": {
+            "num_epochs": 3,
+            "learning_rate": 1e-4,
+            "batch_size": 4,
+            "gradient_accumulation_steps": 8,
+            "warmup_ratio": 0.05,
+            "max_seq_length": 4096
+        }
+    },
+    "stp_loop": {
+        "n_rounds": 10,
+        "n_conjectures_per_round": 20,
+        "retrain_interval": 3,
+        "domains": ["algebraic_geometry", "discrete_math", "computational"]
+    }
+}
