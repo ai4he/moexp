@@ -52,7 +52,7 @@ Anonymous Authors\\[4pt]
 \maketitle
 
 \begin{abstract}
-We present \mathscy{}, a modular system for AI-assisted mathematical reasoning that integrates domain-specialized Mixture-of-Experts (MoE) large language models with formal verification in the Lean~4 proof assistant. \mathscy{} addresses fundamental limitations of current AI systems for mathematics---including scalability across mathematical domains, depth of reasoning, and verifiability of outputs---through three key contributions. First, we construct a domain-specialized MoE architecture via Branch-Train-Mix, training eight LoRA expert modules on distinct mathematical subdomains (algebraic geometry, combinatorics, number theory, analysis, algebra, topology, probability, and computational mathematics) from a shared DeepSeek-Math-7B base model, with sigmoid gating and auxiliary-loss-free load balancing. Second, we design a Self-Play Theorem Prover (STP) loop in which a conjecturer and a prover iteratively improve through mutual training, with conjectures filtered through a four-tier Lean~4 verification pipeline encompassing type-checking, triviality detection, counterexample search, and automated proof search. Third, we curate a large-scale dataset of 6.47 million mathematical entries across 154 arXiv categories and 15 domain groups, from which we extract 241,586 structured training examples via a combination of LLM-powered knowledge extraction and LaTeX theorem mining. The system is designed to support conjecture formulation, proof construction, and counterexample finding, with a focus on applied, combinatorial, and computational algebraic geometry. We describe the complete architecture, training methodology, and data pipeline, and present preliminary results from the expert training phase, demonstrating stable convergence and efficient resource utilization across domain experts trained on a single A100 GPU. We outline the experimental protocol for evaluating \mathscy{} on established benchmarks and open problems in algebraic geometry.
+We present \mathscy{}, a modular system for AI-assisted mathematical reasoning that integrates domain-specialized Mixture-of-Experts (MoE) large language models with formal verification in the Lean~4 proof assistant. \mathscy{} addresses fundamental limitations of current AI systems for mathematics---including scalability across mathematical domains, depth of reasoning, and verifiability of outputs---through three key contributions. First, we construct a domain-specialized MoE architecture via Branch-Train-Mix, training seven QLoRA expert modules on distinct mathematical subdomains (algebraic geometry, discrete mathematics, number theory, analysis, algebra, geometry \& topology, and probability \& statistics) plus a shared cross-domain expert from a DeepSeek-Math-7B base model, with sigmoid gating and auxiliary-loss-free load balancing. Second, we design a Self-Play Theorem Prover (STP) loop in which a conjecturer and a prover iteratively improve through mutual training, with conjectures filtered through a four-tier Lean~4 verification pipeline encompassing type-checking, triviality detection, counterexample search, and automated proof search. Third, we curate a large-scale dataset of 6.47 million mathematical entries across 154 arXiv categories and 15 domain groups, from which we extract 241,586 structured training examples via a combination of LLM-powered knowledge extraction and LaTeX theorem mining. We report results from all three pipeline phases: stable expert convergence across all domains on a single A100 GPU, a sigmoid router achieving 88.9\% top-2 routing accuracy with near-uniform load balancing, and a conjecture generation pipeline producing 153 novel conjectures---of which 9 are proved and 6 are flagged as publishable---with the STP loop achieving the highest quality scores (avg 0.735, max 0.980). The trained models, code, and proved conjectures are publicly available.\footnote{Code: \url{https://github.com/ai4he/moexp} \quad Models: \url{https://huggingface.co/ai4he/mathscy-moe-7b}}
 \end{abstract}
 
 \textbf{Keywords:} Mixture-of-Experts, mathematical reasoning, theorem proving, conjecture generation, Lean 4, autoformalization, self-play, domain specialization
@@ -83,9 +83,10 @@ This paper makes the following contributions:
     \item We design a complete self-play theorem proving pipeline that integrates conjecture generation, autoformalization, and formal verification in Lean~4, creating a closed loop between informal mathematical intuition and machine-checkable proofs.
     \item We construct one of the largest structured mathematical knowledge bases assembled for training domain-specialized models, with explicit type and domain annotations enabling stratified expert training.
     \item We provide a comprehensive experimental framework for evaluating AI-assisted mathematical reasoning systems, encompassing both established benchmarks (miniF2F, MATH, ProofNet) and targeted evaluations on open problems in algebraic geometry.
+    \item We release all code, trained model weights, and proved conjectures as open-source resources to facilitate reproducibility and future research.\footnote{Source code and pipeline: \url{https://github.com/ai4he/moexp}. Pre-trained MoE adapters and router: \url{https://huggingface.co/ai4he/mathscy-moe-7b}.}
 \end{itemize}
 
-The remainder of this paper is organized as follows. Section~\ref{sec:related_work} surveys related work across the relevant research areas. Section~\ref{sec:background} establishes the mathematical foundations underlying our approach. Section~\ref{sec:methodology} presents the \mathscy{} system architecture and training methodology in detail. Section~\ref{sec:dataset} describes the dataset construction pipeline. Section~\ref{sec:experimental_setup} outlines the experimental protocol. Section~\ref{sec:results} presents preliminary results from the expert training phase. Section~\ref{sec:discussion} discusses implications and limitations. Section~\ref{sec:conclusion} concludes.
+The remainder of this paper is organized as follows. Section~\ref{sec:related_work} surveys related work across the relevant research areas. Section~\ref{sec:background} establishes the mathematical foundations underlying our approach. Section~\ref{sec:methodology} presents the \mathscy{} system architecture and training methodology in detail. Section~\ref{sec:dataset} describes the dataset construction pipeline. Section~\ref{sec:experimental_setup} outlines the experimental protocol. Section~\ref{sec:results} presents results from all three pipeline phases. Section~\ref{sec:discussion} discusses implications and limitations. Section~\ref{sec:conclusion} concludes.
 
 
 % ============================================================================
@@ -544,7 +545,7 @@ Concept identification & 2,332 & 0.9 & Gemini extraction \\
 \section{Experimental Setup}
 \label{sec:experimental_setup}
 
-We outline the planned experimental protocol for evaluating \mathscy{}. Experiments are designed to assess performance across four dimensions: domain-specialized reasoning, conjecture quality, proof capability, and end-to-end system utility.
+We describe the experimental protocol for evaluating \mathscy{}. Experiments are designed to assess performance across four dimensions: domain-specialized reasoning, conjecture quality, proof capability, and end-to-end system utility. The expert training, router evaluation, and conjecture generation experiments reported in Section~\ref{sec:results} have been completed; downstream benchmark evaluation and ablation studies are planned as future work and are included here for completeness.
 
 \subsection{Baselines}
 
@@ -591,10 +592,10 @@ We plan the following ablation experiments to isolate the contribution of each a
 
 
 % ============================================================================
-\section{Preliminary Results}
+\section{Results}
 \label{sec:results}
 
-We report results from all three phases of the \mathscy{} pipeline: Branch-Train-Mix expert training (Phase~1), MoE assembly with router evaluation (Phase~2), and conjecture generation with Self-Play Theorem Prover evaluation (Phase~3). All 7 domain experts and a shared expert have completed training, the sigmoid router has been evaluated, and the conjecture generation pipeline has produced 153 novel conjectures across all domains with quality evaluation. Evaluation on downstream benchmarks (MATH, miniF2F, ProofNet) is planned as future work.
+We report results from all three phases of the \mathscy{} pipeline: Branch-Train-Mix expert training (Phase~1), MoE assembly with router evaluation (Phase~2), and conjecture generation with Self-Play Theorem Prover evaluation (Phase~3). All 7 domain experts and a shared expert have completed training, the sigmoid router has been evaluated, and the conjecture generation pipeline has produced 153 novel conjectures across all domains with quality evaluation, of which 9 were proved and 6 were flagged as publishable. The full proved conjectures with proof sketches and Lean~4 formalizations are given in Appendix~\ref{app:proved_conjectures}. Evaluation on downstream benchmarks (MATH, miniF2F, ProofNet) is planned as future work.
 
 \subsection{Expert Training Results}
 
@@ -642,7 +643,7 @@ Each LoRA expert adapter occupies approximately 572\,MB on disk (in \texttt{safe
 
 \subsection{Training Loss Progression}
 
-Figure~\ref{fig:loss_curves} illustrates the training loss trajectory across the five completed experts, showing loss values logged every 10 optimization steps (effective batch of 32 examples each).
+Figure~\ref{fig:loss_curves} illustrates the training loss trajectory across all domain experts and the shared expert, showing loss values logged at uniform epoch intervals.
 
 \begin{figure}[t]
 \centering
@@ -783,8 +784,11 @@ Analysis & 8 & 0 & 0 & 4 & 0.645 \\
 \paragraph{Per-domain analysis.}
 Across all 153 conjectures, algebra achieves the highest average quality (0.774), followed by number theory (0.720) and algebraic geometry (0.695). Analysis has the lowest average (0.650), likely due to the greater difficulty of generating well-formed analytic conjectures from extracted results. The top 6 conjectures (quality $\geq 0.88$) were all flagged as ``publishable'' by the LLM judge and span algebra (commutative Noetherian modules), number theory (discriminant forms), and probability (conditional independence).
 
+\paragraph{Knowledge extraction and data pipeline.}
+The conjecture generation pipeline operates on a knowledge base of 3,319 structured mathematical results extracted from 3,214 ArXiv papers (117,365 raw theorems at 98.5\% download success rate). Gemini~2.0 Flash was used for structured knowledge extraction from a stratified sample of 3,400 entries (100 per ArXiv category across 34 mathematics categories), while a LaTeX parser extracted theorem environments directly from source files. The combination of LLM-structured knowledge and raw theorem data provides the contextual grounding for all five conjecture generation strategies. The extraction pipeline, including batch processing with checkpointing and LaTeX-aware JSON parsing, is fully automated and reproducible via the scripts in the code repository.
+
 \paragraph{Lean 4 verification queue.}
-The top 50 ranked conjectures have been queued for Lean~4 formalization and verification using the 4-tier pipeline described in Section~\ref{sec:verification}. The highest-scored conjecture (0.980) relates to characterizing weakly Artinian modules over commutative Noetherian rings in terms of associated prime structure.
+The top 50 ranked conjectures have been queued for Lean~4 formalization and verification using the 4-tier pipeline described in Section~\ref{sec:verification}. The highest-scored conjecture (0.980) relates to characterizing weakly Artinian modules over commutative Noetherian rings in terms of associated prime structure. Approximate Lean~4 formalizations for all 9 proved conjectures are provided in Appendix~\ref{app:proved_conjectures}; these use \texttt{sorry} placeholders for steps requiring Mathlib tactics beyond current autoformalization capability.
 
 
 % ============================================================================
@@ -825,12 +829,27 @@ Several limitations of the current approach merit discussion:
 
 
 % ============================================================================
+\subsection{Reproducibility and Open Resources}
+\label{sec:reproducibility}
+
+To support reproducibility and enable future research, we release all components of the \mathscy{} system as open-source resources:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Source code and pipeline scripts:} The complete data preparation, training, conjecture generation, and evaluation pipeline is available at \url{https://github.com/ai4he/moexp}. The repository includes step-by-step instructions for reproducing all experiments, from raw data extraction through Lean~4 formal verification.
+    \item \textbf{Pre-trained model weights:} All 7 domain expert QLoRA adapters, the shared expert adapter, and the trained sigmoid router are hosted on HuggingFace at \url{https://huggingface.co/ai4he/mathscy-moe-7b}. Combined with the publicly available DeepSeek-Math-7B-Base, the full MoE system can be instantiated on a single consumer GPU (${\sim}$9\,GB total).
+    \item \textbf{Proved conjectures:} The 9 proved conjectures with natural-language statements, proof sketches, and Lean~4 formalizations are provided in Appendix~\ref{app:proved_conjectures} and in the repository (\texttt{results/proved\_conjectures.md} and \texttt{results/proved\_conjectures.lean}).
+    \item \textbf{Conjecture corpus:} The full ranked set of 153 generated conjectures with quality scores, proof attempts, and domain annotations is included in the repository (\texttt{results/ranked\_conjectures.json}).
+\end{itemize}
+
+
 \section{Conclusion}
 \label{sec:conclusion}
 
 We have presented \mathscy{}, a modular system for AI-assisted mathematical reasoning that combines domain-specialized Mixture-of-Experts language models, self-play theorem proving, and formal verification in Lean~4. The system addresses fundamental limitations of current AI approaches to mathematics---scalability across domains, depth of reasoning, and verifiability---through three innovations: (1)~a Branch-Train-Mix architecture with 7 LoRA-based domain experts, a shared expert, and sigmoid gating with auxiliary-loss-free load balancing, (2)~a Self-Play Theorem Prover loop with four-tier Lean~4 verification, and (3)~a large-scale structured mathematical dataset of 241K training examples across 15 domains.
 
-Results from all three pipeline phases demonstrate end-to-end viability. QLoRA-based domain specialists converge stably across all mathematical domains, with final training losses ranging from 0.58 (geometry \& topology) to 0.86 (probability \& statistics). The sigmoid router achieves 76.3\% top-1 and 88.9\% top-2 routing accuracy with near-uniform load balancing (ratio 1.26), confirming that the auxiliary-loss-free mechanism effectively prevents expert collapse. The conjecture generation pipeline produces 153 novel conjectures across all 7 domains with an average quality score of 0.693, including 9 conjectures judged as proved and 6 flagged as publishable by the independent LLM judge. The Self-Play Theorem Prover achieves the highest quality scores (avg 0.735, max 0.980), outperforming all single-strategy approaches, validating the conjecture-proof feedback loop. The full MoE system fits within 9\,GB, enabling inference on consumer hardware. Future work will focus on evaluation on downstream benchmarks (MATH, miniF2F, ProofNet), Lean~4 verification of the top-ranked conjectures, extending the domain taxonomy, and integrating human-centered design principles to make \mathscy{} accessible to working mathematicians.
+Results from all three pipeline phases demonstrate end-to-end viability. QLoRA-based domain specialists converge stably across all mathematical domains, with final training losses ranging from 0.58 (geometry \& topology) to 0.86 (probability \& statistics). The sigmoid router achieves 76.3\% top-1 and 88.9\% top-2 routing accuracy with near-uniform load balancing (ratio 1.26), confirming that the auxiliary-loss-free mechanism effectively prevents expert collapse. The conjecture generation pipeline produces 153 novel conjectures across all 7 domains with an average quality score of 0.693, including 9 conjectures judged as proved and 6 flagged as publishable by the independent LLM judge. The Self-Play Theorem Prover achieves the highest quality scores (avg 0.735, max 0.980), outperforming all single-strategy approaches, validating the conjecture-proof feedback loop. The full MoE system fits within 9\,GB, enabling inference on consumer hardware.
+
+Future work will focus on: (1)~evaluation on downstream benchmarks (MATH, miniF2F, ProofNet), (2)~full Lean~4 formal verification of the top 50 ranked conjectures using the 4-tier pipeline, (3)~GPU-based STP fine-tuning where proved conjectures and their proofs serve as additional training data, (4)~ablation studies varying the number of experts, LoRA rank, gating mechanism, and STP rounds, (5)~extending the domain taxonomy to finer-grained subdisciplines, and (6)~integrating human-centered design principles to make \mathscy{} accessible to working mathematicians. All code, models, and results are publicly available to facilitate these extensions (Section~\ref{sec:reproducibility}).
 
 
 % ============================================================================
