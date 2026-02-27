@@ -1,0 +1,156 @@
+{
+  "task": 2,
+  "title": "Cross-Validation of Proved Conjectures",
+  "summary": {
+    "n_proved": 9,
+    "n_validated": 9,
+    "avg_original_score": 0.7789,
+    "avg_cross_score": 0.5,
+    "avg_score_diff": -0.2789,
+    "std_score_diff": 0.0822,
+    "score_correlation": 0.0,
+    "verdict_agreements": {
+      "unknown": 9
+    }
+  },
+  "per_domain": {
+    "number_theory": {
+      "count": 1,
+      "avg_original": 0.78,
+      "avg_cross": 0.5,
+      "avg_diff": -0.28
+    },
+    "algebra": {
+      "count": 5,
+      "avg_original": 0.818,
+      "avg_cross": 0.5,
+      "avg_diff": -0.318
+    },
+    "probability_statistics": {
+      "count": 3,
+      "avg_original": 0.7133,
+      "avg_cross": 0.5,
+      "avg_diff": -0.2133
+    }
+  },
+  "cross_validations": [
+    {
+      "index": 0,
+      "domain": "number_theory",
+      "conjecture_text": "{\n    \"conjecture\": \"Let $D$ be a transitive discriminant form over $\\mathbb{Z}_p$ for some prime $p$. Then the $p$-adic completion of the ring of integers of the maximal unramified extension of $\\mathbb{Q}_p$ acts on the discriminant form via a continuous homomorphism $\\Gamma \\to \\mathrm{Aut}(D)$, ",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.78,
+      "cross_quality": 0.5,
+      "quality_diff": -0.28,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 1,
+      "domain": "algebra",
+      "conjecture_text": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ be a finitely generated $R$-module. Then $M$ is weakly Artinian if and only if for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ has finite length.\",\n    \"informal\": \"A finitely generated modu",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.88,
+      "cross_quality": 0.5,
+      "quality_diff": -0.38,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 2,
+      "domain": "algebra",
+      "conjecture_text": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and every associated prime $\\mathfrak{p} \\in \\Ass_R(M)$ satisfies $\\depth_R M_{\\mathfrak{p}} = \\dim R_{\\mathfrak{p}}$, then $M$ is Cohen-Macaulay.\",\n    \"informal\": \"If a f",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.88,
+      "cross_quality": 0.5,
+      "quality_diff": -0.38,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 3,
+      "domain": "algebra",
+      "conjecture_text": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. Suppose that for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ is Artinian. Then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a modu",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.75,
+      "cross_quality": 0.5,
+      "quality_diff": -0.25,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 4,
+      "domain": "algebra",
+      "conjecture_text": "Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If every associated prime of $M$ is maximal and $\\dim_R(M) \\leq 1$, then $M$ is weakly Artinian.",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.78,
+      "cross_quality": 0.5,
+      "quality_diff": -0.28,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 5,
+      "domain": "algebra",
+      "conjecture_text": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If for every maximal ideal $\\mathfrak{m} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{m}}$ is Artinian, then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a module corre",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.8,
+      "cross_quality": 0.5,
+      "quality_diff": -0.3,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 6,
+      "domain": "probability_statistics",
+      "conjecture_text": "Let $\\mathcal{V}$ be a finite set of random variables with a strictly positive probability distribution (as defined in Result 1). Then, for any two disjoint subsets $\\mathcal{X}, \\mathcal{Z} \\subseteq \\mathcal{V}$ and any $x \\in \\text{supp}(\\mathcal{X})$, $z \\in \\text{supp}(\\mathcal{Z})$, the condit",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.6,
+      "cross_quality": 0.5,
+      "quality_diff": -0.1,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 7,
+      "domain": "probability_statistics",
+      "conjecture_text": "Let $\\mathcal{V}$ be a finite set of discrete random variables with a strictly positive probability distribution. Then, for any two disjoint subsets $\\mathcal{X}, \\mathcal{Z} \\subseteq \\mathcal{V}$, the conditional independence of $\\mathcal{X}$ and $\\mathcal{Z}$ given any third subset $\\mathcal{Y} \\",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.78,
+      "cross_quality": 0.5,
+      "quality_diff": -0.28,
+      "verdict_agreement": "unknown"
+    },
+    {
+      "index": 8,
+      "domain": "probability_statistics",
+      "conjecture_text": "```json\n{\n    \"conjecture\": \"Let $\\mathcal{X} = \\{X_1, \\ldots, X_n\\}$ be a collection of i.i.d. random variables with finite second moment. Suppose there exists $\\beta \\in (0,1]$ such that for all $t > 0$, $\\mathbb{P}[\\max_{1 \\leq i \\leq n} |X_i| > t] \\leq \\exp(-\\beta t^2)$. Then, for any $\\epsilon ",
+      "cross_judge": {
+        "overall_score": 0.5,
+        "critique": "No valid response"
+      },
+      "original_quality": 0.76,
+      "cross_quality": 0.5,
+      "quality_diff": -0.26,
+      "verdict_agreement": "unknown"
+    }
+  ],
+  "status": "complete"
+}

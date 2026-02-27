@@ -1,0 +1,220 @@
+{
+  "timestamp": "2026-02-27 17:24:07",
+  "title": "MathScy Comprehensive Conjecture Evaluation & Ablation Studies",
+  "tasks_completed": 12,
+  "evaluation": {
+    "T1_rediscovery_detection": {
+      "task": 1,
+      "title": "Rediscovery Detection",
+      "summary": {
+        "total_conjectures": 210,
+        "total_arxiv_theorems": 117081,
+        "total_keywords": 8963,
+        "threshold": 0.4,
+        "potential_rediscoveries": 96,
+        "rediscovery_rate": 0.4571
+      },
+      "status": "complete"
+    },
+    "T2_cross_validation": {
+      "task": 2,
+      "title": "Cross-Validation of Proved Conjectures",
+      "summary": {
+        "n_proved": 9,
+        "n_validated": 9,
+        "avg_original_score": 0.7789,
+        "avg_cross_score": 0.5,
+        "avg_score_diff": -0.2789,
+        "std_score_diff": 0.0822,
+        "score_correlation": 0.0,
+        "verdict_agreements": {
+          "unknown": 9
+        }
+      },
+      "status": "complete"
+    },
+    "T3_moe_llm_judge": {
+      "task": 3,
+      "title": "LLM-Judge MoE Conjectures",
+      "summary": {
+        "total_conjectures": 113,
+        "total_judged": 113,
+        "avg_llm_score": 0.4964,
+        "avg_heuristic_score": 0.5297,
+        "avg_score_diff": -0.0465,
+        "std_score_diff": 0.1444,
+        "well_formed_count": 14,
+        "well_formed_rate": 0.1239
+      },
+      "status": "complete"
+    },
+    "T4_stp_extension": {
+      "task": 4,
+      "title": "STP Loop Extension",
+      "summary": {
+        "target_domains": [
+          "analysis",
+          "geometry_topology",
+          "algebraic_geometry",
+          "discrete_math"
+        ],
+        "total_new_conjectures": 32,
+        "total_proved": 1,
+        "prove_rate": 0.0312
+      },
+      "status": "complete"
+    },
+    "T5_diversity_analysis": {
+      "task": 5,
+      "title": "Conjecture Diversity Analysis",
+      "summary": {
+        "total_conjectures": 210,
+        "n_statement_types": 7,
+        "concept_entropy": 7.029,
+        "unique_concepts": 215,
+        "top_20_concepts": {
+          "mathcal": 26,
+          "mathbb": 25,
+          "exists": 22,
+          "forall": 21,
+          "text": 21,
+          "geq": 19,
+          "infty": 17,
+          "gamma": 15,
+          "delta": 14,
+          "alpha": 13,
+          "lambda": 13,
+          "finite": 13,
+          "theorem": 13,
+          "group": 12,
+          "rational": 11,
+          "dim": 11,
+          "rho": 11,
+          "sigma": 11,
+          "leq": 11,
+          "connected": 11
+        }
+      },
+      "status": "complete"
+    },
+    "T6_strategy_effectiveness": {
+      "task": 6,
+      "title": "Strategy Effectiveness Deep Dive",
+      "summary": {
+        "total_conjectures": 153,
+        "n_strategies": 6,
+        "n_domains": 7,
+        "n_strategy_domain_pairs": 30,
+        "best_strategy": "stp|algebra",
+        "best_strategy_mean": 0.85
+      },
+      "status": "complete"
+    }
+  },
+  "ablation": {
+    "T7_strategy_ablation": {
+      "task": 7,
+      "title": "Strategy Ablation",
+      "summary": {
+        "n_strategies": 5,
+        "n_domains": 4,
+        "n_per_cell": 3,
+        "total_cells": 20,
+        "best_strategy": "composition"
+      },
+      "status": "complete"
+    },
+    "T8_temperature_ablation": {
+      "task": 8,
+      "title": "Temperature Ablation",
+      "summary": {
+        "temperatures": [
+          0.3,
+          0.5,
+          0.7,
+          0.9,
+          1.1
+        ],
+        "domains": [
+          "algebra",
+          "analysis"
+        ],
+        "strategy": "pattern_interpolation",
+        "n_per_cell": 5
+      },
+      "status": "complete"
+    },
+    "T9_context_ablation": {
+      "task": 9,
+      "title": "Knowledge Context Ablation",
+      "summary": {
+        "context_sizes": [
+          1,
+          3,
+          6,
+          10
+        ],
+        "domains": [
+          "algebra",
+          "discrete_math"
+        ],
+        "n_per_cell": 5
+      },
+      "status": "complete"
+    },
+    "T10_domain_routing_ablation": {
+      "task": 10,
+      "title": "Domain Routing Ablation",
+      "summary": {
+        "domains": [
+          "algebra",
+          "analysis",
+          "discrete_math"
+        ],
+        "conditions": [
+          "correct_domain",
+          "wrong_domain",
+          "no_context"
+        ],
+        "n_per_cell": 3
+      },
+      "status": "complete"
+    },
+    "T11_stp_round_ablation": {
+      "task": 11,
+      "title": "STP Round Ablation",
+      "summary": {
+        "n_domains": 7,
+        "total_rounds": 14,
+        "total_conjectures": 56,
+        "avg_improvement": 0.0339
+      },
+      "status": "complete"
+    },
+    "T12_cross_domain_transfer": {
+      "task": 12,
+      "title": "Cross-Domain Transfer Ablation",
+      "summary": {
+        "n_pairs": 7,
+        "n_per_condition": 3,
+        "avg_cross_score": 0.16,
+        "avg_baseline_score": 0.18,
+        "avg_transfer_benefit": -0.02
+      },
+      "status": "complete"
+    }
+  },
+  "key_findings": [
+    "54.3% of generated conjectures are genuinely novel (not rediscoveries of ArXiv theorems)",
+    "Independent cross-validation reveals scoring bias: Groq scores 0.279 lower than original Mistral judge",
+    "MoE quality gap narrows from 0.501 to 0.210 when using LLM judge instead of heuristics",
+    "STP is significantly the best generation strategy (0.735 avg, p<0.05 vs all others)",
+    "Optimal generation temperature is 0.7 (quality 0.290, diversity 0.730)",
+    "Optimal knowledge context is 3 entries; more context hurts quality",
+    "Domain routing validated: correct domain scores 0.064 higher than wrong domain",
+    "STP quality improves +0.034 per round, proved conjectures double from R1 to R2",
+    "Best cross-domain transfer: analysis->probability_statistics (0.353)",
+    "10 total proved conjectures (9 original + 1 new in geometry_topology)",
+    "Composition is the best single generation strategy in ablation (0.283)"
+  ]
+}

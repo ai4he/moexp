@@ -54,6 +54,12 @@ def load_api_keys():
         with open(mistral_path) as f:
             keys["mistral"] = f.read().strip()
 
+    # OpenRouter
+    openrouter_path = os.path.join(PROJECT_DIR, "openrouter_key.txt")
+    if os.path.exists(openrouter_path):
+        with open(openrouter_path) as f:
+            keys["openrouter"] = f.read().strip()
+
     return keys
 
 
@@ -125,6 +131,41 @@ def mistral_generate(prompt: str, api_key: str, model: str = "mistral-small-late
     return ""
 
 
+def openrouter_generate(prompt: str, api_key: str, model: str = "google/gemini-2.0-flash-001",
+                        temperature: float = 0.7, max_tokens: int = 4096, max_retries: int = 4) -> str:
+    """Call OpenRouter API."""
+    import requests
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://github.com/ai4he/moexp",
+    }
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+    }
+
+    for attempt in range(max_retries):
+        try:
+            resp = requests.post(url, headers=headers, json=payload, timeout=120)
+            if resp.status_code == 200:
+                return resp.json()["choices"][0]["message"]["content"]
+            elif resp.status_code == 429:
+                wait = min(2 ** attempt * 5, 60)
+                print(f"  OpenRouter rate limited, waiting {wait}s...")
+                time.sleep(wait)
+            else:
+                print(f"  OpenRouter error {resp.status_code}: {resp.text[:200]}")
+                time.sleep(2 ** attempt)
+        except Exception as e:
+            print(f"  OpenRouter request error: {e}")
+            time.sleep(2 ** attempt)
+    return ""
+
+
 def llm_generate(prompt: str, api_keys: dict, provider: str = "gemini", **kwargs) -> str:
     """Unified LLM generation interface."""
     if provider == "gemini":
@@ -133,6 +174,8 @@ def llm_generate(prompt: str, api_keys: dict, provider: str = "gemini", **kwargs
         return groq_generate(prompt, api_key=api_keys["groq"], **kwargs)
     elif provider == "mistral":
         return mistral_generate(prompt, api_key=api_keys["mistral"], **kwargs)
+    elif provider == "openrouter":
+        return openrouter_generate(prompt, api_key=api_keys["openrouter"], **kwargs)
     else:
         raise ValueError(f"Unknown provider: {provider}")
 
@@ -374,27 +417,39 @@ def parse_json_response(response: str) -> list:
     clean = response.strip()
 
     def try_parse(text: str):
-        """Try parsing JSON, with LaTeX fix fallback."""
+        """Try parsing JSON, with LaTeX fix and control character fallbacks."""
         text = text.strip()
         if not text:
             return None
-        try:
-            result = json.loads(text)
+
+        def _try_load(t):
+            result = json.loads(t)
             if isinstance(result, dict):
                 return [result]
             elif isinstance(result, list):
                 return [x for x in result if isinstance(x, dict)]
             return None
+
+        try:
+            return _try_load(text)
+        except json.JSONDecodeError:
+            pass
+        # Try fixing control characters (newlines/tabs inside JSON strings)
+        try:
+            fixed_ctrl = re.sub(r'[\x00-\x1f]', lambda m: '\\n' if m.group() == '\n' else '\\t' if m.group() == '\t' else '', text)
+            return _try_load(fixed_ctrl)
         except json.JSONDecodeError:
             pass
         # Try fixing LaTeX escaping
         try:
             fixed = _fix_latex_json(text)
-            result = json.loads(fixed)
-            if isinstance(result, dict):
-                return [result]
-            elif isinstance(result, list):
-                return [x for x in result if isinstance(x, dict)]
+            return _try_load(fixed)
+        except (json.JSONDecodeError, Exception):
+            pass
+        # Try both fixes combined
+        try:
+            fixed_both = re.sub(r'[\x00-\x1f]', lambda m: '\\n' if m.group() == '\n' else '\\t' if m.group() == '\t' else '', _fix_latex_json(text))
+            return _try_load(fixed_both)
         except (json.JSONDecodeError, Exception):
             pass
         return None

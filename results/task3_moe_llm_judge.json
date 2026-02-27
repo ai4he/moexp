@@ -1,0 +1,2341 @@
+{
+  "task": 3,
+  "title": "LLM-Judge MoE Conjectures",
+  "summary": {
+    "total_conjectures": 113,
+    "total_judged": 113,
+    "avg_llm_score": 0.4964,
+    "avg_heuristic_score": 0.5297,
+    "avg_score_diff": -0.0465,
+    "std_score_diff": 0.1444,
+    "well_formed_count": 14,
+    "well_formed_rate": 0.1239
+  },
+  "per_domain": {
+    "algebraic_geometry": {
+      "count": 18,
+      "avg_llm": 0.5,
+      "avg_heur": 0.5178
+    },
+    "discrete_math": {
+      "count": 12,
+      "avg_llm": 0.5,
+      "avg_heur": 0.5067
+    },
+    "number_theory": {
+      "count": 12,
+      "avg_llm": 0.515,
+      "avg_heur": 0.5267
+    },
+    "analysis": {
+      "count": 18,
+      "avg_llm": 0.4744,
+      "avg_heur": 0.54
+    },
+    "algebra": {
+      "count": 18,
+      "avg_llm": 0.44,
+      "avg_heur": 0.5311
+    },
+    "geometry_topology": {
+      "count": 17,
+      "avg_llm": 0.4859,
+      "avg_heur": 0.5376
+    },
+    "probability_statistics": {
+      "count": 18,
+      "avg_llm": 0.4833,
+      "avg_heur": 0.54
+    }
+  },
+  "per_strategy": {
+    "pattern_interpolation": {
+      "count": 21,
+      "avg_llm": 0.5233,
+      "avg_heur": 0.4886
+    },
+    "composition": {
+      "count": 21,
+      "avg_llm": 0.5105,
+      "avg_heur": 0.5038
+    },
+    "boundary_exploration": {
+      "count": 21,
+      "avg_llm": 0.4548,
+      "avg_heur": 0.5152
+    },
+    "theorem_generation": {
+      "count": 20,
+      "avg_llm": 0.524,
+      "avg_heur": 0.588
+    },
+    "cross_domain_analogy": {
+      "count": 30,
+      "avg_llm": 0.4287,
+      "avg_heur": 0.548
+    }
+  },
+  "judged_conjectures": [
+    {
+      "index": 0,
+      "domain": "algebraic_geometry",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalization to higher-dimensional varieties or nonrational curves",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 1,
+      "domain": "algebraic_geometry",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalize this to other categories of geometric spaces with different notions",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 2,
+      "domain": "algebraic_geometry",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "The expected generalization of this equivalence for general polarized varieties with rational double point singularities would involve defining appropriate modifications sucht to resolve",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 3,
+      "domain": "algebraic_geometry",
+      "strategy": "composition",
+      "conjecture_text": "This could involve making explicit reference to sections or subsections within each result's context before combining them with appropriate background information for clarity.}",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 4,
+      "domain": "algebraic_geometry",
+      "strategy": "composition",
+      "conjecture_text": "Combination of Result",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 5,
+      "domain": "algebraic_geometry",
+      "strategy": "composition",
+      "conjecture_text": "Consider rational hypersurfaces of dimension at least three contained inside intersections between quadrics or cubics over finite fields without using any conjectures like Hodge theory/Beauville's theorem etc",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 6,
+      "domain": "algebraic_geometry",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Domain before : ;\\\\[-2pt]P^-\\subset V^{p+q}&&&&\\quad(i=n).}\\] In particular $\\dim W_{\\nu}^{pq}(\\cC)=d$ and $h^\\ast_\\infty E^{\\bullet p}_{ij}$ has no components supported on $\\{0,\\iy\\}$.%   %%%%\\qed%%%%$\\square",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 7,
+      "domain": "algebraic_geometry",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Consider weakening/strengthening some of",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 8,
+      "domain": "algebraic_geometry",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "State and prove that if $\\lambda$ approaches to zero then $X_\\beta^\\nu(a)$ has terminal singularities;",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 9,
+      "domain": "algebraic_geometry",
+      "strategy": "theorem_generation",
+      "conjecture_text": "The following is an example of such theorems using the notions mentioned above (cyclic groups; sheaves on schemes over rings); other examples can be generated similarly by replacing these terms or concepts as needed to create variations based o",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 10,
+      "domain": "algebraic_geometry",
+      "strategy": "theorem_generation",
+      "conjecture_text": "The existence of certain endomorphism rings for moduli spaces associated to $d$-pointed curves",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 11,
+      "domain": "algebraic_geometry",
+      "strategy": "theorem_generation",
+      "conjecture_text": "See Theorem \\ref{thm-level}.",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 12,
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "This could involve defining appropriate notions for varieties and fields other than those used above or exploring possible analogies between certain properties related to abelian surfaces",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 13,
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: e fields and local systems} as well for this direction). The reader should note however we are not aware if it implies any sort or converse to Theorem~\\ref{thm-main}, see Remark after Conjecture~428(b), loc.~cit..  \r\\endgroup",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 14,
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "This could be a problem about rational points on varieties defined by polynomial equations with many real and complex roots or have special geometric properties like having few components of low degree",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 15,
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Analogue of Conjecture for Algebraic Curves over Number Fields?",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 16,
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "This can be restated as a statement about discriminants of elements generating birational transformations on curves",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 17,
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: nd{\\mathcal{O}_p} B,$$ which implies that ${\\displaystyle \\varphi(a)=\\prod_{j=0}^{n-1}\\det g^{2^jm}:  m=[M:\\mathbb Z]}$, since this function does not depend on choice of representative; cf.~\\cite[Lemma~6]{Narkiewicz}.  \r%\\endproof}}    %%%%%%%%---      %% end theorem }",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 18,
+      "domain": "discrete_math",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Investigate whether certain properties hold in hypergraphs or directed graphs under similar conditions on vertex sets",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 19,
+      "domain": "discrete_math",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalized Conjecture for Directed Random Graph with Power-Law Degree Distribution",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 20,
+      "domain": "discrete_math",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalized Theorem about Lattice Path Combinatorics",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 21,
+      "domain": "discrete_math",
+      "strategy": "composition",
+      "conjecture_text": "Conjecture on Combinations from Resulting Games",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 22,
+      "domain": "discrete_math",
+      "strategy": "composition",
+      "conjecture_text": "Conjecture on Autonomous Graphs and Free Tensors",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 23,
+      "domain": "discrete_math",
+      "strategy": "composition",
+      "conjecture_text": "Conjecture for combined result",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 24,
+      "domain": "discrete_math",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Could explore different notions of \"max\" to define $\\mu$.",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 25,
+      "domain": "discrete_math",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Investigate bounds on maximum number of edges between positive and neg",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 26,
+      "domain": "discrete_math",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Could potentially strengthen this by adding criteria for nonautonomous components of subgraphs rather than just one vertex and relaxing condition on graphs that remain as we remove vertices to add more variety",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 27,
+      "domain": "discrete_math",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Let $P$ be an ordered set partition $(A_{1},\\ldots , A_{\\ell})$ on $[n]$ satisfying the condition that $\\sum _{i=j}^{\\min\\{r+k-2\\lfloor j/3 \\rfloor + 6,\\ n\\}} |C(x^{(a)}, i)| = k$. Then for all integers r greater than or equal to zero there exists some sequence x such t",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 28,
+      "domain": "discrete_math",
+      "strategy": "theorem_generation",
+      "conjecture_text": "For any $n \\geq 1$, the number of distinct values taken by $\\mathsf{E}[T_{S}]$ over all semigroups satisfying condition (C) is equal to $(2^{k+3} - k^4)/6 + O(nk)$.",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 29,
+      "domain": "discrete_math",
+      "strategy": "theorem_generation",
+      "conjecture_text": "This is some text before the statement of my custom-made math theorems",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 30,
+      "domain": "number_theory",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalization to higher rank groups or different Lie algebras would involve more complex structures beyond matrix algebra",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 31,
+      "domain": "number_theory",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalization to other categories or with different types of functors involved",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 32,
+      "domain": "number_theory",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalization to finite sets in different domains",
+      "llm_judge": {
+        "correctness": 0.6,
+        "novelty": 0.4,
+        "non_triviality": 0.7,
+        "significance": 0.8,
+        "formalizability": 0.9,
+        "overall_score": 0.68,
+        "is_well_formed": true,
+        "critique": "The conjecture attempts to generalize a pattern to finite sets in different domains, which is a common and important problem in number theory. However, the conjecture lacks specificity and clarity, making it difficult to assess its correctness and novelty. The idea of generalizing patterns to different domains is not new, but the application to finite sets could be significant. The conjecture is well-formed, but more rigor and formalization are needed to make it a meaningful and testable statement."
+      },
+      "llm_score": 0.68,
+      "heuristic_score": 0.42,
+      "score_diff": 0.26,
+      "is_well_formed": true
+    },
+    {
+      "index": 33,
+      "domain": "number_theory",
+      "strategy": "composition",
+      "conjecture_text": "This could involve combining theorems about modular forms and motives to formulate more general conjectures regarding their relationships with other number theoretic objects or properties related",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 34,
+      "domain": "number_theory",
+      "strategy": "composition",
+      "conjecture_text": "This would combine Theorem C in Section IVA from Ribes & Zalesskii with Lemma B' on page II$\\dagger$3950 $\\S8'$",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 35,
+      "domain": "number_theory",
+      "strategy": "composition",
+      "conjecture_text": "In number theory or in representation Theory? Is your example from noncommutative ring ?",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 36,
+      "domain": "number_theory",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "This may be related with understanding representations arising from other geometric constructions such as Deligne-Lusztig theory",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 37,
+      "domain": "number_theory",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Under weaker hypotheses on K/k , should we consider other kinds of modules besides lambda? Could there be some interesting structure theorems for these groups that could shed light",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 38,
+      "domain": "number_theory",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "This boundary condition could be relaxed to allow for smaller values of g; however it remains unclear how much more interesting an answer one might obtain beyond this point",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 39,
+      "domain": "number_theory",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Let $F$ be an arbitrary field of characteristic zero or sufficiently large odd prime order (e.~g., for $\\mathbb{Z}_p$). Let also $(X,+,\\cdot)$ denote the additive group equipped by multiplication operation as follows",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 40,
+      "domain": "number_theory",
+      "strategy": "theorem_generation",
+      "conjecture_text": "For any $K$, the $\\Lambda$-torsion subgroup of  ${H^1( K_\\infty , T )}$ is finitely generated over $(\\Zp)_\\P$.",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 41,
+      "domain": "number_theory",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Saturated fusion systems associated to modular forms of weight $k \\geq 2$ do not exist for primes larger than the level at infinity plus one; they instead correspond under Deligne's equivalence relation",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 42,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalize to other types of potentials or spectral measures",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 43,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalizing to other types or classes",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.1,
+        "non_triviality": 0.1,
+        "significance": 0.2,
+        "formalizability": 0.1,
+        "overall_score": 0.15,
+        "is_well_formed": false,
+        "critique": "The conjecture lacks specificity and mathematical rigor, making it difficult to evaluate its correctness, novelty, non-triviality, significance, and formalizability."
+      },
+      "llm_score": 0.15,
+      "heuristic_score": 0.42,
+      "score_diff": -0.27,
+      "is_well_formed": false
+    },
+    {
+      "index": 44,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalization of Theorem A or Corollary B",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 45,
+      "domain": "analysis",
+      "strategy": "composition",
+      "conjecture_text": "Prove or disprove this combined result by combining Theorems~\\eqref{}~and ~\\cite{}, using appropriate lemmas from Section ~.\\",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 46,
+      "domain": "analysis",
+      "strategy": "composition",
+      "conjecture_text": "Context before:% tions and one-dimensional measures for every rational number $\\frac pq$ satisfying $g(\\vec y)\\cdot q <p< g'(\\sigma_{\\ell}(\\xi))\\in (\\rho)_{\\text{$0$-th}}$; in other words $|\\mu|<\\lambda$.",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 47,
+      "domain": "analysis",
+      "strategy": "composition",
+      "conjecture_text": "This could lead to further research in operator theory using elements of functional analysis as well matrix methods from linear algebra",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.4,
+        "non_triviality": 0.6,
+        "significance": 0.7,
+        "formalizability": 0.5,
+        "overall_score": 0.6,
+        "is_well_formed": true,
+        "critique": "The conjecture is well-formed and demonstrates a good understanding of the potential connections between operator theory, functional analysis, and linear algebra. However, the statement is somewhat vague and lacks specificity, which reduces its novelty and formalizability. Furthermore, the conjecture does not provide a clear direction for further research, which limits its significance. Overall, the conjecture has some merit, but it requires more development and refinement to be considered a substantial contribution to the field."
+      },
+      "llm_score": 0.6,
+      "heuristic_score": 0.5,
+      "score_diff": 0.1,
+      "is_well_formed": true
+    },
+    {
+      "index": 48,
+      "domain": "analysis",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Generalize to higher-dimensional manifolds",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 49,
+      "domain": "analysis",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "This allows us more precise information on prime ideals as well",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 50,
+      "domain": "analysis",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Further investigation could explore different assumptions on G to guarantee pointwise convergence of weighted sum over eigenvalues where Beta weights converge weakly*. Can we drop some requirements?",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.6,
+        "non_triviality": 0.7,
+        "significance": 0.5,
+        "formalizability": 0.9,
+        "overall_score": 0.65,
+        "is_well_formed": true,
+        "critique": "The conjecture explores an interesting direction in analysis, specifically in the context of weighted sums over eigenvalues. The idea of dropping some requirements on G to guarantee pointwise convergence is plausible and warrants further investigation. However, the conjecture could benefit from more specificity regarding the types of assumptions on G that could be relaxed. Additionally, the connection to Beta weights converging weakly could be more clearly elucidated. Overall, the conjecture demonstrates a good understanding of the underlying mathematical concepts and has the potential to lead to meaningful insights."
+      },
+      "llm_score": 0.65,
+      "heuristic_score": 0.5,
+      "score_diff": 0.15,
+      "is_well_formed": true
+    },
+    {
+      "index": 51,
+      "domain": "analysis",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Let $G$ be an infinite group acting by isometries on the metric space $(X,\\rho)$. Let $\\{Y_i\\}$ denote any collection of finite subsets covering $\\cup_{g\\in G} g(F)$ for some fixed subset F$\\subset X$. If all points have infinitely many distinct images under this action then there exists",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 52,
+      "domain": "analysis",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Let $\\Omega$ be an open subset of the real line $R$. Then any bounded weak* topology closed ball on functions from L_1(\\mu) is always strongly locally finite inside R\\ \\times C(Q), where Q denotes to all rational numbers .",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 53,
+      "domain": "analysis",
+      "strategy": "theorem_generation",
+      "conjecture_text": "If f(x) is continuously differentiable on R^n such that |f_{ij}(a)| >= C > 0 for some fixed point $latex \\alpha$ of the domain D_j whenever i != j , then there exists an open neighborhood U",
+      "llm_judge": {
+        "correctness": 0.6,
+        "novelty": 0.4,
+        "non_triviality": 0.7,
+        "significance": 0.5,
+        "formalizability": 0.8,
+        "overall_score": 0.6,
+        "is_well_formed": true,
+        "critique": "The conjecture appears to be related to the concept of strong convexity or the Hessian matrix in multivariable calculus. However, the statement is incomplete and lacks clarity. The condition |f_{ij}(a)| >= C > 0 for some fixed point $latex \\alpha$ of the domain D_j whenever i != j is intriguing, but its implications are unclear without further context. The conclusion 'there exists an open neighborhood U' is vague and requires more specification. With some refinement and additional details, this conjecture could be interesting and worthy of further exploration."
+      },
+      "llm_score": 0.6,
+      "heuristic_score": 0.66,
+      "score_diff": -0.06,
+      "is_well_formed": true
+    },
+    {
+      "index": 54,
+      "domain": "analysis",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before:: adic numbers $\\Qp$, where one has to find suitable analogues for matrices over finite fields or rings instead.\\\\[3mm] A natural candidate are here p-adic Weyl groups as described below.\\index{Weyl group!padi",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 55,
+      "domain": "analysis",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: tion{25}{3}}\\right)^j= \\left(\\begin {array}{}0&-I\\\\ I&A^*\\\\\\end",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 56,
+      "domain": "analysis",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: )}{h(n)} < +\\infty.\\] As usual we say this sequence has density one at infinity to mean exactly what it says; i.\\hspace{-.1mm}{}e., for any fixed real numbers $-a<b$, \\[\\sum_{p=N}^{",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.1,
+        "non_triviality": 0.3,
+        "significance": 0.2,
+        "formalizability": 0.4,
+        "overall_score": 0.24,
+        "is_well_formed": false,
+        "critique": "The conjecture appears to be incomplete and lacks context. The notation '{h(n)}' and the summation are not clearly defined. While the concept of density one at infinity is a valid area of study in analysis, the conjecture as stated is unclear and does not provide enough information to be formally evaluated. The use of 'p' and 'N' in the summation suggests a possible connection to prime numbers, but without further context, it is difficult to assess the correctness or significance of the conjecture."
+      },
+      "llm_score": 0.24,
+      "heuristic_score": 0.58,
+      "score_diff": -0.34,
+      "is_well_formed": false
+    },
+    {
+      "index": 57,
+      "domain": "analysis",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: ion on iterates by replacing irreducible polynomials over finite fields as ramification objects to exceptional values for dynamical systems suchas rational maps etc.. The main goal here would",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 58,
+      "domain": "analysis",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: oth be written as a finite alternating sum of terms taking exactly one sign change point and some fixed interval size",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 59,
+      "domain": "analysis",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Here's a possible idea of how this might be translated into numbers and real domains by analogy...",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.3,
+        "non_triviality": 0.4,
+        "significance": 0.4,
+        "formalizability": 0.1,
+        "overall_score": 0.3,
+        "is_well_formed": true,
+        "critique": "The conjecture lacks specificity and mathematical rigor, making it difficult to evaluate its potential impact on the field of analysis. Further development is needed to assess its correctness, novelty, and significance."
+      },
+      "llm_score": 0.3,
+      "heuristic_score": 0.5,
+      "score_diff": -0.2,
+      "is_well_formed": true
+    },
+    {
+      "index": 60,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "This could lead to generalizing this idea for other classes of algebraic structures or different types",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 61,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Consider an arbitrary commutative Noetherian ring R with maximal dimension d < \u221e Let I\u2286R is radical where then define m to as being dim\u2061Exti[2d\u22121](M/IMm). Is it true for all i >dim\u0332 Exts\u2264max{[n+k]\u2211ij=nnkjxjn}.",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 62,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Investigating restrictions on cyclic subgroups for classical groups over finite fields where PSLm(q), PSUmn^d ,PSLn_D^(2).",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.6,
+        "non_triviality": 0.8,
+        "significance": 0.7,
+        "formalizability": 0.9,
+        "overall_score": 0.76,
+        "is_well_formed": true,
+        "critique": "The conjecture appears to be well-formed and explores a specific area of algebra, namely restrictions on cyclic subgroups for classical groups over finite fields. The inclusion of specific groups such as PSLm(q), PSUmn^d, and PSLn_D^(2) suggests a good understanding of the subject matter. However, the conjecture could benefit from more precise language and a clearer statement of the proposed restriction. Additionally, the relationship between these groups and cyclic subgroups could be more explicitly stated. Overall, the conjecture demonstrates a good understanding of algebraic concepts, but requires further refinement to be considered a significant contribution to the field."
+      },
+      "llm_score": 0.76,
+      "heuristic_score": 0.5,
+      "score_diff": 0.26,
+      "is_well_formed": true
+    },
+    {
+      "index": 63,
+      "domain": "algebra",
+      "strategy": "composition",
+      "conjecture_text": "Context before: e finite dimensional modules over Noetherian rings have this property.) The next result shows how to characterize these types when we move from left-right symmetric properties in general settings.]]",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 64,
+      "domain": "algebra",
+      "strategy": "composition",
+      "conjecture_text": "Under certain conditions on an associative and unital ring B with idempotents e\u2081,...,en such as those in Theorem X or similar ones from literature elsewhere to be discussed further if needed; there exists some kind o fsubalgebra U generated by at least one set containing \u03c4\u1d47\u207d\u02e3\u1d3f\u02b2\u00b3\u2208C\u00b9\u00d7...x C\u00b2 x ... \u00d7 C",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 65,
+      "domain": "algebra",
+      "strategy": "composition",
+      "conjecture_text": "Consider both Result A mentioned before result B as Theorem C with hypotheses specified precisely from Theorems Dand E...",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.2,
+        "non_triviality": 0.2,
+        "significance": 0.2,
+        "formalizability": 0.4,
+        "overall_score": 0.2,
+        "is_well_formed": false,
+        "critique": "The conjecture lacks specific mathematical statements and references, making it difficult to evaluate its correctness, novelty, non-triviality, significance, and formalizability. For a conjecture to be well-formed and evaluable, it should clearly state the mathematical relationships or hypotheses it proposes, along with any relevant theorems or results it builds upon."
+      },
+      "llm_score": 0.2,
+      "heuristic_score": 0.5,
+      "score_diff": -0.3,
+      "is_well_formed": false
+    },
+    {
+      "index": 66,
+      "domain": "algebra",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "This might be related to representation theory and algebraic geometry more broadly",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 67,
+      "domain": "algebra",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Investigate generalizations to other algebraic structures beyond semigroups",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 68,
+      "domain": "algebra",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Context before: s} The category of dg algebras over any field will be denoted as dgalgsf",
+      "llm_judge": {
+        "correctness": 0.0,
+        "novelty": 0.0,
+        "non_triviality": 0.0,
+        "significance": 0.0,
+        "formalizability": 0.0,
+        "overall_score": 0.0,
+        "is_well_formed": false,
+        "critique": "The statement is not a conjecture, but rather a notation declaration. It lacks a clear mathematical statement or claim that can be evaluated for correctness, novelty, or significance. The statement appears to be a definition or a notation convention, which is not a conjecture."
+      },
+      "llm_score": 0.0,
+      "heuristic_score": 0.5,
+      "score_diff": -0.5,
+      "is_well_formed": false
+    },
+    {
+      "index": 69,
+      "domain": "algebra",
+      "strategy": "theorem_generation",
+      "conjecture_text": "For $m$ be an integer greater than 2 or for any other fixed positive natural number which is not divisible by p; if one of the roots $\\alpha$,$\\beta,\\gamma,...\\delta_{r}$is such that it possesses no exponent higher then m-1 ,then we can say x belongs to (monomial)Kummerspace i",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 70,
+      "domain": "algebra",
+      "strategy": "theorem_generation",
+      "conjecture_text": "\\begin{theorem} \\label {31284-7695  }    % Theorem   (for use later)                 #%%%%%%%%%%% n^n=e^{ln\\:",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 71,
+      "domain": "algebra",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Let $\\A$ be the Alexander quandle associated to some knot $K$. Then there exists an orientation preserving embedding of $(2m-1)$-sphere into its complement where this sphere is given as union over",
+      "llm_judge": {
+        "correctness": 0.6,
+        "novelty": 0.4,
+        "non_triviality": 0.7,
+        "significance": 0.5,
+        "formalizability": 0.8,
+        "overall_score": 0.6,
+        "is_well_formed": true,
+        "critique": "The conjecture appears to be well-formed, but its correctness is uncertain due to the lack of specific details about the knot K and the Alexander quandle. The idea of an orientation-preserving embedding of a (2m-1)-sphere into the complement of the Alexander quandle is intriguing, but more context is needed to fully assess its novelty and significance. The conjecture seems to be non-trivial, as it involves a deep understanding of quandle theory and knot complements. However, without further formalization and justification, it is difficult to fully evaluate its validity."
+      },
+      "llm_score": 0.6,
+      "heuristic_score": 0.66,
+      "score_diff": -0.06,
+      "is_well_formed": true
+    },
+    {
+      "index": 72,
+      "domain": "algebra",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before:$ a \\mapsto x^a y^{b} z^{-c}$, where $(m-n)(p+q)=-r(k)$. Thus we have shown our claim for all elements and hence proved this theorem.\\end{proof}\\noindent\\newline We now state some conjectures regarding these groups:\\vspace{-3pt}}",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 73,
+      "domain": "algebra",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Infinite families arising from linear recurrences",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 74,
+      "domain": "algebra",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "This provides a link between two seemingly unrelated areas of mathematics that share common terms used to describe similar phenomena or objects related by algebraic structures like eigenvalues/vectors",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.3,
+        "non_triviality": 0.4,
+        "significance": 0.4,
+        "formalizability": 0.2,
+        "overall_score": 0.36,
+        "is_well_formed": false,
+        "critique": "The conjecture lacks specificity and formal mathematical statement, making it difficult to evaluate its correctness, novelty, non-triviality, significance, and formalizability. It suggests a potentially interesting connection between areas of mathematics but requires more detail to be considered a well-formed mathematical conjecture."
+      },
+      "llm_score": 0.36,
+      "heuristic_score": 0.5,
+      "score_diff": -0.14,
+      "is_well_formed": false
+    },
+    {
+      "index": 75,
+      "domain": "algebra",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "%In this section we make a transition from graph theory to linear",
+      "llm_judge": {
+        "correctness": 0.0,
+        "novelty": 0.0,
+        "non_triviality": 0.0,
+        "significance": 0.0,
+        "formalizability": 0.0,
+        "overall_score": 0.0,
+        "is_well_formed": false,
+        "critique": "The conjecture is not well-formed as it lacks a clear mathematical statement. The phrase '%In this section we make a transition from graph theory to linear' appears to be a introductory sentence rather than a conjecture. A well-formed conjecture should be a specific, testable statement that can be proven or disproven. In this case, the statement is too vague and does not provide a clear mathematical claim to evaluate."
+      },
+      "llm_score": 0.0,
+      "heuristic_score": 0.5,
+      "score_diff": -0.5,
+      "is_well_formed": false
+    },
+    {
+      "index": 76,
+      "domain": "algebra",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "This can be generalized by considering a more general set-up beyond just two variables and rational exponents",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 77,
+      "domain": "algebra",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "In this paper we study non-associative loop algebras related by a simple algebraic operation called adjoint twisting and classify them up",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 78,
+      "domain": "geometry_topology",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalization to other topological spaces or weaker properties than metrization",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.6,
+        "non_triviality": 0.7,
+        "significance": 0.8,
+        "formalizability": 0.9,
+        "overall_score": 0.76,
+        "is_well_formed": true,
+        "critique": "The conjecture is well-formed and explores a significant area of research in geometry and topology. However, its correctness and novelty are somewhat limited by the existing body of work on topological spaces and metrization. The conjecture's non-triviality is moderate, as it requires a deep understanding of topological properties and their generalizations. The significance of the conjecture is high, as it has the potential to shed new light on the structure of topological spaces. The formalizability of the conjecture is excellent, as it can be stated precisely using established mathematical notation and terminology. Overall, the conjecture is a good starting point for further research, but it may benefit from more specific and detailed formulations."
+      },
+      "llm_score": 0.76,
+      "heuristic_score": 0.5,
+      "score_diff": 0.26,
+      "is_well_formed": true
+    },
+    {
+      "index": 79,
+      "domain": "geometry_topology",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "This would require an extension to higher dimensions or different types/properties on N",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 80,
+      "domain": "geometry_topology",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalizing to other topological spaces than smooth manifolds may reveal additional structure or patterns in these connections between topology...",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 81,
+      "domain": "geometry_topology",
+      "strategy": "composition",
+      "conjecture_text": "This could be restated in terms more familiar within low dimensional topology or algebraic geometry by using known equivalences between these areas",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.4,
+        "non_triviality": 0.6,
+        "significance": 0.7,
+        "formalizability": 0.9,
+        "overall_score": 0.66,
+        "is_well_formed": true,
+        "critique": "The conjecture is well-formed and demonstrates a good understanding of the connections between low-dimensional topology and algebraic geometry. However, the statement is somewhat vague and lacks specificity, which reduces its novelty and non-triviality. Nevertheless, the idea of restating a problem in a more familiar context is a common and useful technique in mathematics, and the conjecture has the potential to be significant if it can be formalized and proven."
+      },
+      "llm_score": 0.66,
+      "heuristic_score": 0.5,
+      "score_diff": 0.16,
+      "is_well_formed": true
+    },
+    {
+      "index": 82,
+      "domain": "geometry_topology",
+      "strategy": "composition",
+      "conjecture_text": "The combined version would involve considering sheaves over certain sites instead",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 83,
+      "domain": "geometry_topology",
+      "strategy": "composition",
+      "conjecture_text": "Considerations related this paper could be interesting for symplectic geometry or theoretical physics",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 84,
+      "domain": "geometry_topology",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Context before: $C_{\\bullet}(E(2))$ to be given at each stage either all three vertices being internal/external with respect",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.1,
+        "non_triviality": 0.3,
+        "significance": 0.2,
+        "formalizability": 0.4,
+        "overall_score": 0.24,
+        "is_well_formed": false,
+        "critique": "The conjecture appears to be related to the topology of the Euclidean plane, specifically the configuration space of points in the plane. However, the statement is unclear and lacks formal rigor. The notation $C_{\bullet}(E(2))$ suggests a connection to simplicial complexes or chain complexes, but the context is not well-defined. The condition 'all three vertices being internal/external with respect' is also ambiguous. To be considered well-formed, the conjecture needs to be restated with precise definitions and notation."
+      },
+      "llm_score": 0.24,
+      "heuristic_score": 0.66,
+      "score_diff": -0.42,
+      "is_well_formed": false
+    },
+    {
+      "index": 85,
+      "domain": "geometry_topology",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Exploring how to weaken condition on $f$",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 86,
+      "domain": "geometry_topology",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Context before: ction}, we review some basic facts related notions required here that come from linear algebra; see section 5--7 particularly as well~\\cite[\\S4]{o2013introduction}. We use these freely through out..",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 87,
+      "domain": "geometry_topology",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Context before:  homotopy classes of paths $\\pi(x)$ form an abelian group under addition (with the inverse being given by reversing orientation). The corresponding groupoid is called fundamental path space or loopspace",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.2,
+        "non_triviality": 0.6,
+        "significance": 0.7,
+        "formalizability": 0.9,
+        "overall_score": 0.64,
+        "is_well_formed": true,
+        "critique": "The conjecture is well-formed and largely correct, but it's a well-known result in algebraic topology. The fundamental group, denoted by \u03c0\u2081(X), is indeed an abelian group under the operation of concatenation of loops, not addition. The statement about the groupoid is also correct, but the terminology 'fundamental path space' is not standard, and 'loopspace' usually refers to the space of all loops in a space, not the groupoid. The conjecture lacks novelty, but it's still a significant result in the field."
+      },
+      "llm_score": 0.64,
+      "heuristic_score": 0.66,
+      "score_diff": -0.02,
+      "is_well_formed": true
+    },
+    {
+      "index": 88,
+      "domain": "geometry_topology",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Failed to load \"Example\".",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 89,
+      "domain": "geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: 390728456",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 90,
+      "domain": "geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "In 20-th century mathematics emerged numerous conjectures that became famous thanks not only their importance but also due interesting properties related with them or solutions they brought up on several open problems",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.0,
+        "non_triviality": 0.0,
+        "significance": 0.2,
+        "formalizability": 0.0,
+        "overall_score": 0.08,
+        "is_well_formed": false,
+        "critique": "The statement is more of a historical observation than a mathematical conjecture. It lacks specificity, clarity, and formalizability. While it mentions famous conjectures, it doesn't provide any new insights or propose a testable hypothesis. To be considered a well-formed conjecture, it needs to be more precise, with clear definitions and a specific claim that can be proven or disproven."
+      },
+      "llm_score": 0.08,
+      "heuristic_score": 0.5,
+      "score_diff": -0.42,
+      "is_well_formed": false
+    },
+    {
+      "index": 91,
+      "domain": "geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: h 0$. Therefore $\\varepsilon'(X)>2\\delta(B)$, which contradicts our assumption.} So for every point of this set we have $|V_{\\alpha}(x)-y|\\geq \\frac{\\eps}{3}$. This proves Claim~1.\\end{proof}\\medskip",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 92,
+      "domain": "geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: f{dfn}[Geodesic Adapted Pseudo Metric]{definition}[(Adapt)] A geodesic metric space  or Riemannian manifold\\index{(mgt)}{Riemannian Manifold}\\footnote{$C^1$-smoothness will be assumed unless otherwise stated.}",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 93,
+      "domain": "geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: tial_{\\partial/p}T_\\mathfrak{m}(S)\\cong S/(f^r)$, where $(g)$ denotes any minimal prime associated to some element vanishing on $\\{Z\\}$. Moreover $[L:\\Q]\\cdot \\#P/\\#\\{ Z\\}$ equals its Euler characteristic.}",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 94,
+      "domain": "geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before:\" oved to also hold when we drop some assumptions on X). A similar approach could work here and potentially allow us make new nonvanishing results using this line!}}\\label{SOD} Here are two remarks",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.4,
+        "non_triviality": 0.3,
+        "significance": 0.5,
+        "formalizability": 0.6,
+        "overall_score": 0.38,
+        "is_well_formed": false,
+        "critique": "The conjecture appears to be incomplete and lacks a clear statement. However, it seems to be related to generalizing existing results by dropping assumptions on X, which is a common and potentially fruitful approach in geometry and topology. The mention of 'new nonvanishing results' suggests that the conjecture might be related to the study of topological invariants or obstruction theory. To evaluate the conjecture further, a more precise statement and context are needed."
+      },
+      "llm_score": 0.38,
+      "heuristic_score": 0.58,
+      "score_diff": -0.2,
+      "is_well_formed": false
+    },
+    {
+      "index": 95,
+      "domain": "probability_statistics",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "I'm not sure if this is what you are looking for but here goes...",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 96,
+      "domain": "probability_statistics",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "Generalization to other spaces",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 97,
+      "domain": "probability_statistics",
+      "strategy": "pattern_interpolation",
+      "conjecture_text": "This is another formulation of Chebyshev's inequality for random variables with large deviations under certain regularity conditions",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.2,
+        "non_triviality": 0.6,
+        "significance": 0.7,
+        "formalizability": 0.9,
+        "overall_score": 0.64,
+        "is_well_formed": true,
+        "critique": "The conjecture appears to be a reformulation of Chebyshev's inequality, which is a well-established result in probability theory. While it is not particularly novel, it is still a non-trivial and significant result, especially if the regularity conditions are carefully specified. However, without more context or details about the specific formulation and conditions, it is difficult to fully assess the correctness and novelty of the conjecture."
+      },
+      "llm_score": 0.64,
+      "heuristic_score": 0.5,
+      "score_diff": 0.14,
+      "is_well_formed": true
+    },
+    {
+      "index": 98,
+      "domain": "probability_statistics",
+      "strategy": "composition",
+      "conjecture_text": "This could combine ideas from quantum probability and infinite-dimensional analysis to prove inequalities in higher dimensions by reducing them one dimension at time through appropriate projections onto subspaces spanned",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 99,
+      "domain": "probability_statistics",
+      "strategy": "composition",
+      "conjecture_text": "Conjecture I'm not sure if this will be useful... but you could formulate your question as follows..",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 100,
+      "domain": "probability_statistics",
+      "strategy": "composition",
+      "conjecture_text": "Combining these ideas yields both asymptotic bounds on expected maxima and explicit rates for exponential tails at different levels with applications to supremum processes based solely upon moment conditions rather than dependence structure or even absolute continuity assumptions; all without requir",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.6,
+        "non_triviality": 0.9,
+        "significance": 0.8,
+        "formalizability": 0.7,
+        "overall_score": 0.76,
+        "is_well_formed": true,
+        "critique": "The conjecture appears to be well-formed and combines interesting ideas from probability and statistics. However, the language is somewhat vague, and it's unclear what specific mathematical statements are being made. The conjecture seems to be related to extreme value theory and the study of supremum processes, but more precise definitions and assumptions are needed to fully evaluate its correctness and significance. Additionally, the claim that the results can be obtained without requiring independence or absolute continuity assumptions is intriguing, but may require further justification."
+      },
+      "llm_score": 0.76,
+      "heuristic_score": 0.5,
+      "score_diff": 0.26,
+      "is_well_formed": true
+    },
+    {
+      "index": 101,
+      "domain": "probability_statistics",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Under weaker assumptions on A and B matrices",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.42,
+      "score_diff": 0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 102,
+      "domain": "probability_statistics",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Context before: _X}}P_{_Y}({y^j})\\rho (\\tau _{0,{v^{ij}}}_ * ).\\\\ \\\\% &\\text{(c)}\\quad& \\!\\!\\!\\!\\sum_{\\forall x,\\; y\\;;\\,f({{{Z}}^{ji}})\\mathop{=}^{?}g({\\tilde Z}_{m + p^*}^{(l)})}\\!\\!\\!\\!\\!\\!{\\phi ({\\mathbf",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 103,
+      "domain": "probability_statistics",
+      "strategy": "boundary_exploration",
+      "conjecture_text": "Under weak moment assumptions",
+      "llm_judge": {
+        "correctness": 0.2,
+        "novelty": 0.1,
+        "non_triviality": 0.1,
+        "significance": 0.1,
+        "formalizability": 0.3,
+        "overall_score": 0.16,
+        "is_well_formed": true,
+        "critique": "The conjecture 'Under weak moment assumptions' is too vague and lacks specificity. While moment assumptions are a common theme in probability and statistics, the statement does not provide enough context or detail to be considered a well-formed conjecture. It appears to be a fragment of a larger idea, rather than a fully developed mathematical statement."
+      },
+      "llm_score": 0.16,
+      "heuristic_score": 0.42,
+      "score_diff": -0.26,
+      "is_well_formed": true
+    },
+    {
+      "index": 104,
+      "domain": "probability_statistics",
+      "strategy": "theorem_generation",
+      "conjecture_text": "This is an example of how the post-processing might look like for Theorem 1 (from Section \\ref{sec3}). We present it here as Example",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 105,
+      "domain": "probability_statistics",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Under certain sparsity assumptions on the covariance matrix of $X$, we establish an exact equivalence between approximating low-rank Gaussian distributions using $\\ell_{1}$ regularization followed by postprocessing (using our proposed algorithm) versus approximately recovering",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 106,
+      "domain": "probability_statistics",
+      "strategy": "theorem_generation",
+      "conjecture_text": "Consider an iterative dynamical systems (X,\\phi) which is not necessarily Markovian or stationary; where X denotes the space on its natural topology while \\phie(t):=\\Phi^te for t\\inN stands to be measurable iterated map under",
+      "llm_judge": {
+        "correctness": 0.8,
+        "novelty": 0.4,
+        "non_triviality": 0.7,
+        "significance": 0.6,
+        "formalizability": 0.9,
+        "overall_score": 0.64,
+        "is_well_formed": true,
+        "critique": "The conjecture appears to be well-formed and is based on a clear understanding of iterative dynamical systems. However, the statement is somewhat vague and lacks specificity. The notion of a 'measurable iterated map' is not clearly defined, and the conjecture does not provide a clear hypothesis or claim. Additionally, the conjecture does not seem to be particularly novel or groundbreaking, as it appears to be a general statement about iterative dynamical systems. Nevertheless, the conjecture does demonstrate a good understanding of the underlying mathematical concepts and has the potential to be developed into a more substantial and significant result."
+      },
+      "llm_score": 0.64,
+      "heuristic_score": 0.58,
+      "score_diff": 0.06,
+      "is_well_formed": true
+    },
+    {
+      "index": 107,
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: overed by random variables taking values from different distributions and having no common support or range of variation? Are there any conditions under",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.5,
+      "score_diff": 0.0,
+      "is_well_formed": false
+    },
+    {
+      "index": 108,
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: en we have\r$$E\\left(\\int_{\\mathbb T}f(t)\\mu_{p}(dt)+\\sum^{N}_{j=1}\\alpha _{m+k}^{0}(\\lambda )b_{{ m}}\\right)=a.$$ Therefore $${\\lim }_{{\\rm Re}\\,\\rho \\,",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    },
+    {
+      "index": 109,
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Let $(X,\\mathcal B_\\nu)$, $(\\tilde X ,\\widetilde{\\cal",
+      "llm_judge": {
+        "correctness": 0.0,
+        "novelty": 0.0,
+        "non_triviality": 0.0,
+        "significance": 0.0,
+        "formalizability": 0.0,
+        "overall_score": 0.0,
+        "is_well_formed": false,
+        "critique": "The conjecture is incomplete and lacks sufficient context to be evaluated. It appears to involve probability or measure theory but does not provide enough information to assess its correctness, novelty, non-triviality, significance, or formalizability."
+      },
+      "llm_score": 0.0,
+      "heuristic_score": 0.66,
+      "score_diff": -0.66,
+      "is_well_formed": false
+    },
+    {
+      "index": 110,
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: nce relation holds for all sufficiently large eigenvalues if one replaces there ``sufficiently'' with \u201call\u201d? \\item What should replace condition (\\ref{eq2}) when considering analogues below as well",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 111,
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: ckspace}\\label=Theorem{\\ref}{th754}} Let $\\{z_\\alpha; z'_r\\}$, and for all prime divisors over $(k(t),M)$. If we replace this property by only requiring it outside finitely many primes then Corollary",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.66,
+      "score_diff": -0.16,
+      "is_well_formed": false
+    },
+    {
+      "index": 112,
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "conjecture_text": "Context before: igmathscr I}\\times U_\\infty$, which we think as being embedded into $\\{f\\}\\in E$. We deduce from this and Lemma~\\ref {lemspeconeformclosedsuppproplinearalgcurve}, by passing limit over compacts",
+      "llm_judge": {
+        "correctness": 0.5,
+        "novelty": 0.5,
+        "non_triviality": 0.5,
+        "significance": 0.5,
+        "formalizability": 0.5,
+        "overall_score": 0.5,
+        "is_well_formed": false,
+        "critique": "Judge returned no valid response"
+      },
+      "llm_score": 0.5,
+      "heuristic_score": 0.58,
+      "score_diff": -0.08,
+      "is_well_formed": false
+    }
+  ],
+  "status": "complete"
+}

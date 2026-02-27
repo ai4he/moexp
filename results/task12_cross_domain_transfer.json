@@ -1,0 +1,706 @@
+{
+  "task": 12,
+  "title": "Cross-Domain Transfer Ablation",
+  "summary": {
+    "n_pairs": 7,
+    "n_per_condition": 3,
+    "avg_cross_score": 0.16,
+    "avg_baseline_score": 0.18,
+    "avg_transfer_benefit": -0.02
+  },
+  "per_target_domain": {
+    "algebraic_geometry": {
+      "cross_mean": 0.16,
+      "baseline_mean": 0.26,
+      "cross_n": 9,
+      "baseline_n": 3,
+      "transfer_benefit": -0.1
+    },
+    "probability_statistics": {
+      "cross_mean": 0.3533,
+      "baseline_mean": 0.0733,
+      "cross_n": 3,
+      "baseline_n": 3,
+      "transfer_benefit": 0.28
+    },
+    "algebra": {
+      "cross_mean": 0.1133,
+      "baseline_mean": 0.26,
+      "cross_n": 3,
+      "baseline_n": 3,
+      "transfer_benefit": -0.1467
+    },
+    "geometry_topology": {
+      "cross_mean": 0.1067,
+      "baseline_mean": 0.1667,
+      "cross_n": 3,
+      "baseline_n": 3,
+      "transfer_benefit": -0.06
+    },
+    "analysis": {
+      "cross_mean": 0.0667,
+      "baseline_mean": 0.14,
+      "cross_n": 3,
+      "baseline_n": 3,
+      "transfer_benefit": -0.0733
+    }
+  },
+  "cells": {
+    "cross|number_theory->algebraic_geometry": {
+      "condition": "cross_domain",
+      "source": "number_theory",
+      "target": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $X$ be a smooth projective variety over a finite field $\\mathbb{F}_q$, and let $E$ be a coherent sheaf on $X$. Suppose the Frobenius endomorphism $Frob_X: X \to X$ induces an automorphism on $E$, denoted by $\\sigma$. Then, there exists a coherent sheaf $E'$ on $X$ such that the conjugation action",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is very vague and ill-defined. The notion of 'Galois type' and 'totally real in some appropriate sense' are not specified, making the statement meaningless without further clarification. The connection between the existence of $E'$ with the given endomorphism property and the Sato-Tate conjecture is unclear and lacks justification. The statement is unlikely to be true in its current form. The condition that $Frob_X$ induces an automorphism on $E$ is also quite restrictive and may not hold in general. The conjugation action condition is also quite weak and unlikely to lead to strong conclusions. Overall, the conjecture is poorly formulated and lacks mathematical substance."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a smooth projective variety over a field $k$ of characteristic $p > 0$. Let $\\mathcal{E}$ be a vector bundle on $X$. Consider the Frobenius pullbacks $F^n_* \\\\mathcal{E}$ for $n \\\\geq 0$. Then the arithmetic and geometric monodromy groups of the system",
+          "score": 0.4,
+          "judge": {
+            "correctness": 0.3,
+            "novelty": 0.4,
+            "non_triviality": 0.5,
+            "significance": 0.6,
+            "formalizability": 0.2,
+            "overall_score": 0.4,
+            "is_well_formed": true,
+            "critique": "The statement is vague, especially the phrase \"bounded in a suitable sense.\" Without a precise definition of this boundedness, the conjecture is not mathematically rigorous. The idea of studying Frobenius pullbacks of vector bundles is natural in characteristic $p$, and bounding monodromy groups is a significant problem. However, the lack of precision makes it difficult to assess the novelty and significance. Formalizing this in Lean 4 would be challenging without a precise definition of the boundedness condition. The notation is standard, but the overall statement needs more rigor."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a smooth projective variety over a field $k$ of characteristic 0, and let $D$ be a $\\mathbb{Q}$-divisor on $X$. Consider the log pair $(X,D)$. Let $\\text{lct}(X,D)$ denote the log canonical threshold of $(X,D)$. Then there exists an open subgroup $\\Gam",
+          "score": 0.42,
+          "judge": {
+            "correctness": 0.6,
+            "novelty": 0.3,
+            "non_triviality": 0.4,
+            "significance": 0.3,
+            "formalizability": 0.5,
+            "overall_score": 0.42,
+            "is_well_formed": true,
+            "critique": "The conjecture starts reasonably, suggesting that the log canonical threshold is invariant under the action of a sufficiently small open subgroup of the automorphism group. This is plausible, as automorphisms close to the identity should preserve singularities. However, the statement is incomplete. The sentence ends abruptly with 'period of A, per(A)'. It is unclear what is being conjectured about the central simple algebra A and its period. Without a complete statement, it's impossible to assess the conjecture's overall correctness, novelty, non-triviality, or significance. The formalizability is also questionable due to the incompleteness. The initial part about the automorphism group action is potentially formalizable, but the unfinished part is not."
+          }
+        }
+      ],
+      "scores": [
+        0.1,
+        0.4,
+        0.42
+      ],
+      "mean_score": 0.3067
+    },
+    "baseline|algebraic_geometry": {
+      "condition": "same_domain",
+      "target": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $X$ be a smooth projective variety over a field $k$, and let $A$ be a central simple $k$-algebra. Let $D$ be a Weil divisor on $X$. If $D$ is numerically $\\mathbb{Q}$-Cartier, then there exists a birational model $f: Y \\to X$ such that $f^*D$ is $\\mathbb{Q}$-Cartier and the induced map on Chow g",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is vaguely stated and likely false in its current form. The connection between numerical $\\mathbb{Q}$-Cartier divisors and the surjectivity of the pushforward on Chow groups with coefficients in a central simple algebra is unclear and lacks motivation. The condition that $D$ is numerically $\\mathbb{Q}$-Cartier does not seem strong enough to guarantee the existence of a birational model with the desired properties. The statement about the Chow groups is also problematic, as it's not clear what the definition of $CH_i(X, A)$ is in this context. It's likely intended to be some form of twisted Chow group, but this needs to be made precise. Without a clear definition of $CH_i(X, A)$, the conjecture is not well-defined. Even if we assume a reasonable definition, the surjectivity condition is very strong and unlikely to hold in general. The formalizability is low because the definitions are not standard and require significant elaboration."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $(\\mathcal{F}, \\Delta)$ be a log terminal foliated pair on a smooth complex projective variety $X$. Then there exists an exact sequence $$0 \\\\to H^{p-1}(X, \\\\mathcal{K}_p)/n \\\\to H^{p-1}(X, {\\\\mathbb{H}}^p({\\\\mathbb{Z}}))/n \\\\to {}_{n}A^p(X) \\\\to 0,$$ where $",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The statement is incomplete and contains several undefined terms. The phrase \"maps are compatible with the foliation $\\mathcal{F}$ in the sense that they induce maps on suita\" is not a complete sentence and lacks a clear meaning. The notation ${}_{n}A^p(X)$ is also not standard and requires clarification. The term ${\\mathbb{H}}^p({\\mathbb{Z}})$ is also unclear in this context. Without precise definitions, it's impossible to assess the correctness, novelty, or significance of the conjecture. The lack of precision also makes formalization difficult."
+          }
+        },
+        {
+          "conjecture_text": "Let $X$ be a normal variety with rational singularities. Let $D_1$ and $D_2$ be Weil divisors on $X$. If $D_1$ and $D_2$ are numerically $\\QQ$-Cartier and numerically equivalent, then for any birational morphism $f: Y \\to X$ such that $f^*D_1$ and $f^*D_2$ are $\\QQ$-Cartier, $f^*D_1$ and $f^*D_2$ ar",
+          "score": 0.58,
+          "judge": {
+            "correctness": 1.0,
+            "novelty": 0.2,
+            "non_triviality": 0.5,
+            "significance": 0.4,
+            "formalizability": 0.8,
+            "overall_score": 0.58,
+            "is_well_formed": true,
+            "critique": "The statement is well-formed and uses standard terminology in algebraic geometry. However, the conjecture is essentially a restatement of the properties of numerical equivalence and pullback under birational morphisms, especially given the assumptions on rational singularities and $\\mathbb{Q}$-Cartier divisors. While not entirely trivial, it's not particularly novel or significant. The condition that $f^*D_1$ and $f^*D_2$ are $\\mathbb{Q}$-Cartier is crucial, and the rational singularity assumption helps in controlling the behavior of pullbacks. Formalization in Lean 4 should be possible, as the concepts involved are relatively well-defined."
+          }
+        }
+      ],
+      "scores": [
+        0.1,
+        0.1,
+        0.58
+      ],
+      "mean_score": 0.26
+    },
+    "cross|algebra->algebraic_geometry": {
+      "condition": "cross_domain",
+      "source": "algebra",
+      "target": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $X$ be a smooth projective variety and $D$ a Weil divisor on $X$. If the fundamental group of $X \\setminus D$ admits a presentation $\\langle x, y \\mid r \\rangle$ where $r = x^{n_1} y^{m_1} \\cdots x^{n_k} y^{m_k}$ with $\\ell_y(r) = \\pm 1$, then $D$ is numerically \\(\\mathbb{Q}\\)-Cartier.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is fundamentally flawed. The condition on the fundamental group of the complement of $D$ is far too weak to imply that $D$ is numerically $\\mathbb{Q}$-Cartier. In fact, the fundamental group condition places very little restriction on the divisor $D$. The notation $\\ell_y(r)$ represents the exponent sum of $y$ in the word $r$. The condition $\\ell_y(r) = \\pm 1$ is not strong enough to deduce anything about the divisor $D$. There is no known connection between such a presentation of the fundamental group and numerical $\\mathbb{Q}$-Cartierness. The conjecture is likely false and does not represent a meaningful direction for research. It is not well-formed in the sense that it is unlikely to be true or lead to interesting results."
+          }
+        },
+        {
+          "conjecture_text": "Let $X$ be a smooth projective variety and $G$ a connected algebraic group acting on $X$. Let $I$ be a $G$-invariant ideal sheaf on $X$. Define the asymptotic stability index of $I$, denoted $\\mathrm{astab}(I)$, as the smallest integer $m$ such that for all sufficiently large $k$, $H^0(X, I^k(mH))$ ",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "This conjecture is extremely vague and ill-defined. The terms $\\beta_k$ and $\bb([k+1,n])$ are not defined, nor is the invariant $\\delta$. Without precise definitions, the statement is meaningless and impossible to evaluate for correctness. The connection to asymptotic stability is tenuous. It seems to be attempting to relate some invariants to the asymptotic stability index, but the lack of definitions renders it useless. The conjecture is not novel because it doesn't say anything concrete. It's not non-trivial because it's not even a statement. It's not significant because it's not a meaningful mathematical claim. Formalizability is impossible without precise definitions."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a smooth projective variety and let $E$ be an object in the derived category of coherent sheaves on $X$, $D^b(Coh(X))$. If $E$ admits a decomposition $E = \\bigoplus_{i=1}^m E_i$, where each $E_i$ is an indecomposable object in $D^b(Coh(X))$, and if $E_",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is poorly formulated and likely false. The presence of a spherical object $E_1$ in a decomposition of $E$ provides very little information about the autoequivalences of $D^b(Coh(X))$. The reductivity of the group of autoequivalences acting trivially on $K_0(X)$ is a deep question, and this conjecture doesn't seem to address it in a meaningful way. The condition that $E_1$ is spherical is too weak to imply anything about the global structure of autoequivalences. The statement is vague and lacks any clear connection to existing results or techniques in the field. The informal description is incomplete."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.0,
+        0.1
+      ],
+      "mean_score": 0.0333
+    },
+    "cross|geometry_topology->algebraic_geometry": {
+      "condition": "cross_domain",
+      "source": "geometry_topology",
+      "target": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a smooth projective variety over a field $k$ of characteristic 0, and let $G$ be a finite group acting on $X$. Let $\\mathcal{D}(X)^G$ denote the $G$-equivariant derived category of coherent sheaves on $X$. Consider two $G$-invariant subvarieties $Z_1, ",
+          "score": 0.22,
+          "judge": {
+            "correctness": 0.3,
+            "novelty": 0.1,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.4,
+            "overall_score": 0.22,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete. It stops mid-sentence, so it's impossible to assess its correctness or significance. The notion of 'antipodal' subvarieties is vague and needs to be defined rigorously. Without a complete statement, it's hard to judge novelty or non-triviality. Formalizability is possible if the statement is completed and made precise, but currently, it's just a fragment."
+          }
+        },
+        {
+          "conjecture_text": "Let $X$ be a smooth projective variety over a field $k$. Let $(Y_n)$ be a sequence of closed subvarieties of $X$ of fixed dimension $d$, such that the sequence of cycles $[Y_n]$ is 'uniformly discrete' in the sense that there exists an algebraic cycle $Z$ such that the support of $Z$ contains all $Y",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to relate convergence in the Chow ring to convergence of fundamental groups via Plancherel measures. This is a very ambitious and speculative idea. However, the notion of 'Plancherel convergence' of fundamental groups is not standard and requires significant clarification. The condition that $Y_n \\cap Y_\\infty$ is Cohen-Macaulay seems ad hoc and its relevance is unclear. The 'uniform discreteness' condition is also vague. The conjecture is likely false as stated due to the lack of precise definitions and the weak connection between algebraic cycles and fundamental groups. The formalizability is low due to the lack of precise definitions."
+          }
+        },
+        {
+          "conjecture_text": "Let $X$ be a smooth projective variety over $\\mathbb{C}$ admitting a morphism $f: X \to C$ to a smooth projective curve $C$ such that the generic fiber is geometrically connected. Assume $C$ has at least two points $p_1, p_2$ such that the fibers $f^{-1}(p_1)$ and $f^{-1}(p_2)$ are reduced divisors. ",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is extremely vague and likely false as stated. The conditions on the fibration $f: X \to C$ are very weak and don't guarantee any nice properties of the Hitchin moduli space. The statement about 'sufficiently generic' choices and 'suitable generic section' without any quantification or specific properties makes it impossible to evaluate. The conclusion about the Hitchin moduli space being smooth, compact, and orientable is a very strong claim that requires much more stringent conditions. The lack of specifics makes it difficult to formalize. The Hitchin moduli space is a very complex object, and its properties are highly sensitive to the geometry of $X$ and the choice of the line bundle. The conjecture lacks any connection to known results or techniques in the field."
+          }
+        }
+      ],
+      "scores": [
+        0.22,
+        0.1,
+        0.1
+      ],
+      "mean_score": 0.14
+    },
+    "cross|analysis->probability_statistics": {
+      "condition": "cross_domain",
+      "source": "analysis",
+      "target": "probability_statistics",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $G$ be a finite graph and $J$ be its adjacency matrix. Let $\\lambda_{min}$ be the smallest eigenvalue of $J$. Let $X_1, X_2, ... X_n$ be a sequence of independent random variables indexed by the vertices of G, each with mean 0 and variance 1. Define the quadratic form $Q = \\sum_{i,j} J_{ij} X_i ",
+          "score": 0.2,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.1,
+            "non_triviality": 0.3,
+            "significance": 0.2,
+            "formalizability": 0.3,
+            "overall_score": 0.2,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to relate the smallest eigenvalue of the adjacency matrix of a graph to the tail behavior of a quadratic form of independent random variables indexed by the graph's vertices. It also tries to connect the essential spectral radius to the convergence rate of a Markov chain. However, the statement is vague and likely incorrect in its current form. The decay rate is unlikely to depend solely on $|\\lambda_{min}|$ in such a simple way. The condition $t < |\\lambda_{min}| n$ is also suspicious and lacks justification. The connection to the essential spectral radius and Markov chain convergence is a standard topic, but the conjecture doesn't offer a precise or novel contribution. The lack of precision makes formalization difficult."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\{X_t\\}_{t=1}^T$ be a sequence of random variables taking values in $\\mathbb{R}^d$. Suppose there exists a bounded operator $T$ on a Banach space $X$ and a mapping $f: \\mathbb{R}^d \\to X$ such that $T(f(X_t)) \\approx f(X_{t+1})$ for all $t$. If $T$ is right ",
+          "score": 0.12,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.12,
+            "is_well_formed": true,
+            "critique": "The conjecture is very vague and lacks precise definitions. The approximation $T(f(X_t)) \\approx f(X_{t+1})$ is not defined, nor is the notion of 'size' of the range. The connection between the Drazin inverse and stochastic stability is unclear. The statement is too general to be meaningful without further specification. The use of a general Banach space X and a bounded operator T doesn't seem motivated. The conclusion about the range being contained in a set whose size is bounded is very weak and likely trivially true under reasonable assumptions about the random variables."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X_1, X_2, ... , X_n$ be i.i.d. random variables with a distribution function $F$ such that $F(x) = 0$ for $x < 0$ and $F(x) \\sim C x^{\\alpha}$ as $x \\to 0^+$ for some constants $C > 0$ and $\\alpha > 0$. Let $M_n = \\max(X_1, X_2, ..., X_n)$. Then there exists",
+          "score": 0.74,
+          "judge": {
+            "correctness": 0.9,
+            "novelty": 0.6,
+            "non_triviality": 0.7,
+            "significance": 0.7,
+            "formalizability": 0.8,
+            "overall_score": 0.74,
+            "is_well_formed": true,
+            "critique": "The conjecture is related to extreme value theory, specifically the domain of attraction of the Fr\u00e9chet distribution. The statement is mostly correct, but it needs to specify that the limiting distribution is a Fr\u00e9chet distribution. The tail behavior statement is also correct, as the tail index of the Fr\u00e9chet distribution is related to the parameter $\\alpha$. The novelty lies in the specific focus on the behavior of the distribution function near 0. It is non-trivial because determining the normalizing constants $a_n$ and proving the convergence requires some work. The significance is moderate as it connects the tail behavior near zero to the limiting extreme value distribution. It is formalizable, though defining the distribution function F and the asymptotic behavior near 0 requires careful handling in Lean 4."
+          }
+        }
+      ],
+      "scores": [
+        0.2,
+        0.12,
+        0.74
+      ],
+      "mean_score": 0.3533
+    },
+    "baseline|probability_statistics": {
+      "condition": "same_domain",
+      "target": "probability_statistics",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\{\\epsilon_n\\}_{n=1}^\\infty$ be a sequence of positive numbers converging to 0. Suppose that for each $n$, there exists a Markov-modulated diffusion process with small noise parameter $\\epsilon_n$ satisfying the conditions of Result 3, with corresponding rat",
+          "score": 0.12,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.12,
+            "is_well_formed": false,
+            "critique": "The conjecture is incomplete. It abruptly ends mid-sentence, making it impossible to assess its correctness, novelty, non-triviality, or significance. The notation is standard, but without a complete statement, it's meaningless. The reference to 'Result 3' is also vague without context. Because the statement is incomplete, it is not well-formed."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X_{1:n}$ be i.i.d, $\\\\Xbf$-valued random variables with common density $\\\\st\\\\in L^{2}(\\\\mu)$. Let $\\\\delta\\\\in(0,1)$ and $\\\\epsilon\\\\in(0,1/4)$. Let $(\\\\ERM_{\\\\theta})_{\\\\theta\\\\in\\\\Theta}$ be a collection of estimators, let $(\\\\psil)_{\\\\lL}$, $\\\\Lambda_{M}",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture statement is incomplete and abruptly cut off. It's impossible to assess its correctness, novelty, non-triviality, or significance without the full statement. The presence of LaTeX notation suggests an attempt at formalization, but the incompleteness renders it useless. The is_well_formed is marked as true because the snippet itself is syntactically valid JSON, but the mathematical content is not well-formed."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $w$ be a finite string with $N_{n-1}(w) > 0$, and let $l_n(w,a)$ and $u_n(w,a)$ be lower and upper bounds on the probability of observing symbol $a$ after context $w$, as in Proposition 3. Suppose that for all $a \\in A$, $l_n(w,a) \\leq u_n(w,a)$ and $\\sum_{a ",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete and refers to undefined terms like 'Proposition 3' and 'Result'. Without knowing the context of these references, it's impossible to assess its correctness, novelty, non-triviality, or significance. The notation appears standard, but the lack of context makes it difficult to determine if it's used correctly. Formalizability is also low due to the reliance on external references."
+          }
+        }
+      ],
+      "scores": [
+        0.12,
+        0.0,
+        0.1
+      ],
+      "mean_score": 0.0733
+    },
+    "cross|discrete_math->algebra": {
+      "condition": "cross_domain",
+      "source": "discrete_math",
+      "target": "algebra",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $A$ be an $n \\times n$ matrix with entries in a field $F$, and let $W$ be a subset of $\\{1, \\dots, n\\}$. Define $\\delta_k(W)$ to be the maximum number of eigenvalues (counting multiplicity) of $A$ whose corresponding eigenvectors have support contained in $W$",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": false,
+            "critique": "The conjecture is incomplete. It ends abruptly, making it impossible to assess its correctness, novelty, non-triviality, or significance. The definition of $\\delta_k(W)$ is unclear, as $k$ is not defined. The statement about the existence of a constant $C_k$ is also incomplete, as it doesn't specify what this constant bounds. Because the conjecture is incomplete, it is not well-formed."
+          }
+        },
+        {
+          "conjecture_text": "Let $R$ be a ring graded by a finite groupoid $G$. Let $R = \\bigoplus_{g \\in G} R_g$. Define a 'tether' on $G$ as follows: A left tether at $v \\in G_0$ is an element $g \\in G_1$ such that $s(g) = v$ and $R_g \\neq 0$. A right tether at $v \\in G_0$ is an element $g \\in G_1$ such that $t(g) = v$ and $R",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.2,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is poorly motivated and likely false. The definition of 'tether' is unusual and doesn't seem to connect to any established theory. The claim about invariance under conjugation is highly suspect. The notation is somewhat confusing, especially the use of $e_v$ as the component of $e$ in the $v$-th grading, given that $e$ is already in $R_e$. It's unclear what conjugation within $R_e$ means, as $R_e$ is not necessarily a group. The conjecture lacks any clear connection to known results in graded ring theory. Formalizability is low due to the lack of precision and the need to clarify the meaning of conjugation."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $A$ be a finite-dimensional algebra over a field $F$. Suppose $A$ has a decomposition $A = A_1 \\oplus A_2 \\oplus \\dots \\oplus A_n$ into subalgebras. Define a 'valuation' on the subalgebras by $v(A_i) = i$. Consider the 'singular model' $\\mathcal{S} = \\{(i, j,",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.2,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The statement is poorly formed and lacks clear definitions. The definition of $A_i A_j$ is ambiguous (is it the span of products or the subalgebra generated by products?). The introduction of a 'valuation' is vague and doesn't specify any properties it should satisfy. The 'singular model' is also not clearly defined, and its purpose is unclear. The conjecture is incomplete and doesn't state what is supposed to be proven or what properties the valuation should have. It's more of a setup for a potential conjecture than a conjecture itself. The lack of a clear statement makes it impossible to assess its correctness, novelty, non-triviality, or significance. The formalizability is low due to the imprecise definitions."
+          }
+        }
+      ],
+      "scores": [
+        0.1,
+        0.1,
+        0.14
+      ],
+      "mean_score": 0.1133
+    },
+    "baseline|algebra": {
+      "condition": "same_domain",
+      "target": "algebra",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $R$ be a Noetherian local ring and $M$ be a finitely generated $R$-module that is unmixed. If $M$ has an arithmetic Macaulayfication and admits a p-standard system of parameters, then for any associated prime ideal $\\mathfrak{p} \\in \\text{Ass}(M)$, the 2-nilpotent multiplier of the Heisenberg al",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of advanced concepts with no clear connection. 'Arithmetic Macaulayfication' and 'p-standard system of parameters' are relatively specialized, and the link to the 2-nilpotent multiplier of a Heisenberg algebra is unclear and seems arbitrary. The statement is syntactically correct, but the lack of motivation and connection to existing theory makes it highly suspect. It's unlikely to be true in its current form. Formalizing it would be difficult due to the specialized terminology and lack of context."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $R$ be a Noetherian ring and $I$ an ideal of $R$. If $\\supp_R(R/I)$ contains no minimal prime ideals of $R$, then $j(I) = 0$.\",\n  \"informal_description\": \"This conjecture relates the small support of the quotient ring R/I (where I is an ideal) to the j-multip",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $A$ be an associative $R$-algebra such that $A$ is finite as a left $R$-module where $R$ is a commutative ring with identity. If $A$ has stable dimension $d$, then for any epimorphism of $R$-algebras $f: A' \\to A$, a projective left $A$-module $P$ of rank $n ",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The conjecture is stated using standard algebraic terminology, but it's difficult to assess its correctness or significance without further context and definitions (e.g., 'stable dimension', 'Um(P\u2295A)', 'separability of the image'). The connection between these concepts is unclear, making it hard to judge its potential impact. The lack of context and the specialized terminology make it difficult to assess novelty or non-triviality. Formalizability is low due to the vague notion of 'separability of the image' and the need for precise definitions of all terms."
+          }
+        }
+      ],
+      "scores": [
+        0.14,
+        0.5,
+        0.14
+      ],
+      "mean_score": 0.26
+    },
+    "cross|number_theory->analysis": {
+      "condition": "cross_domain",
+      "source": "number_theory",
+      "target": "analysis",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\\\Omega \\\\subset \\\\mathbb{C}^n$ be a bounded domain with smooth boundary. Let $f_1, \\\\dots, f_q$ be holomorphic functions on $\\\\Omega$, and let $Q_1, \\\\dots, Q_q$ be polynomials of degree $d$ in $n$ variables. For any $\\\\epsilon > 0$, there exists a finite c",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": false,
+            "critique": "The conjecture is incomplete. The inequality involving the polynomials and holomorphic functions is missing its right-hand side and the condition it should satisfy. Without a complete statement, it's impossible to assess its correctness, novelty, non-triviality, or significance. The use of $f_1, ..., f_n$ in $Q_1(f_1(z), ..., f_n(z))$ is also confusing since $f_1, ..., f_q$ are defined as holomorphic functions, and $Q_1$ is a polynomial in $n$ variables. It seems like there's a mismatch in the number of variables and functions. Because the statement is incomplete and contains notational inconsistencies, it is not well-formed."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $M$ be a compact real-analytic manifold in $\\mathbb{C}^n$, and let $S$ be a large family of analytic discs attached to $M$.  Define $\\Delta(s_0)$ for $s_0 \\in S$ to be the dimension of the space of deformations of the analytic disc $s_0$ that remain attached ",
+          "score": 0.2,
+          "judge": {
+            "correctness": 0.3,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.2,
+            "overall_score": 0.2,
+            "is_well_formed": true,
+            "critique": "The conjecture is vaguely stated, especially the notion of a 'large family' and the meaning of 'attached'. Without precise definitions, it's impossible to assess correctness. The idea of a generic dimension of deformations is plausible, but the statement lacks the necessary rigor. The Hausdorff dimension claim is also vague without specifying the space in which the Hausdorff dimension is being considered. It's unlikely to be a significant result in its current form."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $H$ be a self-adjoint operator on $L^2(\\Omega)$ with spectrum $\\sigma(H)$. Suppose $\\sigma(H)$ is discrete and bounded below. Let $\\{E_i\\}_{i=1}^\\infty$ be the eigenvalues of $H$, repeated according to multiplicity. Let $K_n(x,y)$ be a sequence of integral ke",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete. It ends abruptly with \"Then, ther\". Without a complete statement, it's impossible to assess its correctness, novelty, non-triviality, or significance. The notation is standard, but the lack of a conclusion renders the entire conjecture meaningless. It's not possible to determine if it could be formalized in Lean 4 without knowing the full statement."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "mean_score": 0.0667
+    },
+    "baseline|analysis": {
+      "condition": "same_domain",
+      "target": "analysis",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Conjecture: Let $X$ be a projective complex manifold and $T$ a positive closed (1,1)-current in the cohomology class of a line bundle. Let $\\{T_m\\}$ be a sequence of closed (1,1)-currents in the cohomology class of $T$ satisfying (i), (ii) and (iii) of Result 2. ",
+          "score": 0.22,
+          "judge": {
+            "correctness": 0.3,
+            "novelty": 0.2,
+            "non_triviality": 0.3,
+            "significance": 0.2,
+            "formalizability": 0.1,
+            "overall_score": 0.22,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete. It mentions conditions (i), (ii), and (iii) of Result 2, but Result 2 is not provided. It also mentions a composition operator with symbol $f$, but $f$ is not defined. The statement is therefore not mathematically complete and cannot be evaluated for correctness or significance. The mention of Lelong numbers and projective complex manifolds suggests it is related to complex geometry, but without the full statement, it's impossible to assess its novelty or potential impact. Formalizability is low due to the missing definitions and context."
+          }
+        },
+        {
+          "conjecture_text": "Let $X$ be a Kobayashi hyperbolic complex manifold and $A$ be a barrelled locally convex algebra. Let $\\mathcal{H}$ be a locally convex $A$-module with hypocontinuous multiplication. Then for any $p \\in X$ and $r > 0$, the tensor product $C(B(p,r), \\mathcal{H}) \\otimes_{A, \\beta} \\mathcal{H}$ is seq",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of advanced concepts from complex analysis and functional analysis. While the notation appears superficially correct, the interplay between Kobayashi hyperbolicity, barrelled algebras, hypocontinuous modules, and sequential compactness of tensor products is highly suspect. It's unlikely to be true in its current form. The connection between these concepts is not well-established in the literature, and the claim of sequential compactness under the weak topology seems overly strong given the generality of the spaces involved. Formalizing this in Lean 4 would be extremely difficult due to the complexity of the concepts and the lack of existing formalizations of Kobayashi hyperbolicity and hypocontinuous modules."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $A(\\xi)$ and $B(\\xi)$ be polynomial matrices as in Result 4 defining differential operators $A(D)$ and $B(D)$, and let $\\mu$ be a set function with the (s.c.) property as described in Result 2, defined on a ring of sets $\\mathcal{R}$ containing sets on which ",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete and contains undefined terms ('Result 4', 'Result 2', 'ma'). The statement ends abruptly, making it impossible to assess its correctness, novelty, or significance. The vague references to prior results and the unfinished sentence render it difficult to formalize. The notation is generally standard, but the lack of a complete statement makes it impossible to evaluate the overall mathematical validity."
+          }
+        }
+      ],
+      "scores": [
+        0.22,
+        0.1,
+        0.1
+      ],
+      "mean_score": 0.14
+    },
+    "cross|algebra->geometry_topology": {
+      "condition": "cross_domain",
+      "source": "algebra",
+      "target": "geometry_topology",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $M$ be a manifold and $S$ be a subsemigroup of the set of self-maps of $M$ (under composition). Define a point $x \\in M$ to be a 'zero-divisor point' if there exists a non-identity map $f \\in S$ such that $f(x) = x$. Then the set of 'zero-divisor points' $Z(M)$ is a union of closed sets in $M$, ",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.2,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is poorly formed and likely false. The term 'zero-divisor point' is unusual in this context and doesn't have a clear connection to standard algebraic topology. The claim that Z(M) is a union of closed sets is unlikely to be true without strong assumptions on S (e.g., if all maps in S are continuous). Even with continuity, the invariance under a maximal subgroup is dubious. The conjecture lacks precision and is unlikely to lead to significant advances. Formalization would be difficult due to the vagueness of the claims."
+          }
+        },
+        {
+          "conjecture_text": "Let $M$ be a compact manifold and $G$ a finite group acting smoothly on $M$. Let $C(M, M)$ be the space of continuous maps from $M$ to itself, equipped with the compact-open topology. Consider the subspace $C_G(M, M)$ of $G$-equivariant maps, i.e., maps $f: M \to M$ such that $f(gx) = gf(x)$ for all ",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is extremely vague and ill-defined. The notions of 'finitely generated free' in a 'suitable functional analytic sense', the definition of $R$, the meaning of 'dimension' $d$, and 'equality up to $R^\times$' are all undefined. The connection between the various assumptions and the conclusion is unclear and lacks any supporting intuition. The statement is so imprecise that it's impossible to assess its correctness, novelty, non-triviality, or significance. The lack of precise definitions makes formalization in Lean 4 impossible."
+          }
+        },
+        {
+          "conjecture_text": "Let $M$ be a compact manifold acted upon by a group $G$. If the action of $G$ on $M$ is sufficiently transitive (e.g., highly transitive on some dense subset), then the $G$-equivariant derived category of constructible sheaves $D^b_G(M)$ has a 'futile' structure, meaning that certain natural morphis",
+          "score": 0.22,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.3,
+            "significance": 0.2,
+            "formalizability": 0.1,
+            "overall_score": 0.22,
+            "is_well_formed": true,
+            "critique": "The conjecture is very vague and lacks precise definitions. The terms 'sufficiently transitive', 'futile structure', 'close', and the connection to derived Hom are not rigorously defined. While the idea of relating group actions to the structure of equivariant derived categories is interesting, the current formulation is too imprecise to be considered mathematically sound. The lack of precision makes it difficult to assess its novelty, non-triviality, or significance. Formalization in Lean 4 would be extremely challenging without significant refinement and precise definitions."
+          }
+        }
+      ],
+      "scores": [
+        0.1,
+        0.0,
+        0.22
+      ],
+      "mean_score": 0.1067
+    },
+    "baseline|geometry_topology": {
+      "condition": "same_domain",
+      "target": "geometry_topology",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $D$ be a bounded distributive lattice whose Priestley dual space $X$ admits a stratification by sign cells (as in Definition 6). If $D$ admits a co-Heyting structure, then the map $V \\mapsto {\\uparrow}V$ on clopen subsets of $X$ induces a stratification of $D$ based on the sign of Pl\u00fccker coordi",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is extremely vague and ill-defined. The connection between the Priestley dual space, sign cells (Definition 6 is not provided), co-Heyting structure, Pl\u00fccker coordinates, and projection matrices is unclear. The statement lacks sufficient precision to be evaluated for correctness, novelty, or significance. Without a clear definition of the stratification induced by the sign of Pl\u00fccker coordinates and the projection matrix, the conjecture is essentially meaningless. Formalizability is impossible in its current state."
+          }
+        },
+        {
+          "conjecture_text": "Conjecture: Let $A : \\mathcal{A} \\rightarrow \\mathcal{H}$ be a theory of thin position and let $\\{X_{\\1}, \\1_{\\1}^{ \\1}, \\1 \\}$ be an inverse system of compact Hausdorff topological spaces, where each $X_{\\1} \\in \\mathcal{A}$. Suppose that the height complexes $A(X_{\\1})$ form an inverse system of c",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\Sigma$ be a compact surface with boundary, and let $V$ be a finite-dimensional complex representation of $\\pi_1(\\Sigma)$. If $\\rho: \\pi_1(\\Sigma) \\to PSL(2,\\\\mathbb{R})$ is a geometric representation, then there exists an $m \\ge 1$ such that $\\pi_n(\\operato",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": false,
+            "critique": "The conjecture is not well-formed. The statement ends abruptly with \"of th\", making it impossible to understand the intended meaning. The notation $\\operatorname{Aut}_{V}(\\mathbb{S}(V^{\\oplus k}))$ is also unclear without further definition. It's impossible to assess the correctness, novelty, non-triviality, or significance of an incomplete statement. Formalizability is also impossible to assess."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "mean_score": 0.1667
+    }
+  },
+  "status": "complete"
+}

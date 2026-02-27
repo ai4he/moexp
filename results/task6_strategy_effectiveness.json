@@ -1,0 +1,611 @@
+{
+  "task": 6,
+  "title": "Strategy Effectiveness Deep Dive",
+  "summary": {
+    "total_conjectures": 153,
+    "n_strategies": 6,
+    "n_domains": 7,
+    "n_strategy_domain_pairs": 30,
+    "best_strategy": "stp|algebra",
+    "best_strategy_mean": 0.85
+  },
+  "strategy_stats": {
+    "boundary_exploration": {
+      "count": 27,
+      "mean": 0.6789,
+      "std": 0.0612,
+      "median": 0.67
+    },
+    "composition": {
+      "count": 24,
+      "mean": 0.6663,
+      "std": 0.0686,
+      "median": 0.655
+    },
+    "cross_domain_analogy": {
+      "count": 9,
+      "mean": 0.6367,
+      "std": 0.0447,
+      "median": 0.63
+    },
+    "pattern_interpolation": {
+      "count": 24,
+      "mean": 0.6579,
+      "std": 0.0488,
+      "median": 0.67
+    },
+    "stp": {
+      "count": 56,
+      "mean": 0.7346,
+      "std": 0.1031,
+      "median": 0.73
+    },
+    "theorem_generation": {
+      "count": 13,
+      "mean": 0.6977,
+      "std": 0.0625,
+      "median": 0.69
+    }
+  },
+  "domain_stats": {
+    "algebra": {
+      "count": 13,
+      "mean": 0.7738,
+      "std": 0.1299
+    },
+    "number_theory": {
+      "count": 21,
+      "mean": 0.7195,
+      "std": 0.0679
+    },
+    "probability_statistics": {
+      "count": 22,
+      "mean": 0.6859,
+      "std": 0.1028
+    },
+    "analysis": {
+      "count": 21,
+      "mean": 0.65,
+      "std": 0.081
+    },
+    "geometry_topology": {
+      "count": 28,
+      "mean": 0.6796,
+      "std": 0.0777
+    },
+    "algebraic_geometry": {
+      "count": 23,
+      "mean": 0.6952,
+      "std": 0.0548
+    },
+    "discrete_math": {
+      "count": 25,
+      "mean": 0.6848,
+      "std": 0.0511
+    }
+  },
+  "pair_stats": {
+    "stp|algebra": {
+      "strategy": "stp",
+      "domain": "algebra",
+      "count": 8,
+      "mean": 0.85,
+      "std": 0.1054,
+      "median": 0.865,
+      "min": 0.7,
+      "max": 0.98
+    },
+    "stp|number_theory": {
+      "strategy": "stp",
+      "domain": "number_theory",
+      "count": 8,
+      "mean": 0.755,
+      "std": 0.0609,
+      "median": 0.75,
+      "min": 0.7,
+      "max": 0.88
+    },
+    "stp|probability_statistics": {
+      "strategy": "stp",
+      "domain": "probability_statistics",
+      "count": 8,
+      "mean": 0.6963,
+      "std": 0.1576,
+      "median": 0.725,
+      "min": 0.45,
+      "max": 0.88
+    },
+    "boundary_exploration|analysis": {
+      "strategy": "boundary_exploration",
+      "domain": "analysis",
+      "count": 5,
+      "mean": 0.7,
+      "std": 0.0922,
+      "median": 0.67,
+      "min": 0.63,
+      "max": 0.86
+    },
+    "stp|geometry_topology": {
+      "strategy": "stp",
+      "domain": "geometry_topology",
+      "count": 8,
+      "mean": 0.745,
+      "std": 0.0535,
+      "median": 0.72,
+      "min": 0.7,
+      "max": 0.83
+    },
+    "composition|number_theory": {
+      "strategy": "composition",
+      "domain": "number_theory",
+      "count": 4,
+      "mean": 0.7125,
+      "std": 0.0793,
+      "median": 0.705,
+      "min": 0.63,
+      "max": 0.81
+    },
+    "theorem_generation|number_theory": {
+      "strategy": "theorem_generation",
+      "domain": "number_theory",
+      "count": 5,
+      "mean": 0.694,
+      "std": 0.0684,
+      "median": 0.67,
+      "min": 0.63,
+      "max": 0.81
+    },
+    "theorem_generation|geometry_topology": {
+      "strategy": "theorem_generation",
+      "domain": "geometry_topology",
+      "count": 4,
+      "mean": 0.7,
+      "std": 0.0931,
+      "median": 0.7,
+      "min": 0.59,
+      "max": 0.81
+    },
+    "boundary_exploration|probability_statistics": {
+      "strategy": "boundary_exploration",
+      "domain": "probability_statistics",
+      "count": 5,
+      "mean": 0.694,
+      "std": 0.0684,
+      "median": 0.67,
+      "min": 0.63,
+      "max": 0.81
+    },
+    "stp|algebraic_geometry": {
+      "strategy": "stp",
+      "domain": "algebraic_geometry",
+      "count": 8,
+      "mean": 0.7388,
+      "std": 0.0449,
+      "median": 0.735,
+      "min": 0.68,
+      "max": 0.8
+    },
+    "stp|discrete_math": {
+      "strategy": "stp",
+      "domain": "discrete_math",
+      "count": 8,
+      "mean": 0.7125,
+      "std": 0.0489,
+      "median": 0.715,
+      "min": 0.63,
+      "max": 0.8
+    },
+    "boundary_exploration|geometry_topology": {
+      "strategy": "boundary_exploration",
+      "domain": "geometry_topology",
+      "count": 4,
+      "mean": 0.6875,
+      "std": 0.0704,
+      "median": 0.68,
+      "min": 0.61,
+      "max": 0.78
+    },
+    "stp|analysis": {
+      "strategy": "stp",
+      "domain": "analysis",
+      "count": 8,
+      "mean": 0.645,
+      "std": 0.0968,
+      "median": 0.65,
+      "min": 0.5,
+      "max": 0.78
+    },
+    "composition|discrete_math": {
+      "strategy": "composition",
+      "domain": "discrete_math",
+      "count": 4,
+      "mean": 0.6875,
+      "std": 0.0793,
+      "median": 0.685,
+      "min": 0.61,
+      "max": 0.77
+    },
+    "composition|probability_statistics": {
+      "strategy": "composition",
+      "domain": "probability_statistics",
+      "count": 4,
+      "mean": 0.6875,
+      "std": 0.0793,
+      "median": 0.685,
+      "min": 0.61,
+      "max": 0.77
+    },
+    "boundary_exploration|algebraic_geometry": {
+      "strategy": "boundary_exploration",
+      "domain": "algebraic_geometry",
+      "count": 4,
+      "mean": 0.6875,
+      "std": 0.0602,
+      "median": 0.7,
+      "min": 0.61,
+      "max": 0.74
+    },
+    "pattern_interpolation|number_theory": {
+      "strategy": "pattern_interpolation",
+      "domain": "number_theory",
+      "count": 4,
+      "mean": 0.6875,
+      "std": 0.0602,
+      "median": 0.7,
+      "min": 0.61,
+      "max": 0.74
+    },
+    "pattern_interpolation|algebraic_geometry": {
+      "strategy": "pattern_interpolation",
+      "domain": "algebraic_geometry",
+      "count": 5,
+      "mean": 0.674,
+      "std": 0.0434,
+      "median": 0.67,
+      "min": 0.61,
+      "max": 0.73
+    },
+    "composition|algebraic_geometry": {
+      "strategy": "composition",
+      "domain": "algebraic_geometry",
+      "count": 3,
+      "mean": 0.67,
+      "std": 0.06,
+      "median": 0.67,
+      "min": 0.61,
+      "max": 0.73
+    },
+    "theorem_generation|discrete_math": {
+      "strategy": "theorem_generation",
+      "domain": "discrete_math",
+      "count": 4,
+      "mean": 0.7,
+      "std": 0.0258,
+      "median": 0.7,
+      "min": 0.67,
+      "max": 0.73
+    },
+    "pattern_interpolation|probability_statistics": {
+      "strategy": "pattern_interpolation",
+      "domain": "probability_statistics",
+      "count": 5,
+      "mean": 0.66,
+      "std": 0.0387,
+      "median": 0.67,
+      "min": 0.61,
+      "max": 0.7
+    },
+    "boundary_exploration|algebra": {
+      "strategy": "boundary_exploration",
+      "domain": "algebra",
+      "count": 5,
+      "mean": 0.652,
+      "std": 0.0319,
+      "median": 0.66,
+      "min": 0.61,
+      "max": 0.69
+    },
+    "pattern_interpolation|discrete_math": {
+      "strategy": "pattern_interpolation",
+      "domain": "discrete_math",
+      "count": 5,
+      "mean": 0.654,
+      "std": 0.0329,
+      "median": 0.67,
+      "min": 0.61,
+      "max": 0.69
+    },
+    "boundary_exploration|discrete_math": {
+      "strategy": "boundary_exploration",
+      "domain": "discrete_math",
+      "count": 4,
+      "mean": 0.65,
+      "std": 0.0365,
+      "median": 0.65,
+      "min": 0.61,
+      "max": 0.69
+    },
+    "pattern_interpolation|geometry_topology": {
+      "strategy": "pattern_interpolation",
+      "domain": "geometry_topology",
+      "count": 5,
+      "mean": 0.62,
+      "std": 0.0592,
+      "median": 0.63,
+      "min": 0.55,
+      "max": 0.69
+    },
+    "composition|geometry_topology": {
+      "strategy": "composition",
+      "domain": "geometry_topology",
+      "count": 4,
+      "mean": 0.6325,
+      "std": 0.0602,
+      "median": 0.645,
+      "min": 0.55,
+      "max": 0.69
+    },
+    "cross_domain_analogy|geometry_topology": {
+      "strategy": "cross_domain_analogy",
+      "domain": "geometry_topology",
+      "count": 3,
+      "mean": 0.63,
+      "std": 0.06,
+      "median": 0.63,
+      "min": 0.57,
+      "max": 0.69
+    },
+    "cross_domain_analogy|analysis": {
+      "strategy": "cross_domain_analogy",
+      "domain": "analysis",
+      "count": 3,
+      "mean": 0.63,
+      "std": 0.06,
+      "median": 0.63,
+      "min": 0.57,
+      "max": 0.69
+    },
+    "cross_domain_analogy|algebraic_geometry": {
+      "strategy": "cross_domain_analogy",
+      "domain": "algebraic_geometry",
+      "count": 3,
+      "mean": 0.65,
+      "std": 0.02,
+      "median": 0.65,
+      "min": 0.63,
+      "max": 0.67
+    },
+    "composition|analysis": {
+      "strategy": "composition",
+      "domain": "analysis",
+      "count": 5,
+      "mean": 0.62,
+      "std": 0.0387,
+      "median": 0.63,
+      "min": 0.57,
+      "max": 0.66
+    }
+  },
+  "pairwise_tests": {
+    "boundary_exploration_vs_composition": {
+      "test": "mann_whitney_u",
+      "statistic": 371.5,
+      "p_value": 0.371302,
+      "significant_005": "False",
+      "mean_diff": 0.0126
+    },
+    "boundary_exploration_vs_cross_domain_analogy": {
+      "test": "mann_whitney_u",
+      "statistic": 164.0,
+      "p_value": 0.119863,
+      "significant_005": "False",
+      "mean_diff": 0.0422
+    },
+    "boundary_exploration_vs_pattern_interpolation": {
+      "test": "mann_whitney_u",
+      "statistic": 363.0,
+      "p_value": 0.461045,
+      "significant_005": "False",
+      "mean_diff": 0.021
+    },
+    "boundary_exploration_vs_stp": {
+      "test": "mann_whitney_u",
+      "statistic": 355.0,
+      "p_value": 9.3e-05,
+      "significant_005": "True",
+      "mean_diff": -0.0558
+    },
+    "boundary_exploration_vs_theorem_generation": {
+      "test": "mann_whitney_u",
+      "statistic": 134.0,
+      "p_value": 0.229453,
+      "significant_005": "False",
+      "mean_diff": -0.0188
+    },
+    "composition_vs_cross_domain_analogy": {
+      "test": "mann_whitney_u",
+      "statistic": 128.0,
+      "p_value": 0.42639,
+      "significant_005": "False",
+      "mean_diff": 0.0296
+    },
+    "composition_vs_pattern_interpolation": {
+      "test": "mann_whitney_u",
+      "statistic": 290.0,
+      "p_value": 0.975146,
+      "significant_005": "False",
+      "mean_diff": 0.0083
+    },
+    "composition_vs_stp": {
+      "test": "mann_whitney_u",
+      "statistic": 350.5,
+      "p_value": 0.000714,
+      "significant_005": "True",
+      "mean_diff": -0.0684
+    },
+    "composition_vs_theorem_generation": {
+      "test": "mann_whitney_u",
+      "statistic": 109.0,
+      "p_value": 0.136861,
+      "significant_005": "False",
+      "mean_diff": -0.0314
+    },
+    "cross_domain_analogy_vs_pattern_interpolation": {
+      "test": "mann_whitney_u",
+      "statistic": 83.5,
+      "p_value": 0.326209,
+      "significant_005": "False",
+      "mean_diff": -0.0212
+    },
+    "cross_domain_analogy_vs_stp": {
+      "test": "mann_whitney_u",
+      "statistic": 59.5,
+      "p_value": 0.000239,
+      "significant_005": "True",
+      "mean_diff": -0.098
+    },
+    "cross_domain_analogy_vs_theorem_generation": {
+      "test": "mann_whitney_u",
+      "statistic": 24.5,
+      "p_value": 0.023529,
+      "significant_005": "True",
+      "mean_diff": -0.061
+    },
+    "pattern_interpolation_vs_stp": {
+      "test": "mann_whitney_u",
+      "statistic": 241.5,
+      "p_value": 6e-06,
+      "significant_005": "True",
+      "mean_diff": -0.0767
+    },
+    "pattern_interpolation_vs_theorem_generation": {
+      "test": "mann_whitney_u",
+      "statistic": 101.5,
+      "p_value": 0.081511,
+      "significant_005": "False",
+      "mean_diff": -0.0398
+    },
+    "stp_vs_theorem_generation": {
+      "test": "mann_whitney_u",
+      "statistic": 496.5,
+      "p_value": 0.041497,
+      "significant_005": "True",
+      "mean_diff": 0.037
+    }
+  },
+  "top_5_pairs": [
+    {
+      "pair": "stp|algebra",
+      "strategy": "stp",
+      "domain": "algebra",
+      "count": 8,
+      "mean": 0.85,
+      "std": 0.1054,
+      "median": 0.865,
+      "min": 0.7,
+      "max": 0.98
+    },
+    {
+      "pair": "stp|number_theory",
+      "strategy": "stp",
+      "domain": "number_theory",
+      "count": 8,
+      "mean": 0.755,
+      "std": 0.0609,
+      "median": 0.75,
+      "min": 0.7,
+      "max": 0.88
+    },
+    {
+      "pair": "stp|geometry_topology",
+      "strategy": "stp",
+      "domain": "geometry_topology",
+      "count": 8,
+      "mean": 0.745,
+      "std": 0.0535,
+      "median": 0.72,
+      "min": 0.7,
+      "max": 0.83
+    },
+    {
+      "pair": "stp|algebraic_geometry",
+      "strategy": "stp",
+      "domain": "algebraic_geometry",
+      "count": 8,
+      "mean": 0.7388,
+      "std": 0.0449,
+      "median": 0.735,
+      "min": 0.68,
+      "max": 0.8
+    },
+    {
+      "pair": "composition|number_theory",
+      "strategy": "composition",
+      "domain": "number_theory",
+      "count": 4,
+      "mean": 0.7125,
+      "std": 0.0793,
+      "median": 0.705,
+      "min": 0.63,
+      "max": 0.81
+    }
+  ],
+  "bottom_5_pairs": [
+    {
+      "pair": "composition|geometry_topology",
+      "strategy": "composition",
+      "domain": "geometry_topology",
+      "count": 4,
+      "mean": 0.6325,
+      "std": 0.0602,
+      "median": 0.645,
+      "min": 0.55,
+      "max": 0.69
+    },
+    {
+      "pair": "cross_domain_analogy|geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "domain": "geometry_topology",
+      "count": 3,
+      "mean": 0.63,
+      "std": 0.06,
+      "median": 0.63,
+      "min": 0.57,
+      "max": 0.69
+    },
+    {
+      "pair": "cross_domain_analogy|analysis",
+      "strategy": "cross_domain_analogy",
+      "domain": "analysis",
+      "count": 3,
+      "mean": 0.63,
+      "std": 0.06,
+      "median": 0.63,
+      "min": 0.57,
+      "max": 0.69
+    },
+    {
+      "pair": "pattern_interpolation|geometry_topology",
+      "strategy": "pattern_interpolation",
+      "domain": "geometry_topology",
+      "count": 5,
+      "mean": 0.62,
+      "std": 0.0592,
+      "median": 0.63,
+      "min": 0.55,
+      "max": 0.69
+    },
+    {
+      "pair": "composition|analysis",
+      "strategy": "composition",
+      "domain": "analysis",
+      "count": 5,
+      "mean": 0.62,
+      "std": 0.0387,
+      "median": 0.63,
+      "min": 0.57,
+      "max": 0.66
+    }
+  ],
+  "status": "complete"
+}

@@ -1,0 +1,718 @@
+{
+  "task": 9,
+  "title": "Knowledge Context Ablation",
+  "summary": {
+    "context_sizes": [
+      1,
+      3,
+      6,
+      10
+    ],
+    "domains": [
+      "algebra",
+      "discrete_math"
+    ],
+    "n_per_cell": 5
+  },
+  "context_size_effects": {
+    "1": {
+      "avg_quality": 0.264,
+      "std_quality": 0.2206
+    },
+    "3": {
+      "avg_quality": 0.274,
+      "std_quality": 0.0764
+    },
+    "6": {
+      "avg_quality": 0.22,
+      "std_quality": 0.0453
+    },
+    "10": {
+      "avg_quality": 0.22,
+      "std_quality": 0.0453
+    }
+  },
+  "cells": {
+    "ctx1|algebra": {
+      "context_size": 1,
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $w \\in \\tilde{B}_{n+1}$ be a cyclically fully commutative element with a reduced expression $\\bf{w}$. If $\\bf{w}$ contains a subword of length $k \\geq 3$ consisting of generators $s_i, s_j, s_l$ (where $i, j, l$ are distinct indices in $\\{1, \\dots, n\\}$) such",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete. It ends abruptly with \"$s_i, s_\" without specifying what property is being conjectured about the number of occurrences. The notation $\\tilde{B}_{n+1}$ suggests an affine Coxeter group of type B, but this needs to be explicitly stated. The notion of 'cyclically fully commutative' is relevant, but the incomplete statement makes it impossible to assess the conjecture's validity or significance. The condition on $s_i s_j s_l$ or $s_l s_j s_i$ being a reduced expression is also unclear without further context about the Coxeter relations. Due to the incompleteness, it's impossible to assess the other criteria accurately, but the score is low due to the lack of a complete statement."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $R$ and $S$ be rings, and let $\\phi: R \\to S$ be a surjective ring homomorphism. Let $I$ be an ideal of $R$. If the computation of $\\phi(I)$ is significantly more efficient than the computation of $\\phi^{-1}(\\phi(I))$, then there exists a ring homomorphism $\\",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\"conjecture_statement\": \"Let $F$ be a field, $n \\geq 1$ an integer not divisible by $\\ch(F)$, and $m_1, m_2$ divisors of $n$. Then $|\\ed(\\\\cat{Alg}_{n,m_1}) - \\ed(\\\\cat{Alg}_{n,m_2})| \\leq 1$.\", \"informal_description\": \"The essential dimensions of the categories of central simple algebras o",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $\\Ff$ and $\\Gg$ be fusion systems over $S$ with $\\Gg \\subseteq \\Ff$ and $\\Ff$ saturated. Assume that $O^{p'}(\\Aut_{\\Ff}(Q)) \\le \\Aut_{\\Gg}(Q)$ for every subgroup $Q$ of $S$. Then, if $Q$ is $\\Ff$-centric and $\\Ff$-radical, it is also $\\Gg$-centric and $\\Gg$-radical.",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Conjecture: Let $X$ be a normal toric variety with fan $\\Sigma$, and $C$ a strictly convex polyhedral cone in $\\mathbb{R}^n$. Let $\\Sigma_1$ denote the set of primitive generators of the rays of $\\Sigma$. Suppose $A_v$ and $A_w$ are conic modules associated to ve",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        }
+      ],
+      "scores": [
+        0.1,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "mean_score": 0.42,
+      "std_score": 0.1789
+    },
+    "ctx1|discrete_math": {
+      "context_size": 1,
+      "domain": "discrete_math",
+      "conjectures": [
+        {
+          "conjecture_text": "A cluster algebra arising from a marked surface with $b$ boundary components and $p$ punctures, where the surface has no self-foldable arcs and triangulation is allowed, possesses a number of cluster variables and clusters that are polynomial functions of $b$ and $p$. Furthermore, the degree of thes",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.2,
+            "significance": 0.2,
+            "formalizability": 0.1,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The conjecture is vaguely stated and likely false in its strongest interpretation. While the number of cluster variables is known to be related to the surface, claiming polynomial dependence on $b$ and $p$ with degree bounded by genus is highly suspect. The number of clusters is even more problematic. The condition of no self-foldable arcs is relevant, but the overall claim lacks precision and is unlikely to hold universally. Formalizing this would be difficult due to the lack of precise definitions of 'polynomial function' in this context and the ambiguity surrounding the 'number of clusters'. The conjecture needs significant refinement to be considered mathematically sound."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\Psi = (E, \\Delta)$ be an ordered simplicial complex satisfying QI and QE. Let $\\J_1$ and $\\J_2$ be order ideals of $\\Gale(\\Psi)$. If $\\J_1 \\subseteq \\J_2$, then the minimum size of a set demonstrating the failure of QE for $\\Psi[\\J_2]$ is greater than or eq",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is stated using terminology from simplicial complexes and Gale transforms, but the definitions of QI and QE are missing, making it impossible to assess correctness. Without these definitions, the statement is essentially meaningless. The claim about the minimum size of sets demonstrating failure of QE is vague and lacks precision. The second part of the conjecture, regarding the union of order ideals, also suffers from the lack of definitions. The overall impression is that the conjecture is poorly formulated and unlikely to be true in any meaningful sense without significant clarification and modification. The lack of definitions makes formalization difficult."
+          }
+        },
+        {
+          "conjecture_text": "Let $G(n,r)$ be a graph on $n$ vertices where each vertex has at least $r$ neighbors. If $r > n-2$, then the edge connectivity $\\lambda(G(n,r)) = \\delta(G(n,r))$, where $\\delta(G(n,r))$ is the minimum degree of the graph.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is false. If $r > n-2$, then $r$ can be $n-1$. If $r = n-1$, then every vertex has degree at least $n-1$, which means every vertex is connected to every other vertex. Thus, the graph is the complete graph $K_n$. For the complete graph $K_n$, $\\lambda(K_n) = n-1$ and $\\delta(K_n) = n-1$. So, $\\lambda(G) = \\delta(G)$. However, if $r = n-1$, the statement is trivially true. If $r = n-1$, then the graph is $K_n$. If $r > n-2$, then $r$ can only be $n-1$. Thus, the graph is $K_n$. The edge connectivity of $K_n$ is $n-1$, and the minimum degree is $n-1$. So the edge connectivity equals the minimum degree. The statement is trivially true. The conjecture is not novel, non-trivial, or significant. It is also easily formalizable, but since it's trivially true, that doesn't matter."
+          }
+        },
+        {
+          "conjecture_text": "\\alpha(G) \\geq \\sum_{v \\in V(G)} \\frac{1}{d(v) + 1}",
+          "score": 0.1,
+          "judge": {
+            "correctness": 1.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 1.0,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "This is a well-known result called Turan's Theorem. It provides a lower bound on the independence number of a graph. While correct and formalizable, it is not novel and therefore not significant. It is also relatively easy to prove, making it not very non-trivial."
+          }
+        },
+        {
+          "conjecture_text": "Let A and B be n x n matrices with real entries. Then, \\rho(A+B) \\leq \\rho(A) + \\rho(B) if A and B are positive semi-definite.",
+          "score": 0.2,
+          "judge": {
+            "correctness": 1.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 1.0,
+            "overall_score": 0.2,
+            "is_well_formed": true,
+            "critique": "The conjecture is well-formed. However, it is false. \\rho(A) typically denotes the spectral radius (maximum absolute value of eigenvalues) of A. The inequality \\rho(A+B) \\leq \\rho(A) + \\rho(B) holds true *in general* for any matrices A and B. The positive semi-definiteness condition doesn't add anything, and the result is already well-known. Therefore, it lacks novelty, non-triviality, and significance. It is easily formalizable since it involves standard matrix operations and spectral radius."
+          }
+        }
+      ],
+      "scores": [
+        0.14,
+        0.1,
+        0.0,
+        0.1,
+        0.2
+      ],
+      "mean_score": 0.108,
+      "std_score": 0.0729
+    },
+    "ctx3|algebra": {
+      "context_size": 3,
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $I$ be an ideal in a Noetherian ring $R$. If $pres_I(M) = 0$ for some finitely generated $R$-module $M$, then $j(I) = 0$, where $pres_I$ is the parabolic restriction functor and $j(I)$ is the $j$-multiplicity of $I$.",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is poorly formed due to the undefined 'parabolic restriction functor' $pres_I(M)$. Without a precise definition, the statement is meaningless. Even if we assume a reasonable definition, the connection between such a functor and the $j$-multiplicity is unclear and unlikely to hold in general. The $j$-multiplicity is a geometric invariant related to the Hilbert-Samuel multiplicity, while a 'parabolic restriction functor' (if it exists) would likely be an algebraic construction. There is no obvious reason to expect a direct relationship, and the claim that $j(I) = 0$ is a very strong condition. The conjecture is likely false and not significant in its current form."
+          }
+        },
+        {
+          "conjecture_text": "Let $\\si\\in \\{-1,+1\\}$, $x\\in \\G_\\si, s\\in \\G_{2\\si}$. Define $U_\\si$ as in Result 1. Let $\\beta = (\\beta_1, \\dots, \\beta_m)$ be a sequence of strictly increasing positive integers. Then, for sufficiently large $m$, the intersection of the lower central series of the group generated by $U_\\si$ is tr",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $p>2$, $m, n, r \\in \\mathbb{Z}^+$, $r>1$, $n>m+r$. Let $A$ be a finite dimensional $K$-algebra with radical $R$ and $e \\in A$ be an idempotent. Suppose $S^{(n-r,1^r)}$ is a simple $A$-module such that $eS^{(n-r,1^r)} \\neq 0$. If $p|m$, then $eS^{(n-r,1^r)} \\c",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a finite group acting on a finite set $\\Omega$. Let $P$ be an imprimitive block of $G$ on $\\Omega$, and let $H \\leq G$ be the stabilizer of $P$. Suppose there exists a homomorphism $\\phi: G \\to \\mathbb{F}_q^\\times$ for some finite field $\\mathbb{F}_q$.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": false,
+            "critique": "The conjecture is nonsensical. The statement about the power series expansion of $\\phi(h)$ around a point in $\\mathbb{P}^1 \\times \\mathbb{P}^1$ is meaningless since $\\phi(h)$ is an element of a finite field and not a function of two variables. The variables $x_1$ and $x_2$ are undefined. The condition on the power series expansion makes no sense in this context. The conjecture is not well-formed."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $A$ be a ring, $B \\subseteq C$ overrings of $A$, and $\\bi, \\bj, \\bk, \\bl \\in \\\\words$ such that $\\bl \\geq \\bi$, $\\bl = \\bj\\bk$, $\\bi, \\bk \\neq \\emptyset$, and $\\bl$ is Lyndon. If $A \\subseteq B$ is flat if and only if $A_{[M \\cap A]} = B_{[M]}$ for all maxima",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": false,
+            "critique": "The conjecture is a jumbled mess of algebraic concepts and Lie theory, seemingly concatenated without any clear connection. The notation is inconsistent and poorly defined (e.g., $\\words$, $A_{[M \\cap A]}$, $Cl_n$). The condition '$\bl = \bk = \bi$ implies that for any maximal connected subgroup $M$ of a compact simple Lie group $G = Cl_n$ of classical type with natural modu' is incomplete and nonsensical. The conjecture is not well-formed and lacks any discernible mathematical meaning. It is highly unlikely to be correct, novel, non-trivial, significant, or formalizable in its current state."
+          }
+        }
+      ],
+      "scores": [
+        0.1,
+        0.5,
+        0.5,
+        0.0,
+        0.0
+      ],
+      "mean_score": 0.22,
+      "std_score": 0.2588
+    },
+    "ctx3|discrete_math": {
+      "context_size": 3,
+      "domain": "discrete_math",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a graph with maximum degree $\\Delta(G)$. If $G$ contains no even dimensional hypercubes as subgraphs, and $\\Delta(G) \\ge 3$, then $\\chi_{1-vsdt}(G)\\le 4\\Delta(G)$.\",\n  \"informal_description\": \"This conjecture combines the restrictions on hypercubes fro",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Conjecture: Let $P$ be a rational Dyck positroid with ground set $E$ and set of bases $\\mathcal{B}$. Let $G_P$ be a graph constructed such that the vertices of $G_P$ are the elements of $E$, and two vertices $x, y \\in E$ are adjacent if and only if there exists a",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Conjecture: Let $f$ be an affine permutation of order $n$. Let $N = (V, A)$ be a network where $V = \\{1, 2, ..., n\\}$ and $(i,j) \\in A$ if and only if $f(i) \\equiv j \\pmod{n}$. Then the number of upward closed subsets of $V$ is equal to the number of cluster vari",
+          "score": 0.32,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.3,
+            "significance": 0.2,
+            "formalizability": 0.6,
+            "overall_score": 0.32,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to connect affine permutations, upward closed sets in a network derived from them, and cluster algebras of type $B_n$. While the statement is syntactically correct, the connection is highly speculative and lacks any immediate justification. The definition of the network $N$ based on the affine permutation $f$ is clear. However, the claim that the number of upward closed sets in this network equals the number of cluster variables in a $B_n$ cluster algebra is a strong assertion that requires substantial evidence. Without any supporting arguments or known relationships, it's difficult to assess its truth. The novelty lies in the proposed connection, but its significance is questionable without further justification. Formalization is possible, as the concepts involved are well-defined, but proving or disproving it would likely be challenging. The main issue is the lack of any apparent reason why this should be true."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $P$ be a lattice polytope in $\\mathbb{R}^n$, and let $w \\in \\mathbb{Z}^n$ be a primitive vector. Let $F$ be a face of $P$ contained in the hyperplane $w^\\perp$. Let $P' = \\\\mut_{(w,F)}(P)$. Then, for any positive integer $k$, the number of lattice points in $",
+          "score": 0.32,
+          "judge": {
+            "correctness": 0.3,
+            "novelty": 0.2,
+            "non_triviality": 0.3,
+            "significance": 0.2,
+            "formalizability": 0.6,
+            "overall_score": 0.32,
+            "is_well_formed": true,
+            "critique": "The conjecture is vaguely stated, particularly the notion of 'mutation'. Without a precise definition of the mutation operation $\\mut_{(w,F)}(P)$, it's impossible to assess correctness. The claim that the difference in lattice point counts is bounded by $Ck^{n-1}$ is reminiscent of Ehrhart theory, but the mutation operation makes it unclear if this is a trivial consequence or something more interesting. The lack of a precise definition hinders formalization. The significance is low because the statement is too vague to be useful."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $K$ be a field, $L$ a field extension of $K$, and $M$ a matroid algebraically realized by $L$. Let $\\\\1$ be the Lindstr\\\"om valuation of $L$ over $K$. Furthermore, let $\\mathrm{VR}_0 \\subset \\mathrm{VR}_1 \\subset \\cdots \\subset \\mathrm{VR}_m$ be the Vietoris-",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": false,
+            "critique": "The conjecture is incomplete. It ends abruptly, making it impossible to assess its correctness, novelty, non-triviality, or significance. The notation is generally standard, but the lack of a complete statement renders it meaningless. It's impossible to formalize an incomplete statement."
+          }
+        }
+      ],
+      "scores": [
+        0.5,
+        0.5,
+        0.32,
+        0.32,
+        0.0
+      ],
+      "mean_score": 0.328,
+      "std_score": 0.2043
+    },
+    "ctx6|algebra": {
+      "context_size": 6,
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $L$ be a finitely generated multigraded module over a polynomial ring $S$. If all generic elements $\\alpha \\in \\Lambda(L)$ have the property that the minimal subset $I_\\alpha$ is generated by squarefree monomials, then the associated LCM-lattice of $L$ admits",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $\\CC$ and $\\DD$ be Hom-finite categories, and assume that $\\CC$ has a Serre functor $\\bS_\\CC$. Let $F:\\DD \\to \\CC$ be a fully faithful functor admitting a right and a left adjoint $R,L: \\CC \\to \\DD$. Let $A$ be an associative $R$-algebra such that $A$ is finite as a left $R$-module where $R$ is ",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of concepts from different areas (category theory, representation theory, algebraic K-theory) without a clear connection or motivation. The notation is inconsistent (e.g., 'tn' is undefined, 'tran' is likely intended to be 'transvection'). The assumption that 'A' is an R-algebra and a left R-module simultaneously is confusing, as is the condition on stable dimension. The conclusion about projectivity seems disconnected from the setup. The lack of clear definitions and the seemingly arbitrary combination of concepts make it highly unlikely to be correct or significant. The formalizability is low due to the vagueness and potential errors in the statement."
+          }
+        },
+        {
+          "conjecture_text": "Let $A$ be a ring and $B \\subseteq C$ two overrings of $A$. If $A \\subseteq C$ is flat and $C$ is a finitely generated $B$-module, then $B \\subseteq C$ is integral.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is false. Consider $A = k$, $B = k[x]$, and $C = k(x)$, where $k$ is a field. Then $A \\subseteq C$ is flat (since $C$ is a field), and $C$ is a finitely generated $B$-module if and only if $k(x)$ is a finitely generated $k[x]$-module, which is false. However, $B \\subseteq C$ is not integral, since $x^{-1} \\in k(x)$ is not integral over $k[x]$. The conjecture seems to confuse flatness with integrality. The condition that $C$ is a finitely generated $B$-module does not imply that $B \\subseteq C$ is integral. The flatness of $A \\subseteq C$ doesn't help either. The conjecture is incorrect and not novel."
+          }
+        },
+        {
+          "conjecture_text": "Let $A$ be an associative $R$-algebra such that $A$ is finite as a left $R$-module where $R$ is a commutative ring with identity. Suppose $A$ is isomorphic to a cyclotomic quotient $V_{\\bl,m}^{\\beta}$ of an affine Hecke algebra for some parameters $\\bl, m, \\beta$. Then the stable dimension $d$ of $A",
+          "score": 0.52,
+          "judge": {
+            "correctness": 0.6,
+            "novelty": 0.4,
+            "non_triviality": 0.5,
+            "significance": 0.4,
+            "formalizability": 0.7,
+            "overall_score": 0.52,
+            "is_well_formed": true,
+            "critique": "The conjecture is reasonably well-formed, assuming standard notation for affine Hecke algebras and cyclotomic quotients. However, it lacks precision. The term 'stable dimension' needs to be defined in the context of the algebra A. The existence of a bound depending only on 'm' and 'bl' is plausible, but not immediately obvious. The significance depends on whether such a bound is already known or easily derived from existing results. Formalizability is possible with appropriate definitions of the algebraic structures in Lean 4, but would require significant effort. The conjecture's value hinges on the specific function f and whether it provides useful information about the structure of A."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $A$ be a finitely generated algebra over a field $k$, and let $\\sigma \\in Aut(A)$ be an automorphism. Let $S = A[t; \\sigma]$ be the skew polynomial ring. If the small support of $A$ as an $R$-module, denoted $\\supp_R(A)$, is a connected subset of $\\spec(R)$ f",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The conjecture is stated using terminology from noncommutative algebra and algebraic geometry. However, the connection between the hypotheses (finitely generated algebra, automorphism, skew polynomial ring, small support) and the conclusion (connectedness of a restriction of a module of global sections) is unclear and lacks motivation. The terms 'conic module' and 'reflexive sheaf associated with a conic module' are not standard and require precise definitions. Without these definitions and a clear understanding of the intended relationship, it is impossible to assess the correctness, novelty, non-triviality, or significance. The formalizability is low due to the lack of precise definitions and the potential ambiguity in the intended meaning."
+          }
+        }
+      ],
+      "scores": [
+        0.5,
+        0.1,
+        0.0,
+        0.52,
+        0.14
+      ],
+      "mean_score": 0.252,
+      "std_score": 0.2411
+    },
+    "ctx6|discrete_math": {
+      "context_size": 6,
+      "domain": "discrete_math",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $G$ be a function graph with $n$ vertices. Then the number of SAF automata with the \"last occurrences increasing\" property that can be constructed from permutations of the vertices of $G$ is equal to the number of compacted trees of size $n$ if and only if $G$ is an interval graph.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is not well-formed because the term 'SAF automata with the last occurrences increasing property' is not a standard term in automata theory or graph theory. Similarly, 'compacted trees' is not a standard term. Without precise definitions for these terms, the conjecture is meaningless. Even if these terms were defined, the connection to interval graphs seems arbitrary and unlikely. Therefore, the conjecture is unlikely to be correct, novel, non-trivial, or significant. It is also difficult to formalize without precise definitions."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\mathcal{P}$ be a poset and let $A, B$ be two antichains in $\\mathcal{P}$. Let $I(A)$ and $I(B)$ be the ideals generated by $A$ and $B$ respectively. Then $I(A) = I(B)$ if and only if there exists a sequence of antichains $A = A_0, A_1, \\dots, A_k = B$ such ",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is fundamentally flawed. The condition $I(A) = I(B)$ does not imply the existence of such a sequence of antichains. Consider a poset with elements {a, b, c, d} and relations a < c, b < d. Let A = {a, b} and B = {c, d}. Then I(A) = {a, b} and I(B) = {a, b, c, d}. If we instead let A = {c, d} and B = {a, b}, then I(A) = {a, b, c, d} and I(B) = {a, b}. Thus, I(A) is not equal to I(B). Now, consider A = {a, b} and B = {c, d} in a poset where a < c and b < d. Then I(A) = {a, b} and I(B) = {c, d, a, b}. If we modify the poset to have a < c and b < c and b < d, then I(A) = {a, b} and I(B) = {c, d, a, b}. If we have a poset where a < c and b < d, and we want I(A) = I(B), then we need A and B to generate the same ideal. If A = {a, b} and B = {c, d}, and a < c and b < d, then I(A) = {a, b} and I(B) = {a, b, c, d}. So I(A) != I(B). If A = {c, d} and B = {a, b}, then I(A) = {a, b, c, d} and I(B) = {a, b}. So I(A) != I(B). The conjecture is false. The condition that $A_i$ and $A_{i+1}$ differ by at most one element, where the element is replaced by an element that covers it, or is covered by it, within the ideal generated by the union of $A_i$, is not sufficient to guarantee that the ideals are equal. The conjecture is not well-formed because it's not clear what it means for an element to be replaced by an element that covers it, or is covered by it, within the ideal generated by the union of $A_i$. The ideal generated by the union of $A_i$ is just the union of the ideals generated by each $A_i$."
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be the inversion graph of a smooth permutation $w \\in \\mathfrak{S}_n$, and let $\\mathrm{VR}_0 \\subset \\mathrm{VR}_1 \\subset \\cdots \\subset \\mathrm{VR}_m$ be the Vietoris-Rips filtration of a finite point cloud where the points are the vertices of $G$. Let $H_p^{i,j}$ be the $(i,j)$-persisten",
+          "score": 0.28,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.4,
+            "significance": 0.3,
+            "formalizability": 0.2,
+            "overall_score": 0.28,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to relate the chromatic polynomial of an inversion graph of a smooth permutation to the persistent homology of its Vietoris-Rips filtration. While the individual concepts are well-defined, the proposed relationship is vague and lacks specific details. The term \"smooth permutation\" needs clarification. The connection between graph coloring and topological invariants is a known area of research, but the specific claim about the chromatic polynomial determining bounds on persistence diagrams is not immediately obvious and requires substantial justification. The lack of specificity makes it difficult to assess its correctness or significance. Formalizing this in Lean 4 would be challenging due to the vagueness of the relationship. The conjecture is not trivially true, but it's also not clear if it's a deep or meaningful connection."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a graph with maximum degree $\\Delta(G)$. If $G$ admits a neighborhood-prime labeling, then $\\chi_{1-vsdt}(G) \\leq c \\cdot \\Delta(G)$ for some constant $c$ dependent on the type of neighborhood-prime labeling.\",\n  \"informal_description\": \"This conjectur",
+          "score": 0.52,
+          "judge": {
+            "correctness": 0.6,
+            "novelty": 0.4,
+            "non_triviality": 0.5,
+            "significance": 0.4,
+            "formalizability": 0.7,
+            "overall_score": 0.52,
+            "is_well_formed": true,
+            "critique": "The conjecture is reasonably well-formed, but lacks precision. The term 'neighborhood-prime labeling' needs to be explicitly defined, as there are various types. The constant 'c' is vaguely defined. The 1-vertex-strongly-distinguishing total chromatic number is a relatively niche topic, so the significance is somewhat limited. However, if proven, it would connect two graph labeling concepts. Formalization is possible, but requires a precise definition of the neighborhood-prime labeling used."
+          }
+        },
+        {
+          "conjecture_text": "Let $M$ be a matroid algebraically realized over a field extension $L$ of $K$. Let $\\1$ be the Lindstr\"om valuation of $L$. If the PSD rank of a matrix $P(\\alpha)$, defined as in Result 4, is equal to 2 for some $\\alpha \\in [0,4]$, then the value of the Lindstr\"om valuation $\\1(B)$ for any basis $B$",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The conjecture is vaguely stated and lacks sufficient context. The reference to \"Result 4\" and the definition of $P(\\alpha)$ are missing, making it impossible to assess its correctness or significance. The Lindstr\u00f6m valuation is mentioned, suggesting a connection to matroid theory and valuations, but the link to PSD rank is unclear and requires further elaboration. Without a precise definition of $P(\\alpha)$ and Result 4, the conjecture is essentially meaningless. The claim that $\\1(B) \\leq f(\\alpha)$ for some monotonically increasing function $f(\\alpha)$ is a very weak statement without specifying the function. It's unclear if this is a restatement of a known result or a completely new idea. Formalizability is low due to the lack of precise definitions."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.0,
+        0.28,
+        0.52,
+        0.14
+      ],
+      "mean_score": 0.188,
+      "std_score": 0.2189
+    },
+    "ctx10|algebra": {
+      "context_size": 10,
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $G$ be a finite abelian group, $N_1, N_2 \\leq G$ such that $N_1N_2 = G$. Let $\\alpha \\in Z^2(N_1, \\mathbb{K}^\\times)$ and $\\beta \\in Z^2(N_2, \\mathbb{K}^\\times)$, and let $H = N_1 \\cap N_2$. Define $\\alpha' = \\alpha|_{H}$ and $\\beta' = \\beta|_{H}$. If the map $\\mbox{\\rm RES}_{H}: V_\\pi \\rightarr",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a finite group acting freely transitively on the squares of a CAT(0) square complex $X$. Let $A(G)$ be an algebra associated with $G$. Then Aut($A(G)$) contains a subgroup isomorphic to $k^* \\times G$, where $k$ is a field.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is extremely vague and likely false as stated. The phrase 'algebra associated with G' is undefined, and without a specific construction, the claim about Aut(A(G)) is meaningless. The connection between the group action on the CAT(0) complex and the automorphism group of the algebra is unclear and unsupported. It's unlikely to be true in general without strong assumptions on the algebra A(G). The lack of specificity makes formalization impossible."
+          }
+        },
+        {
+          "conjecture_text": "Let $A$ be a skew left brace with left-orderable multiplicative group $A^{\\circ}$. If the additive group $A^+$ is finitely generated, then $A^+$ is left-orderable.",
+          "score": 0.12,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.2,
+            "overall_score": 0.12,
+            "is_well_formed": true,
+            "critique": "The conjecture is poorly motivated and likely false. While the definitions are correct, the connection between left-orderable multiplicative group and finitely generated additive group implying left-orderability of the additive group seems highly unlikely. There's no obvious reason why these properties should interact in this way. The conjecture is not likely to be significant. Formalizability is possible, but not worthwhile given the lack of promise."
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a finite group, and let $T$ be a $G$-tree. Suppose that $G$ acts on $T$ with finite stabilizers. If $C$ is a left cell in $W_{aff}(G)$, and $\\Reduced(C)$ is the language of reduced expressions of $w \\in C$, then there exists a $G$-morphism $q: \\tilde{T} \\rightarrow T$, where $\\tilde{T}$ i",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $R$ be a Noetherian local ring, $M$ a finitely generated $R$-module, and $\\mathfrak{D} = (\\mathcal{F}, \\mathcal{G})$ a cotorsion pair with $\\mathcal{F}$ closed under direct limits and $\\mathcal{G}$ closed under countable direct sums. If $M$ has an arithmetic Macaulayfication and $\\mathfrak{D}$ i",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The conjecture mixes several advanced concepts (Noetherian local rings, finitely generated modules, cotorsion pairs, arithmetic Macaulayfication, associated primes, FP$_2$-modules). While the individual concepts are well-defined, the connection between them in this specific statement seems weak and lacks clear motivation. The claim that $R/\fp$ has an arithmetic Macaulayfication based on $M$ having one is a plausible direction, but the cotorsion pair condition and the direct limit condition on $\\mathcal{F}$ seem arbitrarily added. The notation is correct, but the overall statement appears unlikely to be true in its current form and doesn't build upon existing results in a clear way. The formalizability is low because the definition of arithmetic Macaulayfication is not universally agreed upon and might require significant setup in Lean."
+          }
+        }
+      ],
+      "scores": [
+        0.5,
+        0.0,
+        0.12,
+        0.5,
+        0.14
+      ],
+      "mean_score": 0.252,
+      "std_score": 0.2326
+    },
+    "ctx10|discrete_math": {
+      "context_size": 10,
+      "domain": "discrete_math",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a graph with chromatic polynomial $\\chi_G(t)$. If the Vietoris-Rips complex $\\mathrm{VR}_r(G)$ (where the vertices of $G$ are considered points in $\\mathbb{R}^n$ with Euclidean distance given by the shortest path distance in $G$) has trivial persistent",
+          "score": 0.16,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.2,
+            "overall_score": 0.16,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to relate the chromatic polynomial of a graph to the persistent homology of its Vietoris-Rips complex. While the statement is syntactically correct, the connection between these two concepts is highly speculative and unlikely to hold in general. There's no established theory suggesting such a direct relationship. The condition about trivial persistent homology is quite strong and might only be satisfied by very simple graphs, making the conjecture potentially vacuously true or easily disproven. The formalizability is low due to the complexity of computing persistent homology and chromatic polynomials, and the lack of clear connections between them."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a graph with maximum degree $\\Delta(G)$. If $G$ is also a pebble-game graph with a canonical pebble game construction, then $\\chi_{1-vsdt}(G) \\leq c \\Delta(G)$ for some constant $c$ dependent on the canonical pebble game construction.\",\n  \"informal_des",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a graph and $I(G)$ its Laplacian lattice ideal. If $G$ is the point graph of a partial quadrangle satisfying the 6-vertex condition, then $I(G)^h$ is a complete intersection.",
+          "score": 0.28,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.4,
+            "significance": 0.3,
+            "formalizability": 0.2,
+            "overall_score": 0.28,
+            "is_well_formed": true,
+            "critique": "The conjecture connects graph theory (point graphs of partial quadrangles), algebraic combinatorics (Laplacian lattice ideals), and commutative algebra (complete intersections). While the terms are well-defined, the connection is speculative. The 6-vertex condition is a specific property of partial quadrangles, and it's unclear why it would imply the complete intersection property for the ideal. The novelty lies in the potential connection, but without further justification, it's hard to assess its significance. Formalizability is low because the computational complexity of verifying the complete intersection property for a given graph is high, making automated verification difficult. The correctness is unknown, and likely false without strong additional assumptions."
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a graph with Laplacian matrix $L(G, X_G)$. Then, for graphs $G$ and $H$, $L(G \boxtimes H, X_{G \boxtimes H})$ is a face of the order polytope of some poset if and only if $L(G, X_G)$ and $L(H, X_H)$ are faces of the order polytope of some posets.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is ill-defined. The Kronecker product of graphs ($G \\boxtimes H$) is well-defined. However, the statement \"$L(G, X_G)$ is a face of the order polytope of some poset\" is problematic. The Laplacian matrix $L(G)$ is a matrix, and the order polytope of a poset is a polytope. A matrix cannot be a face of a polytope. The notation $X_G$ is also unclear. Therefore, the conjecture is not mathematically correct and cannot be meaningfully evaluated for novelty, non-triviality, significance, or formalizability. The conjecture needs to be reformulated to make sense."
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a graph with first Betti number 2. If the maximal degree of a minimal generator of $\\tau(G)$ is one, then there exists an impartial game $G'$ with the set of $P$-positions defined by complementary Beatty sequences with rational moduli.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is not well-formed due to undefined terms and a lack of connection between the concepts. 'First Betti number of a graph' is usually defined for simplicial complexes, not graphs directly (although one could consider the clique complex). 'Minimal generator of \\tau(G)' is undefined; \\tau(G) likely refers to the Tutte polynomial, but 'minimal generator' makes no sense in this context. The connection to impartial games and Beatty sequences is unclear and unsupported. The maximal degree of a minimal generator is also nonsensical. The conjecture appears to be a random combination of mathematical terms without any underlying logic or justification. Therefore, it is incorrect, not novel, trivial, insignificant, and not formalizable in its current state."
+          }
+        }
+      ],
+      "scores": [
+        0.16,
+        0.5,
+        0.28,
+        0.0,
+        0.0
+      ],
+      "mean_score": 0.188,
+      "std_score": 0.2105
+    }
+  },
+  "status": "complete"
+}

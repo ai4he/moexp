@@ -1,0 +1,914 @@
+{
+  "task": 8,
+  "title": "Temperature Ablation",
+  "summary": {
+    "temperatures": [
+      0.3,
+      0.5,
+      0.7,
+      0.9,
+      1.1
+    ],
+    "domains": [
+      "algebra",
+      "analysis"
+    ],
+    "strategy": "pattern_interpolation",
+    "n_per_cell": 5
+  },
+  "temperature_effects": {
+    "0.3": {
+      "avg_quality": 0.23,
+      "avg_diversity": 0.4781
+    },
+    "0.5": {
+      "avg_quality": 0.22,
+      "avg_diversity": 0.5878
+    },
+    "0.7": {
+      "avg_quality": 0.29,
+      "avg_diversity": 0.7303
+    },
+    "0.9": {
+      "avg_quality": 0.218,
+      "avg_diversity": 0.5434
+    },
+    "1.1": {
+      "avg_quality": 0.152,
+      "avg_diversity": 0.5595
+    }
+  },
+  "cells": {
+    "t0.3|algebra": {
+      "temperature": 0.3,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $(\\mathbf{R}, d)$ be a free direct Reedy category and $G$ be a group. If for some integer $s \\ge 1$, $|\\gamma_s(G) : \\gamma_s(G) \\cap Z(G)|$ is finite and $A$ is a ring with overrings $B \\subseteq C$, such that $A \\subseteq B$ is a flat and integral extension",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture appears to be a jumble of unrelated concepts from different areas of mathematics (category theory, group theory, ring theory). The connection between the free direct Reedy category, the group condition, and the ring extension is unclear and seems arbitrary. The notation is correct, but the overall statement lacks coherence and plausibility. It's highly unlikely to be true or lead to any meaningful results. The formalizability is low because the underlying mathematical intuition is missing."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $(\\mathbf{R}, d)$ be a free direct Reedy category and $G$ be a group. If for some integer $s \\ge 1$, $|\\gamma_s(G) : \\gamma_s(G) \\cap Z(G)|$ is finite, then the category algebra $k[\\mathbf{R}]$ is a flat extension of a subring $A$ if and only if $A_{[M \\cap A",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of concepts from different areas (Reedy categories, group theory, category algebras, commutative algebra). The notation is used without proper context or definitions, making it difficult to parse. The connection between the finiteness condition on the group $G$ and the flatness condition on the category algebra is unclear and seems arbitrary. The statement about localization at maximal ideals is a standard technique in commutative algebra, but its relevance to the Reedy category and group structure is not apparent. It's unlikely to be correct as stated, and even if it were, its significance is questionable due to the lack of motivation and clear connections between the concepts involved. The lack of precise definitions makes formalization in Lean 4 extremely difficult."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $(\\mathbf{R}, d)$ be a free direct Reedy category and $G$ be a group. If there exists a functor $F: \\mathbf{R} \\to \\text{Groups}$ such that $F(r)$ is isomorphic to a subgroup of $G$ for all objects $r$ in $\\mathbf{R}$, and if $|\\gamma_{s}(G):\\gamma_{s}(G)\\cap",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomprehensible due to undefined terms and misuse of notation. 'Free direct Reedy category' is not a standard term, and the notation $|\\gamma_{s}(G):\\gamma_{s}(G)\\cap Z(G)|$ is unclear without defining $\\gamma_s(G)$. The connection between the Reedy category, the functor to Groups, and the finiteness condition on the group $G$ is not established, making the statement meaningless. It is unlikely to be formalizable in Lean 4 in its current state."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $(\\mathbf{R}, d)$ be a free direct Reedy category and $G$ be a group. If there exists a functor $F: \\mathbf{R} \\to \\text{Groups}$ such that $F(r)$ is a finite group for all objects $r \\in \\mathbf{R}$ and $d(r) = |\\gamma_2(F(r))|$, then for any non-identity mo",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is very vague and likely false. The connection between the Reedy category and the groups is not clear, and the condition involving the lower central series and centralizers seems arbitrary. The statement is poorly motivated and unlikely to be true in general. The notation is technically correct, but the overall statement lacks substance. It's hard to see how this could lead to any significant results."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $(\\mathbf{R}, d)$ be a free direct Reedy category and $G$ be a group. If there exists a functor $F: \\mathbf{R} \\to \\text{Groups}$ such that for all objects $r \\in \\Ob(\\mathbf{R})$, $F(r)$ is a subgroup of $G$, and for every non-identity morphism $r_1 \\to r_2$",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is poorly formed. The notation $|F(r_1) : F(r_2)|$ for the index of subgroups is only defined if $F(r_2)$ is a subgroup of $F(r_1)$, but the functor only guarantees that both are subgroups of $G$. Even if we assume $F(r_2) \\subseteq F(r_1)$, the connection between the Reedy category and the group $G$ is unclear, making the conclusion about the center of the lower central series seem arbitrary. The statement is unlikely to be true as written, and lacks motivation. The use of 'free direct Reedy category' is likely a red herring, and the condition on the index is probably not strong enough to imply anything about the lower central series. Formalizability is low due to the lack of clarity and likely falsehood."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.1,
+        0.0,
+        0.1,
+        0.1
+      ],
+      "mean_score": 0.06,
+      "std_score": 0.0548,
+      "avg_diversity": 0.4426
+    },
+    "t0.3|analysis": {
+      "temperature": 0.3,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $c \\in \\Omega_\\sigma$ be periodic with period $p$. Let $A_c$ be the tridiagonal matrix operator as in Result 3. If the solutions $z_1, z_2$ of the polynomial $z^2 - \\\\tau(\\\\lambda)z + \\\\gamma = 0$ satisfy $|z_1| = |z_2| = 1$ for some $\\\\lambda \\in \\\\mathbb{C}",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $c \\in \\Omega_\\sigma$ be a periodic function with period $p$. Let $A_c$ be the associated tridiagonal operator. If the Szlenk index of $A_c$ is finite, then the solutions to $A_c f = \\lambda f$ exhibit exponential decay as $n \\to \\pm \\infty$ for almost every $\\lambda \\in \\mathbb{C}$.",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $c \\in \\Omega_\\sigma$ be a periodic function with period $p$, and let $A_c$ be the corresponding tridiagonal operator. If the solutions $z_1, z_2$ of the polynomial $z^2 - \\\\tau(\\\\lambda)z + \\\\gamma = 0$ (as defined in Result 3) satisfy $|z_1(\\lambda)| = |z_2",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "Without knowing the definitions of $\\Omega_\\sigma$, $A_c$, $\\tau(\\lambda)$, $\\gamma$, Result 3, and the spectral subspace, it is impossible to assess the correctness, novelty, non-triviality, significance, or formalizability of this conjecture. The statement is syntactically well-formed, but meaningless without context. The Szlenk index bound of $\\omega$ is a common occurrence in Banach space theory, so the result might be plausible if the definitions are set up correctly. However, without the definitions, it is impossible to say anything meaningful."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $c \\in \\Omega_\\sigma$ be a periodic function with period $p$, and let $A_c$ be the corresponding tridiagonal operator. If the Szlenk index of the solution operator $T_\\lambda$ of $A_c f = \\lambda f$ is bounded by $\\omega^\\alpha$ for all $\\lambda \\in \\mathbb{C",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $c \\in \\Omega_\\sigma$ be periodic with period $p$. Let $A_c$ be a tridiagonal matrix operator as in Result 3. Then, for any $\\alpha > 0$, if the Szlenk index of the solution operator $S_\\lambda$ of $A_c f = \\lambda f$ satisfies $Sz(S_\\lambda) \\leq \\omega^\\alp",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        }
+      ],
+      "scores": [
+        0.5,
+        0.5,
+        0.0,
+        0.5,
+        0.5
+      ],
+      "mean_score": 0.4,
+      "std_score": 0.2236,
+      "avg_diversity": 0.5136
+    },
+    "t0.5|algebra": {
+      "temperature": 0.5,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $G$ be a finite group with a non-zero spread. Suppose $G$ has a group presentation $G = \\langle x, y \\mid r \\rangle$ where the relator $r$ is of the form $r = x^{n_1} y^{m_1} x^{n_2} y^{m_2} \\cdots x^{n_k} y^{m_k}$. If the exponent sum of $y$ in $r$, denoted $l_y(r)$, is $\\pm 1$, then $G$ is the",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a finite group with non-zero spread, and let $\\Gamma$ be a labeled directed graph whose vertices are the conjugacy classes of $G$. If $S$ is a subset of vertices of $\\Gamma$ such that for some $g_i \\in G$, $S$ is $g_i$-translatable, then the set $Sg_i$",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is difficult to evaluate without knowing the definitions of 'spread', 'labeled directed graph', 'g_i-translatable', 'Result 3', 'Sg_i', 'conjugacy classes of G which satisfy property (*)', and 'Result 5'. The statement is syntactically correct, but its meaning is unclear. Without the definitions, it's impossible to assess its correctness, novelty, non-triviality, or significance. The vague references to 'Result 3' and 'Result 5' make it hard to understand the context. Formalizability is also difficult to assess without knowing the precise definitions of the terms involved. The score is low because the conjecture is essentially meaningless without the necessary definitions."
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a finite group with non-zero spread. If $G$ can be presented as $G = \\langle x, y \\mid r \\rangle$ where $r = x^{n_1}y^{m_1}x^{n_2}y^{m_2}\\cdots x^{n_k}y^{m_k}$ and the exponent sum of $y$ in $r$, denoted $l_y(r)$, satisfies $l_y(r) = \\pm 1$, then $G$ is the group of a virtual knot.",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a finite group with non-zero spread and a conjugacy class $C$. Let $\\Gamma$ be a labeled directed graph whose vertices are elements of $G$, with an edge from $g$ to $h$ labeled by $c \\in C$ if $h = gc$. If $S$ is a subset of $G$ such that $S$ is $c$-tr",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is not well-formed. The phrase 'non-zero spread' is undefined. The statement 'S is c-translatable for all c in C' is also undefined. The conclusion that the subgraph contains a subgroup isomorphic to G seems highly unlikely without further constraints on S. The conjecture is therefore likely false and lacks sufficient detail to be meaningful. The informal description is incomplete and unhelpful."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a finite group with non-zero spread. Let $\\Gamma$ be a labeled directed graph whose vertices are the elements of $G$, and whose edges are labeled by generators of $G$. If $S$ is a subset of vertices of $\\Gamma$ such that $S$ is $g_i$-translatable for a",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.2,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is poorly formed and likely false. The notion of \"$g_i$-translatable\" is not defined, and even with a reasonable interpretation, the conclusion is unlikely to hold. The spread condition is also not clearly linked to the rest of the statement. The conjecture lacks precision and a clear connection to established results."
+          }
+        }
+      ],
+      "scores": [
+        0.5,
+        0.1,
+        0.5,
+        0.0,
+        0.1
+      ],
+      "mean_score": 0.24,
+      "std_score": 0.2408,
+      "avg_diversity": 0.6197
+    },
+    "t0.5|analysis": {
+      "temperature": 0.5,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $X$ be a locally compact noncompact Hausdorff space and $A$ be a closed subspace of $C_0(X)$. If $A$ is a band in $C(X^+)$, then $A = C_0(X)$.",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a locally compact noncompact Hausdorff space and $E$ be a band in $C(X^+)$. If $E$ contains $C_0(X)$, then there exists a compact subset $K \\subset X$ such that $f(x) = 0$ for all $f \\in E$ and $x \\in X \\setminus K$.\",\n  \"informal_description\": \"If a b",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is false. Consider $X = \\mathbb{R}$, $X^+ = \\mathbb{R} \\cup \\{\\infty\\}$. Let $E = C(X^+)$. Then $E$ is a band in $C(X^+)$ and $C_0(X) \\subset E$. However, there is no compact set $K$ such that $f(x) = 0$ for all $f \\in E$ and $x \\in X \\setminus K$. For example, take $f(x) = 1$ for all $x \\in X$. Then $f \\in E$ and $f(x) \\neq 0$ for all $x \\in X$. Thus, the conjecture is incorrect. The statement is well-formed, but incorrect. Since it is incorrect, it is not novel, non-trivial, or significant. It is formalizable, but since it is false, formalizing it would not be useful."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a locally compact noncompact Hausdorff space and $E$ be a closed subspace of $C_0(X)$. If $E$ is a band in $C(X^+)$, then $E = \\{0\\}$.\",\n  \"informal_description\": \"If a closed subspace of continuous functions vanishing at infinity on a locally compact ",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $X$ be a locally compact noncompact Hausdorff space and $Y$ be a closed subspace of $X$. Then $C_0(Y)$ is not necessarily a band in $C(Y^+)$, even if $C_0(X)$ is not a band in $C(X^+)$. However, if $Y$ is also noncompact and Hausdorff, and the restriction map $r: C_0(X) \\to C_0(Y)$ is a lattice ",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is fundamentally flawed. The statement that 'C_0(Y) is not necessarily a band in C(Y^+)' is trivially true since C(Y^+) is not even a lattice in general (Y^+ is the one-point compactification, and C(Y^+) is only a lattice if Y^+ is basically disconnected). The second part of the conjecture is also likely false and based on a misunderstanding of band properties and restriction maps. The condition that the restriction map is a lattice homomorphism is not sufficient to transfer band properties. Overall, the conjecture lacks mathematical substance and is based on incorrect assumptions."
+          }
+        },
+        {
+          "conjecture_text": "Let $X$ be a locally compact noncompact Hausdorff space, and let $A$ be a closed subspace of $C_0(X)$. If $A$ is a vector lattice, then $A$ is not a band in $C(X^+)$.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is incorrect. Consider $X = \\mathbb{R}$ and $A = C_0(\\mathbb{R})$. Then $A$ is a closed subspace of $C_0(\\mathbb{R})$, and $A$ is a vector lattice. The one-point compactification of $X$ is $X^+ = \\mathbb{R} \\cup \\{\\infty\\}$, and $C(X^+) \\cong \\{f \\in C(\\mathbb{R}) : \\lim_{x \\to \\pm \\infty} f(x) \\text{ exists and is equal} \\}$. In this case, $C_0(\\mathbb{R})$ is a band in $C(X^+)$. Specifically, if $g \\in C(X^+)$ and $|f| \\le |g|$ for some $f \\in C_0(\\mathbb{R})$, then $g \\in C_0(\\mathbb{R})$. Thus, $C_0(\\mathbb{R})$ is a band in $C(X^+)$. Therefore, the conjecture is false. The notation is standard, but the statement is fundamentally flawed."
+          }
+        }
+      ],
+      "scores": [
+        0.5,
+        0.0,
+        0.5,
+        0.0,
+        0.0
+      ],
+      "mean_score": 0.2,
+      "std_score": 0.2739,
+      "avg_diversity": 0.5559
+    },
+    "t0.7|algebra": {
+      "temperature": 0.7,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $R$ be a ring and $I$ be a nil clean ideal of $R$. If $R$ is a $G$-graded algebra, where $G$ is a finite group, then the codimension growth of $I$ is bounded by a function depending on the order of $G$ and the codimension growth of $I \\cap J(R)$. More precise",
+          "score": 0.62,
+          "judge": {
+            "correctness": 0.7,
+            "novelty": 0.6,
+            "non_triviality": 0.6,
+            "significance": 0.5,
+            "formalizability": 0.7,
+            "overall_score": 0.62,
+            "is_well_formed": true,
+            "critique": "The conjecture seems plausible and connects several interesting concepts: nil clean ideals, graded algebras, codimension growth, and the Jacobson radical. The notation is standard. The novelty lies in relating the codimension growth of the ideal to that of its intersection with the Jacobson radical in the context of graded algebras. It's non-trivial because codimension growth is a subtle invariant. Significance is moderate; a proof would provide a better understanding of the structure of nil clean ideals in graded algebras. Formalizability is likely, as the concepts involved have formal definitions. However, the vagueness of \"depending on\" and the lack of a specific function makes it less precise. The correctness is unknown without further investigation, but it's a reasonable conjecture to explore."
+          }
+        },
+        {
+          "conjecture_text": "Let $A$ be a finite-dimensional algebra over a field $k$, and let $G$ be a finite group acting on $A$ by algebra automorphisms. Suppose that $A$ has a Serre functor $\\bS_A$. If the action of $G$ on $A$ lifts to an action on the bounded derived category $D^b(A)$, such that the functor induced by $g \\",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a finite group, $R$ a finite-dimensional algebra, and $F: \\mathcal{D} \to \\mathcal{C}$ a fully faithful functor between Hom-finite categories $\\mathcal{D}$ and $\\mathcal{C}$. If the identity component $W_e$ of a $G$-graded PI-algebra $W$ is nil clean, $G$ has a normal Hall subgroup $N$ wit",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of concepts from different areas (group theory, PI-algebras, category theory) without clear connections. The notation is used without proper context or definitions (e.g., what is $\\mathcal{D} \to \\mathcal{C}$? What is $\\tau_H(R)$?). The statement is highly unlikely to be true as written due to the lack of coherence and the arbitrary combination of conditions. It's difficult to assess novelty or significance without a clearer understanding of the intended meaning. Formalizability is low due to the vagueness and potential notational errors."
+          }
+        },
+        {
+          "conjecture_text": "Let $A$ be a finite-dimensional algebra over a field $k$, and let $G$ be a finite group acting on $A$ by algebra automorphisms. Suppose $A$ is a PI-algebra and $A^G$ is the subalgebra of $G$-invariant elements. If $A$ admits a Serre functor $\\bS_A$, then $A^G$ admits a Serre functor $\\bS_{A^G}$ such",
+          "score": 0.18,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.3,
+            "significance": 0.2,
+            "formalizability": 0.1,
+            "overall_score": 0.18,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to relate Serre functors of an algebra and its invariant subalgebra under a finite group action, along with some conditions on PI-algebras, G-graded algebras, and nil clean ideals. While the individual components (Serre functors, group actions on algebras, PI-algebras, G-graded algebras, nil clean ideals) are well-established, the specific relationships proposed are highly speculative and lack sufficient justification or connection to existing literature. The claim about functorial relationships between Serre functors via adjoint functors is vague and unlikely to hold in such generality without strong additional hypotheses. The condition on the exponent of the G-graded algebra seems arbitrarily chosen and its connection to the nil ideal property is unclear. The statement about traces of projective modules and fixed idempotents is also not well-motivated. The overall conjecture appears to be a collection of potentially related concepts without a clear underlying structure or supporting evidence. It is unlikely to be correct in its current form and would require significant refinement and justification to become a meaningful research direction. The formalizability is low due to the lack of precision and the need for significant background knowledge to even interpret the statement."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\CC$ be a Hom-finite category with a Serre functor $\\bS_\\CC$. Let $G$ be a finite group. Suppose $F: Rep(G) \\to \\CC$ is a fully faithful functor, where $Rep(G)$ is the category of finite-dimensional representations of $G$. If $F$ admits a right and left adjo",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        }
+      ],
+      "scores": [
+        0.62,
+        0.5,
+        0.1,
+        0.18,
+        0.5
+      ],
+      "mean_score": 0.38,
+      "std_score": 0.2263,
+      "avg_diversity": 0.7448
+    },
+    "t0.7|analysis": {
+      "temperature": 0.7,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $H_0$ be a self-adjoint operator on a Hilbert space. Suppose $\\lambda \\notin \\sigma(H_0)$ and $F_0'(\\lambda) = 0$. Let $h(t)$ be the spectral density function associated with $H_0$. If the difference of the spectral projections in Result 1 is a Hankel operator, then the local singularity of $h(t",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "This conjecture is extremely vague and ill-defined. It refers to 'Result 1', 'Result 2', 'Lemma 6', and 'Result 5' without providing any context or definitions. The terms 'spectral density function', 'difference of spectral projections is a Hankel operator', 'local singularity of h(t) and its tail at infinity contribute to the asymptotic coefficient', 'proper, lower semicontinuous, and convex', and 'related to the constant K' are used without sufficient precision. Without knowing what these results and lemmas are, it's impossible to assess the conjecture's correctness, novelty, non-triviality, or significance. The lack of precise definitions makes formalization impossible. The statement is essentially meaningless without the context of the referenced results."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $f:X\\to\\RX$ be proper, lower semicontinuous, and convex. Suppose there exists a point $x \\in X$ and a sequence of bump forms $\\{\\beta_n\\}$ at $x$ such that $\\int_X f(y) \\beta_n(y) dy$ converges to a finite limit $L$ as $n \\to \\infty$. Then, for any $\\lambda <",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $H_0$ be a bounded self-adjoint operator on a Hilbert space, and let $\\Psi$ and $\\tilde{\\Psi}$ be countable subsets of $L^2(\\mathbb{R}^d)$ with a bijection $\\sim$ between them such that $\\sum_{\\psi\\in \\Psi}\\|\\psi\\|_{L^2}^2<\\infty$ and $\\sum_{\\tilde{\\psi}\\in \\",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $H_0$ be a self-adjoint operator on a Hilbert space, and let $\\varphi$ be a smooth function. Suppose $\\lambda \\notin \\sigma(H_0)$ and the coefficients $b_{j,n}$ are defined as in Result 5 with $\\varphi$. If the asymptotic coefficient ${\\bf c}_{m}$ in Result 2",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomprehensible without knowing 'Result 5', 'Result 2', and 'Result 4'. The statement refers to objects and concepts without defining them within the conjecture itself. This makes it impossible to assess its correctness, novelty, non-triviality, or significance. The reference to 'bump form' and the inner product involving 'f(x)' is also incomplete. The conjecture ends abruptly. Because of the undefined terms and incomplete statement, it is impossible to evaluate any of the criteria positively."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $H_0$ be a self-adjoint operator on a Hilbert space $\\mathcal{H}$. Suppose $\\lambda \\notin \\sigma(H_0)$ and $h(t)$ is a function such that Theorem~ef{sing} (with $\\alpha = m+1$) holds, implying that both the local singularity and the tail of $h(t)$ at infinit",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": false,
+            "critique": "The conjecture is incomplete and contains undefined terms like 'Theorem ef{sing}', 'equation (eq:sloc)', 'bump form beta', and 'K\"ahler form omega'. It also abruptly ends, making it impossible to assess its correctness, novelty, non-triviality, or significance. The lack of context and precise definitions renders it unformalizable. The statement is not well-formed due to incompleteness and undefined terms."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.5,
+        0.5,
+        0.0,
+        0.0
+      ],
+      "mean_score": 0.2,
+      "std_score": 0.2739,
+      "avg_diversity": 0.7158
+    },
+    "t0.9|algebra": {
+      "temperature": 0.9,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "Let $K$ be a connected Hopf algebra of GK-dimension three. If $A$ is a right $K$-comodule algebra such that $A^{coK}$ is an inverse semigroup with respect to a suitable product, then the map $\\beta: A\\otimes_{A^{coK}} A\to A\\otimes K$ given by $\\beta(a\\otimes b)=(a\\otimes 1)\rho(b)$ is surjective.",
+          "score": 0.22,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.3,
+            "significance": 0.2,
+            "formalizability": 0.1,
+            "overall_score": 0.22,
+            "is_well_formed": true,
+            "critique": "The conjecture involves several advanced concepts (Hopf algebras, GK-dimension, comodule algebras, inverse semigroups). While the statement is syntactically correct, its mathematical correctness is highly questionable. The connection between the GK-dimension, the inverse semigroup structure of the coinvariants, and the surjectivity of the map $\beta$ is not immediately obvious and seems unlikely to hold in general. The novelty is moderate as it attempts to connect different areas, but the lack of supporting evidence makes it less significant. The non-triviality is also moderate, as it's not a direct consequence of known results, but the likelihood of it being true is low. The significance is low because even if true, it's unclear how much it would advance the field. Formalizability in Lean 4 would be extremely challenging due to the complexity of the concepts involved and the lack of a clear path to verification."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $A$ be a right $K$-comodule algebra over a finite-dimensional Nakayama algebra $K = \\Lambda_i$ and let $B = A^{co K}$. If $B \\subset A$ is a $K$-Galois extension and the null cone of $A$ is reductive, then the idempotents of $A$ satisfy the property that for ",
+          "score": 0.14,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.2,
+            "non_triviality": 0.2,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.14,
+            "is_well_formed": true,
+            "critique": "The conjecture is difficult to assess without significant background in comodule algebras, Galois extensions, Nakayama algebras, and inverse semigroups. The notation is generally standard, but the interplay between these concepts is unclear. The statement about idempotents and the partial order seems vague and potentially incorrect. The condition about the null cone being reductive is also not clearly connected to the rest of the statement. It's unlikely to be correct as stated, and even if correct, its significance is questionable. Formalizing this in Lean 4 would be extremely challenging due to the specialized nature of the algebraic concepts involved."
+          }
+        },
+        {
+          "conjecture_text": "Let $K$ be a connected Hopf algebra of GK-dimension three which is also a right $K$-comodule algebra with structure map $\rho: K \\rightarrow K \\otimes K$. Let $B = K^{co K}$ be the fixed subring of $K$. If $B \\subset K$ is a right $K$-Galois extension in the sense that the map $\\beta: K \\otimes_B K \t",
+          "score": 0.3,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.4,
+            "significance": 0.3,
+            "formalizability": 0.4,
+            "overall_score": 0.3,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to link Hopf algebra structure, Galois extensions, and the universal enveloping algebra of a Lie algebra. While the individual concepts are well-defined, the connection proposed is highly speculative and unlikely to be true in its stated generality. The GK-dimension condition is interesting, but the Galois condition is quite strong and may not be sufficient to force the isomorphism to a universal enveloping algebra. There are many connected Hopf algebras of GK-dimension 3. The Galois condition is not standard and its implications are unclear. The conjecture is not obviously false, but it requires substantial justification. Formalizing this in Lean 4 would be challenging due to the complexity of the algebraic structures involved."
+          }
+        },
+        {
+          "conjecture_text": "Let $K$ be a connected Hopf algebra of GK-dimension three, and let $A$ be a right $K$-comodule algebra such that $B = A^{co K}$ is a (right) $K$-Galois extension. If the null cone associated to a representation of $K$ is convex, then $A$ is isomorphic to either an enveloping algebra $U(\\mathfrak{g})",
+          "score": 0.26,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.4,
+            "significance": 0.3,
+            "formalizability": 0.1,
+            "overall_score": 0.26,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to connect several advanced concepts in Hopf algebra theory and non-commutative algebra. However, it is very vague and likely incorrect as stated. The condition on the null cone being convex is not standard and its implications are unclear. The conclusion listing specific Hopf algebras is also problematic without further clarification of the parameters and relations defining them. The connection between the Galois extension property and the structure of $A$ is a reasonable direction to explore, but the conjecture lacks precision and supporting evidence. Formalization would be extremely difficult due to the vagueness and potential incorrectness."
+          }
+        },
+        {
+          "conjecture_text": "Let $B \\subset A$ be a $K$-Galois extension of algebras, where $A$ is a right $K$-comodule algebra and $K$ is a connected Hopf algebra of GK-dimension three. If $A$ is a finitely generated algebra and $B$ is a Nakayama algebra, then $A$ is isomorphic to a quotient of $U(\\mathfrak{g})$ for some three",
+          "score": 0.26,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.4,
+            "significance": 0.3,
+            "formalizability": 0.1,
+            "overall_score": 0.26,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to connect Galois extensions of algebras with the structure of the larger algebra $A$ when the subalgebra $B$ has a specific structure (Nakayama). The appearance of $U(\\mathfrak{g})$ and the $A(p,q,r)$ algebras suggests a connection to enveloping algebras and Sklyanin algebras, which is interesting. However, the conjecture is very ambitious and likely false in its current form. The conditions are too general to force such a specific structure on $A$. The correctness is low because the statement is likely false. Novelty is moderate because it attempts to connect different areas. Non-triviality is moderate because it's not immediately obvious. Significance is moderate because if true, it would provide a strong structural result. Formalizability is low due to the complexity of the concepts involved and the potential for ambiguity in the definitions."
+          }
+        }
+      ],
+      "scores": [
+        0.22,
+        0.14,
+        0.3,
+        0.26,
+        0.26
+      ],
+      "mean_score": 0.236,
+      "std_score": 0.0607,
+      "avg_diversity": 0.622
+    },
+    "t0.9|analysis": {
+      "temperature": 0.9,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a locally compact noncompact Hausdorff space and let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$. Then there exists a finite probabilistic frame $\\mu_{\\Phi}$ with frame bounds $A', B'$ such that $C_0(X)$ is not a band in $C(X^+)$, $A'\\",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of concepts that don't seem to connect in a meaningful way. The statement that $C_0(X)$ is not a band in $C(X^+)$ for a locally compact noncompact Hausdorff space $X$ is generally true, so it doesn't add much. The connection between probabilistic frames and this property of function spaces is unclear and seems unlikely to hold in general. The Wasserstein distance condition is also not clearly related to the other conditions. The conjecture appears to be a random combination of terms without a clear underlying mathematical idea."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a locally compact noncompact Hausdorff space and let $\\mu$ be a probabilistic frame on $C_0(X)$ with frame bounds $A$ and $B$. Then, for any $\\epsilon > 0$, there exists a finite probabilistic frame $\\mu_{\\Phi}$ on $C_0(X)$ with frame bounds $A'$ and $",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a locally compact noncompact Hausdorff space and let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$. If $C_0(X)$ is not a band in $C(X^+)$, then there exists a finite probabilistic frame $\\mu_{\\Phi}$ with frame bounds $A'$ and $B'$ such t",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete and contains syntax errors. The statement ends abruptly, making it impossible to assess its correctness, novelty, non-triviality, or significance. The notation is also unclear, particularly the use of \"probabilistic frame\" and \"$C(X^+)\". Without a complete and well-defined statement, formalization is impossible."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a locally compact noncompact Hausdorff space such that its one-point compactification $X^+$ admits a homeomorphism $\\varphi$ of the circle ($\\varphi \\in \\Homeo(\\S1)$) with Douady-Earle extension $\\xi_\\varphi$ satisfying $\\Vert \\varphi-{\\rm id} \\Vert_{\\",
+          "score": 0.5,
+          "judge": {
+            "correctness": 0.5,
+            "novelty": 0.5,
+            "non_triviality": 0.5,
+            "significance": 0.5,
+            "formalizability": 0.5,
+            "overall_score": 0.5,
+            "is_well_formed": false,
+            "critique": "Judge returned no valid response"
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $X$ be a locally compact noncompact Hausdorff space, and let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$. Then there exists a finite probabilistic frame $\\mu_{\\Phi}$ with frame bounds $A', B'$ such that if $C_0(X)$ is not a band in $C(X^+)$, ",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of concepts that don't seem to connect in a meaningful way. The condition \"$C_0(X)$ is not a band in $C(X^+)$\" is obscure and its relation to probabilistic frames and Wasserstein distance is unclear. The conclusion is also problematic: it states that either the Wasserstein distance is always greater than epsilon, or the frame bounds are always off by epsilon. This seems unlikely and doesn't suggest a deep connection. The conjecture appears to be nonsensical and lacks any clear mathematical motivation. The notation is standard, but the overall statement is meaningless."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.5,
+        0.0,
+        0.5,
+        0.0
+      ],
+      "mean_score": 0.2,
+      "std_score": 0.2739,
+      "avg_diversity": 0.4649
+    },
+    "t1.1|algebra": {
+      "temperature": 1.1,
+      "domain": "algebra",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a finite group acting freely and minimally on a Cantor set $X$. If the topological full group $[[G \\acts X]]$ is $C^*$-simple and $G$ satisfies property $(\\\\star)$, then for any reduced word $w$ in the free group on generators corresponding to elements",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of concepts from topological dynamics, operator algebras ($C^*$-simplicity), group theory (property $(\\star)$, word maps), and finite group theory ($\\PSL_2(2)$, $\\Sz(2)$, $\\PSL_2(p^n)$). The connection between these concepts is unclear, and the statement is vague. The term 'varied coset word maps' is not defined, and the condition involving the maximum multiplicity 'm' is incomplete. Property $(\\star)$ is not specified. The overall statement is not mathematically sound due to the lack of definitions and unclear relationships between the concepts. Therefore, it is impossible to assess its correctness, novelty, non-triviality, significance, or formalizability. The statement is syntactically well-formed in the sense that it uses mathematical notation, but it lacks semantic meaning due to the undefined terms and unclear relationships."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\Gamma$ be a countable non-amenable group and $\\Gamma \\acts X$ be a free, minimal action of $\\Gamma$ on the Cantor set. If the topological full group $[[\\Gamma \\acts X]]$ is $C^*$-simple, then for any word $w \\\\in F_d$, if the word map of $w$ on $[[\\Gamma \\a",
+          "score": 0.3,
+          "judge": {
+            "correctness": 0.2,
+            "novelty": 0.3,
+            "non_triviality": 0.4,
+            "significance": 0.4,
+            "formalizability": 0.2,
+            "overall_score": 0.3,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to relate $C^*$-simplicity of topological full groups to the VSMB property of word maps. While the individual concepts are well-defined, the connection is unclear and the conjecture is likely false or requires significant additional assumptions. The notation is mostly standard, but the abbreviation 'VSMB' is not universally known and should be defined. The conjecture's value hinges on whether such a connection can be established, which is currently speculative. Formalization would be challenging due to the abstract nature of topological full groups and word maps."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a finite group with non-zero spread acting freely and minimally on a Cantor set $X$. Then the topological full group of $G \\acts X$ is $C^*$-simple.\",\n  \"informal_description\": \"If a finite group has sufficiently many 'generating pairs' (non-zero sprea",
+          "score": 0.66,
+          "judge": {
+            "correctness": 0.6,
+            "novelty": 0.7,
+            "non_triviality": 0.7,
+            "significance": 0.8,
+            "formalizability": 0.5,
+            "overall_score": 0.66,
+            "is_well_formed": true,
+            "critique": "The conjecture connects spread in finite groups to C*-simplicity of topological full groups, which is a potentially interesting direction. However, the precise definitions of 'non-zero spread' and 'acting freely and minimally' need to be carefully considered. The connection between algebraic properties of groups and the C*-simplicity of related algebras is a major theme in operator algebras. The formalizability in Lean 4 might be challenging due to the topological aspects and C*-algebra theory involved. The correctness is hard to assess without further investigation, but the statement is mathematically well-formed. The novelty and significance are relatively high if the conjecture turns out to be true."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $G$ be a finite group with non-zero spread acting freely and minimally on a Cantor set $X$. Then the topological full group of $G \\acts X$ is $C^*$-simple.\",\n  \"informal_description\": \"This conjecture combines the concept of spread from finite group theory wi",
+          "score": 0.36,
+          "judge": {
+            "correctness": 0.3,
+            "novelty": 0.4,
+            "non_triviality": 0.5,
+            "significance": 0.4,
+            "formalizability": 0.2,
+            "overall_score": 0.36,
+            "is_well_formed": true,
+            "critique": "The conjecture attempts to connect spread in finite groups with $C^*$-simplicity of topological full groups. The statement is reasonably well-formed, assuming the reader understands the terminology. However, the notion of 'non-zero spread' needs to be made more precise in the context of group actions. It's not immediately clear how spread relates to the dynamics of the action. The connection to $C^*$-simplicity is interesting, as there are existing results linking dynamical properties to $C^*$-simplicity. The formalizability is low because the definition of spread and its relation to the group action needs to be formalized first. The conjecture's significance hinges on whether the spread condition provides a new and useful criterion for $C^*$-simplicity in this context. Without a precise definition of how spread interacts with the action, it's difficult to assess the conjecture's validity or potential impact."
+          }
+        },
+        {
+          "conjecture_text": "Let $G$ be a finite group acting linearly on an affine space $\\mathbb{A}^n_k$. If the fixed point set of $G$ acting on $\\mathbb{A}^n_k$ has dimension 0, then the topological full group of the action of $G$ on its Stone representation is $C^*$-simple if and only if $G$ has non-zero spread.",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "The conjecture is a jumble of concepts that don't fit together in a meaningful way. The connection between the fixed point set of a group action on affine space and the $C^*$-simplicity of the topological full group of its Stone representation is unclear and highly suspect. The condition about non-zero spread is also out of place. The conjecture is likely false and doesn't seem to build on existing results in a sensible manner. The concepts are individually well-defined, but their combination here is nonsensical."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.3,
+        0.66,
+        0.36,
+        0.0
+      ],
+      "mean_score": 0.264,
+      "std_score": 0.2769,
+      "avg_diversity": 0.6325
+    },
+    "t1.1|analysis": {
+      "temperature": 1.1,
+      "domain": "analysis",
+      "strategy": "pattern_interpolation",
+      "conjectures": [
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$. Suppose $T \\in \\mathcal{L}(L^p_\\alpha(\\lambda))$ is right generalized Drazin invertible for some $1<p<\\infty$ and $\\alpha>0$. Then, for any $\\epsilon>0$, there exists a finite probabilistic frame $",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": false,
+            "critique": "The conjecture is not well-formed. It contains several undefined terms and concepts, making it impossible to assess its correctness or significance. Specifically: 'probabilistic frame', 'frame bounds A and B', '$L^p_\\alpha(\\lambda)$', 'right generalized Drazin invertible', '$\\| \\cdot \\|_{W_2}$', 'finite probabilistic frame $\\mu_{\\Phi}$', and 'restriction of T to $L^q(\\lambda)$' are not standard terms and require precise definitions. Without these definitions, the statement is meaningless. The abrupt ending 'righ' also indicates incompleteness."
+          }
+        },
+        {
+          "conjecture_text": "Let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$. Suppose $T\\in\\mathcal{L}(X)$ is a right generalized Drazin invertible operator on a Banach space $X$. If the elements of the probabilistic frame, when acting as operators on $X$, satisfy the condition that $K(T)$ is closed and complem",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "This conjecture appears to be a meaningless jumble of concepts. The connection between probabilistic frames, generalized Drazin invertibility, complemented kernels, finite probabilistic frames with perturbed bounds, and embedding the quasi-nilpotent part into a Lorentz space that is BWCG but not IWCG is completely unclear and lacks any motivation. The statement is likely false and does not represent a meaningful mathematical idea. The notation, while individually possibly correct, is used in a way that makes the entire statement nonsensical. The condition on K(T) being closed and complemented is a standard assumption in operator theory, but its connection to the rest of the conjecture is unclear. The claim about the Lorentz space is also suspicious without further justification. The conjecture appears to be randomly generated."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$. Suppose $\\alpha > 0$ and $f \\in L^p_\\alpha(\\lambda)$ for some $p > 1$. Then for any $\\epsilon > 0$, there exists a finite probabilistic frame $\\mu_{\\Phi}$ with frame bounds $A', B'$ such that $A'\\g",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is vague and ill-defined. The notation $L^p_\\alpha(\\lambda)$ is not standard, and it's unclear what measure $\\lambda$ refers to. The phrase \"embedding theorems for $L^p_\\alpha(\\lambda)$ hold\" is also not precise. What embedding theorems are being referred to? The statement about approximating a probabilistic frame with a finite one in Wasserstein-2 distance is plausible, but the connection to the embedding theorems is unclear and unsupported. The frame bounds approximation is also standard. Overall, the conjecture lacks precision and doesn't seem to build upon established results in a meaningful way. It's difficult to assess its correctness or significance without a more precise formulation."
+          }
+        },
+        {
+          "conjecture_text": "Let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$ in a Banach space $X$. If $T \\in \\mathcal{L}(X)$ is a right generalized Drazin invertible operator, and $\\alpha > d/p$, then there exists a finite probabilistic frame $\\mu_{\\Phi}$ with frame bounds $A', B'$ such that $A'\\geq A-\\epsilon",
+          "score": 0.0,
+          "judge": {
+            "correctness": 0.0,
+            "novelty": 0.0,
+            "non_triviality": 0.0,
+            "significance": 0.0,
+            "formalizability": 0.0,
+            "overall_score": 0.0,
+            "is_well_formed": true,
+            "critique": "This conjecture is a jumble of concepts that don't seem to connect in a meaningful way. The notation is questionable (probabilistic frame with frame bounds in a Banach space? $L^p_\\alpha(\\lambda)$ without defining $\\lambda$?). The condition $\\alpha > d/p$ is also unclear without context. The claim that $Tf \\in L^\\infty$ for any $f \\in L^p_\\alpha(\\lambda)$ seems highly unlikely given the generality of $T$ and the properties of Drazin inverses. The connection between the probabilistic frame approximation and the Drazin inverse is not apparent. It's unlikely to be correct, novel, non-trivial, significant, or formalizable in its current form. The lack of definitions for key terms makes it impossible to evaluate properly."
+          }
+        },
+        {
+          "conjecture_text": "```json\n{\n  \"conjecture_statement\": \"Let $\\mu$ be a probabilistic frame with frame bounds $A$ and $B$. If the canonical frame operator $S$ associated with $\\mu$ is right generalized Drazin invertible, then for any $\\epsilon > 0$, there exists a finite probabilistic frame $\\mu_{\\Phi}$ with frame boun",
+          "score": 0.1,
+          "judge": {
+            "correctness": 0.1,
+            "novelty": 0.1,
+            "non_triviality": 0.1,
+            "significance": 0.1,
+            "formalizability": 0.1,
+            "overall_score": 0.1,
+            "is_well_formed": true,
+            "critique": "The conjecture is incomplete. It ends abruptly with \"right ge\", making it impossible to fully assess. The concepts mentioned (probabilistic frames, frame bounds, canonical frame operator, generalized Drazin inverse, Wasserstein-2 distance) are valid, but the incomplete statement renders it meaningless. Without a complete statement, it's impossible to judge correctness, novelty, non-triviality, or significance. Formalizability is also hampered by the lack of a complete statement. The use of probabilistic frames is relatively recent, but the conjecture needs to be completed to be evaluated properly."
+          }
+        }
+      ],
+      "scores": [
+        0.0,
+        0.0,
+        0.1,
+        0.0,
+        0.1
+      ],
+      "mean_score": 0.04,
+      "std_score": 0.0548,
+      "avg_diversity": 0.4866
+    }
+  },
+  "status": "complete"
+}

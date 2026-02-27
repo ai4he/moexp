@@ -1,0 +1,170 @@
+{
+  "task": 5,
+  "title": "Conjecture Diversity Analysis",
+  "summary": {
+    "total_conjectures": 210,
+    "n_statement_types": 7,
+    "concept_entropy": 7.029,
+    "unique_concepts": 215,
+    "top_20_concepts": {
+      "mathcal": 26,
+      "mathbb": 25,
+      "exists": 22,
+      "forall": 21,
+      "text": 21,
+      "geq": 19,
+      "infty": 17,
+      "gamma": 15,
+      "delta": 14,
+      "alpha": 13,
+      "lambda": 13,
+      "finite": 13,
+      "theorem": 13,
+      "group": 12,
+      "rational": 11,
+      "dim": 11,
+      "rho": 11,
+      "sigma": 11,
+      "leq": 11,
+      "connected": 11
+    }
+  },
+  "statement_type_distribution": {
+    "existence": 44,
+    "universal": 54,
+    "equivalence": 17,
+    "characterization": 8,
+    "bound": 37,
+    "conditional": 35,
+    "other": 105
+  },
+  "per_domain_types": {
+    "algebraic_geometry": {
+      "existence": 10,
+      "universal": 8,
+      "equivalence": 6,
+      "characterization": 2,
+      "bound": 2,
+      "conditional": 6,
+      "other": 15
+    },
+    "algebra": {
+      "other": 14,
+      "conditional": 3,
+      "bound": 2,
+      "equivalence": 2,
+      "universal": 5,
+      "existence": 2
+    },
+    "number_theory": {
+      "existence": 7,
+      "other": 11,
+      "bound": 6,
+      "universal": 5,
+      "equivalence": 5,
+      "conditional": 1
+    },
+    "discrete_math": {
+      "existence": 5,
+      "universal": 14,
+      "other": 12,
+      "characterization": 4,
+      "bound": 9,
+      "conditional": 6,
+      "equivalence": 1
+    },
+    "geometry_topology": {
+      "existence": 9,
+      "universal": 5,
+      "conditional": 10,
+      "bound": 5,
+      "other": 17,
+      "characterization": 1,
+      "equivalence": 3
+    },
+    "analysis": {
+      "existence": 10,
+      "universal": 10,
+      "other": 16,
+      "bound": 5,
+      "conditional": 4
+    },
+    "probability_statistics": {
+      "bound": 8,
+      "conditional": 5,
+      "other": 20,
+      "universal": 7,
+      "existence": 1,
+      "characterization": 1
+    }
+  },
+  "domain_concept_entropy": {
+    "algebraic_geometry": 5.9665,
+    "algebra": 5.1965,
+    "number_theory": 5.5482,
+    "discrete_math": 4.9414,
+    "geometry_topology": 5.4828,
+    "analysis": 5.5689,
+    "probability_statistics": 5.7616
+  },
+  "domain_diversity": {
+    "algebraic_geometry": {
+      "n_conjectures": 33,
+      "avg_pairwise_jaccard": 0.9397,
+      "min_pairwise_jaccard": 0.2222,
+      "max_pairwise_jaccard": 1.0,
+      "n_pairs_sampled": 528
+    },
+    "algebra": {
+      "n_conjectures": 23,
+      "avg_pairwise_jaccard": 0.9602,
+      "min_pairwise_jaccard": 0.7895,
+      "max_pairwise_jaccard": 1.0,
+      "n_pairs_sampled": 253
+    },
+    "number_theory": {
+      "n_conjectures": 25,
+      "avg_pairwise_jaccard": 0.9283,
+      "min_pairwise_jaccard": 0.2222,
+      "max_pairwise_jaccard": 1.0,
+      "n_pairs_sampled": 300
+    },
+    "discrete_math": {
+      "n_conjectures": 29,
+      "avg_pairwise_jaccard": 0.9167,
+      "min_pairwise_jaccard": 0.3478,
+      "max_pairwise_jaccard": 1.0,
+      "n_pairs_sampled": 406
+    },
+    "geometry_topology": {
+      "n_conjectures": 37,
+      "avg_pairwise_jaccard": 0.9394,
+      "min_pairwise_jaccard": 0.2,
+      "max_pairwise_jaccard": 1.0,
+      "n_pairs_sampled": 666
+    },
+    "analysis": {
+      "n_conjectures": 31,
+      "avg_pairwise_jaccard": 0.9447,
+      "min_pairwise_jaccard": 0.25,
+      "max_pairwise_jaccard": 1.0,
+      "n_pairs_sampled": 465
+    },
+    "probability_statistics": {
+      "n_conjectures": 32,
+      "avg_pairwise_jaccard": 0.954,
+      "min_pairwise_jaccard": 0.1944,
+      "max_pairwise_jaccard": 1.0,
+      "n_pairs_sampled": 496
+    }
+  },
+  "source_comparison": {
+    "api_unique_concepts": 156,
+    "moe_unique_concepts": 125,
+    "shared_concepts": 66,
+    "api_only": 90,
+    "moe_only": 59,
+    "concept_overlap": 0.307
+  },
+  "status": "complete"
+}

@@ -1,0 +1,324 @@
+{
+  "task": 11,
+  "title": "STP Round Ablation",
+  "summary": {
+    "n_domains": 7,
+    "total_rounds": 14,
+    "total_conjectures": 56,
+    "avg_improvement": 0.0339
+  },
+  "round_comparison": {
+    "round_1": {
+      "n_scores": 28,
+      "mean": 0.7043,
+      "std": 0.0742,
+      "median": 0.7
+    },
+    "round_2": {
+      "n_scores": 28,
+      "mean": 0.7382,
+      "std": 0.0566,
+      "median": 0.75
+    },
+    "improvement": 0.0339,
+    "bootstrap_p_value": 0.0586,
+    "significant_005": false
+  },
+  "verdict_trajectory": {
+    "round_1": {
+      "partially_proved": 20,
+      "unknown": 4,
+      "proved": 3,
+      "disproved": 1
+    },
+    "round_2": {
+      "partially_proved": 21,
+      "proved": 6,
+      "unknown": 1
+    }
+  },
+  "per_domain": {
+    "algebraic_geometry": {
+      "n_rounds": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "n_conjectures": 4,
+          "scores": [
+            0.72,
+            0.7,
+            0.75,
+            0.7
+          ],
+          "mean_score": 0.7175,
+          "std_score": 0.0236,
+          "median_score": 0.71,
+          "verdicts": {
+            "partially_proved": 4
+          }
+        },
+        {
+          "round": 2,
+          "n_conjectures": 4,
+          "scores": [
+            0.78,
+            0.68,
+            0.78,
+            0.8
+          ],
+          "mean_score": 0.76,
+          "std_score": 0.0542,
+          "median_score": 0.78,
+          "verdicts": {
+            "partially_proved": 4
+          }
+        }
+      ],
+      "improvement_r1_to_r2": 0.0425,
+      "total_conjectures": 8
+    },
+    "discrete_math": {
+      "n_rounds": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "n_conjectures": 4,
+          "scores": [
+            0.7,
+            0.73,
+            0.63,
+            0.73
+          ],
+          "mean_score": 0.6975,
+          "std_score": 0.0472,
+          "median_score": 0.715,
+          "verdicts": {
+            "partially_proved": 4
+          }
+        },
+        {
+          "round": 2,
+          "n_conjectures": 4,
+          "scores": [
+            0.75,
+            0.68,
+            0.7,
+            0.73
+          ],
+          "mean_score": 0.715,
+          "std_score": 0.0311,
+          "median_score": 0.715,
+          "verdicts": {
+            "partially_proved": 4
+          }
+        }
+      ],
+      "improvement_r1_to_r2": 0.0175,
+      "total_conjectures": 8
+    },
+    "number_theory": {
+      "n_rounds": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "n_conjectures": 4,
+          "scores": [
+            0.78,
+            0.78,
+            0.7,
+            0.7
+          ],
+          "mean_score": 0.74,
+          "std_score": 0.0462,
+          "median_score": 0.74,
+          "verdicts": {
+            "partially_proved": 3,
+            "unknown": 1
+          }
+        },
+        {
+          "round": 2,
+          "n_conjectures": 4,
+          "scores": [
+            0.7,
+            0.78,
+            0.75,
+            0.75
+          ],
+          "mean_score": 0.745,
+          "std_score": 0.0332,
+          "median_score": 0.75,
+          "verdicts": {
+            "partially_proved": 3,
+            "proved": 1
+          }
+        }
+      ],
+      "improvement_r1_to_r2": 0.005,
+      "total_conjectures": 8
+    },
+    "analysis": {
+      "n_rounds": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "n_conjectures": 4,
+          "scores": [
+            0.5,
+            0.6,
+            0.7,
+            0.6
+          ],
+          "mean_score": 0.6,
+          "std_score": 0.0816,
+          "median_score": 0.6,
+          "verdicts": {
+            "unknown": 3,
+            "partially_proved": 1
+          }
+        },
+        {
+          "round": 2,
+          "n_conjectures": 4,
+          "scores": [
+            0.73,
+            0.73,
+            0.7,
+            0.55
+          ],
+          "mean_score": 0.6775,
+          "std_score": 0.0862,
+          "median_score": 0.715,
+          "verdicts": {
+            "partially_proved": 3,
+            "unknown": 1
+          }
+        }
+      ],
+      "improvement_r1_to_r2": 0.0775,
+      "total_conjectures": 8
+    },
+    "algebra": {
+      "n_rounds": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "n_conjectures": 4,
+          "scores": [
+            0.76,
+            0.7,
+            0.75,
+            0.88
+          ],
+          "mean_score": 0.7725,
+          "std_score": 0.0763,
+          "median_score": 0.755,
+          "verdicts": {
+            "partially_proved": 3,
+            "proved": 1
+          }
+        },
+        {
+          "round": 2,
+          "n_conjectures": 4,
+          "scores": [
+            0.88,
+            0.75,
+            0.78,
+            0.8
+          ],
+          "mean_score": 0.8025,
+          "std_score": 0.0556,
+          "median_score": 0.79,
+          "verdicts": {
+            "proved": 4
+          }
+        }
+      ],
+      "improvement_r1_to_r2": 0.03,
+      "total_conjectures": 8
+    },
+    "geometry_topology": {
+      "n_rounds": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "n_conjectures": 4,
+          "scores": [
+            0.78,
+            0.7,
+            0.7,
+            0.72
+          ],
+          "mean_score": 0.725,
+          "std_score": 0.0379,
+          "median_score": 0.71,
+          "verdicts": {
+            "partially_proved": 4
+          }
+        },
+        {
+          "round": 2,
+          "n_conjectures": 4,
+          "scores": [
+            0.76,
+            0.73,
+            0.7,
+            0.72
+          ],
+          "mean_score": 0.7275,
+          "std_score": 0.025,
+          "median_score": 0.725,
+          "verdicts": {
+            "partially_proved": 4
+          }
+        }
+      ],
+      "improvement_r1_to_r2": 0.0025,
+      "total_conjectures": 8
+    },
+    "probability_statistics": {
+      "n_rounds": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "n_conjectures": 4,
+          "scores": [
+            0.6,
+            0.63,
+            0.78,
+            0.7
+          ],
+          "mean_score": 0.6775,
+          "std_score": 0.0802,
+          "median_score": 0.665,
+          "verdicts": {
+            "proved": 2,
+            "disproved": 1,
+            "partially_proved": 1
+          }
+        },
+        {
+          "round": 2,
+          "n_conjectures": 4,
+          "scores": [
+            0.75,
+            0.76,
+            0.75,
+            0.7
+          ],
+          "mean_score": 0.74,
+          "std_score": 0.0271,
+          "median_score": 0.75,
+          "verdicts": {
+            "partially_proved": 3,
+            "proved": 1
+          }
+        }
+      ],
+      "improvement_r1_to_r2": 0.0625,
+      "total_conjectures": 8
+    }
+  },
+  "status": "complete"
+}
