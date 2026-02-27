@@ -1,0 +1,118 @@
+{
+  "timestamp": "2026-02-27 12:22:10",
+  "description": "Comparison of MoE-generated conjectures (base model, heuristic scoring) vs API-generated conjectures (instruction-tuned models, API-judge scoring). MoE conjectures are expected to be lower quality because the base model (deepseek-math-7b-base) is not instruction-tuned.",
+  "overall": {
+    "moe_total_conjectures": 113,
+    "api_total_conjectures": 153,
+    "moe_avg_quality": 0.1922,
+    "api_avg_quality": 0.6931,
+    "quality_gap_api_minus_moe": 0.5009,
+    "moe_scoring_method": "heuristic (no API)",
+    "api_scoring_method": "LLM judge (Mistral/Groq)"
+  },
+  "per_domain": {
+    "algebra": {
+      "moe_count": 18,
+      "api_count": 13,
+      "moe_avg_quality": 0.2478,
+      "api_avg_quality": 0.7738,
+      "quality_gap": 0.526
+    },
+    "algebraic_geometry": {
+      "moe_count": 18,
+      "api_count": 23,
+      "moe_avg_quality": 0.1615,
+      "api_avg_quality": 0.6952,
+      "quality_gap": 0.5337
+    },
+    "analysis": {
+      "moe_count": 18,
+      "api_count": 21,
+      "moe_avg_quality": 0.2197,
+      "api_avg_quality": 0.65,
+      "quality_gap": 0.4303
+    },
+    "discrete_math": {
+      "moe_count": 12,
+      "api_count": 25,
+      "moe_avg_quality": 0.2258,
+      "api_avg_quality": 0.6848,
+      "quality_gap": 0.459
+    },
+    "geometry_topology": {
+      "moe_count": 17,
+      "api_count": 28,
+      "moe_avg_quality": 0.1351,
+      "api_avg_quality": 0.6796,
+      "quality_gap": 0.5445
+    },
+    "number_theory": {
+      "moe_count": 12,
+      "api_count": 21,
+      "moe_avg_quality": 0.2467,
+      "api_avg_quality": 0.7195,
+      "quality_gap": 0.4728
+    },
+    "probability_statistics": {
+      "moe_count": 18,
+      "api_count": 22,
+      "moe_avg_quality": 0.135,
+      "api_avg_quality": 0.6859,
+      "quality_gap": 0.5509
+    }
+  },
+  "per_strategy": {
+    "boundary_exploration": {
+      "moe_count": 21,
+      "api_count": 27,
+      "moe_avg_quality": 0.1577,
+      "api_avg_quality": 0.6789,
+      "quality_gap": 0.5212
+    },
+    "composition": {
+      "moe_count": 21,
+      "api_count": 24,
+      "moe_avg_quality": 0.1675,
+      "api_avg_quality": 0.6663,
+      "quality_gap": 0.4988
+    },
+    "cross_domain_analogy": {
+      "moe_count": 30,
+      "api_count": 9,
+      "moe_avg_quality": 0.1341,
+      "api_avg_quality": 0.6367,
+      "quality_gap": 0.5026
+    },
+    "pattern_interpolation": {
+      "moe_count": 21,
+      "api_count": 24,
+      "moe_avg_quality": 0.2008,
+      "api_avg_quality": 0.6579,
+      "quality_gap": 0.4571
+    },
+    "stp": {
+      "moe_count": 0,
+      "api_count": 56,
+      "moe_avg_quality": 0.0,
+      "api_avg_quality": 0.7346,
+      "quality_gap": null
+    },
+    "theorem_generation": {
+      "moe_count": 20,
+      "api_count": 13,
+      "moe_avg_quality": 0.3325,
+      "api_avg_quality": 0.6977,
+      "quality_gap": 0.3652
+    }
+  },
+  "analysis": {
+    "key_findings": [
+      "Overall quality gap: API conjectures score 0.5009 higher than MoE conjectures (0.6931 vs 0.1922).",
+      "Best MoE domain: algebra (avg 0.2478), worst: probability_statistics (avg 0.1350).",
+      "Best MoE strategy: theorem_generation (avg 0.3325), worst: cross_domain_analogy (avg 0.1341).",
+      "Smallest domain quality gap: analysis (0.4303), largest: probability_statistics (0.5509).",
+      "Note: MoE uses heuristic scoring (pattern-based) while API uses LLM-judge scoring. These scoring methods are not directly comparable but provide useful relative signals.",
+      "The MoE base model (deepseek-math-7b-base) generates text continuations rather than structured conjectures, leading to frequent LaTeX artifacts, truncations, and meta-commentary."
+    ]
+  }
+}
