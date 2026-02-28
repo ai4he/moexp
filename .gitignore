@@ -31,6 +31,9 @@ mistral_key.txt
 openrouter_key.txt
 LLM_API_HPC_Access.docx
 
+# Backup files
+*.bak
+
 # Python
 __pycache__/
 *.pyc
