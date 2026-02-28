@@ -1,0 +1,200 @@
+{
+  "task": "task14_stp_5rounds",
+  "description": "STP loop extended to 5 rounds on algebra and number_theory",
+  "target_domains": [
+    "algebra",
+    "number_theory"
+  ],
+  "rounds_executed": [
+    3,
+    4,
+    5
+  ],
+  "conjectures_per_domain_per_round": 4,
+  "total_new_conjectures": 5,
+  "round_statistics": {
+    "round_1": {
+      "mean_quality": 0.8064,
+      "std_quality": 0.0691,
+      "n_conjectures": 28,
+      "proved_count": 0
+    },
+    "round_2": {
+      "mean_quality": 0.6629,
+      "std_quality": 0.0762,
+      "n_conjectures": 28,
+      "proved_count": 0
+    },
+    "round_3": {
+      "mean_quality": 0.4667,
+      "std_quality": 0.0471,
+      "n_conjectures": 3,
+      "proved_count": 0
+    },
+    "round_4": {
+      "mean_quality": 0.35,
+      "std_quality": 0.05,
+      "n_conjectures": 2,
+      "proved_count": 0
+    }
+  },
+  "quality_trend": {
+    "slope": -0.1167,
+    "intercept": 0.8167,
+    "r_squared": 0.5833,
+    "p_value": 0.132842,
+    "std_error": 0.0569
+  },
+  "verdicts": {
+    "unknown": 5
+  },
+  "publishable_count": 0,
+  "conjectures": [
+    {
+      "domain": "algebra",
+      "round": 3,
+      "statement": "Let $G$ be a finite group and let $k$ be a field of characteristic $p > 0$. Let $B$ be a block of the group algebra $kG$ with defect group $D$. Suppose that $B$ has a unique simple module $S$. Then $B$ is nilpotent if and only if the dimension of $S$ is not divisible by $p$.",
+      "informal": "This conjecture relates the nilpotency of a block algebra to the dimension of its unique simple module, under the condition that the block has a unique simple module.",
+      "motivation": "The nilpotency of blocks is a fundamental concept in modular representation theory, related to the structure of the block and its defect group. The dimension of simple modules is a crucial invariant. This conjecture aims to link these two aspects in the special case where the block has a unique simple module. If true, it would provide a simple criterion for determining nilpotency in this special case. The existence of a unique simple module often simplifies the structure of the block, making the connection more plausible.",
+      "difficulty": "hard",
+      "verdict": "unknown",
+      "proof_sketch": "",
+      "confidence": 0.3,
+      "lean4_sketch": "",
+      "quality_score": 0.5,
+      "judge_scores": {
+        "correctness": 0.8,
+        "novelty": 0.6,
+        "non_triviality": 0.7,
+        "significance": 0.7,
+        "formalizability": 1.0,
+        "proof_quality": 0.2
+      },
+      "judge_critique": "The conjecture is likely correct, and connects nilpotency of a block with the dimension of its unique simple module. The condition that the block has a unique simple module is crucial. The 'if' direction (nilpotency implies dimension not divisible by p) is relatively straightforward. The 'only if' direction is more challenging. The provided 'proof attempt' is missing, so its quality is very low. Without a proof, the conjecture remains unproven. The conjecture is interesting and potentially significant, but the lack of a proof is a major issue.",
+      "is_publishable": false,
+      "providers": {
+        "conjecture": "openrouter",
+        "proof": "openrouter",
+        "judge": "openrouter"
+      },
+      "timestamp": "2026-02-27 18:03:10"
+    },
+    {
+      "domain": "algebra",
+      "round": 3,
+      "statement": "Let $A$ be a finite-dimensional algebra over an algebraically closed field $k$. Let $rad(A)$ denote the Jacobson radical of $A$. If $A$ is representation-finite and $rad(A)^3 = 0$, then the global dimension of $A$ is at most 3.",
+      "informal": "This conjecture relates the representation type of a finite-dimensional algebra to its global dimension. Specifically, if an algebra has only finitely many indecomposable modules (up to isomorphism) and satisfies a nilpotency condition on its radical, then its global dimension is bounded by 3.",
+      "motivation": "The global dimension of an algebra measures the complexity of projective resolutions of modules. Representation-finite algebras are considered to be 'well-behaved' in representation theory. This conjecture explores the relationship between these two properties. Knowing a bound on the global dimension can lead to deeper understanding of the module category and its homological properties. The $rad(A)^3 = 0$ condition is a crucial constraint; algebras satisfying $rad(A)^2=0$ are often easier to classify, and this condition represents a step up in complexity. The conjecture aims to understand how this slightly increased complexity affects the global dimension in the representation-finite setting.",
+      "difficulty": "hard",
+      "verdict": "unknown",
+      "proof_sketch": "",
+      "confidence": 0.3,
+      "lean4_sketch": "",
+      "quality_score": 0.5,
+      "judge_scores": {
+        "correctness": 0.6,
+        "novelty": 0.7,
+        "non_triviality": 0.8,
+        "significance": 0.7,
+        "formalizability": 1.0,
+        "proof_quality": 0.2
+      },
+      "judge_critique": "The conjecture is interesting and potentially significant. The condition rad(A)^3 = 0 is a common one in representation theory, and bounding the global dimension is a fundamental problem. Representation-finite algebras are well-studied. However, the provided 'proof attempt' is missing. Without a proof, it's impossible to assess the correctness of the conjecture. Similar results exist in the literature, but the specific combination of representation-finiteness and rad(A)^3 = 0 makes it potentially novel. The formalizability is high since it's a statement about algebras and their properties. The proof quality is low because there is no proof provided. The overall quality is moderate due to the interesting nature of the conjecture but the absence of supporting evidence.",
+      "is_publishable": false,
+      "providers": {
+        "conjecture": "openrouter",
+        "proof": "openrouter",
+        "judge": "openrouter"
+      },
+      "timestamp": "2026-02-27 18:07:14"
+    },
+    {
+      "domain": "algebra",
+      "round": 3,
+      "statement": "Let $A$ be a finitely generated algebra over a field $k$, and let $Der_k(A)$ denote the $A$-module of $k$-derivations of $A$. Suppose $A$ is a domain and the quotient field $Q(A)$ has transcendence degree $n$ over $k$. If $Der_k(A)$ is a projective $A$-module of rank $n$, then $A$ is regular.",
+      "informal": "This conjecture states that if the module of derivations of a finitely generated domain over a field is projective with the expected rank (equal to the transcendence degree of its quotient field), then the domain must be regular (i.e., all its localizations at maximal ideals are regular local rings).",
+      "motivation": "The module of derivations is closely related to the singularities of an algebra. For smooth (regular) algebras, the module of derivations is projective and of the expected rank. This conjecture explores the converse: whether projectivity of the derivation module forces regularity. This is interesting because projectivity is a weaker condition than freeness, and it could provide a new criterion for regularity. Also, it connects algebraic properties of the derivation module to geometric properties of the algebra.",
+      "difficulty": "medium",
+      "verdict": "unknown",
+      "proof_sketch": "",
+      "confidence": 0.3,
+      "lean4_sketch": "",
+      "quality_score": 0.4,
+      "judge_scores": {
+        "correctness": 0.3,
+        "novelty": 0.6,
+        "non_triviality": 0.7,
+        "significance": 0.5,
+        "formalizability": 1.0,
+        "proof_quality": 0.1
+      },
+      "judge_critique": "The conjecture is interesting and potentially significant, connecting the module of derivations to the regularity of the algebra. The condition that Der_k(A) is projective of rank n is a strong one. However, the correctness of the conjecture is unclear, and the provided 'proof attempt' is nonexistent, making it impossible to assess the validity of the claim. The conjecture is related to the Zariski-Lipman conjecture, which states that if Der_k(A) is a free A-module, then A is regular. The given conjecture weakens the freeness assumption to projectivity, which makes it more general. However, the lack of a proof makes it impossible to determine if this generalization holds. The conjecture is formalizable, but without a proof, its value is limited.",
+      "is_publishable": false,
+      "providers": {
+        "conjecture": "openrouter",
+        "proof": "openrouter",
+        "judge": "openrouter"
+      },
+      "timestamp": "2026-02-27 18:11:18"
+    },
+    {
+      "domain": "algebra",
+      "round": 4,
+      "statement": "Let $A$ be a finite-dimensional algebra over an algebraically closed field $k$ of characteristic 0. Let $e$ be a primitive idempotent in $A$. Let $J(A)$ denote the Jacobson radical of $A$. Suppose that $eA$ is uniserial as a right $A$-module, and $Ae$ is uniserial as a left $A$-module. Then, for any positive integer $n$, the algebra $A/J(A)^n$ is representation-finite if and only if the quiver of $A$ has no oriented cycles except possibly loops at vertices corresponding to simple modules with Ext-algebras of dimension at most 1.",
+      "informal": "This conjecture relates the representation-finiteness of truncated algebras to the structure of the quiver of the original algebra, specifically focusing on the presence of oriented cycles. It suggests that if the principal indecomposable modules are uniserial, then the representation type of truncations is controlled by the presence of oriented cycles in the quiver, with loops allowed only when the Ext-algebra of the corresponding simple module is small (dimension at most 1).",
+      "motivation": "Representation-finiteness is a central problem in representation theory. The study of truncations $A/J(A)^n$ provides a way to approximate the algebra $A$ and understand its representation theory through simpler algebras. The uniserial condition on principal indecomposable modules imposes a strong structural constraint, potentially simplifying the analysis of the quiver and its relation to representation type.  The connection to oriented cycles is motivated by known results linking cycles to infinite representation type. Restricting to characteristic 0 avoids issues with wild representation types due to modular representation theory.",
+      "difficulty": "hard",
+      "verdict": "unknown",
+      "proof_sketch": "",
+      "confidence": 0.3,
+      "lean4_sketch": "",
+      "quality_score": 0.4,
+      "judge_scores": {
+        "correctness": 0.3,
+        "novelty": 0.7,
+        "non_triviality": 0.8,
+        "significance": 0.6,
+        "formalizability": 0.9,
+        "proof_quality": 0.1
+      },
+      "judge_critique": "The conjecture is interesting and potentially significant, connecting representation-finiteness with the quiver of the algebra under uniserial conditions. However, the correctness is highly questionable. The condition on the Ext-algebras of simple modules is vague and needs clarification. The absence of a proof makes it impossible to assess the validity of the claim. The conjecture builds on known results about representation-finite algebras and their quivers, but the uniserial condition adds a layer of complexity. Without a proof, it's impossible to determine if the conjecture holds or if there are counterexamples. The statement is formalizable, but the condition on Ext-algebras needs to be made precise. The lack of a proof is a major drawback.",
+      "is_publishable": false,
+      "providers": {
+        "conjecture": "openrouter",
+        "proof": "openrouter",
+        "judge": "openrouter"
+      },
+      "timestamp": "2026-02-27 18:22:18"
+    },
+    {
+      "domain": "algebra",
+      "round": 4,
+      "statement": "Let $A$ be a finite-dimensional associative algebra over a field $k$ of characteristic zero. Let $Z(A)$ denote the center of $A$, and let $J(A)$ denote the Jacobson radical of $A$. Suppose that $A/J(A)$ is separable. Let $d(A)$ be the minimal dimension of a faithful $A$-module. If $Z(A)$ is a Gorenstein ring, then $d(A)$ divides dim$_k(A)$.",
+      "informal": "This conjecture relates the representation theory of a finite-dimensional algebra to the properties of its center. Specifically, it states that if the center of the algebra is Gorenstein, then the minimal dimension of a faithful representation must divide the total dimension of the algebra.  The condition that A/J(A) is separable is equivalent to A/J(A) being semisimple when k is perfect, and it ensures that the algebra has a relatively simple structure when the radical is factored out.",
+      "motivation": "This conjecture is motivated by the desire to understand the relationship between the structure of an algebra and its representations. The Gorenstein property of the center is a strong condition that often implies nice homological properties. The minimal dimension of a faithful representation is a fundamental invariant of the algebra. The conjecture suggests a deep connection between these two seemingly disparate concepts. If true, this would provide a new tool for studying the representation theory of algebras with Gorenstein centers. The divisibility condition is reminiscent of Maschke's Theorem, which states that if the characteristic of $k$ does not divide the order of a finite group $G$, then the group algebra $kG$ is semisimple.",
+      "difficulty": "hard",
+      "verdict": "unknown",
+      "proof_sketch": "",
+      "confidence": 0.3,
+      "lean4_sketch": "",
+      "quality_score": 0.3,
+      "judge_scores": {
+        "correctness": 0.2,
+        "novelty": 0.6,
+        "non_triviality": 0.7,
+        "significance": 0.4,
+        "formalizability": 1.0,
+        "proof_quality": 0.1
+      },
+      "judge_critique": "The conjecture is interesting and potentially significant, connecting representation theory (minimal faithful module dimension) with ring-theoretic properties (Gorenstein center) and separability. However, the correctness is highly questionable. The proof attempt is missing, making it impossible to assess its validity. Without a proof, the conjecture remains speculative. The conditions on A/J(A) being separable and Z(A) being Gorenstein are standard in representation theory and commutative algebra, respectively, suggesting a possible connection. The conjecture's novelty lies in linking these concepts to the minimal faithful module dimension. The lack of a proof is a major drawback.",
+      "is_publishable": false,
+      "providers": {
+        "conjecture": "openrouter",
+        "proof": "openrouter",
+        "judge": "openrouter"
+      },
+      "timestamp": "2026-02-27 18:27:46"
+    }
+  ],
+  "timestamp": "2026-02-27 18:45:53"
+}

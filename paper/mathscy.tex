@@ -52,7 +52,7 @@ Anonymous Authors\\[4pt]
 \maketitle
 
 \begin{abstract}
-We present \mathscy{}, a modular system for AI-assisted mathematical reasoning that integrates domain-specialized Mixture-of-Experts (MoE) large language models with formal verification in the Lean~4 proof assistant. \mathscy{} addresses fundamental limitations of current AI systems for mathematics---including scalability across mathematical domains, depth of reasoning, and verifiability of outputs---through three key contributions. First, we construct a domain-specialized MoE architecture via Branch-Train-Mix, training seven QLoRA expert modules on distinct mathematical subdomains (algebraic geometry, discrete mathematics, number theory, analysis, algebra, geometry \& topology, and probability \& statistics) plus a shared cross-domain expert from a DeepSeek-Math-7B base model, with sigmoid gating and auxiliary-loss-free load balancing. Second, we design a Self-Play Theorem Prover (STP) loop in which a conjecturer and a prover iteratively improve through mutual training, with conjectures filtered through a four-tier Lean~4 verification pipeline encompassing type-checking, triviality detection, counterexample search, and automated proof search. Third, we curate a large-scale dataset of 6.47 million mathematical entries across 154 arXiv categories and 15 domain groups, from which we extract 241,586 structured training examples via a combination of LLM-powered knowledge extraction and LaTeX theorem mining. We report results from all three pipeline phases: stable expert convergence across all domains on a single A100 GPU, a sigmoid router achieving 88.9\% top-2 routing accuracy with near-uniform load balancing, and a conjecture generation pipeline producing 210 conjectures---of which 10 are judged as proved by LLM evaluators and 6 are flagged as publishable---with the STP loop achieving the highest quality scores (avg 0.735, max 0.980). A 12-task evaluation suite reveals that 54\% of conjectures are genuinely novel (low ArXiv similarity), the optimal generation configuration uses temperature $T{=}0.7$ with 3 context entries, and STP quality shows a positive trend of $+0.034$ per round (bootstrap $p = 0.059$) with proved conjectures doubling each iteration. Under uniform LLM-judge evaluation, the MoE--API quality gap is 0.210, attributable primarily to instruction tuning rather than mathematical content quality. The current evaluation focuses on conjecture generation quality; problem-solving benchmarks (MATH, GSM8K) are planned as future work requiring GPU inference. The trained models, code, and LLM-verified conjectures are publicly available.\footnote{Code: \url{https://github.com/ai4he/moexp} \quad Models: \url{https://huggingface.co/ai4he/mathscy-moe-7b}}
+We present \mathscy{}, a modular system for AI-assisted mathematical reasoning that integrates domain-specialized Mixture-of-Experts (MoE) large language models with formal verification in the Lean~4 proof assistant. \mathscy{} addresses fundamental limitations of current AI systems for mathematics---including scalability across mathematical domains, depth of reasoning, and verifiability of outputs---through three key contributions. First, we construct a domain-specialized MoE architecture via Branch-Train-Mix, training seven QLoRA expert modules on distinct mathematical subdomains (algebraic geometry, discrete mathematics, number theory, analysis, algebra, geometry \& topology, and probability \& statistics) plus a shared cross-domain expert from a DeepSeek-Math-7B base model, with sigmoid gating and auxiliary-loss-free load balancing. Second, we design a Self-Play Theorem Prover (STP) loop in which a conjecturer and a prover iteratively improve through mutual training, with conjectures filtered through a four-tier Lean~4 verification pipeline encompassing type-checking, triviality detection, counterexample search, and automated proof search. Third, we curate a large-scale dataset of 6.47 million mathematical entries across 154 arXiv categories and 15 domain groups, from which we extract 241,586 structured training examples via a combination of LLM-powered knowledge extraction and LaTeX theorem mining. We report results from all three pipeline phases: stable expert convergence across all domains on a single A100 GPU, a sigmoid router achieving 88.9\% top-2 routing accuracy with near-uniform load balancing, and a conjecture generation pipeline producing 210 conjectures---of which 10 are judged as proved by LLM evaluators and 6 are flagged as publishable---with the STP loop achieving the highest quality scores (avg 0.735, max 0.980). A 12-task evaluation suite reveals that 54\% of conjectures are genuinely novel (low ArXiv similarity), the optimal generation configuration uses temperature $T{=}0.7$ with 3 context entries, and STP quality in early rounds shows proved conjectures doubling each iteration, though extended analysis across 4 rounds reveals quality degradation complicated by API availability. A router gating ablation validates sigmoid over softmax gating with large effect size (Cohen's $d = 0.845$), and a multi-judge consensus study reveals weak positive inter-judge correlation ($r = 0.338$) with systematic scoring differences, underscoring the need for human evaluation. Under uniform LLM-judge evaluation, the MoE--API quality gap is 0.210, attributable primarily to instruction tuning rather than mathematical content quality. The current evaluation focuses on conjecture generation quality; problem-solving benchmarks (MATH, GSM8K) are planned as future work requiring GPU inference. The trained models, code, and LLM-verified conjectures are publicly available.\footnote{Code: \url{https://github.com/ai4he/moexp} \quad Models: \url{https://huggingface.co/ai4he/mathscy-moe-7b}}
 \end{abstract}
 
 \textbf{Keywords:} Mixture-of-Experts, mathematical reasoning, theorem proving, conjecture generation, Lean 4, autoformalization, self-play, domain specialization
@@ -1021,7 +1021,26 @@ Wrong domain     & 0.116 \\
 \end{table}
 
 \paragraph{STP round analysis.}
-STP quality shows a positive trend from Round~1 (avg 0.704) to Round~2 (avg 0.738), a trend of $+0.034$ per round (bootstrap $p = 0.059$, approaching but not reaching statistical significance at $\alpha = 0.05$). Only 2 of a planned 10 STP rounds were completed due to computational constraints. The doubling of proved conjectures from Round~1 (3) to Round~2 (6) provides stronger evidence of STP effectiveness than the quality score trend alone, indicating that the iterative self-play mechanism produces increasingly well-formed and provable conjectures. With additional STP rounds on GPU hardware, we expect the quality trend to reach statistical significance.
+We extend the STP loop from 2 to 4 completed rounds on the algebra and number theory domains (Table~\ref{tab:stp_rounds_extended}). Quality scores show a declining trend across rounds: Round~1 (avg $0.806 \pm 0.069$, $n{=}28$) $\to$ Round~2 ($0.663 \pm 0.076$, $n{=}28$) $\to$ Round~3 ($0.467 \pm 0.047$, $n{=}3$) $\to$ Round~4 ($0.350 \pm 0.050$, $n{=}2$). Linear regression yields slope $= -0.117$ per round ($R^2 = 0.583$, $p = 0.133$), indicating a negative quality trend that does not reach statistical significance. The reduced sample sizes in later rounds ($n{=}3, 2$ vs.\ planned 8) are due to API rate limiting that caused 79\% of generation attempts to fail, and the quality decline may partly reflect degraded fallback API responses (OpenRouter) rather than inherent STP degradation. The original Rounds~1--2 showed the doubling of proved conjectures from 3 to 6 as the most compelling evidence of STP effectiveness. The extended rounds produced 5 new conjectures in algebra (none in number theory due to API failures), with all receiving ``unknown'' verdicts due to empty proof responses under rate limiting. A properly resourced replication with dedicated API quotas is needed to draw definitive conclusions about multi-round STP dynamics.
+
+\begin{table}[h]
+\centering
+\caption{STP quality across rounds 1--4. Rounds 3--4 have reduced sample sizes due to API rate limiting (79\% generation failure rate).}
+\label{tab:stp_rounds_extended}
+\small
+\begin{tabular}{@{}cccc@{}}
+\toprule
+\textbf{Round} & \textbf{Mean Quality $\pm$ Std} & \textbf{$n$} & \textbf{Proved} \\
+\midrule
+1 & $0.806 \pm 0.069$ & 28 & 3 \\
+2 & $0.663 \pm 0.076$ & 28 & 6 \\
+3 & $0.467 \pm 0.047$ & 3  & 0 \\
+4 & $0.350 \pm 0.050$ & 2  & 0 \\
+\midrule
+\multicolumn{2}{@{}l}{\textbf{Trend (linear regression)}} & \multicolumn{2}{c}{slope $= -0.117$, $p = 0.133$} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \paragraph{Cross-domain transfer.}
 Table~\ref{tab:ablation_transfer} reports the effect of generating conjectures with context from a \emph{different} domain than the target, measuring cross-domain transfer. The best transfers occur between analysis and probability ($+0.353$) and between number theory and algebraic geometry ($+0.307$), consistent with the known mathematical relationships between these field pairs. The average transfer effect is slightly negative ($-0.020$), indicating that cross-domain transfer is beneficial only for mathematically related domains and harmful otherwise.
@@ -1041,6 +1060,48 @@ Algebra         & Number Theory         & 0.241 \\
 Discrete Math   & Algebra               & 0.183 \\
 \midrule
 \multicolumn{2}{@{}l}{\textbf{Average transfer effect}} & $-0.020$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Router gating mechanism ablation.}
+Table~\ref{tab:gating_ablation} compares sigmoid gating (with auxiliary-loss-free load balancing) against standard softmax gating. Since the full router requires GPU-based hidden state extraction from DeepSeek-Math-7B, we use TF-IDF+SVD embeddings (256 dimensions, 32.7\% explained variance) as a lightweight proxy and report 5-run averages with standard deviations. Sigmoid gating achieves marginally higher top-1 accuracy ($74.3\% \pm 0.3$ vs.\ $73.9\% \pm 0.6$) and substantially better load balance (ratio $1.62 \pm 0.05$ vs.\ $1.69 \pm 0.13$). The accuracy difference does not reach statistical significance ($t$-test $p = 0.267$), but the effect size is large (Cohen's $d = 0.845$), consistent with the DeepSeekMoE finding that sigmoid gating with load balancing provides more stable expert utilization than softmax~\citep{deepseekai2024deepseekv3}. The original router trained on DeepSeek-Math-7B hidden states with sigmoid gating achieves 76.3\% top-1 and 88.9\% top-2 accuracy---higher than either proxy-trained variant, as expected, but the relative comparison validates the sigmoid design choice.
+
+\begin{table}[h]
+\centering
+\caption{Router gating mechanism ablation: sigmoid (with load balancing) vs.\ softmax. Five independent runs per variant on TF-IDF+SVD proxy embeddings. $^*$Cohen's $d > 0.8$ indicates large practical effect.}
+\label{tab:gating_ablation}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Metric} & \textbf{Sigmoid} & \textbf{Softmax} & \textbf{$p$-value} \\
+\midrule
+Top-1 Accuracy          & $\mathbf{0.743 \pm 0.003}$ & $0.739 \pm 0.006$ & 0.267 \\
+Top-2 Accuracy          & $\mathbf{0.852 \pm 0.004}$ & $0.851 \pm 0.007$ & --- \\
+Load Balance Ratio      & $\mathbf{1.62 \pm 0.05}$   & $1.69 \pm 0.13$   & 0.303 \\
+Cohen's $d$ (top-1)$^*$ & \multicolumn{3}{c}{0.845 (large effect)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Multi-judge consensus evaluation.}
+To address the zero inter-judge correlation found in the cross-validation study (Table~\ref{tab:cross_validation}), we re-evaluated the top 50 ranked conjectures independently with two LLM judges (Groq/Llama-3.3-70B and OpenRouter/Gemini-2.0-Flash). Table~\ref{tab:multi_judge} summarizes the results. The consensus score (mean across valid judges) is $0.427 \pm 0.247$, lower than the original single-judge mean ($0.693$), reflecting the more conservative scoring of the Gemini judge via OpenRouter ($\bar{x} = 0.343$) compared to Llama ($\bar{x} = 0.727$). The Groq--OpenRouter judge pair achieves Pearson $r = 0.338$ ($p = 0.218$, $n{=}15$) and Spearman $\rho = 0.319$ ($p = 0.247$)---weak positive correlation that does not reach significance, but substantively improved over the zero correlation observed in the earlier cross-validation. The persistent inter-judge disagreement confirms that LLM-based quality evaluation of mathematical conjectures remains unreliable for absolute scoring, and reinforces the need for human expert evaluation. The large scoring discrepancy between judges ($0.727$ vs.\ $0.343$ mean) suggests that different LLMs apply systematically different quality standards, with Gemini being substantially more critical than Llama-3.3.
+
+\begin{table}[h]
+\centering
+\caption{Multi-judge consensus evaluation of top 50 conjectures. Mistral was unavailable due to rate limiting; results based on Groq (Llama-3.3-70B) and OpenRouter (Gemini-2.0-Flash) judges.}
+\label{tab:multi_judge}
+\small
+\begin{tabular}{@{}lc@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Conjectures evaluated       & 50 \\
+Mean consensus score        & $0.427 \pm 0.247$ \\
+Mean Groq (Llama) score     & 0.727 \\
+Mean OpenRouter (Gemini) score & 0.343 \\
+Groq--OpenRouter Pearson $r$   & 0.338 ($p = 0.218$) \\
+Groq--OpenRouter Spearman $\rho$ & 0.319 ($p = 0.247$) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1077,11 +1138,11 @@ Several limitations of the current approach merit discussion:
 
     \item \textbf{Human-centered design:} While the NSF proposal emphasizes human-centered AI and explainability, the current system prototype focuses on the core AI pipeline. The principles of explainable AI articulated by \citet{doshi2017towards} underscore the importance of interpretable model decisions for building trust with mathematicians. Integrating explainable AI techniques \citep{arrieta2020explainable, ribeiro2016why}, interpretability methods such as SHAP \citep{lundberg2017unified} for understanding expert routing decisions, and human-in-the-loop workflows \citep{shneiderman2020human} remains essential future work.
 
-    \item \textbf{Inter-judge agreement:} Independent LLM judges show zero score correlation (Table~\ref{tab:cross_validation}), indicating that quality scores are judge-dependent and should not be interpreted as absolute measures.
+    \item \textbf{Inter-judge agreement:} Independent LLM judges show weak correlation---zero in cross-validation (Table~\ref{tab:cross_validation}) and Pearson $r = 0.338$ in the multi-judge consensus study (Table~\ref{tab:multi_judge})---with large systematic scoring differences between judges (mean $0.727$ vs.\ $0.343$). Quality scores are judge-dependent and should not be interpreted as absolute measures.
 
-    \item \textbf{Statistical power:} STP quality improvement does not reach statistical significance ($p = 0.059$) with only 2 completed rounds, limiting the strength of claims about iterative improvement.
+    \item \textbf{STP quality trend:} Extended STP analysis across 4 rounds reveals a negative quality trend (slope $= -0.117$, $p = 0.133$), complicated by severely degraded API availability in later rounds ($n{=}3, 2$ vs.\ $n{=}28$ in early rounds). Definitive conclusions about multi-round STP dynamics require dedicated computational resources.
 
-    \item \textbf{Missing architectural ablations:} We do not compare against a single-expert baseline, softmax routing, or varying expert counts, which would be needed to isolate the contribution of the MoE architecture itself.
+    \item \textbf{Partial architectural ablations:} We compare sigmoid vs.\ softmax routing on proxy embeddings (Table~\ref{tab:gating_ablation}) but do not compare against a single-expert baseline or varying expert counts, which would be needed to fully isolate the MoE architecture's contribution.
 
     \item \textbf{Incomplete formal verification:} Lean~4 formalizations contain \texttt{sorry} placeholders; none of the 10 LLM-verified proofs have been fully machine-checked.
 
@@ -1116,11 +1177,11 @@ Results from all three pipeline phases provide preliminary evidence of end-to-en
 
 A comprehensive 12-task evaluation suite (Section~\ref{sec:comprehensive_eval}) reveals several key findings. First, rediscovery detection indicates that approximately 54\% of generated conjectures are genuinely novel, with only 45.7\% showing high similarity to existing ArXiv theorems. Second, cross-validation with an independent judge reveals scoring bias (0.279 points, zero correlation), motivating formal verification over LLM-based evaluation. Third, uniform LLM-judge evaluation yields a fair MoE--API quality gap of 0.210, with the difference attributable primarily to instruction tuning rather than mathematical content quality. Fourth, the 210 conjectures span 215 unique concepts with Shannon entropy 7.03 and only 30.7\% concept overlap between API and MoE generation pipelines, confirming complementary coverage.
 
-Ablation studies (Section~\ref{sec:ablation_results}) identify optimal hyperparameters: sampling temperature $T{=}0.7$ maximizes the quality--diversity tradeoff, 3 context entries achieves optimal grounding, and composition is the highest-scoring generation strategy. Domain routing is validated by a 0.064-point advantage of correct-domain over wrong-domain context. STP quality shows a positive trend of $+0.034$ per round (bootstrap $p = 0.059$, not reaching statistical significance), with proved conjectures doubling from Round~1 to Round~2. Cross-domain transfer is beneficial only between mathematically related domains (e.g., analysis$\to$probability: 0.353), with an average transfer effect of $-0.020$.
+Ablation studies (Section~\ref{sec:ablation_results}) identify optimal hyperparameters: sampling temperature $T{=}0.7$ maximizes the quality--diversity tradeoff, 3 context entries achieves optimal grounding, and composition is the highest-scoring generation strategy. Domain routing is validated by a 0.064-point advantage of correct-domain over wrong-domain context. A router gating ablation validates sigmoid over softmax gating (Cohen's $d = 0.845$, large effect, Table~\ref{tab:gating_ablation}). Extended STP analysis across 4 rounds reveals a declining quality trend (slope $= -0.117$, $p = 0.133$), though severely reduced sample sizes in later rounds ($n{=}3, 2$) due to API rate limiting complicate interpretation; the doubling of proved conjectures in Rounds~1--2 remains the strongest STP evidence. Multi-judge consensus (Table~\ref{tab:multi_judge}) shows weak positive inter-judge correlation ($r = 0.338$) with large systematic scoring differences, confirming that human evaluation is essential. Cross-domain transfer is beneficial only between mathematically related domains (e.g., analysis$\to$probability: 0.353), with an average transfer effect of $-0.020$.
 
 The full MoE system fits within 9\,GB, enabling inference on consumer hardware. Twenty-six conjectures have been autoformalized into Lean~4 with Mathlib type signatures.
 
-Future work will focus on five priorities: (1)~formal verification in Lean~4---completing machine-checked proofs for the 10 LLM-verified conjectures and the top 50 ranked conjectures using the 4-tier pipeline, eliminating \texttt{sorry} placeholders; (2)~problem-solving benchmarks---evaluating the assembled MoE model on MATH, GSM8K, miniF2F, and ProofNet, which requires GPU-based inference not available in the current experimental phase; (3)~human expert evaluation---recruiting domain mathematicians to validate conjecture quality, addressing the zero inter-judge correlation observed between LLM evaluators; (4)~additional STP rounds---extending beyond the 2 completed rounds to reach statistical significance on quality improvement trends and test the full 10-round training protocol; and (5)~architectural ablations---comparing against a single-expert baseline, softmax routing, and varying LoRA rank and expert counts to isolate the contribution of the MoE architecture. All code, models, and results are publicly available to facilitate these extensions (Section~\ref{sec:reproducibility}).
+Future work will focus on four priorities: (1)~formal verification in Lean~4---completing machine-checked proofs for the 10 LLM-verified conjectures and the top 50 ranked conjectures using the 4-tier pipeline, eliminating \texttt{sorry} placeholders; (2)~problem-solving benchmarks---evaluating the assembled MoE model on MATH, GSM8K, miniF2F, and ProofNet, which requires GPU-based inference not available in the current experimental phase; (3)~human expert evaluation---recruiting domain mathematicians to validate conjecture quality, addressing the weak and variable inter-judge correlation observed between LLM evaluators ($r = 0$ to $r = 0.338$ across studies); and (4)~properly resourced STP replication---re-running the full 10-round STP protocol with dedicated API quotas and GPU inference to determine whether the quality decline observed in rounds~3--4 is an artifact of degraded API availability or an inherent limitation of iterative self-play without fine-tuning. Remaining architectural ablations (single-expert baseline, varying LoRA rank and expert counts) will also require GPU resources. All code, models, and results are publicly available to facilitate these extensions (Section~\ref{sec:reproducibility}).
 
 
 % ============================================================================

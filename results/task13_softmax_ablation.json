@@ -1,0 +1,315 @@
+{
+  "task": "task13_softmax_ablation",
+  "description": "Router gating mechanism ablation: sigmoid (with load balancing) vs softmax",
+  "methodology": "TF-IDF+SVD embeddings (dim=256) as proxy for base model hidden states. 5 independent training runs per variant. Both use cross-entropy on gate logits.",
+  "embedding_info": {
+    "method": "TF-IDF (10K features, bigrams) + TruncatedSVD (256 components)",
+    "explained_variance": 0.327,
+    "num_train": 6300,
+    "num_val": 700
+  },
+  "sigmoid": {
+    "router_type": "sigmoid",
+    "num_runs": 5,
+    "top1_accuracy": {
+      "mean": 0.7429,
+      "std": 0.0033
+    },
+    "top2_accuracy": {
+      "mean": 0.852,
+      "std": 0.0042
+    },
+    "balance_ratio": {
+      "mean": 1.615,
+      "std": 0.046
+    },
+    "individual_runs": [
+      {
+        "run": 0,
+        "top1_accuracy": 0.7429,
+        "top2_accuracy": 0.8557,
+        "balance_ratio": 1.628,
+        "load_fractions": {
+          "algebraic_geometry": 0.1529,
+          "discrete_math": 0.1271,
+          "number_theory": 0.1114,
+          "analysis": 0.1814,
+          "algebra": 0.1414,
+          "geometry_topology": 0.1329,
+          "probability_statistics": 0.1529
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.8404,
+          "discrete_math": 0.7027,
+          "number_theory": 0.6344,
+          "analysis": 0.8152,
+          "algebra": 0.7609,
+          "geometry_topology": 0.6698,
+          "probability_statistics": 0.7857
+        }
+      },
+      {
+        "run": 1,
+        "top1_accuracy": 0.7429,
+        "top2_accuracy": 0.8529,
+        "balance_ratio": 1.538,
+        "load_fractions": {
+          "algebraic_geometry": 0.1271,
+          "discrete_math": 0.14,
+          "number_theory": 0.1114,
+          "analysis": 0.1714,
+          "algebra": 0.1614,
+          "geometry_topology": 0.1343,
+          "probability_statistics": 0.1543
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.7447,
+          "discrete_math": 0.7297,
+          "number_theory": 0.6559,
+          "analysis": 0.8043,
+          "algebra": 0.75,
+          "geometry_topology": 0.7264,
+          "probability_statistics": 0.7857
+        }
+      },
+      {
+        "run": 2,
+        "top1_accuracy": 0.7486,
+        "top2_accuracy": 0.8514,
+        "balance_ratio": 1.638,
+        "load_fractions": {
+          "algebraic_geometry": 0.1357,
+          "discrete_math": 0.16,
+          "number_theory": 0.1143,
+          "analysis": 0.1471,
+          "algebra": 0.13,
+          "geometry_topology": 0.1257,
+          "probability_statistics": 0.1871
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.8085,
+          "discrete_math": 0.7748,
+          "number_theory": 0.6882,
+          "analysis": 0.8152,
+          "algebra": 0.6413,
+          "geometry_topology": 0.6604,
+          "probability_statistics": 0.8393
+        }
+      },
+      {
+        "run": 3,
+        "top1_accuracy": 0.7414,
+        "top2_accuracy": 0.8443,
+        "balance_ratio": 1.597,
+        "load_fractions": {
+          "algebraic_geometry": 0.1443,
+          "discrete_math": 0.1629,
+          "number_theory": 0.11,
+          "analysis": 0.16,
+          "algebra": 0.1343,
+          "geometry_topology": 0.1129,
+          "probability_statistics": 0.1757
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.8085,
+          "discrete_math": 0.7838,
+          "number_theory": 0.6344,
+          "analysis": 0.7935,
+          "algebra": 0.6957,
+          "geometry_topology": 0.6698,
+          "probability_statistics": 0.7946
+        }
+      },
+      {
+        "run": 4,
+        "top1_accuracy": 0.7386,
+        "top2_accuracy": 0.8557,
+        "balance_ratio": 1.676,
+        "load_fractions": {
+          "algebraic_geometry": 0.1557,
+          "discrete_math": 0.1571,
+          "number_theory": 0.1014,
+          "analysis": 0.17,
+          "algebra": 0.13,
+          "geometry_topology": 0.1243,
+          "probability_statistics": 0.1614
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.8298,
+          "discrete_math": 0.7568,
+          "number_theory": 0.6344,
+          "analysis": 0.8043,
+          "algebra": 0.6739,
+          "geometry_topology": 0.6698,
+          "probability_statistics": 0.7946
+        }
+      }
+    ]
+  },
+  "softmax": {
+    "router_type": "softmax",
+    "num_runs": 5,
+    "top1_accuracy": {
+      "mean": 0.7386,
+      "std": 0.0065
+    },
+    "top2_accuracy": {
+      "mean": 0.8512,
+      "std": 0.0069
+    },
+    "balance_ratio": {
+      "mean": 1.693,
+      "std": 0.133
+    },
+    "individual_runs": [
+      {
+        "run": 0,
+        "top1_accuracy": 0.74,
+        "top2_accuracy": 0.86,
+        "balance_ratio": 1.757,
+        "load_fractions": {
+          "algebraic_geometry": 0.1357,
+          "discrete_math": 0.1471,
+          "number_theory": 0.1157,
+          "analysis": 0.1857,
+          "algebra": 0.14,
+          "geometry_topology": 0.1057,
+          "probability_statistics": 0.17
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.8085,
+          "discrete_math": 0.7748,
+          "number_theory": 0.6667,
+          "analysis": 0.8043,
+          "algebra": 0.7391,
+          "geometry_topology": 0.5943,
+          "probability_statistics": 0.7946
+        }
+      },
+      {
+        "run": 1,
+        "top1_accuracy": 0.74,
+        "top2_accuracy": 0.8486,
+        "balance_ratio": 1.627,
+        "load_fractions": {
+          "algebraic_geometry": 0.1557,
+          "discrete_math": 0.1271,
+          "number_theory": 0.1071,
+          "analysis": 0.1729,
+          "algebra": 0.1514,
+          "geometry_topology": 0.1114,
+          "probability_statistics": 0.1743
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.8404,
+          "discrete_math": 0.7027,
+          "number_theory": 0.6667,
+          "analysis": 0.7826,
+          "algebra": 0.7283,
+          "geometry_topology": 0.6415,
+          "probability_statistics": 0.8214
+        }
+      },
+      {
+        "run": 2,
+        "top1_accuracy": 0.7271,
+        "top2_accuracy": 0.8457,
+        "balance_ratio": 1.561,
+        "load_fractions": {
+          "algebraic_geometry": 0.1343,
+          "discrete_math": 0.1386,
+          "number_theory": 0.1229,
+          "analysis": 0.1829,
+          "algebra": 0.1629,
+          "geometry_topology": 0.1171,
+          "probability_statistics": 0.1414
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.7979,
+          "discrete_math": 0.7387,
+          "number_theory": 0.6989,
+          "analysis": 0.8152,
+          "algebra": 0.7174,
+          "geometry_topology": 0.6321,
+          "probability_statistics": 0.7054
+        }
+      },
+      {
+        "run": 3,
+        "top1_accuracy": 0.7386,
+        "top2_accuracy": 0.8429,
+        "balance_ratio": 1.596,
+        "load_fractions": {
+          "algebraic_geometry": 0.1386,
+          "discrete_math": 0.13,
+          "number_theory": 0.1429,
+          "analysis": 0.2029,
+          "algebra": 0.1286,
+          "geometry_topology": 0.13,
+          "probability_statistics": 0.1271
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.7979,
+          "discrete_math": 0.7117,
+          "number_theory": 0.7527,
+          "analysis": 0.8804,
+          "algebra": 0.6957,
+          "geometry_topology": 0.7075,
+          "probability_statistics": 0.6518
+        }
+      },
+      {
+        "run": 4,
+        "top1_accuracy": 0.7471,
+        "top2_accuracy": 0.8586,
+        "balance_ratio": 1.925,
+        "load_fractions": {
+          "algebraic_geometry": 0.1429,
+          "discrete_math": 0.1243,
+          "number_theory": 0.0957,
+          "analysis": 0.1543,
+          "algebra": 0.16,
+          "geometry_topology": 0.1386,
+          "probability_statistics": 0.1843
+        },
+        "per_domain_accuracy": {
+          "algebraic_geometry": 0.8191,
+          "discrete_math": 0.7027,
+          "number_theory": 0.6129,
+          "analysis": 0.7935,
+          "algebra": 0.75,
+          "geometry_topology": 0.6981,
+          "probability_statistics": 0.8482
+        }
+      }
+    ]
+  },
+  "comparison": {
+    "top1_accuracy_ttest": {
+      "t_statistic": 1.1944,
+      "p_value": 0.266533
+    },
+    "balance_ratio_ttest": {
+      "t_statistic": -1.1015,
+      "p_value": 0.302725
+    },
+    "top1_cohens_d": 0.8446,
+    "balance_ratio_cohens_d": -0.7789
+  },
+  "original_router_metrics": {
+    "note": "Original router trained on deepseek-math-7b hidden states with sigmoid gating",
+    "top1_accuracy": 0.763,
+    "top2_accuracy": 0.889,
+    "balance_ratio": 1.26
+  },
+  "expert_domains": [
+    "algebraic_geometry",
+    "discrete_math",
+    "number_theory",
+    "analysis",
+    "algebra",
+    "geometry_topology",
+    "probability_statistics"
+  ],
+  "timestamp": "2026-02-27 18:00:01"
+}
