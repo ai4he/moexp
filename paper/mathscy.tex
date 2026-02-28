@@ -935,7 +935,7 @@ Across all 210 conjectures (153 original + 25 MoE re-evaluated + 32 STP extensio
 
 
 \paragraph{Zero-shot baseline comparison.}
-To establish a lower bound on the value of the \mathscy{} pipeline, we evaluated a zero-shot baseline: generating conjectures using Gemini-2.0-Flash via OpenRouter with no domain-specific context, no retrieval augmentation, and no iterative refinement. Table~\ref{tab:zero_shot_baseline} summarizes the results. Out of 14 generation attempts (2 per domain), 9 produced valid conjectures (64.3\% success rate), with 5 failures due to JSON parsing errors from code-fenced responses. Seven conjectures were successfully judged (by Gemini-2.0-Flash), yielding a mean quality of $0.593 \pm 0.062$. This is comparable to the pipeline's average ($0.693$, Mistral judge), though the different judge models preclude a direct comparison. The result suggests that general-purpose LLMs already produce reasonable conjectures at the statement level; the pipeline's value lies in structured proof attempts, domain-specialized context, and iterative STP refinement rather than raw conjecture generation.
+To establish a lower bound on the value of the \mathscy{} pipeline, we evaluated a zero-shot baseline: generating conjectures using Gemini-2.0-Flash with no domain-specific context, no retrieval augmentation, and no iterative refinement. Table~\ref{tab:zero_shot_baseline} summarizes the results. Out of 14 generation attempts (2 per domain), 9 produced valid conjectures (64.3\% success rate), with 5 failures due to API errors or JSON parsing issues. Six conjectures were successfully judged (by Gemini-2.0-Flash), yielding a mean quality of $0.570 \pm 0.146$. The pipeline outperforms zero-shot in all 6 evaluated domains (overall gap: $0.693 - 0.570 = 0.123$), though the different judge models (Gemini vs.\ Mistral/Groq) preclude a direct comparison. The largest gains are in analysis ($+0.239$) and probability ($+0.246$), while algebra shows the smallest gap ($+0.017$). Proof quality is the weakest dimension for zero-shot (0.317), suggesting the pipeline's primary value lies in structured proof attempts and domain-specialized context rather than raw conjecture generation.
 
 \begin{table}[h]
 \centering
@@ -946,15 +946,15 @@ To establish a lower bound on the value of the \mathscy{} pipeline, we evaluated
 \toprule
 \textbf{Domain} & \textbf{Avg Quality$^\dagger$} & \textbf{$n$ (successful)} \\
 \midrule
-Number Theory          & 0.608 & 2 \\
-Algebraic Geometry     & 0.633 & 1 \\
-Probability \& Stat.   & 0.633 & 1 \\
-Discrete Math          & 0.600 & 1 \\
-Geometry \& Topology   & 0.600 & 1 \\
-Algebra                & 0.467 & 1 \\
-Analysis               & ---   & 0 \\
+Algebra                & 0.833 & 1 \\
+Discrete Math          & 0.620 & 1 \\
+Geometry \& Topology   & 0.550 & 1 \\
+Number Theory          & 0.533 & 1 \\
+Analysis               & 0.450 & 1 \\
+Probability \& Stat.   & 0.433 & 1 \\
+Algebraic Geometry     & ---   & 0 \\
 \midrule
-\textbf{Overall}       & $\mathbf{0.593 \pm 0.062}$ & \textbf{7} \\
+\textbf{Overall}       & $\mathbf{0.570 \pm 0.146}$ & \textbf{6} \\
 \bottomrule
 \end{tabular}
 \end{table}
