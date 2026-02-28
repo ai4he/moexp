@@ -439,7 +439,7 @@ The procedure iterates for $R{=}10$ rounds, with each round:
 \begin{enumerate}
     \item \textbf{Conjecture generation:} $C_\phi$ generates $M{=}20$ candidates per domain using four strategies: pattern interpolation, cross-domain analogy, theorem composition, and boundary exploration (temperature $\tau{=}0.8$).
     \item \textbf{Proof attempts:} $P_\psi$ produces verdicts $v_j \in \{\text{proved}, \text{disproved}, \text{trivial}, \text{unknown}\}$ (temperature $\tau{=}0.3$).
-    \item \textbf{Quality scoring:} Each pair receives a composite score weighting novelty, difficulty, formalizability, confidence, and well-formedness.
+    \item \textbf{Quality scoring:} Each pair receives a composite score from the LLM judge, who evaluates six criteria: correctness (0.20 weight), novelty (0.25), non-triviality (0.20), significance (0.15), formalizability (0.10), and proof quality (0.10), with bonuses for proved status ($+0.1$) and Lean~4 sketches ($+0.05$), and a penalty for trivial results ($-0.15$).
     \item \textbf{Retraining:} Every 3 rounds, both models are retrained on accumulated interaction data.
 \end{enumerate}
 

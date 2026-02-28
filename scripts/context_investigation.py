@@ -5,7 +5,7 @@ Context Investigation Experiment (Task 17)
 Investigates the no-context anomaly from Table 14 of the MathScy paper,
 where no-context (0.309) outperforms correct-domain context (0.180) in
 conjecture generation. This experiment generates 63 conjectures total
-(3 conditions x 7 domains x 3 per cell) and evaluates them with Mistral judge.
+(3 conditions x 7 domains x 3 per cell) and evaluates them with Gemini judge.
 
 Conditions:
   1. no_context: Just the domain name, no retrieved context
@@ -34,14 +34,17 @@ PROJECT_DIR = "/scratch/ctoxtli/moexp"
 RESULTS_DIR = os.path.join(PROJECT_DIR, "results")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
-with open(os.path.join(PROJECT_DIR, "mistral_key.txt")) as _kf:
-    MISTRAL_API_KEY = _kf.read().strip()
+# Gemini API - use working keys with rotation
+GEMINI_KEYS = [
+    "AIzaSyCJuNtTtq0GZWjFlV1Jjp6NYlxIAuE-8ks",  # Key 1
+    "AIzaSyA-P4uPwQxWT08AnQD_pba4RmkJaa98t-A",  # Key 3
+]
+_gemini_key_idx = 0
 
-# Use Mistral for both generation and judging
-GENERATION_MODEL = "mistral-small-latest"
-JUDGE_MODEL = "mistral-small-latest"
+GENERATION_MODEL = "gemini-2.0-flash"
+JUDGE_MODEL = "gemini-2.0-flash"
 
-DELAY_SECONDS = 3
+DELAY_SECONDS = 4
 CONJECTURES_PER_CELL = 3  # 3 per (domain, condition) pair
 
 # ===== Domains and Context =====
@@ -122,56 +125,55 @@ Return ONLY valid JSON, no code fences."""
 
 # ===== API Functions =====
 
-def mistral_call(prompt: str, temperature: float = 0.7, model: str = None,
-              max_tokens: int = 1500, max_retries: int = 4) -> Optional[str]:
-    """Make a Mistral API call with robust retry logic."""
-    url = "https://api.mistral.ai/v1/chat/completions"
-    if model is None:
-        model = GENERATION_MODEL
-    headers = {
-        "Authorization": f"Bearer {MISTRAL_API_KEY}",
-        "Content-Type": "application/json",
-    }
-    payload = json.dumps({
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": temperature,
-        "max_tokens": max_tokens,
-    }).encode("utf-8")
+def gemini_call(prompt, temperature=0.7, max_tokens=1500, max_retries=4):
+    """Make a Gemini API call with key rotation and retry logic."""
+    global _gemini_key_idx
 
     for attempt in range(max_retries):
+        key = GEMINI_KEYS[_gemini_key_idx % len(GEMINI_KEYS)]
+        _gemini_key_idx += 1
+
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{GENERATION_MODEL}:generateContent?key={key}"
+        headers = {"Content-Type": "application/json"}
+        payload = json.dumps({
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": temperature,
+                "maxOutputTokens": max_tokens,
+            },
+        }).encode("utf-8")
+
         try:
             req = urllib.request.Request(url, data=payload, headers=headers, method="POST")
-            with urllib.request.urlopen(req, timeout=90) as resp:
+            with urllib.request.urlopen(req, timeout=60) as resp:
                 result = json.loads(resp.read().decode("utf-8"))
-                content = result["choices"][0]["message"]["content"]
-                return content
+                text = result["candidates"][0]["content"]["parts"][0]["text"]
+                return text
         except urllib.error.HTTPError as e:
             body = e.read().decode("utf-8", errors="replace")
-            print(f"    [Mistral] HTTP {e.code} (attempt {attempt+1}): {body[:200]}")
+            key_num = (_gemini_key_idx - 1) % len(GEMINI_KEYS) + 1
+            print(f"    [Gemini] HTTP {e.code} (attempt {attempt+1}, key {key_num}): {body[:200]}")
             if e.code == 429:
-                # Parse retry-after if available, otherwise exponential backoff
-                wait = (attempt + 1) * 20
+                wait = (attempt + 1) * 10
                 print(f"    Rate limited, waiting {wait}s...")
                 time.sleep(wait)
             elif e.code in (500, 502, 503):
-                wait = (attempt + 1) * 10
-                print(f"    Server error, retrying in {wait}s...")
+                wait = (attempt + 1) * 5
                 time.sleep(wait)
             elif attempt < max_retries - 1:
-                time.sleep(5)
+                time.sleep(3)
             else:
                 return None
         except Exception as e:
-            print(f"    [Mistral] Error (attempt {attempt+1}): {e}")
+            print(f"    [Gemini] Error (attempt {attempt+1}): {e}")
             if attempt < max_retries - 1:
-                time.sleep(5)
+                time.sleep(3)
             else:
                 return None
     return None
 
 
-def parse_json_response(text: str) -> Optional[Dict]:
+def parse_json_response(text):
     """Parse JSON from LLM response, handling code fences and extra text."""
     if not text:
         return None
@@ -209,7 +211,7 @@ def parse_json_response(text: str) -> Optional[Dict]:
 
 # ===== Experiment Logic =====
 
-def build_generation_prompt(domain: str, condition: str) -> str:
+def build_generation_prompt(domain, condition):
     """Build the generation prompt for a given domain and condition."""
     if condition == "no_context":
         context_section = CONTEXT_SECTIONS["no_context"]
@@ -228,12 +230,12 @@ def build_generation_prompt(domain: str, condition: str) -> str:
     return GENERATION_PROMPT.format(domain=domain, context_section=context_section)
 
 
-def generate_conjecture(domain: str, condition: str, trial: int) -> Dict:
+def generate_conjecture(domain, condition, trial):
     """Generate a single conjecture and return structured result."""
     prompt = build_generation_prompt(domain, condition)
     print(f"  Generating [{condition}] {domain} #{trial+1}...")
 
-    raw_response = mistral_call(prompt, temperature=0.7, max_tokens=1500)
+    raw_response = gemini_call(prompt, temperature=0.7, max_tokens=1500)
     if not raw_response:
         print(f"    FAILED: No response from generator")
         return {
@@ -271,8 +273,8 @@ def generate_conjecture(domain: str, condition: str, trial: int) -> Dict:
     }
 
 
-def judge_conjecture(entry: Dict) -> Dict:
-    """Judge a single conjecture using Mistral."""
+def judge_conjecture(entry):
+    """Judge a single conjecture using Gemini."""
     if not entry.get("generation_success"):
         entry["judge_result"] = None
         entry["overall_score"] = 0.0
@@ -302,7 +304,7 @@ def judge_conjecture(entry: Dict) -> Dict:
     prompt = JUDGE_PROMPT.format(domain=domain, conjecture=conjecture)
     print(f"  Judging [{entry['condition']}] {domain} #{entry['trial']+1}...")
 
-    raw_judge = mistral_call(prompt, temperature=0.3, max_tokens=1000)
+    raw_judge = gemini_call(prompt, temperature=0.3, max_tokens=1000)
     judge_result = parse_json_response(raw_judge) if raw_judge else None
 
     if judge_result:
@@ -332,14 +334,14 @@ def judge_conjecture(entry: Dict) -> Dict:
     return entry
 
 
-def run_experiment() -> Dict:
+def run_experiment():
     """Run the full context investigation experiment."""
     print("=" * 70)
     print("CONTEXT INVESTIGATION EXPERIMENT (Task 17)")
     print("Investigating no-context anomaly from Table 14")
     print("=" * 70)
-    print(f"Generator: Mistral {GENERATION_MODEL} (temp=0.7)")
-    print(f"Judge: Mistral {JUDGE_MODEL} (temp=0.3)")
+    print(f"Generator: Gemini {GENERATION_MODEL} (temp=0.7)")
+    print(f"Judge: Gemini {JUDGE_MODEL} (temp=0.3)")
     print(f"Domains: {len(DOMAINS)}")
     print(f"Conditions: no_context, good_context, random_context")
     print(f"Conjectures per cell: {CONJECTURES_PER_CELL}")
@@ -388,8 +390,8 @@ def run_experiment() -> Dict:
         "description": "Investigating no-context anomaly: does providing domain context hurt conjecture quality?",
         "timestamp": datetime.now().isoformat(),
         "config": {
-            "generator": f"Mistral {GENERATION_MODEL} (temp=0.7)",
-            "judge": f"Mistral {JUDGE_MODEL} (temp=0.3)",
+            "generator": f"Gemini {GENERATION_MODEL} (temp=0.7)",
+            "judge": f"Gemini {JUDGE_MODEL} (temp=0.3)",
             "domains": DOMAINS,
             "conditions": conditions,
             "conjectures_per_cell": CONJECTURES_PER_CELL,
@@ -419,7 +421,7 @@ def run_experiment() -> Dict:
     return output
 
 
-def analyze_results(all_results: List[Dict], conditions: List[str]) -> Dict:
+def analyze_results(all_results, conditions):
     """Compute per-condition averages, per-domain breakdowns, and t-tests."""
     from scipy import stats as scipy_stats
 
