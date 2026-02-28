@@ -750,13 +750,13 @@ Theorem Composition & 24 & 0.666 & $\pm$0.069 & 0.810 \\
 Pattern Interpolation & 24 & 0.658 & $\pm$0.051 & 0.740 \\
 Cross-Domain Analogy & 9 & 0.637 & $\pm$0.039 & 0.690 \\
 \midrule
-\textbf{Overall} & \textbf{153} & \textbf{0.693} & & \textbf{0.980} \\
+\textbf{Overall} & \textbf{153} & \textbf{0.693} & $\pm$\textbf{0.085} & \textbf{0.980} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{Self-Play Theorem Prover results.}
-The STP loop ran 2 rounds per domain with 4 conjectures per round (56 total), using Mistral-Small as both generator and prover, with an independent Mistral judge evaluating quality. Among the STP-generated conjectures: 9 were judged as \emph{proved} by the LLM evaluator, 1 as \emph{disproved} (with counterexample), 5 as \emph{unknown} (open), and 41 as \emph{partially proved}. Post-hoc manual verification (Table~\ref{tab:manual_verification}) revealed that only 1 of the 9 ``proved'' conjectures withstands mathematical scrutiny as both correct and non-trivial. Algebra achieved the highest average quality (0.850) with 5/8 conjectures judged proved (though manual verification reveals issues with several). Table~\ref{tab:stp_results} provides per-domain STP statistics.
+The STP loop ran 2 rounds per domain with 4 conjectures per round (56 total), using Mistral-Small as both generator and prover, with an independent Mistral judge evaluating quality. The overall mean quality across all 153 conjectures is $0.693 \pm 0.085$ (bootstrap 95\% CI: $[0.680, 0.707]$, 10{,}000 resamples). STP conjectures achieve higher quality than multi-strategy conjectures ($0.735$ vs.\ $0.669$, Cohen's $d = 0.833$, large effect). Among the STP-generated conjectures: 9 were judged as \emph{proved} by the LLM evaluator, 1 as \emph{disproved} (with counterexample), 5 as \emph{unknown} (open), and 41 as \emph{partially proved}. Post-hoc manual verification (Table~\ref{tab:manual_verification}) revealed that only 1 of the 9 ``proved'' conjectures withstands mathematical scrutiny as both correct and non-trivial. Algebra achieved the highest average quality (0.850) with 5/8 conjectures judged proved (though manual verification reveals issues with several). Table~\ref{tab:stp_results} provides per-domain STP statistics.
 
 \begin{table}[t]
 \centering
@@ -967,7 +967,7 @@ We conducted a systematic ablation study to isolate the contributions of generat
 \textbf{Note on scoring methodology.} Ablation quality scores (Tables~\ref{tab:ablation_strategy}--\ref{tab:ablation_routing}) use \emph{statement-only} evaluation: the LLM judge scores conjecture statements in isolation, without proof attempts, using 5 criteria (correctness, novelty, non-triviality, significance, formalizability). This differs from the full STP evaluation in Tables~\ref{tab:strategy_comparison}--\ref{tab:stp_results}, which scores conjecture--proof pairs using 6 criteria (adding proof quality) with bonuses for proved status ($+0.1$) and Lean~4 sketches ($+0.05$). The resulting score ranges differ ($\sim$0.15--0.30 for ablations vs.\ $\sim$0.60--0.98 for full STP), so comparisons should be made \emph{within} each evaluation methodology. The lower ablation scores reflect the absence of proof context and the judge's greater skepticism when evaluating unaccompanied statements.
 
 \paragraph{Strategy ablation.}
-Table~\ref{tab:ablation_strategy} reports per-strategy quality scores under controlled conditions (fixed temperature $T{=}0.7$, context size 3). Composition achieves the highest average quality (0.283), followed by boundary exploration (0.267) and theorem generation (0.225). Cross-domain analogy and pattern interpolation yield lower scores, suggesting that more constrained strategies tend to produce higher-quality conjectures.
+Table~\ref{tab:ablation_strategy} reports per-strategy quality scores under controlled conditions (fixed temperature $T{=}0.7$, context size 3). Composition achieves the highest average quality (0.283), followed by boundary exploration (0.267) and theorem generation (0.225). The difference between the best (composition) and worst (pattern interpolation) strategies yields a medium effect size (Cohen's $d = 0.508$), suggesting that more constrained strategies tend to produce higher-quality conjectures.
 
 \begin{table}[h]
 \centering
@@ -988,7 +988,7 @@ Pattern Interpolation   & $0.167 \pm 0.236$ \\
 \end{table}
 
 \paragraph{Temperature ablation.}
-Table~\ref{tab:ablation_temperature} reports the effect of sampling temperature on conjecture quality and diversity (measured as pairwise semantic dissimilarity). Temperature $T{=}0.7$ achieves the best quality--diversity tradeoff, with the highest quality score (0.290) and strong diversity (0.730). Higher temperatures ($T \geq 0.9$) degrade quality without proportional diversity gains, while lower temperatures ($T \leq 0.5$) sacrifice diversity for only marginal quality improvements.
+Table~\ref{tab:ablation_temperature} reports the effect of sampling temperature on conjecture quality and diversity (measured as pairwise semantic dissimilarity). Temperature $T{=}0.7$ achieves the best quality--diversity tradeoff, with the highest quality score (0.290) and strong diversity (0.730). The gap between $T{=}0.7$ and $T{=}1.1$ is a medium effect (Cohen's $d = 0.577$). Higher temperatures ($T \geq 0.9$) degrade quality without proportional diversity gains, while lower temperatures ($T \leq 0.5$) sacrifice diversity for only marginal quality improvements.
 
 \begin{table}[h]
 \centering
@@ -1029,7 +1029,7 @@ Table~\ref{tab:ablation_context} examines the effect of the number of context en
 \end{table}
 
 \paragraph{Domain routing validation.}
-Table~\ref{tab:ablation_routing} validates the domain routing mechanism by comparing conjecture quality when context is drawn from the correct domain versus a mismatched domain, and against a no-context baseline. Correct-domain routing (0.180) outperforms wrong-domain routing (0.116) by 0.064 points, confirming that domain-specialized context improves conjecture quality relative to mismatched context. The finding that the no-context condition outperforms correct-domain context (0.309 vs.\ 0.180) is notable and suggests that the extracted knowledge base may introduce noise that constrains rather than enhances generation. The base LLM's pretraining corpus already encodes substantial mathematical knowledge, and the relatively small number of extracted context entries may not add sufficient signal to overcome potential misalignment between context and generation target. This motivates future work on higher-quality context retrieval.
+Table~\ref{tab:ablation_routing} validates the domain routing mechanism by comparing conjecture quality when context is drawn from the correct domain versus a mismatched domain, and against a no-context baseline. Correct-domain routing (0.180) outperforms wrong-domain routing (0.116) by 0.064 points (Cohen's $d = 0.320$, small effect), confirming that domain-specialized context improves conjecture quality relative to mismatched context. The finding that the no-context condition outperforms correct-domain context (0.309 vs.\ 0.180) is notable and suggests that the extracted knowledge base may introduce noise that constrains rather than enhances generation. The base LLM's pretraining corpus already encodes substantial mathematical knowledge, and the relatively small number of extracted context entries may not add sufficient signal to overcome potential misalignment between context and generation target. This motivates future work on higher-quality context retrieval.
 
 \begin{table}[h]
 \centering
