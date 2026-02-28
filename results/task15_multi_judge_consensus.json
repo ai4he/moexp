@@ -1,0 +1,1722 @@
+{
+  "task": "task15_multi_judge_consensus",
+  "description": "Multi-judge consensus evaluation of top 50 conjectures",
+  "judges": [
+    "mistral",
+    "groq",
+    "openrouter"
+  ],
+  "num_conjectures": 50,
+  "consensus_statistics": {
+    "mean_consensus_score": 0.3769,
+    "std_consensus_score": 0.2428,
+    "mean_score_std": 0.1073
+  },
+  "inter_rater_reliability": {
+    "overall_quality": {
+      "groq_vs_openrouter": {
+        "n_pairs": 21,
+        "pearson_r": 0.256,
+        "pearson_p": 0.262641,
+        "spearman_r": 0.2772,
+        "spearman_p": 0.223723,
+        "cohens_kappa": 0.0308,
+        "mean_abs_diff": 0.46
+      }
+    },
+    "correctness": {
+      "groq_vs_openrouter": {
+        "n_pairs": 21,
+        "pearson_r": 0.2238,
+        "pearson_p": 0.329354,
+        "spearman_r": 0.4166,
+        "spearman_p": 0.060263,
+        "cohens_kappa": 0.0392,
+        "mean_abs_diff": 0.5143
+      }
+    },
+    "novelty": {
+      "groq_vs_openrouter": {
+        "n_pairs": 21,
+        "pearson_r": 0.3668,
+        "pearson_p": 0.10189,
+        "spearman_r": 0.472,
+        "spearman_p": 0.030739,
+        "cohens_kappa": 0.0637,
+        "mean_abs_diff": 0.419
+      }
+    },
+    "non_triviality": {
+      "groq_vs_openrouter": {
+        "n_pairs": 21,
+        "pearson_r": 0.1514,
+        "pearson_p": 0.512427,
+        "spearman_r": 0.1166,
+        "spearman_p": 0.614832,
+        "cohens_kappa": 0.0,
+        "mean_abs_diff": 0.5524
+      }
+    },
+    "significance": {
+      "groq_vs_openrouter": {
+        "n_pairs": 21,
+        "pearson_r": 0.6401,
+        "pearson_p": 0.001778,
+        "spearman_r": 0.7407,
+        "spearman_p": 0.000123,
+        "cohens_kappa": 0.0,
+        "mean_abs_diff": 0.5714
+      }
+    },
+    "formalizability": {
+      "groq_vs_openrouter": {
+        "n_pairs": 21,
+        "pearson_r": 0.3994,
+        "pearson_p": 0.072857,
+        "spearman_r": 0.4509,
+        "spearman_p": 0.040223,
+        "cohens_kappa": 0.0,
+        "mean_abs_diff": 0.2667
+      }
+    },
+    "proof_quality": {
+      "groq_vs_openrouter": {
+        "n_pairs": 21,
+        "pearson_r": NaN,
+        "pearson_p": NaN,
+        "spearman_r": NaN,
+        "spearman_p": NaN,
+        "cohens_kappa": 0,
+        "mean_abs_diff": 0.0
+      }
+    }
+  },
+  "agreement_summary": {
+    "overall_quality": {
+      "mean_pearson_r": 0.256,
+      "mean_spearman_r": 0.2772,
+      "mean_kappa": 0.0308
+    },
+    "correctness": {
+      "mean_pearson_r": 0.2238,
+      "mean_spearman_r": 0.4166,
+      "mean_kappa": 0.0392
+    },
+    "novelty": {
+      "mean_pearson_r": 0.3668,
+      "mean_spearman_r": 0.472,
+      "mean_kappa": 0.0637
+    },
+    "non_triviality": {
+      "mean_pearson_r": 0.1514,
+      "mean_spearman_r": 0.1166,
+      "mean_kappa": 0.0
+    },
+    "significance": {
+      "mean_pearson_r": 0.6401,
+      "mean_spearman_r": 0.7407,
+      "mean_kappa": 0.0
+    },
+    "formalizability": {
+      "mean_pearson_r": 0.3994,
+      "mean_spearman_r": 0.4509,
+      "mean_kappa": 0.0
+    },
+    "proof_quality": {
+      "mean_pearson_r": NaN,
+      "mean_spearman_r": NaN,
+      "mean_kappa": 0.0
+    }
+  },
+  "original_vs_consensus": {
+    "pearson_r": 0.4004,
+    "pearson_p": 0.006419,
+    "spearman_r": 0.3872,
+    "spearman_p": 0.008596,
+    "mean_abs_diff": 0.4102
+  },
+  "evaluations": [
+    {
+      "index": 0,
+      "domain": "algebra",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ be a finitely generated $R$-module. Then $M$ is weakly Artinian if and only if for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ has finite length.\",\n    \"informal\": \"A finitely generated modu",
+      "original_score": 0.98,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.8,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain without further examination."
+        },
+        "openrouter": {
+          "overall_quality": 0.7,
+          "correctness": 1.0,
+          "novelty": 0.8,
+          "non_triviality": 0.7,
+          "significance": 0.6,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears correct and potentially novel, connecting weak Artinianness to local properties at associated primes, but its significance hinges on whether it simplifies existing characterizations or provides new computational tools."
+        }
+      },
+      "consensus_score": 0.7,
+      "score_std": 0.0,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 1,
+      "domain": "algebra",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and every associated prime $\\mathfrak{p} \\in \\Ass_R(M)$ satisfies $\\depth_R M_{\\mathfrak{p}} = \\dim R_{\\mathfrak{p}}$, then $M$ is Cohen-Macaulay.\",\n    \"informal\": \"If a f",
+      "original_score": 0.98,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.8,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain due to the lack of provided context or attempted proof."
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      },
+      "consensus_score": 0.7,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 2,
+      "domain": "algebra",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If for every maximal ideal $\\mathfrak{m} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{m}}$ is Artinian, then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a module corre",
+      "original_score": 0.9,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.74,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears well-formed and potentially true, but its proof is not provided, making it difficult to assess its correctness and novelty fully."
+        },
+        "openrouter": {
+          "overall_quality": 0.7,
+          "correctness": 1.0,
+          "novelty": 0.8,
+          "non_triviality": 0.7,
+          "significance": 0.6,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is well-formed and potentially interesting, connecting local Artinian properties to a global weakly Artinian condition, but its novelty and significance depend on whether it can be proven and how it relates to existing results on Artinian modules."
+        }
+      },
+      "consensus_score": 0.72,
+      "score_std": 0.02,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 3,
+      "domain": "number_theory",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $D$ be a transitive discriminant form over $\\mathbb{Z}_p$ for some prime $p$. Then the $p$-adic completion of the ring of integers of the maximal unramified extension of $\\mathbb{Q}_p$ acts on the discriminant form via a continuous homomorphism $\\Gamma \\to \\mathrm{Aut}(D)$, ",
+      "original_score": 0.88,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.9,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain due to lack of provided context or proof attempt."
+        },
+        "openrouter": {
+          "overall_quality": 0.1,
+          "correctness": 0.1,
+          "novelty": 0.1,
+          "non_triviality": 0.1,
+          "significance": 0.1,
+          "formalizability": 0.3,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is vaguely stated and lacks necessary definitions, making it difficult to assess its correctness, novelty, or significance; it needs substantial clarification and formalization before it can be seriously considered."
+        }
+      },
+      "consensus_score": 0.45,
+      "score_std": 0.35,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 4,
+      "domain": "algebra",
+      "strategy": "stp",
+      "statement": "Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If every associated prime of $M$ is maximal and $\\dim_R(M) \\leq 1$, then $M$ is weakly Artinian.",
+      "original_score": 0.88,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.73,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.7,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and non-triviality are somewhat diminished by existing results in the field, and a rigorous proof is still lacking."
+        },
+        "openrouter": {
+          "overall_quality": 0.3,
+          "correctness": 1.0,
+          "novelty": 0.1,
+          "non_triviality": 0.3,
+          "significance": 0.2,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is correct, but it follows directly from standard results about the structure of modules over Noetherian rings, making it neither novel nor particularly significant."
+        }
+      },
+      "consensus_score": 0.515,
+      "score_std": 0.215,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 5,
+      "domain": "probability_statistics",
+      "strategy": "stp",
+      "statement": "Let $\\mathcal{V}$ be a finite set of discrete random variables with a strictly positive probability distribution. Then, for any two disjoint subsets $\\mathcal{X}, \\mathcal{Z} \\subseteq \\mathcal{V}$, the conditional independence of $\\mathcal{X}$ and $\\mathcal{Z}$ given any third subset $\\mathcal{Y} \\",
+      "original_score": 0.88,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.4,
+          "correctness": 0.0,
+          "novelty": 0.2,
+          "non_triviality": 0.8,
+          "significance": 0.6,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is likely false, as conditional independence does not necessarily imply marginal independence, but it is formally stated and has potential significance in probability statistics."
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "This conjecture is demonstrably false and represents a misunderstanding of conditional independence; conditional independence does not imply marginal independence."
+        }
+      },
+      "consensus_score": 0.2,
+      "score_std": 0.2,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 6,
+      "domain": "analysis",
+      "strategy": "boundary_exploration",
+      "statement": "The condition $\\lambda < 1$ is necessary for $T + f$ to be a homeomorphism of $U$ onto an open subset $V$ of $X$",
+      "original_score": 0.86,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.7,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially significant, but its novelty and correctness depend on the specific context and existing literature in analysis."
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      },
+      "consensus_score": 0.7,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 7,
+      "domain": "probability_statistics",
+      "strategy": "stp",
+      "statement": "```json\n{\n    \"conjecture\": \"Let $\\mathcal{X} = \\{X_1, \\ldots, X_n\\}$ be a collection of i.i.d. random variables with finite second moment. Suppose there exists $\\beta \\in (0,1]$ such that for all $t > 0$, $\\mathbb{P}[\\max_{1 \\leq i \\leq n} |X_i| > t] \\leq \\exp(-\\beta t^2)$. Then, for any $\\epsilon ",
+      "original_score": 0.86,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.7,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and non-triviality are somewhat limited by existing concentration inequalities in probability statistics."
+        },
+        "openrouter": {
+          "overall_quality": 0.2,
+          "correctness": 0.1,
+          "novelty": 0.1,
+          "non_triviality": 0.2,
+          "significance": 0.1,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is likely false and the tail bound assumption is too strong for the conclusion; the conclusion resembles a Hoeffding-type bound, but the assumption is closer to a Gaussian tail, which would imply much stronger concentration."
+        }
+      },
+      "consensus_score": 0.45,
+      "score_std": 0.25,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 8,
+      "domain": "algebra",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. Suppose that for every prime ideal $\\mathfrak{p} \\in \\Ass_R(M)$, the localization $M_{\\mathfrak{p}}$ is Artinian. Then $M$ is weakly Artinian.\",\n    \"informal\": \"If every associated prime of a modu",
+      "original_score": 0.85,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.8,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears well-formed and potentially true, but its proof is not provided, making it difficult to assess its correctness and novelty fully."
+        },
+        "openrouter": {
+          "overall_quality": 0.7,
+          "correctness": 1.0,
+          "novelty": 0.8,
+          "non_triviality": 0.7,
+          "significance": 0.6,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be true and potentially novel, connecting local Artinian properties to the weakly Artinian condition, but its significance depends on the difficulty of the proof and its impact on related areas."
+        }
+      },
+      "consensus_score": 0.7,
+      "score_std": 0.0,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 9,
+      "domain": "geometry_topology",
+      "strategy": "stp",
+      "statement": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and a momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose that $\\Phi(M)$ contains a strongly elliptic element $\\xi \\in \\mathfrak{g}^*$ such that the linearized flow at every critical point of $\\Phi^\\xi$ is flat. Then the action of",
+      "original_score": 0.83,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.82,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears well-formed and significant, but its correctness and novelty depend on the specific context and existing literature in symplectic geometry and equivariant homotopy theory."
+        },
+        "openrouter": {
+          "overall_quality": 0.4,
+          "correctness": 0.2,
+          "novelty": 0.3,
+          "non_triviality": 0.6,
+          "significance": 0.5,
+          "formalizability": 0.8,
+          "proof_quality": 0.0,
+          "critique": "The conjecture attempts to link properness of Hamiltonian actions with K-theory and momentum map properties, but the conditions are vaguely stated and the likelihood of correctness is low without significant clarification and justification."
+        }
+      },
+      "consensus_score": 0.61,
+      "score_std": 0.21,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 10,
+      "domain": "number_theory",
+      "strategy": "composition",
+      "statement": "For a prime number $p$ and a number field $k$, under certain conditions on an Artin representation $\\chi$ and associated extensions $L_\\chi$ and $K_\\infty$, there exist extensions $L_\\infty/K_\\infty/\\Q$ with $\\Gal(L_\\infty/\\Q)$ isomorphic to $(G\\times (1+5\\Z_5)) \\ltimes \\Z_5[\\sqrt5]^2$, and the $\\La",
+      "original_score": 0.81,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.2,
+          "correctness": 0.1,
+          "novelty": 0.2,
+          "non_triviality": 0.3,
+          "significance": 0.3,
+          "formalizability": 0.2,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is too vague to assess its correctness or significance without precise definitions of the terms and conditions involved; it reads like a very preliminary idea rather than a well-formed conjecture."
+        }
+      },
+      "consensus_score": 0.2,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 11,
+      "domain": "number_theory",
+      "strategy": "theorem_generation",
+      "statement": "Let $n \\geq 1$ be an integer dividing a power of $r$. Let $\\lambda_0, \\lambda_1, \\dots, \\lambda_{n-1}$ be in $\\mathbb{Q}$. Then the following statements are equivalent: (1) $\\lambda_0 + \\sum_{\\ell=1}^{n-1} \\lambda_\\ell \\cos(\\frac{\\ell \\theta}{n})$ is in $\\mathcal{O}_K$, (2) $\\lambda_0 \\in \\mathbb{Z}",
+      "original_score": 0.81,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      }
+    },
+    {
+      "index": 12,
+      "domain": "geometry_topology",
+      "strategy": "theorem_generation",
+      "statement": "Let $u: (\\Sigma, \\p\\Sigma; j) \\rightarrow (W, N; J)$ be a holomorphic map, and let $U$ be a compact subset of $W$ that agrees with the model described above. Then, there exists a GIFS $(\\mathcal{A}, \\Gamma, \\mathcal{G})$ satisfying the OSC such that the attractor of the GIFS is homeomorphic to the i",
+      "original_score": 0.81,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 0.8,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but lacks a proof attempt to fully assess its validity."
+        },
+        "openrouter": {
+          "overall_quality": 0.1,
+          "correctness": 0.1,
+          "novelty": 0.1,
+          "non_triviality": 0.2,
+          "significance": 0.1,
+          "formalizability": 0.2,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is vague and lacks sufficient detail to assess its correctness, novelty, or significance; it needs substantial refinement to be considered a meaningful mathematical statement."
+        }
+      },
+      "consensus_score": 0.45,
+      "score_std": 0.35,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 13,
+      "domain": "probability_statistics",
+      "strategy": "boundary_exploration",
+      "statement": "The condition $\\truth \\in \\text{supp}_{\\mathcal{H}^1}(\\prior)$ is necessary for $\\posterior$ to be consistent in $\\mathcal{H}^1$",
+      "original_score": 0.81,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "This statement is fundamentally incorrect; posterior consistency requires the true parameter to be in the support of the prior, but the given notation is unclear and the statement lacks sufficient context to be meaningful."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 14,
+      "domain": "geometry_topology",
+      "strategy": "stp",
+      "statement": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$). Then the Floer cohomology $CF^*(L_0, L_1)$ for any pair of Lagrangian submanifolds $L_0, L_1 \\subse",
+      "original_score": 0.81,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "This conjecture is demonstrably false, as the Floer cohomology of Lagrangian submanifolds depends heavily on the specific Lagrangians chosen and is not generally isomorphic to the singular cohomology of the ambient manifold, even under strong ellipticity conditions."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 15,
+      "domain": "algebraic_geometry",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a 3-dimensional Gorenstein normal domain over an algebraically closed field of characteristic zero. Suppose $R$ is a hypersurface singularity with an isolated singularity at the origin. Then the stable category $\\stab R$ is equivalent to the derived category of perfec",
+      "original_score": 0.8,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.82,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain without further context or evidence."
+        },
+        "openrouter": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.7,
+          "significance": 0.7,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "This conjecture connects the representation theory of hypersurface singularities (via the stable category) to their geometric properties (rationality), which is interesting, but its novelty and difficulty depend on the precise details and existing literature."
+        }
+      },
+      "consensus_score": 0.76,
+      "score_std": 0.06,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 16,
+      "domain": "discrete_math",
+      "strategy": "stp",
+      "statement": "Let $w$ be a smooth permutation in $\\fs_n$ and let $G_w$ be its inversion graph. Then, the chromatic polynomial $\\chi_{G_w}(t)$ divides the chromatic polynomial of the cycle graph $C_n$ for all $n \\geq 3$.",
+      "original_score": 0.8,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.1,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.5,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is ill-defined due to the lack of a definition for 'smooth permutation', making it impossible to assess its correctness or significance."
+        }
+      },
+      "consensus_score": 0.1,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 17,
+      "domain": "geometry_topology",
+      "strategy": "boundary_exploration",
+      "statement": "The OSC is necessary for $\\dim_H E_i = \\delta$ in a GIFS",
+      "original_score": 0.78,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.9,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain due to the lack of provided context or proof attempt."
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The Open Set Condition is *not* necessary for the Hausdorff dimension of the limit set of a Graph Iterated Function System (GIFS) to equal the similarity dimension; there are well-known counterexamples, making the conjecture false and thus of no value."
+        }
+      },
+      "consensus_score": 0.35,
+      "score_std": 0.35,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 18,
+      "domain": "algebraic_geometry",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a Gorenstein local ring of dimension $d \\geq 3$ with isolated singularity. Then the stable category $\\stab R$ is $d$-Calabi-Yau if and only if $R$ is $F$-pure.\",\n    \"informal\": \"For a Gorenstein ring with isolated singularities, the stable category of maximal Cohen-M",
+      "original_score": 0.78,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.48,
+          "correctness": 0.1,
+          "novelty": 0.5,
+          "non_triviality": 0.7,
+          "significance": 0.6,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture connects Calabi-Yau properties of stable categories with F-purity, which is interesting, but the current statement is likely false as stated and requires significant refinement to be plausible."
+        }
+      },
+      "consensus_score": 0.48,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 19,
+      "domain": "algebraic_geometry",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $X$ be a smooth projective variety over an algebraically closed field $k$ of characteristic zero, and let $D$ be a reduced effective divisor on $X$ such that $X \\setminus D$ is affine. Then the canonical map $\\\\mathrm{can}_X: \\\\mathrm{CH}^{LW}_0(S_X) \\\\to \\\\mathrm{CH}_0(S_X)",
+      "original_score": 0.78,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is not well-formed because it uses undefined notation such as $\\mathrm{CH}^{LW}_0(S_X)$ and $\\mathrm{CH}_0(S_X)$, making it impossible to assess its correctness, novelty, non-triviality, or significance."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 20,
+      "domain": "number_theory",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $\\sigma$ be an irreducible smooth representation of $\\GL_2(\\mathbb{Q}_p)$ with a Serre weight $\\sigmabar$ for $\\rbar$. Suppose $M_\\infty(\\sigma^\\circ)$ is a free $R_\\infty(\\sigma)$-module of rank one. Then, for any finite extension $E/\\mathbb{Q}_p$ with ring of integers $\\ma",
+      "original_score": 0.78,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain due to lack of context and provided proof attempt."
+        },
+        "openrouter": {
+          "overall_quality": 0.5,
+          "correctness": 0.3,
+          "novelty": 0.5,
+          "non_triviality": 0.7,
+          "significance": 0.6,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture seems plausible within the Langlands program context, but its correctness and novelty are difficult to assess without further context and a more precise statement, and the lack of a proof makes it hard to judge its difficulty."
+        }
+      },
+      "consensus_score": 0.65,
+      "score_std": 0.15,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 21,
+      "domain": "number_theory",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $\\sigma$ be a smooth representation of $\\GL_2(\\mathbb{Q}_p)$ and $\\sigmabar$ its reduction modulo $\\varpi$. If $\\sigmabar$ is a Serre weight of $\\rbar$, then the natural map $R_{\\infty}(\\sigma) \\to \\End_{\\cH(\\sigmabar)}(M_{\\infty}(\\sigmabar))$ is surjective.\",\n    \"informal\"",
+      "original_score": 0.78,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.5,
+          "correctness": 0.3,
+          "novelty": 0.5,
+          "non_triviality": 0.7,
+          "significance": 0.6,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is stated in the context of the p-adic Langlands program, and while the statement is formalizable and potentially significant, its correctness and novelty are difficult to assess without more context and a deeper understanding of the current research landscape in this area."
+        }
+      },
+      "consensus_score": 0.5,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 22,
+      "domain": "analysis",
+      "strategy": "stp",
+      "statement": "Let $\\gamma_{-k}$ be defined as in Result 1. Suppose the sequence $(\\alpha_j)_{j=1}^M$ satisfies $\\alpha_j > 1$ for all $j$ and $\\lim_{j \\to \\infty} \\alpha_j = \\alpha > 1$. Then for any $\\epsilon > 0$, there exists $k_0 \\in \\mathbb{N}$ such that for all $k \\geq k_0$, we have $\\tilde{\\gamma}_{-k} = \\",
+      "original_score": 0.78,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      }
+    },
+    {
+      "index": 23,
+      "domain": "geometry_topology",
+      "strategy": "stp",
+      "statement": "Let $M$ be a compact symplectic manifold with a Hamiltonian $G$-action and momentum map $\\Phi: M \\to \\mathfrak{g}^*$. Suppose $\\Phi(M) \\subset \\gse$ (the strongly elliptic subset of $\\mathfrak{g}^*$). Then the equivariant Floer homology $HF^G_{*}(M)$ is isomorphic to the singular homology $H_{*}(M/G",
+      "original_score": 0.78,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears well-formed and potentially true, but its novelty and proof quality are uncertain due to the lack of a provided proof attempt."
+        },
+        "openrouter": {
+          "overall_quality": 0.35,
+          "correctness": 0.1,
+          "novelty": 0.3,
+          "non_triviality": 0.5,
+          "significance": 0.4,
+          "formalizability": 0.8,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is likely false in its current form and lacks sufficient context to assess its potential value, but the idea of relating equivariant Floer homology to the homology of the quotient is interesting and potentially fruitful with appropriate modifications and assumptions."
+        }
+      },
+      "consensus_score": 0.575,
+      "score_std": 0.225,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 24,
+      "domain": "discrete_math",
+      "strategy": "composition",
+      "statement": "$\\forall G \\text{ 2-connected plane graph}, \\text{if } d(G) = 0, \\text{ then } G \\text{ is a function graph}$",
+      "original_score": 0.77,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is meaningless because the term 'defect' and 'function graph' are undefined in the context of graph theory, making it impossible to assess its validity or significance."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 25,
+      "domain": "probability_statistics",
+      "strategy": "composition",
+      "statement": "$\\mathbf{u}\\in C([r,T],\\mathbb{H}_{p}^{s}(\\mathbf{R}^{d}))\\,\\text{is an}\\,\\mathbb{H}_{p}^{s}\\,\\text{-solution of}\\,(\\ref{af1})\\,\\iff\\,\\mathbf{u}(t)=\\mathbf{w}+\\int_{r}^{t}\\mathcal{S}[...]",
+      "original_score": 0.77,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      }
+    },
+    {
+      "index": 26,
+      "domain": "algebra",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ an $R$-module. If $\\Ass_R(M)$ is finite and every associated prime of $M$ is maximal, then $M$ is Artinian.\",\n    \"informal\": \"If an R-module has finitely many associated primes and all of them are maximal ideals, then the module ",
+      "original_score": 0.76,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.8,
+          "significance": 0.9,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain without further examination."
+        },
+        "openrouter": {
+          "overall_quality": 0.4,
+          "correctness": 1.0,
+          "novelty": 0.0,
+          "non_triviality": 0.2,
+          "significance": 0.3,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is correct and formalizable, but it follows directly from standard results in commutative algebra, making it neither novel nor particularly significant."
+        }
+      },
+      "consensus_score": 0.55,
+      "score_std": 0.15,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 27,
+      "domain": "algebraic_geometry",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$, and let $\\Theta$ be its theta divisor. Suppose $x, y \\in \\Theta^{sm}$ are such that their images in the Kummer variety lie on a trisecant line. Then the fiber of the Gauss map $\\G$ over $\\G(x)$ contai",
+      "original_score": 0.75,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.4,
+          "correctness": 0.2,
+          "novelty": 0.3,
+          "non_triviality": 0.6,
+          "significance": 0.5,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is precisely stated and potentially interesting, but its correctness is unclear and it builds on a complex area of algebraic geometry, making it difficult to assess without further context or a proof attempt."
+        }
+      },
+      "consensus_score": 0.4,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 28,
+      "domain": "number_theory",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $D$ be a transitive discriminant form over $\\mathbb{Z}_p$ for an odd prime $p$. Then the following are equivalent:\\n1. $D$ is isomorphic to $p^{\\pm 1}$.\\n2. The associated quadratic form $Q_D$ is anisotropic over $\\mathbb{Q}_p$.\\n3. The discriminant form $D$ is indecomposabl",
+      "original_score": 0.75,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      }
+    },
+    {
+      "index": 29,
+      "domain": "number_theory",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $D$ be a transitive discriminant form over $\\mathbb{Z}_p$ for some prime $p$. If $D$ is non-trivial and $D_p$ is either $p^{+2}$ for $p \\equiv 3 \\mod 4$ or $p^{-2}$ for $p \\equiv 1 \\mod 4$, then there exists a unique (up to isomorphism) quadratic space $(V, Q)$ over $\\mathbb",
+      "original_score": 0.75,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.9,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain due to lack of context and provided proof attempt."
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is incomprehensible due to undefined terms and lacks context, making it impossible to assess its validity or significance."
+        }
+      },
+      "consensus_score": 0.35,
+      "score_std": 0.35,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 30,
+      "domain": "algebra",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $R$ be a commutative Noetherian ring and $M$ a finitely generated $R$-module. If $\\Ass_R(M)$ is finite and consists entirely of maximal ideals, then $M$ is weakly Artinian if and only if $M$ is weakly Laskerian.\",\n    \"informal\": \"For a finitely generated module over a Noeth",
+      "original_score": 0.75,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.7,
+          "correctness": 1.0,
+          "novelty": 0.8,
+          "non_triviality": 0.7,
+          "significance": 0.6,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears correct and potentially novel, connecting properties of modules over Noetherian rings, but its significance hinges on whether it leads to further insights or simplifies existing proofs."
+        }
+      },
+      "consensus_score": 0.7,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 31,
+      "domain": "probability_statistics",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $\\mathcal{V} = \\{V_1, \\ldots, V_n\\}$ be a finite set of independent, identically distributed (i.i.d.) random variables with $\\mathbb{E}[V_i] = 0$ and $\\mathbb{E}[V_i^2] = 1$. For any two disjoint subsets $\\mathcal{X}, \\mathcal{Z} \\subseteq \\mathcal{V}$ with $|\\mathcal{X}| = ",
+      "original_score": 0.75,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is incomplete and lacks a conclusion, making it impossible to assess its correctness, novelty, or significance."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 32,
+      "domain": "probability_statistics",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $\\mathcal{V} = \\{V_1, \\ldots, V_n\\}$ be a collection of independent, identically distributed (i.i.d.) random variables with $\\mathbb{E}[V_i] = 0$, $\\mathbb{E}[V_i^2] = 1$, and $\\mathbb{P}(V_i > t) = \\mathcal{O}(t^{-\\alpha})$ for some $\\alpha > 2$ as $t \\to \\infty$. Then, for",
+      "original_score": 0.75,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.8,
+          "significance": 0.7,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and significance are somewhat limited by existing results in probability theory, such as the central limit theorem and large deviation theory."
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      },
+      "consensus_score": 0.7,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 33,
+      "domain": "algebraic_geometry",
+      "strategy": "boundary_exploration",
+      "statement": "$\\forall \\ba \\in [0, \\pi/2], \\exists c_1, c_2, c_3, t, \\ba$ such that $D(G) = 0$",
+      "original_score": 0.74,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is meaningless due to undefined terms and lacks any context, making it impossible to assess its validity or significance."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 34,
+      "domain": "number_theory",
+      "strategy": "pattern_interpolation",
+      "statement": "$\\Lambda$-modules $\\hat H^1_f(K_\\infty,{T})$ and $S_\\infty$ are canonically isomorphic for any $p$-adic representation $T$",
+      "original_score": 0.74,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially significant, but its correctness and novelty depend on the specific context and existing literature in number theory."
+        },
+        "openrouter": {
+          "overall_quality": 0.3,
+          "correctness": 0.1,
+          "novelty": 0.2,
+          "non_triviality": 0.5,
+          "significance": 0.4,
+          "formalizability": 0.8,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is too vague to assess its correctness or novelty without precise definitions of the terms and a more detailed statement, making it difficult to evaluate its potential impact."
+        }
+      },
+      "consensus_score": 0.55,
+      "score_std": 0.25,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 35,
+      "domain": "number_theory",
+      "strategy": "composition",
+      "statement": "Let $X$ be a $K3$ surface of finite height over $\\F_q$. Then there is a positive integer $m \\geq 1$ such that $X_{\\F_{q^m}}$ admits a CM lifting, and the $\\Lambda$-modules $\\hat H^1_f(K_\\infty,{T})$ and $S_\\infty$ are canonically isomorphic",
+      "original_score": 0.74,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.5,
+          "correctness": 0.3,
+          "novelty": 0.6,
+          "non_triviality": 0.8,
+          "significance": 0.7,
+          "formalizability": 0.7,
+          "proof_quality": 0.0,
+          "critique": "The conjecture attempts to link CM liftings of K3 surfaces with Iwasawa theory, which is interesting, but the precise meaning of 'canonically isomorphic' for the stated modules needs clarification and the overall correctness is uncertain given the complexity of both K3 surfaces and Iwasawa theory."
+        }
+      },
+      "consensus_score": 0.5,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 36,
+      "domain": "discrete_math",
+      "strategy": "composition",
+      "statement": "$\\forall P \\text{ poset}, \\text{if } \\exists G \\text{ group acting on } P \\text{ that is k-refined, then } \\exists x \\in P, \\text{ stab}(x) \\text{ acts k-refined on } P_{\\geq x}$",
+      "original_score": 0.74,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is ill-defined due to the undefined term 'k-refined' and lacks context, making it impossible to assess its validity or significance."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 37,
+      "domain": "probability_statistics",
+      "strategy": "composition",
+      "statement": "$\\sup_{\\eta\\in H} n^{1/2}\\,H(P_{\\theta_n(h_n),\\eta},P_{\\theta_0,\\eta}) = O(1)\\,\\implies\\,\\forall\\,\\text{bounded, stochastic sequences}\\,(h_n)$",
+      "original_score": 0.74,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.6,
+          "correctness": 0.6,
+          "novelty": 0.4,
+          "non_triviality": 0.8,
+          "significance": 0.7,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed, but its correctness and novelty are uncertain due to the lack of context and a formal proof attempt."
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is ill-defined and likely false due to the lack of clarity regarding the spaces, sequences, and the meaning of 'bounded and stochastic' sequences in this context, making it impossible to assess its validity or significance."
+        }
+      },
+      "consensus_score": 0.3,
+      "score_std": 0.3,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 38,
+      "domain": "algebraic_geometry",
+      "strategy": "pattern_interpolation",
+      "statement": "For any Hurwitz vector $v$ of length $r$ with elements in $D_n$, there exists a braid move that transforms $v$ into $v'$ or $v''$ such that the triple $(yx^a,yx^b,yx^c)$ is equivalent to $(yx^{a'},yx^{a'},yx^{c'})$ or $(yx^{a'},yx^{b'},yx^{b'})$",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is too vague and ill-defined to be evaluated; terms like 'Hurwitz vector', 'braid move', 'standard form', and 'equivalent' are not properly defined within the context of algebraic geometry, making it impossible to assess its correctness or significance."
+        }
+      },
+      "consensus_score": 0.0,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 39,
+      "domain": "algebraic_geometry",
+      "strategy": "composition",
+      "statement": "Let $(X/Z,B+M)$ be a generalized dlt pair and $U\\subset X$ an open subset. Let $A$ be a divisor on $X$ ample over $Z$ and $\\epsilon >0$ a rational number. Then, there exists a $\\qq$-divisor $B_\\epsilon \\sim_\\qq B+\\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt and the loop space of the",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.2,
+          "correctness": 0.1,
+          "novelty": 0.2,
+          "non_triviality": 0.3,
+          "significance": 0.2,
+          "formalizability": 0.4,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is vaguely stated and lacks sufficient detail to assess its correctness or significance; the connection between generalized klt pairs and loop spaces of quotient stacks is unclear and requires substantial clarification."
+        }
+      },
+      "consensus_score": 0.2,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 40,
+      "domain": "algebraic_geometry",
+      "strategy": "boundary_exploration",
+      "statement": "$\\exists \\epsilon > 0, \\forall \\delta > 0, \\exists B_\\epsilon \\sim_\\QQ B + \\epsilon A$ such that $(X/Z,B_\\epsilon+M)$ is generalized klt",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.7,
+          "correctness": 0.8,
+          "novelty": 0.6,
+          "non_triviality": 0.9,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain due to the lack of context and provided proof attempt."
+        },
+        "openrouter": {
+          "overall_quality": 0.1,
+          "correctness": 0.1,
+          "novelty": 0.1,
+          "non_triviality": 0.1,
+          "significance": 0.1,
+          "formalizability": 0.2,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is too vague and lacks necessary context to be evaluated meaningfully; it needs precise definitions of all terms and a clear statement of the ambient setting."
+        }
+      },
+      "consensus_score": 0.4,
+      "score_std": 0.3,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 41,
+      "domain": "number_theory",
+      "strategy": "pattern_interpolation",
+      "statement": "$\\sum_{\\rho} |\\gamma|^{\\beta-1/2} \\int_{\\mathbb{Y}_1 \\cup \\mathbb{Y}_2} \\exp(\\gamma \\arctan(\\frac{y}{a}) - \\frac{\\pi}{2} |\\gamma|) \\frac{dy}{|z|^{\\alpha+\\beta}} \\ll_{\\alpha} a^{-\\alpha-1}$",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.3,
+          "correctness": 0.1,
+          "novelty": 0.3,
+          "non_triviality": 0.5,
+          "significance": 0.4,
+          "formalizability": 0.7,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is difficult to assess without more context on the definitions of the terms and the motivation behind the estimate, making it hard to judge its correctness or significance."
+        }
+      },
+      "consensus_score": 0.3,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 42,
+      "domain": "discrete_math",
+      "strategy": "theorem_generation",
+      "statement": "For any $2$-connected plane graph $G$, there exists a canvas $T = (G, C, L)$ such that $d(T) = \\def(G) - s(G)$ is a lower bound for the number of lattice paths from $(0,0)$ to $(r-1, m-r)$",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but lacks a proof attempt to fully assess its validity."
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 0.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is incomprehensible due to undefined terms and a lack of context, making it impossible to assess its validity or significance."
+        }
+      },
+      "consensus_score": 0.4,
+      "score_std": 0.4,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 43,
+      "domain": "geometry_topology",
+      "strategy": "theorem_generation",
+      "statement": "Let $\\mathcal{A}$ be a collection of elements with order at least 4. Then, there exists a quasilinkage $Q$ such that $Q$ is symmetric if and only if $\\mathcal{A}$ satisfies a certain combinatorial condition.",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.1,
+          "correctness": 0.1,
+          "novelty": 0.1,
+          "non_triviality": 0.2,
+          "significance": 0.1,
+          "formalizability": 0.2,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is too vague to assess its correctness, novelty, or significance; it lacks precise definitions of 'element,' 'order,' 'quasilinkage,' 'symmetric,' and the 'combinatorial condition,' making it impossible to evaluate its potential impact or even determine if it's well-formed."
+        }
+      },
+      "consensus_score": 0.1,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 44,
+      "domain": "discrete_math",
+      "strategy": "stp",
+      "statement": "Conjecture: For any connected clutter $M$ with no loops and no isolated vertices, the number of connected minors of $M$ is at least $2^{|E(M)|/2}$.",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.8,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears well-formed and potentially true, but its novelty and significance depend on the current state of clutter theory, and a rigorous proof is needed to fully assess its validity."
+        },
+        "openrouter": {
+          "overall_quality": 0.0,
+          "correctness": 0.0,
+          "novelty": 0.0,
+          "non_triviality": 0.0,
+          "significance": 0.0,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is demonstrably false and lacks any supporting evidence or connection to existing results, rendering it mathematically uninteresting."
+        }
+      },
+      "consensus_score": 0.4,
+      "score_std": 0.4,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 45,
+      "domain": "discrete_math",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $G$ be a graph with maximum degree $\\Delta(G) \\geq 5$. Then, the $1$-vertex-strongly-distinguishing total chromatic number $\\\\chi_{1-vsdt}(G)$ satisfies $\\\\chi_{1-vsdt}(G) \\\\leq 3\\\\Delta(G) + 1$ for all graphs $G$ with no isolated edges.\",\n    \"informal\": \"For any graph with",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.2,
+          "correctness": 0.1,
+          "novelty": 0.2,
+          "non_triviality": 0.3,
+          "significance": 0.2,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is formally stated but lacks context and motivation, and the bound seems weak without further justification or connection to existing literature on distinguishing colorings."
+        }
+      },
+      "consensus_score": 0.2,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 46,
+      "domain": "discrete_math",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $w \\in \\widetilde{S}_n$ be an affine permutation of order $n$. Then the chromatic polynomial of the inversion graph of $w$ satisfies $\\\\chi_{G_w}(t) = (t - e_1)(t - e_2)\\\\dotsm(t - e_n)$, where $e_1, e_2, \\\\dots, e_n$ are integers with $e_i \\\\geq 0$ for all $i$.\",\n    \"infor",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.3,
+          "correctness": 0.1,
+          "novelty": 0.3,
+          "non_triviality": 0.5,
+          "significance": 0.4,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is formally stated but likely false without further constraints, and its significance is unclear without more context or supporting evidence."
+        }
+      },
+      "consensus_score": 0.3,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    },
+    {
+      "index": 47,
+      "domain": "analysis",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $X$ be a Banach space and $T: X \\to X$ a bounded linear operator. Suppose the spectrum $\\sigma(T)$ is discrete and consists of a sequence of eigenvalues $\\{\\lambda_n\\}$ with $\\lim_{n \\to \\infty} |\\lambda_n| = \\infty$. If the Riesz projections $P_n$ corresponding to $\\lambda_",
+      "original_score": 0.73,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": 0.8,
+          "correctness": 0.8,
+          "novelty": 0.7,
+          "non_triviality": 0.9,
+          "significance": 0.9,
+          "formalizability": 0.9,
+          "proof_quality": 0.0,
+          "critique": "The conjecture appears to be well-formed and potentially true, but its novelty and proof quality are uncertain without further examination."
+        },
+        "openrouter": {
+          "overall_quality": 0.2,
+          "correctness": 0.1,
+          "novelty": 0.2,
+          "non_triviality": 0.3,
+          "significance": 0.2,
+          "formalizability": 1.0,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is formally stated, but highly unlikely to be true without further assumptions, and its significance is questionable given the strong conditions imposed."
+        }
+      },
+      "consensus_score": 0.5,
+      "score_std": 0.3,
+      "num_valid_judges": 2
+    },
+    {
+      "index": 48,
+      "domain": "algebraic_geometry",
+      "strategy": "stp",
+      "statement": "{\n    \"conjecture\": \"Let $C$ be a smooth projective curve of genus $g \\geq 4$ with Jacobian $J(C)$. Suppose $x, y \\in \\Theta^{\\mathrm{sm}}$ are such that their images in the Kummer variety lie on a trisecant line. Then the fiber $\\G^{-1}(\\G(x))$ contains at least $g-1$ distinct points of multiplicit",
+      "original_score": 0.72,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        }
+      }
+    },
+    {
+      "index": 49,
+      "domain": "geometry_topology",
+      "strategy": "stp",
+      "statement": "Let $M$ be a smooth manifold with a Hamiltonian $G$-action, where $G$ is a compact Lie group. Suppose $\\Phi(M) \\subset \\gse$ (i.e., the image of the momentum map is contained in the strongly elliptic elements of the Lie algebra $\\mathfrak{g}$). Then, the bar resolution $\\overline{X}$ of the $\\cW$-sp",
+      "original_score": 0.72,
+      "judge_scores": {
+        "mistral": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "groq": {
+          "overall_quality": null,
+          "error": "parse_failure"
+        },
+        "openrouter": {
+          "overall_quality": 0.3,
+          "correctness": 0.2,
+          "novelty": 0.3,
+          "non_triviality": 0.5,
+          "significance": 0.4,
+          "formalizability": 0.8,
+          "proof_quality": 0.0,
+          "critique": "The conjecture is stated with sufficient mathematical precision to be formalizable, but its correctness, novelty, and significance are unclear without further context and justification, and the absence of a proof makes evaluation difficult."
+        }
+      },
+      "consensus_score": 0.3,
+      "score_std": 0.0,
+      "num_valid_judges": 1
+    }
+  ],
+  "timestamp": "2026-02-27 19:43:11"
+}
