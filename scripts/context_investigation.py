@@ -36,8 +36,11 @@ os.makedirs(RESULTS_DIR, exist_ok=True)
 
 # Gemini API - use working keys with rotation
 GEMINI_KEYS = [
-    "AIzaSyCJuNtTtq0GZWjFlV1Jjp6NYlxIAuE-8ks",  # Key 1
-    "AIzaSyA-P4uPwQxWT08AnQD_pba4RmkJaa98t-A",  # Key 3
+    "AIzaSyDWQYkurICpNwoLXGOrOmXD9K8jCMSOHWE",
+    "AIzaSyArk2SDq1QVWSNefCIESJ2CFYZHaTp-BHY",
+    "AIzaSyCUWz3sQ91hnvm9vWQ2gN_ifxWdppNhtww",
+    "AIzaSyD2V3PHWEJX7MLs3zdaKCY1_XA0SIMVlOQ",
+    "AIzaSyA8liJyAvKFXdBrc_EZVn874-DC5vq7tnw",
 ]
 _gemini_key_idx = 0
 
