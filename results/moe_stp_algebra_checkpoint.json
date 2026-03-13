@@ -1,0 +1,260 @@
+{
+  "domain": "algebra",
+  "generator": "moe",
+  "rounds": [
+    {
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "Let's use as example Result #7 from below which concerns modules over certain ring extensions called graded Ore localizations",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "The new concept you have introduced here requires some explanation so we can make sure it's clearly defined!",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "To clarify which result it's extending please number your responses \"Statement\" so people know what they need to verify",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Please provide proof",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 4,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "My Conjecture involves creating more ways via software packages such...",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "For every sequence $(c_n)_{ n\u2265q N }$ contained within $[a,+\\infty]$ such\u2026",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "A key ingredient involved when proving such things would involve computing Hilbert series/functions",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 3,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 3,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "algebra",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "Let S denote some arbitrary subset\u00a0of P\\{0}. Suppose there exists x elemente such ...",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Assume all conditions are met as described above? Now prove something using them!",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "If one can prove ...",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Given sets {W$_{pq}$}\u00a0such as W$_0$=\u2205,${\\rm w}_p={w}_{pp}=r-{\\frac{{l}^{{{\\left| p+pr_{{\\text{(}}T)+\\alpha r+{\\rho _{L}(J)}\\right)}+}}^{}}{{\\chi }^{}}}$ from Eq.(8), we define ${\\Lambda }_{qp}={\\lambda }_{{R}_{{\\theta },Z}}=\\ln {\\int _{\\Theta }}dG,\\forall Z=\\Delta ,\\varsigma =\\omega $.",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebra",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 4,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    }
+  ],
+  "previous_conjectures": [
+    "Let's use as example Result #7 from below which concerns modules over certain ring extensions called graded Ore localizations",
+    "The new concept you have introduced here requires some explanation so we can make sure it's clearly defined!",
+    "To clarify which result it's extending please number your responses \"Statement\" so people know what they need to verify",
+    "Please provide proof",
+    "My Conjecture involves creating more ways via software packages such...",
+    "For every sequence $(c_n)_{ n\u2265q N }$ contained within $[a,+\\infty]$ such\u2026",
+    "A key ingredient involved when proving such things would involve computing Hilbert series/functions",
+    "Let S denote some arbitrary subset\u00a0of P\\{0}. Suppose there exists x elemente such ...",
+    "Assume all conditions are met as described above? Now prove something using them!",
+    "If one can prove ...",
+    "Given sets {W$_{pq}$}\u00a0such as W$_0$=\u2205,${\\rm w}_p={w}_{pp}=r-{\\frac{{l}^{{{\\left| p+pr_{{\\text{(}}T)+\\alpha r+{\\rho _{L}(J)}\\right)}+}}^{}}{{\\chi }^{}}}$ from Eq.(8), we define ${\\Lambda }_{qp}={\\lambd"
+  ],
+  "timestamp": "2026-03-12 20:47:15"
+}

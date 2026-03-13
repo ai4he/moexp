@@ -6,6 +6,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{mathtools}
 \usepackage{graphicx}
+\graphicspath{{../results/training_plots/}{../results/training_plots_v3/}}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{algorithm}
@@ -632,8 +633,8 @@ Several observations emerge from the expert training process:
 \paragraph{Loss convergence.}
 All 7 domain experts exhibit consistent convergence behavior, with training loss decreasing monotonically across 3 epochs. Smaller domains (algebraic geometry, discrete math, number theory) converge within fewer steps, while larger domains (geometry \& topology, analysis, algebra) show continued improvement through epoch~3. The geometry \& topology expert achieved the lowest final training loss (0.58), benefiting from its large training set of 49,782 examples, while discrete math achieved the lowest loss among smaller domains (0.77).
 
-\paragraph{Training-validation gap.}
-The training losses range from 0.58 (geometry \& topology) to 0.86 (probability \& statistics) across domain experts. The shared expert, trained on a balanced 14,000-example sample spanning all domains, converges to a higher final loss of 1.05, reflecting the greater difficulty of capturing diverse mathematical reasoning patterns in a single adapter. This gap between domain-specific and shared losses is consistent with the MoE premise that domain specialization yields more focused learning, though we note that this loss comparison does not constitute a controlled ablation of the MoE architecture's benefit---an ablation comparing the full MoE against a single shared expert at inference time is planned as future work.
+\paragraph{Training-validation gap (v1).}
+The v1 training losses range from 0.60 (analysis) to 1.31 (algebra) across domain experts, with eval losses in 1.41--1.89. The shared expert converges to train loss 1.21 / eval loss 1.41, reflecting the greater difficulty of multi-domain coverage in a single adapter. This gap is consistent with the MoE premise that domain specialization yields more focused learning, though we note that eval loss here reflects the same-distribution held-out split and does not constitute a controlled ablation against a single-expert baseline.
 
 \paragraph{Computational efficiency.}
 The combination of QLoRA (4-bit base model), 8-bit AdamW optimizer, dynamic padding, and gradient checkpointing keeps GPU memory usage between 27--39\,GB on a single A100 40\,GB card. Training throughput averages ${\sim}$5.0 seconds per step across all experts. The total sequential training time for all 7 domain experts plus the shared expert was approximately 18.7 hours, compared to the ${\sim}$2.5 hours that would be required if training were parallelized across 8 GPUs.
@@ -643,28 +644,202 @@ Each LoRA expert adapter occupies approximately 572\,MB on disk (in \texttt{safe
 
 \subsection{Training Loss Progression}
 
-Figure~\ref{fig:loss_curves} illustrates the training loss trajectory across all domain experts and the shared expert, showing loss values logged at uniform epoch intervals.
+We trained two MoE configurations sequentially and compare them here. The \emph{Original MoE} (v1) was trained on the large domain-stratified corpus described in Section~\ref{sec:data_pipeline}. The \emph{New MoE} (v2) was subsequently trained on a curated theorem-prompt-completion dataset (\texttt{new\_moe\_to\_train/}; 8,952 train / 536 dev / 512 test examples) to improve structured mathematical generation.
+
+\paragraph{Original MoE (v1) — stable convergence.}
+Table~\ref{tab:loss_curves_v1} reports the final training and evaluation losses for each expert in v1 (extracted from \texttt{trainer\_state.json}). All experts converge smoothly, with larger domains (analysis, geometry \& topology) achieving lower final losses due to greater data volume.
+
+\begin{table}[t]
+\centering
+\caption{Original MoE (v1) training results. Eval loss is computed on a held-out split of the same domain corpus.}
+\label{tab:loss_curves_v1}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+\textbf{Expert Domain} & \textbf{Steps} & \textbf{Final Train Loss} & \textbf{Eval Loss} \\
+\midrule
+Algebraic Geometry & 540  & 0.829 & 1.762 \\
+Discrete Math      & 582  & 0.764 & 1.860 \\
+Number Theory      & 711  & 0.828 & 1.818 \\
+Analysis           & 2487 & 0.601 & 1.886 \\
+Algebra            & 600  & 1.271 & 1.580 \\
+Geometry \& Topology & 800 & 1.307 & 1.532 \\
+Prob.\ \& Statistics & 984 & 0.863 & 1.817 \\
+Shared (balanced)  & 800  & 1.214 & 1.411 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{New MoE (v2) — training instability.}
+Figure~\ref{fig:loss_curves_v2} shows the per-step loss curves for representative experts in v2, generated during training. The new dataset is significantly smaller (${\sim}$1{,}280 examples per domain), causing two failure modes: (i) some experts completed in very few steps (algebra: 42 steps, number theory: 36 steps), leaving insufficient signal for convergence; and (ii) large loss spikes (up to $10^3$) appear throughout training, indicating gradient explosions triggered by outlier theorem-completion examples with very long label sequences. Although `max\_grad\_norm=1.0` (the HuggingFace Trainer default) is active, individual long sequences still produce large gradient magnitudes before clipping reduces the update. Table~\ref{tab:loss_curves_v2} summarizes the final recorded losses.
+
+\begin{table}[t]
+\centering
+\caption{New MoE (v2) training results. Eval loss is NaN for most domains because the dev set was too small ($<$32 examples per domain) to produce a stable estimate. The final train loss reflects the last logged step, which may be mid-spike.}
+\label{tab:loss_curves_v2}
+\small
+\begin{tabular}{@{}lrrl@{}}
+\toprule
+\textbf{Expert Domain} & \textbf{Steps} & \textbf{Final Train Loss} & \textbf{Note} \\
+\midrule
+Algebraic Geometry & 153 & 29.74 & spike at last step \\
+Discrete Math      & 165 & 1.73  & stable \\
+Number Theory      & 36  & 0.51  & too few steps \\
+Analysis           & 138 & 0.84  & stable \\
+Algebra            & 42  & 2.41  & too few steps \\
+Geometry \& Topology & 171 & 16.84 & spike at last step \\
+Prob.\ \& Statistics & 144 & 3.41  & mild instability \\
+Shared (balanced)  & 840 & 18.36 & persistent spikes \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}[t]
 \centering
-\fbox{\parbox{0.93\textwidth}{\centering\small
-\textbf{Training Loss by Expert Domain}\\[6pt]
-\begin{tabular}{@{}lcccc@{}}
-& Epoch 0.5 & Epoch 1.0 & Epoch 2.0 & Epoch 3.0 \\
-\midrule
-Algebraic Geometry & 1.38 & 1.12 & 0.93 & 0.83 \\
-Discrete Math & 1.32 & 1.07 & 0.88 & 0.77 \\
-Number Theory & 1.40 & 1.15 & 0.97 & 0.85 \\
-Analysis & 1.25 & 1.10 & 0.80 & 0.61 \\
-Algebra & 1.38 & 1.10 & 0.92 & 0.81 \\
-Geometry \& Topology & 1.39 & 1.07 & 0.68 & 0.58 \\
-Probability \& Statistics & 1.56 & 1.14 & 0.93 & 0.86 \\
-Shared (balanced) & 1.56 & 1.25 & 1.12 & 1.05 \\
-\end{tabular}
-}}
-\caption{Training loss progression for all domain experts and the shared expert. All experts show steady convergence over 3 epochs. Larger domains (geometry \& topology, analysis) achieve lower final losses due to greater data volume, while the shared expert converges to a higher loss reflecting its multi-domain coverage.}
-\label{fig:loss_curves}
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_analysis_loss_curves_latest}
+    \caption{Analysis (stable)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_algebraic_geometry_loss_curves_latest}
+    \caption{Algebraic Geometry (spikes)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_geometry_topology_loss_curves_latest}
+    \caption{Geometry \& Topology (spikes)}
+\end{subfigure}
+\\[8pt]
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_shared_loss_curves_latest}
+    \caption{Shared expert (persistent spikes)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_shared_grad_norm_latest}
+    \caption{Shared expert — grad norms}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{router_training_latest}
+    \caption{Router training (v2)}
+\end{subfigure}
+\caption{New MoE (v2) training curves. Loss spikes reaching $10^2$--$10^3$ are visible in the shared expert and several domain experts, caused by outlier theorem-completion examples with long label sequences in the smaller \texttt{new\_moe\_to\_train} dataset. Analysis and discrete math converge normally, suggesting domain-specific sensitivity to the new data distribution.}
+\label{fig:loss_curves_v2}
 \end{figure}
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_discrete_math_loss_curves_latest}
+    \caption{Discrete Math}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_probability_statistics_loss_curves_latest}
+    \caption{Prob.\ \& Statistics}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{expert_probability_statistics_grad_norm_latest}
+    \caption{Grad norms — Prob.\ \& Stats}
+\end{subfigure}
+\caption{Additional New MoE (v2) training curves for stable domains.}
+\label{fig:loss_curves_v2b}
+\end{figure}
+
+\paragraph{Stability-Fixed MoE (v3) --- controlled training.}
+To address the instability observed in v2, we trained a third configuration (\emph{v3}) on the same \texttt{new\_moe\_to\_train} dataset with four targeted fixes: (i) learning rate reduced from $1\times10^{-4}$ to $2\times10^{-5}$; (ii) gradient clipping tightened from the default 1.0 to 0.3; (iii) warmup ratio increased from 0.03 to 0.10 (cosine schedule); and (iv) two data filters added---a minimum of 8 supervised tokens per example (eliminating all-masked-label batches that cause zero-gradient spikes) and a maximum completion length of 800 tokens (filtering outlier long sequences). A \texttt{SpikeMonitorCallback} was added to log all spikes to \texttt{logs/spike\_log.jsonl} and halt training if loss exceeded 5.0 after 20 warm-up steps. Training was conducted on a single NVIDIA H100 80\,GB SXM GPU.
+
+Table~\ref{tab:loss_curves_v3} reports the per-domain results. A total of 19 spikes were detected across all experts, all of which recovered without halting---compared to persistent unrecovered explosions in v2. The analysis domain is undertrained (9 steps) due to data starvation: analysis prompts contain full ArXiv paper excerpts that saturate the 2{,}048-token context window, leaving fewer than 8 supervised tokens for most examples after filtering. Figure~\ref{fig:loss_curves_v3} shows selected v3 loss curves demonstrating controlled convergence.
+
+\begin{table}[t]
+\centering
+\caption{Stability-Fixed MoE (v3) training results. ``Final stable loss'' excludes spike values ($>$10). Analysis is undertrained due to context-window saturation of long ArXiv prompts. Spike counts are logged by \texttt{SpikeMonitorCallback}.}
+\label{tab:loss_curves_v3}
+\small
+\begin{tabular}{@{}lrrrl@{}}
+\toprule
+\textbf{Expert Domain} & \textbf{Steps} & \textbf{Final Stable Loss} & \textbf{Spikes} & \textbf{Note} \\
+\midrule
+Algebraic Geometry  & 51  & 3.93 & 1 & \\
+Discrete Math       & 189 & 2.63 & 4 & most spikes, recovered \\
+Number Theory       & 36  & 2.62 & 0 & no spikes \\
+Analysis            & 9   & 0.91 & 2 & \textbf{undertrained} (context overflow) \\
+Algebra             & 87  & 3.87 & 1 & \\
+Geometry \& Topology & 50 & 0.62 & 2 & \\
+Prob.\ \& Statistics & 90 & 3.12 & 2 & \\
+Shared (balanced)   & 240 & 0.36 & 7 & most spikes, all recovered \\
+\midrule
+\textbf{Total}      &     &      & \textbf{19} & all recovered \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{shared_loss_v3}
+    \caption{Shared expert (v3)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{algebra_loss_v3}
+    \caption{Algebra (v3)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{discrete_math_loss_v3}
+    \caption{Discrete Math (v3)}
+\end{subfigure}
+\\[8pt]
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{geometry_topology_loss_v3}
+    \caption{Geometry \& Topology (v3)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{number_theory_loss_v3}
+    \caption{Number Theory (v3)}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{analysis_loss_v3}
+    \caption{Analysis (v3, undertrained)}
+\end{subfigure}
+\caption{Stability-Fixed MoE (v3) training curves. All 19 detected spikes recovered without halting. The shared expert absorbs the most spikes (7) due to exposure to all domains. The analysis expert terminated at 9 steps: long ArXiv prompts saturated the 2{,}048-token context, leaving fewer than 8 supervised tokens per example after filtering, effectively starving the domain of training signal.}
+\label{fig:loss_curves_v3}
+\end{figure}
+
+\paragraph{Three-model training comparison.}
+Table~\ref{tab:moe_versions_compare} consolidates the key training characteristics and router accuracy across all three MoE versions.
+
+\begin{table}[t]
+\centering
+\caption{Comparison of three MoE training runs. Router accuracy is measured on 1{,}400 held-out examples (200 per domain). V1 router used TF-IDF+SVD proxy embeddings; v3 used real DeepSeek-Math-7B hidden states.}
+\label{tab:moe_versions_compare}
+\small
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{Attribute} & \textbf{V1 (original)} & \textbf{V2 (new data)} & \textbf{V3 (stability-fixed)} \\
+\midrule
+Training data        & domain corpus (241K) & theorem-completion (8.9K) & theorem-completion (8.9K) \\
+Learning rate        & $1\times10^{-4}$     & $1\times10^{-4}$         & $2\times10^{-5}$ \\
+Grad clip norm       & 1.0 (default)        & 1.0 (default)            & \textbf{0.3} \\
+Warmup ratio         & 0.03                 & 0.03                     & \textbf{0.10} \\
+Label filter         & none                 & none                     & \textbf{$\geq$8 tokens} \\
+Spike monitoring     & none                 & none                     & \textbf{SpikeMonitorCallback} \\
+GPU                  & A100 40\,GB          & A100 40\,GB              & H100 80\,GB \\
+Total spikes         & 0 detected           & $\gg$100 (unrecovered)   & \textbf{19 (all recovered)} \\
+Avg steps/expert     & $\sim$1{,}200        & $\sim$140                & $\sim$93 \\
+Router embeddings    & TF-IDF+SVD (proxy)   & N/A (not assembled)      & DeepSeek-Math-7B (real) \\
+Router top-1 acc.    & 76.3\%               & ---                      & 76.2\% \\
+Router top-2 acc.    & 88.9\%               & ---                      & 88.9\% \\
+Router load balance  & 1.26                 & ---                      & 1.27 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{GPU Memory and Throughput}
 
@@ -793,16 +968,16 @@ The top 50 ranked conjectures have been queued for Lean~4 formalization and veri
 \subsection{MoE Base Model vs.\ API-Generated Conjecture Quality}
 \label{sec:moe_vs_api}
 
-To quantify the contribution of instruction tuning and LLM-judge evaluation to conjecture quality, we compare conjectures generated directly by the MoE base model (DeepSeek-Math-7B with domain LoRA adapters, scored via heuristic pattern matching) against those generated by instruction-tuned API models (Llama-3.3-70B via Groq, Mistral-Small, scored by an independent LLM judge). The MoE pipeline produced 113 conjectures; the API pipeline produced 153 conjectures. Table~\ref{tab:moe_vs_api_domain} presents the per-domain comparison.
+We compare conjecture quality across three configurations: the v1 MoE base model (DeepSeek-Math-7B with domain LoRA adapters from the large domain corpus, scored via LLM judge), the v3 stability-fixed MoE (same architecture retrained on the theorem-completion dataset with stability fixes, Mistral-judged), and instruction-tuned API models (Llama-3.3-70B via Groq, Mistral-Small, judged by Groq Llama-3.3-70B). Table~\ref{tab:moe_vs_api_domain} presents the per-domain comparison for v1 MoE vs.\ API; Table~\ref{tab:v3_moe_domain} presents v3 MoE results.
 
 \begin{table}[t]
 \centering
-\caption{Per-domain comparison of conjecture quality: MoE base model vs.\ API instruction-tuned models, both evaluated using the same LLM judge (Groq Llama-3.3-70B) to ensure a fair comparison. Only 12.4\% of MoE conjectures were classified as well-formed by the judge.}
+\caption{Per-domain comparison of conjecture quality: MoE v1 base model vs.\ API instruction-tuned models, both evaluated using the same LLM judge (Groq Llama-3.3-70B) to ensure a fair comparison. Only 12.4\% of MoE v1 conjectures were classified as well-formed by the judge.}
 \label{tab:moe_vs_api_domain}
 \small
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-\textbf{Domain} & \textbf{MoE $n$} & \textbf{MoE Avg} & \textbf{API $n$} & \textbf{API Avg} & \textbf{Gap} \\
+\textbf{Domain} & \textbf{MoE v1 $n$} & \textbf{MoE v1 Avg} & \textbf{API $n$} & \textbf{API Avg} & \textbf{Gap} \\
 \midrule
 Algebra             & 18 & 0.440 & 13 & 0.774 & 0.334 \\
 Number Theory       & 12 & 0.515 & 21 & 0.720 & 0.205 \\
@@ -817,16 +992,16 @@ Probability \& Stat. & 18 & 0.483 & 22 & 0.686 & 0.203 \\
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:moe_vs_api_strategy} breaks down the comparison by generation strategy.
+Table~\ref{tab:moe_vs_api_strategy} breaks down the v1 MoE vs.\ API comparison by generation strategy.
 
 \begin{table}[t]
 \centering
-\caption{Per-strategy comparison of conjecture quality: MoE base model vs.\ API models, both evaluated using the same LLM judge (Groq Llama-3.3-70B). STP conjectures were generated exclusively by API models (Mistral-Small) with proof verification; the MoE base model does not support the STP loop without instruction tuning.}
+\caption{Per-strategy comparison of conjecture quality: MoE v1 base model vs.\ API models, both evaluated using the same LLM judge (Groq Llama-3.3-70B). STP conjectures were generated exclusively by API models (Mistral-Small) with proof verification; the MoE base model does not support the STP loop without instruction tuning.}
 \label{tab:moe_vs_api_strategy}
 \small
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-\textbf{Strategy} & \textbf{MoE $n$} & \textbf{MoE Avg} & \textbf{API $n$} & \textbf{API Avg} & \textbf{Gap} \\
+\textbf{Strategy} & \textbf{MoE v1 $n$} & \textbf{MoE v1 Avg} & \textbf{API $n$} & \textbf{API Avg} & \textbf{Gap} \\
 \midrule
 Theorem Generation    & 20 & 0.543 & 13 & 0.698 & 0.155 \\
 Pattern Interpolation & 21 & 0.491 & 24 & 0.658 & 0.167 \\
@@ -840,10 +1015,35 @@ Self-Play (STP)       & --- & ---   & 56 & 0.735 & ---   \\
 \end{tabular}
 \end{table}
 
-\paragraph{Analysis of the quality gap.}
-Both MoE and API conjectures were evaluated using the same LLM judge (Groq Llama-3.3-70B) to ensure a fair comparison on the evaluation side. Under this uniform evaluation, the MoE base model achieves an overall average quality of 0.483 compared to 0.693 for API-generated conjectures, yielding a gap of 0.210. \textbf{Important caveat:} this comparison confounds multiple factors beyond domain specialization. The MoE pipeline uses a 7B \emph{base} model (DeepSeek-Math-7B, no instruction tuning, 4-bit quantization), while the API pipeline uses instruction-tuned models of different sizes (Llama-3.3-70B via Groq and Mistral-Small). The 0.210 gap therefore reflects the combined effect of model size (7B vs.\ 70B), instruction tuning (none vs.\ full), and quantization (4-bit vs.\ full precision), and \emph{cannot} be attributed to any single factor. Only 12.4\% of MoE conjectures were classified as well-formed by the judge, indicating that the primary limitation of the base model is adherence to structured output formats rather than mathematical content quality.
+\paragraph{V3 MoE conjecture generation.}
+The v3 stability-fixed MoE was run through the same multi-strategy and STP pipeline, producing 193 conjectures in total: 113 multi-strategy (cached from the prior run) and 80 new STP conjectures across 7 domains (3 rounds $\times$ 5 conjectures per domain, with some empty-generation skips). The Mistral judge was used for scoring; however, Mistral rate-limiting caused the judge to return default \texttt{unknown}/0.5 verdicts for the majority of STP evaluations. The reported average quality of 0.517 should therefore be interpreted as a lower bound inflated toward 0.5 by rate-limit defaults, not as a reliable quality estimate. Table~\ref{tab:v3_moe_domain} reports per-domain counts and the best achieved scores.
 
-Among MoE strategies, theorem generation achieves the highest average quality (0.543), with the smallest gap to its API counterpart (0.155), likely because theorem generation produces outputs closest to the training distribution of formal mathematical statements. Cross-domain analogy yields the lowest MoE scores (0.452). The STP loop---which produced the highest-quality API conjectures (0.735)---is entirely absent from the MoE comparison because the base model cannot participate in the iterative conjecture-proof feedback cycle without instruction-following capability.
+\begin{table}[t]
+\centering
+\caption{V3 MoE conjecture generation results per domain. Total includes both multi-strategy (113, shared across runs) and new STP conjectures. ``Max quality'' is the highest individual score observed; most STP scores are 0.5 (Mistral rate-limit default). Empty-gen rate reflects adapter exhaustion in domains with $<$100 training steps.}
+\label{tab:v3_moe_domain}
+\small
+\begin{tabular}{@{}lrrrrl@{}}
+\toprule
+\textbf{Domain} & \textbf{Total $n$} & \textbf{STP $n$} & \textbf{Avg Quality} & \textbf{Max Quality} & \textbf{STP Skips} \\
+\midrule
+Algebra             & 29 & 11 & 0.519 & 0.66 & $\sim$3/15 \\
+Algebraic Geometry  & 29 & 11 & 0.511 & 0.66 & $\sim$1/15 \\
+Analysis            & 33 & 15 & 0.522 & 0.66 & 0/15 \\
+Discrete Math       & 22 & 10 & 0.504 & 0.66 & $\sim$3/15 \\
+Geometry \& Topology & 25 & 8  & 0.526 & 0.66 & $\sim$5/15 \\
+Number Theory       & 27 & 15 & 0.512 & 0.66 & 0/15 \\
+Prob.\ \& Statistics & 28 & 10 & 0.526 & 0.66 & $\sim$4/15 \\
+\midrule
+\textbf{Overall}    & \textbf{193} & \textbf{80} & \textbf{0.517} & \textbf{0.66} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Analysis of the quality gap.}
+Both MoE v1 and API conjectures were evaluated using the same LLM judge (Groq Llama-3.3-70B) to ensure a fair comparison on the evaluation side. Under this uniform evaluation, the MoE v1 base model achieves an overall average quality of 0.483 compared to 0.693 for API-generated conjectures, yielding a gap of 0.210. \textbf{Important caveat:} this comparison confounds multiple factors beyond domain specialization. The MoE pipeline uses a 7B \emph{base} model (DeepSeek-Math-7B, no instruction tuning, 4-bit quantization), while the API pipeline uses instruction-tuned models of different sizes (Llama-3.3-70B via Groq and Mistral-Small). The 0.210 gap therefore reflects the combined effect of model size (7B vs.\ 70B), instruction tuning (none vs.\ full), and quantization (4-bit vs.\ full precision), and \emph{cannot} be attributed to any single factor. Only 12.4\% of MoE v1 conjectures were classified as well-formed by the judge, indicating that the primary limitation of the base model is adherence to structured output formats rather than mathematical content quality.
+
+Among MoE v1 strategies, theorem generation achieves the highest average quality (0.543), with the smallest gap to its API counterpart (0.155), likely because theorem generation produces outputs closest to the training distribution of formal mathematical statements. Cross-domain analogy yields the lowest MoE v1 scores (0.452). The STP loop---which produced the highest-quality API conjectures (0.735)---was absent from the v1 MoE comparison because the base model cannot participate in the iterative conjecture-proof feedback cycle without instruction-following capability. The v3 model does run STP (80 new conjectures), but the results are inconclusive due to judge rate-limiting.
 
 These results motivate the next phase of the \mathscy{} pipeline: \emph{STP fine-tuning}. The 153 API-generated conjectures with quality scores, together with the 26 Lean~4 formalizations and the manually verified conjectures, constitute an instruction-tuning dataset. Instruction-tuning the MoE experts on this data would enable a controlled comparison of the domain-specialized MoE architecture against single-model baselines at the same model size and instruction-tuning level, which is needed to isolate the contribution of domain specialization.
 

@@ -1,1440 +1,393 @@
 {
-  "timestamp": "2026-02-27 12:22:10",
-  "scoring_method": "heuristic_only (no API calls, no GPU)",
+  "timestamp": "2026-03-12 21:34:44",
   "summary": {
-    "total_conjectures": 113,
-    "avg_quality_score": 0.1922,
-    "min_quality_score": 0.0,
-    "max_quality_score": 0.6088,
-    "median_quality_score": 0.1533
+    "total_conjectures": 193,
+    "multi_strategy_count": 113,
+    "stp_count": 80,
+    "domains_covered": [
+      "probability_statistics",
+      "geometry_topology",
+      "algebra",
+      "algebraic_geometry",
+      "discrete_math",
+      "number_theory",
+      "analysis"
+    ],
+    "avg_quality_score": 0.5174093264248705
   },
-  "per_domain": {
-    "algebra": {
-      "count": 18,
-      "avg_quality": 0.2478,
-      "max_quality": 0.585
+  "multi_strategy": {
+    "total": 113,
+    "by_strategy": {
+      "pattern_interpolation": 21,
+      "composition": 21,
+      "boundary_exploration": 21,
+      "theorem_generation": 20,
+      "cross_domain_analogy": 30
     },
-    "algebraic_geometry": {
-      "count": 18,
-      "avg_quality": 0.1615,
-      "max_quality": 0.325
-    },
-    "analysis": {
-      "count": 18,
-      "avg_quality": 0.2197,
-      "max_quality": 0.5811
-    },
-    "discrete_math": {
-      "count": 12,
-      "avg_quality": 0.2258,
-      "max_quality": 0.6088
-    },
-    "geometry_topology": {
-      "count": 17,
-      "avg_quality": 0.1351,
-      "max_quality": 0.255
-    },
-    "number_theory": {
-      "count": 12,
-      "avg_quality": 0.2467,
-      "max_quality": 0.5725
-    },
-    "probability_statistics": {
-      "count": 18,
-      "avg_quality": 0.135,
-      "max_quality": 0.3521
+    "by_domain": {
+      "algebraic_geometry": 18,
+      "discrete_math": 12,
+      "number_theory": 12,
+      "analysis": 18,
+      "algebra": 18,
+      "geometry_topology": 17,
+      "probability_statistics": 18
     }
   },
+  "stp": {
+    "algebraic_geometry": {
+      "rounds": 3,
+      "total": 11,
+      "proved": 0,
+      "disproved": 0,
+      "unknown": 11,
+      "avg_quality": 0.5
+    },
+    "discrete_math": {
+      "rounds": 3,
+      "total": 10,
+      "proved": 0,
+      "disproved": 0,
+      "unknown": 10,
+      "avg_quality": 0.5
+    },
+    "number_theory": {
+      "rounds": 3,
+      "total": 15,
+      "proved": 0,
+      "disproved": 0,
+      "unknown": 15,
+      "avg_quality": 0.5
+    },
+    "analysis": {
+      "rounds": 3,
+      "total": 15,
+      "proved": 0,
+      "disproved": 0,
+      "unknown": 15,
+      "avg_quality": 0.5
+    },
+    "algebra": {
+      "rounds": 3,
+      "total": 11,
+      "proved": 0,
+      "disproved": 0,
+      "unknown": 11,
+      "avg_quality": 0.5
+    },
+    "geometry_topology": {
+      "rounds": 3,
+      "total": 8,
+      "proved": 0,
+      "disproved": 0,
+      "unknown": 8,
+      "avg_quality": 0.5
+    },
+    "probability_statistics": {
+      "rounds": 3,
+      "total": 10,
+      "proved": 0,
+      "disproved": 0,
+      "unknown": 10,
+      "avg_quality": 0.5
+    }
+  },
+  "per_domain": {
+    "algebraic_geometry": {
+      "count": 29,
+      "avg_quality": 0.5110344827586207,
+      "max_quality": 0.66,
+      "min_quality": 0.42
+    },
+    "discrete_math": {
+      "count": 22,
+      "avg_quality": 0.5036363636363637,
+      "max_quality": 0.66,
+      "min_quality": 0.42
+    },
+    "number_theory": {
+      "count": 27,
+      "avg_quality": 0.5118518518518519,
+      "max_quality": 0.66,
+      "min_quality": 0.42
+    },
+    "analysis": {
+      "count": 33,
+      "avg_quality": 0.5218181818181817,
+      "max_quality": 0.66,
+      "min_quality": 0.42
+    },
+    "algebra": {
+      "count": 29,
+      "avg_quality": 0.5193103448275862,
+      "max_quality": 0.66,
+      "min_quality": 0.42
+    },
+    "geometry_topology": {
+      "count": 25,
+      "avg_quality": 0.5256000000000001,
+      "max_quality": 0.66,
+      "min_quality": 0.42
+    },
+    "probability_statistics": {
+      "count": 28,
+      "avg_quality": 0.5257142857142857,
+      "max_quality": 0.66,
+      "min_quality": 0.42
+    }
+  },
+  "top_conjectures": [
+    {
+      "source": "multi_strategy",
+      "domain": "algebraic_geometry",
+      "strategy": "boundary_exploration",
+      "statement": "Domain before : ;\\\\[-2pt]P^-\\subset V^{p+q}&&&&\\quad(i=n).}\\] In particular $\\dim W_{\\nu}^{pq}(\\cC)=d$ and $h^\\ast_\\infty E^{\\bullet p}_{ij}$ has no components supported on $\\{0,\\iy\\}$.%   %%%%\\qed%%%%$\\square",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "discrete_math",
+      "strategy": "theorem_generation",
+      "statement": "Let $P$ be an ordered set partition $(A_{1},\\ldots , A_{\\ell})$ on $[n]$ satisfying the condition that $\\sum _{i=j}^{\\min\\{r+k-2\\lfloor j/3 \\rfloor + 6,\\ n\\}} |C(x^{(a)}, i)| = k$. Then for all integers r greater than or equal to zero there exists some sequence x such t",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "number_theory",
+      "strategy": "theorem_generation",
+      "statement": "Let $F$ be an arbitrary field of characteristic zero or sufficiently large odd prime order (e.~g., for $\\mathbb{Z}_p$). Let also $(X,+,\\cdot)$ denote the additive group equipped by multiplication operation as follows",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "analysis",
+      "strategy": "composition",
+      "statement": "Context before:% tions and one-dimensional measures for every rational number $\\frac pq$ satisfying $g(\\vec y)\\cdot q <p< g'(\\sigma_{\\ell}(\\xi))\\in (\\rho)_{\\text{$0$-th}}$; in other words $|\\mu|<\\lambda$.",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "analysis",
+      "strategy": "theorem_generation",
+      "statement": "Let $G$ be an infinite group acting by isometries on the metric space $(X,\\rho)$. Let $\\{Y_i\\}$ denote any collection of finite subsets covering $\\cup_{g\\in G} g(F)$ for some fixed subset F$\\subset X$. If all points have infinitely many distinct images under this action then there exists",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "analysis",
+      "strategy": "theorem_generation",
+      "statement": "Let $\\Omega$ be an open subset of the real line $R$. Then any bounded weak* topology closed ball on functions from L_1(\\mu) is always strongly locally finite inside R\\ \\times C(Q), where Q denotes to all rational numbers .",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "analysis",
+      "strategy": "theorem_generation",
+      "statement": "If f(x) is continuously differentiable on R^n such that |f_{ij}(a)| >= C > 0 for some fixed point $latex \\alpha$ of the domain D_j whenever i != j , then there exists an open neighborhood U",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "algebra",
+      "strategy": "theorem_generation",
+      "statement": "Let $\\A$ be the Alexander quandle associated to some knot $K$. Then there exists an orientation preserving embedding of $(2m-1)$-sphere into its complement where this sphere is given as union over",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "algebra",
+      "strategy": "cross_domain_analogy",
+      "statement": "Context before:$ a \\mapsto x^a y^{b} z^{-c}$, where $(m-n)(p+q)=-r(k)$. Thus we have shown our claim for all elements and hence proved this theorem.\\end{proof}\\noindent\\newline We now state some conjectures regarding these groups:\\vspace{-3pt}}",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "geometry_topology",
+      "strategy": "boundary_exploration",
+      "statement": "Context before: $C_{\\bullet}(E(2))$ to be given at each stage either all three vertices being internal/external with respect",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "geometry_topology",
+      "strategy": "theorem_generation",
+      "statement": "Context before:  homotopy classes of paths $\\pi(x)$ form an abelian group under addition (with the inverse being given by reversing orientation). The corresponding groupoid is called fundamental path space or loopspace",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "geometry_topology",
+      "strategy": "cross_domain_analogy",
+      "statement": "Context before: h 0$. Therefore $\\varepsilon'(X)>2\\delta(B)$, which contradicts our assumption.} So for every point of this set we have $|V_{\\alpha}(x)-y|\\geq \\frac{\\eps}{3}$. This proves Claim~1.\\end{proof}\\medskip",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "statement": "Let $(X,\\mathcal B_\\nu)$, $(\\tilde X ,\\widetilde{\\cal",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "statement": "Context before: nce relation holds for all sufficiently large eigenvalues if one replaces there ``sufficiently'' with \u201call\u201d? \\item What should replace condition (\\ref{eq2}) when considering analogues below as well",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "probability_statistics",
+      "strategy": "cross_domain_analogy",
+      "statement": "Context before: ckspace}\\label=Theorem{\\ref}{th754}} Let $\\{z_\\alpha; z'_r\\}$, and for all prime divisors over $(k(t),M)$. If we replace this property by only requiring it outside finitely many primes then Corollary",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.9000000000000001,
+      "difficulty": "medium",
+      "quality_score": 0.66
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "algebraic_geometry",
+      "strategy": "boundary_exploration",
+      "statement": "State and prove that if $\\lambda$ approaches to zero then $X_\\beta^\\nu(a)$ has terminal singularities;",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.7,
+      "difficulty": "medium",
+      "quality_score": 0.58
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "algebraic_geometry",
+      "strategy": "theorem_generation",
+      "statement": "The existence of certain endomorphism rings for moduli spaces associated to $d$-pointed curves",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.7,
+      "difficulty": "medium",
+      "quality_score": 0.58
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "statement": "Context before: e fields and local systems} as well for this direction). The reader should note however we are not aware if it implies any sort or converse to Theorem~\\ref{thm-main}, see Remark after Conjecture~428(b), loc.~cit..  \r\\endgroup",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.7,
+      "difficulty": "medium",
+      "quality_score": 0.58
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "algebraic_geometry",
+      "strategy": "cross_domain_analogy",
+      "statement": "Context before: nd{\\mathcal{O}_p} B,$$ which implies that ${\\displaystyle \\varphi(a)=\\prod_{j=0}^{n-1}\\det g^{2^jm}:  m=[M:\\mathbb Z]}$, since this function does not depend on choice of representative; cf.~\\cite[Lemma~6]{Narkiewicz}.  \r%\\endproof}}    %%%%%%%%---      %% end theorem }",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.7,
+      "difficulty": "medium",
+      "quality_score": 0.58
+    },
+    {
+      "source": "multi_strategy",
+      "domain": "discrete_math",
+      "strategy": "boundary_exploration",
+      "statement": "Could explore different notions of \"max\" to define $\\mu$.",
+      "informal": "",
+      "lean4_sketch": "",
+      "confidence": 0.7,
+      "difficulty": "medium",
+      "quality_score": 0.58
+    }
+  ],
   "strategy_comparison": {
     "boundary_exploration": {
       "count": 21,
-      "avg_quality": 0.1577
-    },
-    "composition": {
-      "count": 21,
-      "avg_quality": 0.1675
-    },
-    "cross_domain_analogy": {
-      "count": 30,
-      "avg_quality": 0.1341
-    },
-    "pattern_interpolation": {
-      "count": 21,
-      "avg_quality": 0.2008
+      "avg_quality": 0.5152380952380953,
+      "max_quality": 0.66
     },
     "theorem_generation": {
       "count": 20,
-      "avg_quality": 0.3325
+      "avg_quality": 0.588,
+      "max_quality": 0.66
+    },
+    "composition": {
+      "count": 21,
+      "avg_quality": 0.5038095238095238,
+      "max_quality": 0.66
+    },
+    "cross_domain_analogy": {
+      "count": 30,
+      "avg_quality": 0.548,
+      "max_quality": 0.66
+    },
+    "pattern_interpolation": {
+      "count": 21,
+      "avg_quality": 0.48857142857142855,
+      "max_quality": 0.58
+    },
+    "stp": {
+      "count": 80,
+      "avg_quality": 0.5,
+      "max_quality": 0.5
     }
-  },
-  "score_distribution": {
-    "0.0-0.1": 33,
-    "0.1-0.2": 33,
-    "0.2-0.3": 28,
-    "0.3-0.4": 8,
-    "0.4-0.5": 3,
-    "0.5-0.6": 7,
-    "0.6-0.7": 1,
-    "0.7-0.8": 0,
-    "0.8-0.9": 0,
-    "0.9-1.0": 0
-  },
-  "scored_conjectures": [
-    {
-      "conjecture_statement": "Generalization to higher-dimensional varieties or nonrational curves",
-      "domain": "algebraic_geometry",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.2365,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalize this to other categories of geometric spaces with different notions",
-      "domain": "algebraic_geometry",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.1165,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.05,
-        "formalizability": 0.25,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "The expected generalization of this equivalence for general polarized varieties with rational double point singularities would involve defining appropriate modifications sucht to resolve",
-      "domain": "algebraic_geometry",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.1648,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This could involve making explicit reference to sections or subsections within each result's context before combining them with appropriate background information for clarity.}",
-      "domain": "algebraic_geometry",
-      "strategy": "composition",
-      "quality_score": 0.096,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.35
-      }
-    },
-    {
-      "conjecture_statement": "Combination of Result",
-      "domain": "algebraic_geometry",
-      "strategy": "composition",
-      "quality_score": 0.0,
-      "breakdown": {
-        "statement_quality": 0.2,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.5
-      }
-    },
-    {
-      "conjecture_statement": "Consider rational hypersurfaces of dimension at least three contained inside intersections between quadrics or cubics over finite fields without using any conjectures like Hodge theory/Beauville's the...",
-      "domain": "algebraic_geometry",
-      "strategy": "composition",
-      "quality_score": 0.3036,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.75,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Domain before : ;\\\\[-2pt]P^-\\subset V^{p+q}&&&&\\quad(i=n).}\\] In particular $\\dim W_{\\nu}^{pq}(\\cC)=d$ and $h^\\ast_\\infty E^{\\bullet p}_{ij}$ has no components supported on $\\{0,\\iy\\}$.%   %%%%\\qed%%%...",
-      "domain": "algebraic_geometry",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.0113,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.15,
-        "formalizability": 0.3,
-        "penalty": 1.0
-      }
-    },
-    {
-      "conjecture_statement": "Consider weakening/strengthening some of",
-      "domain": "algebraic_geometry",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.0952,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.25,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "State and prove that if $\\lambda$ approaches to zero then $X_\\beta^\\nu(a)$ has terminal singularities;",
-      "domain": "algebraic_geometry",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.325,
-      "breakdown": {
-        "statement_quality": 0.7,
-        "specificity": 0.1,
-        "formalizability": 0.4,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "The following is an example of such theorems using the notions mentioned above (cyclic groups; sheaves on schemes over rings); other examples can be generated similarly by replacing these terms or con...",
-      "domain": "algebraic_geometry",
-      "strategy": "theorem_generation",
-      "quality_score": 0.174,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.4
-      }
-    },
-    {
-      "conjecture_statement": "The existence of certain endomorphism rings for moduli spaces associated to $d$-pointed curves",
-      "domain": "algebraic_geometry",
-      "strategy": "theorem_generation",
-      "quality_score": 0.2851,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.6,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "See Theorem \\ref{thm-level}.",
-      "domain": "algebraic_geometry",
-      "strategy": "theorem_generation",
-      "quality_score": 0.064,
-      "breakdown": {
-        "statement_quality": 0.5,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.4
-      }
-    },
-    {
-      "conjecture_statement": "This could involve defining appropriate notions for varieties and fields other than those used above or exploring possible analogies between certain properties related to abelian surfaces",
-      "domain": "algebraic_geometry",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2036,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "Context before: e fields and local systems} as well for this direction). The reader should note however we are not aware if it implies any sort or converse to Theorem~\\ref{thm-main}, see Remark after ...",
-      "domain": "algebraic_geometry",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0675,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.55,
-        "formalizability": 0.4,
-        "penalty": 1.0
-      }
-    },
-    {
-      "conjecture_statement": "This could be a problem about rational points on varieties defined by polynomial equations with many real and complex roots or have special geometric properties like having few components of low degre...",
-      "domain": "algebraic_geometry",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2036,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "Analogue of Conjecture for Algebraic Curves over Number Fields?",
-      "domain": "algebraic_geometry",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2365,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This can be restated as a statement about discriminants of elements generating birational transformations on curves",
-      "domain": "algebraic_geometry",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2365,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before: nd{\\mathcal{O}_p} B,$$ which implies that ${\\displaystyle \\varphi(a)=\\prod_{j=0}^{n-1}\\det g^{2^jm}:  m=[M:\\mathbb Z]}$, since this function does not depend on choice of representative...",
-      "domain": "algebraic_geometry",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.087,
-      "breakdown": {
-        "statement_quality": 0.9,
-        "specificity": 0.1,
-        "formalizability": 0.3,
-        "penalty": 0.8
-      }
-    },
-    {
-      "conjecture_statement": "Investigate whether certain properties hold in hypergraphs or directed graphs under similar conditions on vertex sets",
-      "domain": "discrete_math",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.193,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "Generalized Conjecture for Directed Random Graph with Power-Law Degree Distribution",
-      "domain": "discrete_math",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.292,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.75,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalized Theorem about Lattice Path Combinatorics",
-      "domain": "discrete_math",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.2134,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Conjecture on Combinations from Resulting Games",
-      "domain": "discrete_math",
-      "strategy": "composition",
-      "quality_score": 0.0746,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Conjecture on Autonomous Graphs and Free Tensors",
-      "domain": "discrete_math",
-      "strategy": "composition",
-      "quality_score": 0.1301,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Conjecture for combined result",
-      "domain": "discrete_math",
-      "strategy": "composition",
-      "quality_score": 0.0038,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.5
-      }
-    },
-    {
-      "conjecture_statement": "Could explore different notions of \"max\" to define $\\mu$.",
-      "domain": "discrete_math",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.2134,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.1,
-        "formalizability": 0.25,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Investigate bounds on maximum number of edges between positive and neg",
-      "domain": "discrete_math",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.1165,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "Could potentially strengthen this by adding criteria for nonautonomous components of subgraphs rather than just one vertex and relaxing condition on graphs that remain as we remove vertices to add mor...",
-      "domain": "discrete_math",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.2674,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.3,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "Let $P$ be an ordered set partition $(A_{1},\\ldots , A_{\\ell})$ on $[n]$ satisfying the condition that $\\sum _{i=j}^{\\min\\{r+k-2\\lfloor j/3 \\rfloor + 6,\\ n\\}} |C(x^{(a)}, i)| = k$. Then for all intege...",
-      "domain": "discrete_math",
-      "strategy": "theorem_generation",
-      "quality_score": 0.6088,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.65,
-        "formalizability": 1.0,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "For any $n \\geq 1$, the number of distinct values taken by $\\mathsf{E}[T_{S}]$ over all semigroups satisfying condition (C) is equal to $(2^{k+3} - k^4)/6 + O(nk)$.",
-      "domain": "discrete_math",
-      "strategy": "theorem_generation",
-      "quality_score": 0.585,
-      "breakdown": {
-        "statement_quality": 0.9,
-        "specificity": 0.65,
-        "formalizability": 0.55,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "This is some text before the statement of my custom-made math theorems",
-      "domain": "discrete_math",
-      "strategy": "theorem_generation",
-      "quality_score": 0.0117,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.55
-      }
-    },
-    {
-      "conjecture_statement": "Generalization to higher rank groups or different Lie algebras would involve more complex structures beyond matrix algebra",
-      "domain": "number_theory",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.3475,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.75,
-        "formalizability": 0.25,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalization to other categories or with different types of functors involved",
-      "domain": "number_theory",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.2088,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.25,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalization to finite sets in different domains",
-      "domain": "number_theory",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.1301,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.25,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This could involve combining theorems about modular forms and motives to formulate more general conjectures regarding their relationships with other number theoretic objects or properties related",
-      "domain": "number_theory",
-      "strategy": "composition",
-      "quality_score": 0.1271,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "This would combine Theorem C in Section IVA from Ribes & Zalesskii with Lemma B' on page II$\\dagger$3950 $\\S8'$",
-      "domain": "number_theory",
-      "strategy": "composition",
-      "quality_score": 0.22,
-      "breakdown": {
-        "statement_quality": 0.7,
-        "specificity": 0.1,
-        "formalizability": 0.05,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "In number theory or in representation Theory? Is your example from noncommutative ring ?",
-      "domain": "number_theory",
-      "strategy": "composition",
-      "quality_score": 0.1533,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This may be related with understanding representations arising from other geometric constructions such as Deligne-Lusztig theory",
-      "domain": "number_theory",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.0978,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Under weaker hypotheses on K/k , should we consider other kinds of modules besides lambda? Could there be some interesting structure theorems for these groups that could shed light",
-      "domain": "number_theory",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.2481,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This boundary condition could be relaxed to allow for smaller values of g; however it remains unclear how much more interesting an answer one might obtain beyond this point",
-      "domain": "number_theory",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.1093,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Let $F$ be an arbitrary field of characteristic zero or sufficiently large odd prime order (e.~g., for $\\mathbb{Z}_p$). Let also $(X,+,\\cdot)$ denote the additive group equipped by multiplication oper...",
-      "domain": "number_theory",
-      "strategy": "theorem_generation",
-      "quality_score": 0.4146,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.65,
-        "formalizability": 0.3,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "For any $K$, the $\\Lambda$-torsion subgroup of  ${H^1( K_\\infty , T )}$ is finitely generated over $(\\Zp)_\\P$.",
-      "domain": "number_theory",
-      "strategy": "theorem_generation",
-      "quality_score": 0.5725,
-      "breakdown": {
-        "statement_quality": 0.85,
-        "specificity": 0.65,
-        "formalizability": 0.55,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Saturated fusion systems associated to modular forms of weight $k \\geq 2$ do not exist for primes larger than the level at infinity plus one; they instead correspond under Deligne's equivalence relati...",
-      "domain": "number_theory",
-      "strategy": "theorem_generation",
-      "quality_score": 0.3313,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.6,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalize to other types of potentials or spectral measures",
-      "domain": "analysis",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.1533,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalizing to other types or classes",
-      "domain": "analysis",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.0544,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.25
-      }
-    },
-    {
-      "conjecture_statement": "Generalization of Theorem A or Corollary B",
-      "domain": "analysis",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.105,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Prove or disprove this combined result by combining Theorems~\\eqref{}~and ~\\cite{}, using appropriate lemmas from Section ~.\\",
-      "domain": "analysis",
-      "strategy": "composition",
-      "quality_score": 0.0506,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.5
-      }
-    },
-    {
-      "conjecture_statement": "Context before:% tions and one-dimensional measures for every rational number $\\frac pq$ satisfying $g(\\vec y)\\cdot q <p< g'(\\sigma_{\\ell}(\\xi))\\in (\\rho)_{\\text{$0$-th}}$; in other words $|\\mu|<\\lamb...",
-      "domain": "analysis",
-      "strategy": "composition",
-      "quality_score": 0.3416,
-      "breakdown": {
-        "statement_quality": 0.9,
-        "specificity": 0.65,
-        "formalizability": 0.55,
-        "penalty": 0.55
-      }
-    },
-    {
-      "conjecture_statement": "This could lead to further research in operator theory using elements of functional analysis as well matrix methods from linear algebra",
-      "domain": "analysis",
-      "strategy": "composition",
-      "quality_score": 0.2365,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalize to higher-dimensional manifolds",
-      "domain": "analysis",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.2134,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This allows us more precise information on prime ideals as well",
-      "domain": "analysis",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.2365,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Further investigation could explore different assumptions on G to guarantee pointwise convergence of weighted sum over eigenvalues where Beta weights converge weakly*. Can we drop some requirements?",
-      "domain": "analysis",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.3311,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.55,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "Let $G$ be an infinite group acting by isometries on the metric space $(X,\\rho)$. Let $\\{Y_i\\}$ denote any collection of finite subsets covering $\\cup_{g\\in G} g(F)$ for some fixed subset F$\\subset X$...",
-      "domain": "analysis",
-      "strategy": "theorem_generation",
-      "quality_score": 0.5811,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.65,
-        "formalizability": 0.9,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Let $\\Omega$ be an open subset of the real line $R$. Then any bounded weak* topology closed ball on functions from L_1(\\mu) is always strongly locally finite inside R\\ \\times C(Q), where Q denotes to ...",
-      "domain": "analysis",
-      "strategy": "theorem_generation",
-      "quality_score": 0.5775,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.6,
-        "formalizability": 0.7,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "If f(x) is continuously differentiable on R^n such that |f_{ij}(a)| >= C > 0 for some fixed point $latex \\alpha$ of the domain D_j whenever i != j , then there exists an open neighborhood U",
-      "domain": "analysis",
-      "strategy": "theorem_generation",
-      "quality_score": 0.54,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.3,
-        "formalizability": 1.0,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Context before:: adic numbers $\\Qp$, where one has to find suitable analogues for matrices over finite fields or rings instead.\\\\[3mm] A natural candidate are here p-adic Weyl groups as described belo...",
-      "domain": "analysis",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1826,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.6,
-        "formalizability": 0.25,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Context before: tion{25}{3}}\\right)^j= \\left(\\begin {array}{}0&-I\\\\ I&A^*\\\\\\end",
-      "domain": "analysis",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0039,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Context before: )}{h(n)} < +\\infty.\\] As usual we say this sequence has density one at infinity to mean exactly what it says; i.\\hspace{-.1mm}{}e., for any fixed real numbers $-a<b$, \\[\\sum_{p=N}^{",
-      "domain": "analysis",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1296,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.1,
-        "formalizability": 0.25,
-        "penalty": 0.55
-      }
-    },
-    {
-      "conjecture_statement": "Context before: ion on iterates by replacing irreducible polynomials over finite fields as ramification objects to exceptional values for dynamical systems suchas rational maps etc.. The main goal her...",
-      "domain": "analysis",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0851,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Context before: oth be written as a finite alternating sum of terms taking exactly one sign change point and some fixed interval size",
-      "domain": "analysis",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Here's a possible idea of how this might be translated into numbers and real domains by analogy...",
-      "domain": "analysis",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1324,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This could lead to generalizing this idea for other classes of algebraic structures or different types",
-      "domain": "algebra",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.2088,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.25,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Consider an arbitrary commutative Noetherian ring R with maximal dimension d < \u221e Let I\u2286R is radical where then define m to as being dim\u2061Exti[2d\u22121](M/IMm). Is it true for all i >dim\u0332 Exts\u2264max{[n+k]\u2211ij=...",
-      "domain": "algebra",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.585,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.55,
-        "formalizability": 0.9,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Investigating restrictions on cyclic subgroups for classical groups over finite fields where PSLm(q), PSUmn^d ,PSLn_D^(2).",
-      "domain": "algebra",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.3775,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.55,
-        "formalizability": 0.25,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Context before: e finite dimensional modules over Noetherian rings have this property.) The next result shows how to characterize these types when we move from left-right symmetric properties in gener...",
-      "domain": "algebra",
-      "strategy": "composition",
-      "quality_score": 0.1296,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.55
-      }
-    },
-    {
-      "conjecture_statement": "Under certain conditions on an associative and unital ring B with idempotents e\u2081,...,en such as those in Theorem X or similar ones from literature elsewhere to be discussed further if needed; there ex...",
-      "domain": "algebra",
-      "strategy": "composition",
-      "quality_score": 0.5125,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.55,
-        "formalizability": 0.7,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Consider both Result A mentioned before result B as Theorem C with hypotheses specified precisely from Theorems Dand E...",
-      "domain": "algebra",
-      "strategy": "composition",
-      "quality_score": 0.1324,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This might be related to representation theory and algebraic geometry more broadly",
-      "domain": "algebra",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.1533,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Investigate generalizations to other algebraic structures beyond semigroups",
-      "domain": "algebra",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.2365,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before: s} The category of dg algebras over any field will be denoted as dgalgsf",
-      "domain": "algebra",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.077,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "For $m$ be an integer greater than 2 or for any other fixed positive natural number which is not divisible by p; if one of the roots $\\alpha$,$\\beta,\\gamma,...\\delta_{r}$is such that it possesses no e...",
-      "domain": "algebra",
-      "strategy": "theorem_generation",
-      "quality_score": 0.4076,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.35,
-        "formalizability": 0.7,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "\\begin{theorem} \\label {31284-7695  }    % Theorem   (for use later)                 #%%%%%%%%%%% n^n=e^{ln\\:",
-      "domain": "algebra",
-      "strategy": "theorem_generation",
-      "quality_score": 0.1293,
-      "breakdown": {
-        "statement_quality": 0.7,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "Let $\\A$ be the Alexander quandle associated to some knot $K$. Then there exists an orientation preserving embedding of $(2m-1)$-sphere into its complement where this sphere is given as union over",
-      "domain": "algebra",
-      "strategy": "theorem_generation",
-      "quality_score": 0.4909,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.35,
-        "formalizability": 1.0,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before:$ a \\mapsto x^a y^{b} z^{-c}$, where $(m-n)(p+q)=-r(k)$. Thus we have shown our claim for all elements and hence proved this theorem.\\end{proof}\\noindent\\newline We now state some conje...",
-      "domain": "algebra",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.177,
-      "breakdown": {
-        "statement_quality": 0.9,
-        "specificity": 0.3,
-        "formalizability": 0.6,
-        "penalty": 0.8
-      }
-    },
-    {
-      "conjecture_statement": "Infinite families arising from linear recurrences",
-      "domain": "algebra",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0746,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This provides a link between two seemingly unrelated areas of mathematics that share common terms used to describe similar phenomena or objects related by algebraic structures like eigenvalues/vectors",
-      "domain": "algebra",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2481,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "%In this section we make a transition from graph theory to linear",
-      "domain": "algebra",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1301,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This can be generalized by considering a more general set-up beyond just two variables and rational exponents",
-      "domain": "algebra",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2365,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "In this paper we study non-associative loop algebras related by a simple algebraic operation called adjoint twisting and classify them up",
-      "domain": "algebra",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1533,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Generalization to other topological spaces or weaker properties than metrization",
-      "domain": "geometry_topology",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.0978,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This would require an extension to higher dimensions or different types/properties on N",
-      "domain": "geometry_topology",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.25,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.25,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Generalizing to other topological spaces than smooth manifolds may reveal additional structure or patterns in these connections between topology...",
-      "domain": "geometry_topology",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.1879,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This could be restated in terms more familiar within low dimensional topology or algebraic geometry by using known equivalences between these areas",
-      "domain": "geometry_topology",
-      "strategy": "composition",
-      "quality_score": 0.193,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.3
-      }
-    },
-    {
-      "conjecture_statement": "The combined version would involve considering sheaves over certain sites instead",
-      "domain": "geometry_topology",
-      "strategy": "composition",
-      "quality_score": 0.1533,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Considerations related this paper could be interesting for symplectic geometry or theoretical physics",
-      "domain": "geometry_topology",
-      "strategy": "composition",
-      "quality_score": 0.1533,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before: $C_{\\bullet}(E(2))$ to be given at each stage either all three vertices being internal/external with respect",
-      "domain": "geometry_topology",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.0624,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.1,
-        "formalizability": 0.3,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Exploring how to weaken condition on $f$",
-      "domain": "geometry_topology",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.255,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.3,
-        "formalizability": 0.05,
-        "penalty": 0.0
-      }
-    },
-    {
-      "conjecture_statement": "Context before: ction}, we review some basic facts related notions required here that come from linear algebra; see section 5--7 particularly as well~\\cite[\\S4]{o2013introduction}. We use these freely...",
-      "domain": "geometry_topology",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.1187,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.55
-      }
-    },
-    {
-      "conjecture_statement": "Context before:  homotopy classes of paths $\\pi(x)$ form an abelian group under addition (with the inverse being given by reversing orientation). The corresponding groupoid is called fundamental path ...",
-      "domain": "geometry_topology",
-      "strategy": "theorem_generation",
-      "quality_score": 0.168,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.6,
-        "formalizability": 0.3,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Failed to load \"Example\".",
-      "domain": "geometry_topology",
-      "strategy": "theorem_generation",
-      "quality_score": 0.0966,
-      "breakdown": {
-        "statement_quality": 0.35,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.1
-      }
-    },
-    {
-      "conjecture_statement": "Context before: 390728456",
-      "domain": "geometry_topology",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0,
-      "breakdown": {
-        "statement_quality": 0.2,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.65
-      }
-    },
-    {
-      "conjecture_statement": "In 20-th century mathematics emerged numerous conjectures that became famous thanks not only their importance but also due interesting properties related with them or solutions they brought up on seve...",
-      "domain": "geometry_topology",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1093,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before: h 0$. Therefore $\\varepsilon'(X)>2\\delta(B)$, which contradicts our assumption.} So for every point of this set we have $|V_{\\alpha}(x)-y|\\geq \\frac{\\eps}{3}$. This proves Claim~1.\\end...",
-      "domain": "geometry_topology",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0493,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.1,
-        "formalizability": 0.3,
-        "penalty": 0.85
-      }
-    },
-    {
-      "conjecture_statement": "Context before: f{dfn}[Geodesic Adapted Pseudo Metric]{definition}[(Adapt)] A geodesic metric space  or Riemannian manifold\\index{(mgt)}{Riemannian Manifold}\\footnote{$C^1$-smoothness will be assumed ...",
-      "domain": "geometry_topology",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2265,
-      "breakdown": {
-        "statement_quality": 0.9,
-        "specificity": 0.6,
-        "formalizability": 0.25,
-        "penalty": 0.65
-      }
-    },
-    {
-      "conjecture_statement": "Context before: tial_{\\partial/p}T_\\mathfrak{m}(S)\\cong S/(f^r)$, where $(g)$ denotes any minimal prime associated to some element vanishing on $\\{Z\\}$. Moreover $[L:\\Q]\\cdot \\#P/\\#\\{ Z\\}$ equals its ...",
-      "domain": "geometry_topology",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1759,
-      "breakdown": {
-        "statement_quality": 0.9,
-        "specificity": 0.35,
-        "formalizability": 0.25,
-        "penalty": 0.65
-      }
-    },
-    {
-      "conjecture_statement": "Context before:\" oved to also hold when we drop some assumptions on X). A similar approach could work here and potentially allow us make new nonvanishing results using this line!}}\\label{SOD} Here are...",
-      "domain": "geometry_topology",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.85
-      }
-    },
-    {
-      "conjecture_statement": "I'm not sure if this is what you are looking for but here goes...",
-      "domain": "probability_statistics",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.086,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.05,
-        "formalizability": 0.1,
-        "penalty": 0.4
-      }
-    },
-    {
-      "conjecture_statement": "Generalization to other spaces",
-      "domain": "probability_statistics",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.0544,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.25
-      }
-    },
-    {
-      "conjecture_statement": "This is another formulation of Chebyshev's inequality for random variables with large deviations under certain regularity conditions",
-      "domain": "probability_statistics",
-      "strategy": "pattern_interpolation",
-      "quality_score": 0.1533,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "This could combine ideas from quantum probability and infinite-dimensional analysis to prove inequalities in higher dimensions by reducing them one dimension at time through appropriate projections on...",
-      "domain": "probability_statistics",
-      "strategy": "composition",
-      "quality_score": 0.2481,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Conjecture I'm not sure if this will be useful... but you could formulate your question as follows..",
-      "domain": "probability_statistics",
-      "strategy": "composition",
-      "quality_score": 0.0498,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.05,
-        "formalizability": 0.1,
-        "penalty": 0.55
-      }
-    },
-    {
-      "conjecture_statement": "Combining these ideas yields both asymptotic bounds on expected maxima and explicit rates for exponential tails at different levels with applications to supremum processes based solely upon moment con...",
-      "domain": "probability_statistics",
-      "strategy": "composition",
-      "quality_score": 0.2088,
-      "breakdown": {
-        "statement_quality": 0.4,
-        "specificity": 0.25,
-        "formalizability": 0.25,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Under weaker assumptions on A and B matrices",
-      "domain": "probability_statistics",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.0746,
-      "breakdown": {
-        "statement_quality": 0.3,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before: _X}}P_{_Y}({y^j})\\rho (\\tau _{0,{v^{ij}}}_ * ).\\\\ \\\\% &\\text{(c)}\\quad& \\!\\!\\!\\!\\sum_{\\forall x,\\; y\\;;\\,f({{{Z}}^{ji}})\\mathop{=}^{?}g({\\tilde Z}_{m + p^*}^{(l)})}\\!\\!\\!\\!\\!\\!{\\phi ({...",
-      "domain": "probability_statistics",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.0364,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Under weak moment assumptions",
-      "domain": "probability_statistics",
-      "strategy": "boundary_exploration",
-      "quality_score": 0.0325,
-      "breakdown": {
-        "statement_quality": 0.2,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.25
-      }
-    },
-    {
-      "conjecture_statement": "This is an example of how the post-processing might look like for Theorem 1 (from Section \\ref{sec3}). We present it here as Example",
-      "domain": "probability_statistics",
-      "strategy": "theorem_generation",
-      "quality_score": 0.0039,
-      "breakdown": {
-        "statement_quality": 0.55,
-        "specificity": 0.05,
-        "formalizability": 0.05,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Under certain sparsity assumptions on the covariance matrix of $X$, we establish an exact equivalence between approximating low-rank Gaussian distributions using $\\ell_{1}$ regularization followed by ...",
-      "domain": "probability_statistics",
-      "strategy": "theorem_generation",
-      "quality_score": 0.3521,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.8,
-        "formalizability": 0.05,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Consider an iterative dynamical systems (X,\\phi) which is not necessarily Markovian or stationary; where X denotes the space on its natural topology while \\phie(t):=\\Phi^te for t\\inN stands to be meas...",
-      "domain": "probability_statistics",
-      "strategy": "theorem_generation",
-      "quality_score": 0.255,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.25,
-        "formalizability": 0.25,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before: overed by random variables taking values from different distributions and having no common support or range of variation? Are there any conditions under",
-      "domain": "probability_statistics",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0752,
-      "breakdown": {
-        "statement_quality": 0.45,
-        "specificity": 0.55,
-        "formalizability": 0.25,
-        "penalty": 0.85
-      }
-    },
-    {
-      "conjecture_statement": "Context before: en we have\r$$E\\left(\\int_{\\mathbb T}f(t)\\mu_{p}(dt)+\\sum^{N}_{j=1}\\alpha _{m+k}^{0}(\\lambda )b_{{ m}}\\right)=a.$$ Therefore $${\\lim }_{{\\rm Re}\\,\\rho \\,",
-      "domain": "probability_statistics",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1151,
-      "breakdown": {
-        "statement_quality": 0.85,
-        "specificity": 0.1,
-        "formalizability": 0.1,
-        "penalty": 0.55
-      }
-    },
-    {
-      "conjecture_statement": "Let $(X,\\mathcal B_\\nu)$, $(\\tilde X ,\\widetilde{\\cal",
-      "domain": "probability_statistics",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.2273,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.1,
-        "formalizability": 0.3,
-        "penalty": 0.15
-      }
-    },
-    {
-      "conjecture_statement": "Context before: nce relation holds for all sufficiently large eigenvalues if one replaces there ``sufficiently'' with \u201call\u201d? \\item What should replace condition (\\ref{eq2}) when considering analogues ...",
-      "domain": "probability_statistics",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.0675,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.55,
-        "formalizability": 0.4,
-        "penalty": 1.0
-      }
-    },
-    {
-      "conjecture_statement": "Context before: ckspace}\\label=Theorem{\\ref}{th754}} Let $\\{z_\\alpha; z'_r\\}$, and for all prime divisors over $(k(t),M)$. If we replace this property by only requiring it outside finitely many primes...",
-      "domain": "probability_statistics",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.246,
-      "breakdown": {
-        "statement_quality": 0.6,
-        "specificity": 0.6,
-        "formalizability": 0.7,
-        "penalty": 0.7
-      }
-    },
-    {
-      "conjecture_statement": "Context before: igmathscr I}\\times U_\\infty$, which we think as being embedded into $\\{f\\}\\in E$. We deduce from this and Lemma~\\ref {lemspeconeformclosedsuppproplinearalgcurve}, by passing limit over...",
-      "domain": "probability_statistics",
-      "strategy": "cross_domain_analogy",
-      "quality_score": 0.1436,
-      "breakdown": {
-        "statement_quality": 0.75,
-        "specificity": 0.6,
-        "formalizability": 0.05,
-        "penalty": 0.7
-      }
-    }
-  ]
+  }
 }

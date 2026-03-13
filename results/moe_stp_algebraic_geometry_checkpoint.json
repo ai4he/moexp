@@ -1,0 +1,260 @@
+{
+  "domain": "algebraic_geometry",
+  "generator": "moe",
+  "rounds": [
+    {
+      "domain": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "Here's my suggestion to add your name here when you turn it into an Answer!",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "###### Conjecture Details ######",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "This was an example to show what might fit into our guidelines - so I decided not submit it",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 3,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 3,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "Please tell us how this differs from previous conjectures [here].",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Please see this link",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "The problem with this approach seems rather straightforward",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Please describe some additional context about this statement which motivates why one would find its proof interesting? Also include any relevant background knowledge from other fields relating perhaps how someone interested may come across looking at similar problems before arriving their own solution strategy... Note especially if references will need careful parsing due possible differing notation conventions being employed between different sources but still try including whatever could help illuminate understanding more broadly beyond just simply naming off specific examples demonstrating relevance maybe with slightly less detail too avoid completely intimidating reader further who needs introduction otherwise first seeing material rather than expert working directly w already familiarized mindset anyway without prior exposure starting fresh unfamiliar setting like ours though",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 4,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "algebraic_geometry",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "I believe my above comment answers your question pretty much directly; but please don' t take offense! --S\u0142awomir Bia\u0142y\u00a0(talk\u00a0\u00b7 contribs)(comment|edit \u00b7 sources), March\u00a0 7 at\u00a0\u00a0 \u00b7 8 replies",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Answer here! This box will expand whenever you click \"Next\" below right corner .",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "It has been verified for \\(n\\) up t",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "We want someone who knows exactly your language skills !",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "algebraic_geometry",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 4,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    }
+  ],
+  "previous_conjectures": [
+    "Here's my suggestion to add your name here when you turn it into an Answer!",
+    "###### Conjecture Details ######",
+    "This was an example to show what might fit into our guidelines - so I decided not submit it",
+    "Please tell us how this differs from previous conjectures [here].",
+    "Please see this link",
+    "The problem with this approach seems rather straightforward",
+    "Please describe some additional context about this statement which motivates why one would find its proof interesting? Also include any relevant background knowledge from other fields relating perhaps",
+    "I believe my above comment answers your question pretty much directly; but please don' t take offense! --S\u0142awomir Bia\u0142y\u00a0(talk\u00a0\u00b7 contribs)(comment|edit \u00b7 sources), March\u00a0 7 at\u00a0\u00a0 \u00b7 8 replies",
+    "Answer here! This box will expand whenever you click \"Next\" below right corner .",
+    "It has been verified for \\(n\\) up t",
+    "We want someone who knows exactly your language skills !"
+  ],
+  "timestamp": "2026-03-12 18:31:09"
+}

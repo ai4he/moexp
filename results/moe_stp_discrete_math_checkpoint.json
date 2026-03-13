@@ -1,0 +1,241 @@
+{
+  "domain": "discrete_math",
+  "generator": "moe",
+  "rounds": [
+    {
+      "domain": "discrete_math",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "[label=(C.$*$)][] % this uses an equation counter",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "The statement must begin as follows:\\textbf{}",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Describe your new result here",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 3,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 3,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "discrete_math",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "[\\ref*{$(*)$}][[$**$]]\\quad",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Your text goes...",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let \\(X\\) satisfy condition A (\\textit{\\autoref*[]{condA}}). Show something about objects defined on it",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 3,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 3,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "discrete_math",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "How would you prove [Theorem~\\labelcref{(thm)}]?",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Given \\(\\e\\), natural number pairs can have their sums replaced without changing parity",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "[Cite other papers]",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "[($*$)]\\label[]",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "discrete_math",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 4,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    }
+  ],
+  "previous_conjectures": [
+    "[label=(C.$*$)][] % this uses an equation counter",
+    "The statement must begin as follows:\\textbf{}",
+    "Describe your new result here",
+    "[\\ref*{$(*)$}][[$**$]]\\quad",
+    "Your text goes...",
+    "Let \\(X\\) satisfy condition A (\\textit{\\autoref*[]{condA}}). Show something about objects defined on it",
+    "How would you prove [Theorem~\\labelcref{(thm)}]?",
+    "Given \\(\\e\\), natural number pairs can have their sums replaced without changing parity",
+    "[Cite other papers]",
+    "[($*$)]\\label[]"
+  ],
+  "timestamp": "2026-03-12 18:57:23"
+}

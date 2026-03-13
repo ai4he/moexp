@@ -79,6 +79,13 @@ class MoEInferenceEngine:
     def __init__(self, registry_path: str):
         with open(registry_path) as f:
             self.registry = json.load(f)
+        # Normalise key: new registry uses "experts", old uses "domain_experts"
+        if "experts" in self.registry and "domain_experts" not in self.registry:
+            self.registry["domain_experts"] = {
+                k: v for k, v in self.registry["experts"].items() if k != "shared"
+            }
+            if "shared" in self.registry["experts"] and "shared_expert" not in self.registry:
+                self.registry["shared_expert"] = self.registry["experts"]["shared"]
         self.base_model = None
         self.tokenizer = None
         self.router = None
@@ -933,6 +940,11 @@ def main():
         "--output-dir", type=str, default=RESULTS_DIR,
         help="Output directory"
     )
+    parser.add_argument(
+        "--registry", type=str,
+        default=os.path.join(MODELS_DIR, "expert_registry.json"),
+        help="Path to expert registry JSON (default: models/expert_registry.json)"
+    )
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -952,17 +964,19 @@ def main():
     print(f"Judge:       {args.judge}")
     print(f"Temperatures: {temps}")
 
-    # Output paths (distinct from API results)
-    moe_conj_path = os.path.join(args.output_dir, "moe_generated_conjectures.jsonl")
-    moe_ranked_path = os.path.join(args.output_dir, "moe_ranked_conjectures.json")
-    moe_report_path = os.path.join(args.output_dir, "moe_conjecture_evaluation_report.json")
-    comparison_path = os.path.join(args.output_dir, "moe_vs_api_comparison.json")
+    # Output paths — prefix with "new_moe_" when using the new registry
+    _is_new_moe = "new_moe" in args.registry
+    _prefix = "new_moe_" if _is_new_moe else "moe_"
+    moe_conj_path = os.path.join(args.output_dir, f"{_prefix}generated_conjectures.jsonl")
+    moe_ranked_path = os.path.join(args.output_dir, f"{_prefix}ranked_conjectures.json")
+    moe_report_path = os.path.join(args.output_dir, f"{_prefix}conjecture_evaluation_report.json")
+    comparison_path = os.path.join(args.output_dir, f"{_prefix}vs_api_comparison.json")
     api_report_path = os.path.join(args.output_dir, "conjecture_evaluation_report.json")
 
     # ===== Initialize MoE Engine =====
     if args.mode != "compare":
-        registry_path = os.path.join(MODELS_DIR, "expert_registry.json")
-        print(f"\nInitializing MoE engine...")
+        registry_path = args.registry
+        print(f"\nInitializing MoE engine (registry: {registry_path})...")
         engine = MoEInferenceEngine(registry_path)
         engine.load_base()
         if not args.no_router:
@@ -1070,7 +1084,7 @@ def main():
                 continue
 
             checkpoint = os.path.join(
-                args.output_dir, f"moe_stp_{domain}_checkpoint.json"
+                args.output_dir, f"{_prefix}stp_{domain}_checkpoint.json"
             )
 
             print(f"\n{'=' * 50}")
@@ -1098,7 +1112,7 @@ def main():
     elif args.mode in ("evaluate", "compare"):
         for domain in domains:
             checkpoint = os.path.join(
-                args.output_dir, f"moe_stp_{domain}_checkpoint.json"
+                args.output_dir, f"{_prefix}stp_{domain}_checkpoint.json"
             )
             if os.path.exists(checkpoint):
                 with open(checkpoint) as f:

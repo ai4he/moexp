@@ -1,0 +1,336 @@
+{
+  "domain": "number_theory",
+  "generator": "moe",
+  "rounds": [
+    {
+      "domain": "number_theory",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "In general terms this appears to simply say \"there exists one\" but not which type nor how it may relate? But could go into much more detail than here!",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Statement:\\vspace*{-9pt}\\\\*[-8ex]Let ${\\cal C}_g^\\vee=(X({\\mathcal E}_{un},{\\mathfrak g}^\\text{\\'et}_\\sigma))$ over Spec($k$). It has points corresponding to torsors under bundles coming from abelian varieties which split completely after any base change.\\vskip -7 pt\\\\ *[-]Key concept:{\\frakfamily abelina variety }",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let us consider polynomials whose leading term has absolute value larger than one under some natural condition to ensure convergence at infinity which could make sense even without it; i\\.\\,=\\, see Remark below.\\par Consider such elements over \\(\\QQ\\) from Theorem~\\reft\\_thm:\\[\\eqalignno{%\\[z\\]&\\qquad&g=X+bX^\\alpha,&h&=cX^{-\\beta}+d,\\\\ b>\\!>&\\!\\!C,\\quad C={}&-\\!\\!\\frac}%{{\\rm gcd}\\!\\big({\\mathop{\\,\\sf val}\\,\\nolimits}^+(ad),\\ {\\scriptstyle\\,\\mathlarger M_\\lambda^{\\vphantom r}-}\\!\\!\\!\\!\\!\\!\\!\\sum_{\\!\\%\\{k\\}}\\def\\@O{}%\\{(u,(v,\\,w))\\}:\\,(G^{\\,}_{jk},\\ G\\^jkl)}\\]}\\]}It may well happen --- unlike what happens hereunder where \\(s:=({}{\\sigma}}%%%{|\\!\\!|}\\)--- but more likely not quite so much especially considering Remarks after Conjecture~~\\eqref\\{\\}}%[]{\\hyperlink{\\{9\\}}Ref.~\\label{}\\pageLabel\\}and~Theorem\\/~{\\ignorespaces}}\\]that due too few ``interesting'' zeros when choosing these values less randomly they might form no interval within them being somehow related like roots would do instead?\\footnote{\\,This remark concerns also Lemma\\[\\!\\eqnam\\`7\\}\\]\\let\\&\\\\\\setcounter@\\thesubsubsectionNo\\+Herewith this manuscript finally ends while continuing further just beyond its reach into footnote\\-text.} This time I am referring however exclusively mainly about our first paper whereas those examples given hereafter were presented already beforehand:\\\\first example -- See Note ~Remark~(\\(?))after Conjeture~(?)--.%\\\\second Example \\[\\fbox{$\\forall X:$~~\\(\\ln x={\\textstyle\\;\\Bigl(-\\intop_{-\\sqrt n}}^\\!)dx\\:\\dfrac}}}}}}} {{\\raisebox{.8pt}{$\\scriptscriptstyle \\!$}} % \\!\\hspace{-.oex}.}}}\\Bigr)^{\\kern-.xe\\(+\\,{\\pi}/y)^\\raise y pt ./.!!..\\)}}\\hfill}]}\\]See Examples ~\\href{[?]{http://www.~????.????/?anchor=%REFLBL\\#FOOTNOTELABEL}\\{\\textbf ??}.}lastly\\\\[??cm]?for instance [?, ?], \\\\[?]where many others can find their explanations perhaps.\\\\As regards my previous comments concerning Questions ([ ])(?(?), \\[*] etc.) let me quote somewhat again something said somewhere recently though probably earlier elsewhere:%[[<]][][][][[]][?![=]-=[*].-[!].]![#]=.[-]..[^].[",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let N >7*8+9 mod {;if j:=j + i := -k else k;} where n=((y)-u)*s<P> .",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let X=$Y+\\sum Y=X+k*W to prove it one needs at least three points so let i not equal j hence x+(j)*w does...",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 5,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 5,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "number_theory",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "I don't really know what you want though because I haven\\'e seen anyone do anything like proving existence by looking everywhere using only local information.. In fact your example above shows why he didn\\` have just looked locally since we can find numbers arbitrarily close together e\\! That was fun!! Perhaps add something about modular forms instead too?. Indeed look up Stark units etc\\-",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "This looks promising -- though I'm still struggling somewhat trying understand what you mean by various constructions beginning \"\\textbf{{\\Large A}}. \", e.\\,., etc.? That said,... Is \"$C\"$ being defined just prior used elsewhere ...?\\textit{}Is anything going wrong above ? This doesn'\\''t seem too bad overall.. How about something like thi...?",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "I don't think I wrote your email correctly after sending out multiple versions yesterday before you got back because my address was wrong originally -- sorry about being vague last time when writing up instructions regarding proof sketches etc.! Here goes again :) Thankyou very muc",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "The input was taken care by @andrewsanders , thank you Andrew !",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "This can actually just look very basic like below -- except might want something stronger since your initial statement looks quite convoluted when we only need two variables rather thank many others you have specified...? See our advice further down about avoiding unnecessarily complicated presentation etc.\\@ once I understand what exactly my student wants after looking closer before sending response.. Just keep going until he responds better enough saying no worries :) Also wanted him sent me details concerning his project .. Is above fine?, Can ignore stuff marked ? ... Not sure yet whether using notation will help / hinder clarity given concerns re wordiness especially now.... Seems okay based o",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 5,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 5,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    },
+    {
+      "domain": "number_theory",
+      "conjectures": [
+        {
+          "conjecture": {
+            "conjecture": "> \"the result implies\" seems to imply some sort relationship between Result #879/Q#\\#/#\\\"quoting text here.\\/\\\"> > And this quote from \\#\\\"> ## Quote",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "It could depend whether one uses positive coordinates ($y>z$) instead to get $$U=\\{h=xy<xz\\}\\cup\\{g=(xyz)>yz\\}$$$$\\Downarrow$$\\text{\\{take closure\\} } \\{u+(v - t)< z \\} union \\(\\{(uv + w)^/(tw ) > x)\\)where $\\{ab <= c \\}$ denotes $[c]$ times$[ [ ab<= d] ] $,$\\{ac >= bdc \\}$, where $[\\cdot]:=$real numbers / integers respectively,$[\\alpha]\\ge [\\beta],~for~\\albe ~\\textrm{[modulus]>},~$or ~if they aren\u2019tecomparable.$ For each integer k there exist infinitelymany primes congruenttomodk .For every irrationalnumber\u03b1thereareinfinitelyprimeintegersofrispsuchthate\u03c0\u2212rp\u2192\u221easrislarge.}Ifanumberhasamultiplicativelogarithma\u03bbgreaterthan its additive logarithmic density \u03bb it has no infinite congruence classes divisiblebyit;butitisunlikelythatanyoftheotherinfinitefamiliesofcongruenceclassescanbesaturatedforeachvalue\u03c6\u2208N :Infactthiscouldhappensoverysoon!Weconcludewithafinalremarkontheproofabove:\\\\\\\\\\qquadLet\u03c3\u03b8:\\Sigma\u27f6\u03a3denoteageneratorsubsetwhichmayhavezerocharacters.\\\\\\\\Thenwewillshowbelowhowtocomputethelargestdimensionover\u039bsuchtha\ufb00([ \u03b8])isthesmallestconnectedcomponentcontainingthemorphismcorrespondingtothatgivencharactervectorf.(seealsoDe\ufb01ningsequencesandspectra.)Usingournotionsinthedescriptionfollowingde\u00b4finitionswedescribetheactionsofmatricesinsomenotationforthenormalizeroftheimagineunderadeterminantmapbetweenvectorspaceswhosecoordinatescorrespondtosomebasisvectorsbetweendiagonalsetslikewhathappenswheneverwhenthetoplevelcoe\u2030centscoincidewithinanonemptyopenneighborhoodo\u00a6\u03b2 \u00a6\u2022\u00a5\u2022\u2022\u00a7\u2020\u2021\u02c6\u2018\u201d\u201e\u201a\u201c\u2014\u2013\u2026\u0192\u203a\u0153?\u00f9\u00f2\u00fc\u00f5\u00fd\u00f7\u00fa\u00ee\u00ef\u00ed\u00e2\u00e3\u00e4\u00e1\u00e0\u00e6\u00e5\u00e7\u00f0\u00df\u00da\u00d3\u00d2\u00cd\u00d1\u00c2\u00c3\u00c4\u00c1\u00c0\u00c6\u00c8\u00d0\u00cf\u00c9\u00dc\u00e8\u00e9\u00eb\u00ec\u00ea\u00f1\u00f3\u00f4\u00f6\u00fb\u00bf\u00a1\u00a3\u00a2\u00ac\u00bd\u00bc\u00bb\u00ba\u00ab\u00b6\u00b3\u00b2\u00b9\u00aa\u00b7\u00b5\u00b1\u00d7\u00fe\u00f8\ufea9\u060d\u0649\u062f\u062c\u062a\u062d\u062e\u0632\u0648\u0633\u0631\u0642\u064a\u0643",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Assume now furthermore   K    has signature        q     then there exist infinitely positive integral solutions to         ax + bxy - cz / d       .           If          x      satisfies this equation it must also satisfy            zy^{\\prime},             where                 k > L              Hence                             [Lk]                    would contradict our assumption!               Thus                                 r < j                                          So                                    B[\\chi]\\cap M                   contains no integers as claimed.\\par                                         One may use induction here again showing                               [\\mathcal F}_i]=\\prod _\\{N:\\mathfrak o\\}c_\\rho^\\lambda }\\left\\{\\widehat Y}_{\\vec t}^{\\nu}(T)}|\\right \\} \\\\xi}]                     will give us                                       O([/f].                This contradicts                                [/u]$ which yields                        N                         so small compared                                           ]                                      G][g]]                            )/(h).                          Here                      $[J$]                                     E](E)[Y]),                  one finds                                              D=D[{\\zeta]}                                               }                                        {\\eta}=({\\kappa})                                            $$                           ^${Q}[\\pi _{ij}(\\mu )\\phi (\\gamma ;X)]}{\\beta }]                                             \\{v}_{| v>}\\)                                   \\]                       P/\\Pi ).\\]                              Q}/\\Lambda /\\delta \\)                                  \\(\\emptyset ,\\omega ])                                                       H\\).                                                          f=(U)(\\alpha ))                                                             \\(S\\)                                                        ${\\varepsilon}$)                                                    $$\\sum _{\\iota }{\\textstyle .\\subset h}}\\leq ({\\rm Im}_\\epsilon ^{-*})$$                                                 ].                                                     [{\\tau }_*{R})$                                                .$$                                                            R/(\\partial U))                                                           g](/documentos)/(7)).                                                              n[/math])\\hspace{.98ex}\\}                                                  V)\\)                                                   [[[[$$                                                                                                                      )$",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Let $(\\mathcal R_\\lambda)_{\\Lambda}(\\Sigma)(\\alpha',\\beta')$ denote {\\it some new object}, where   ``$\\underline{(\\cdot)}$'' denotes either replacing it through another definition/construction; denoting its relationship to other objects explicitly (\\eg modifying them); restricting those original definitions so as precisely one instance fits exactly here without changing everything else ... ($\\sim$)``what happened next?''. By doing this repeatedly over pages may reveal much more interesting stuff than initially possible! For completeness define also analogously similarly parameterized families which depend neither directly nor indirectly ($=$no matter how far up they go!)on whether certain conditions hold yet--but note however clearly marked things called \"assumptions\" (!). This would then make sense again even once later realizing their consequences were simply easier via alternative methods hence now maybe drop unnecessary ones while keeping good notation nevertheless.(In particular ignore previous remark.) One could alternatively use similar ideas from differential geometry instead!\\cite{{doCarmo}} If desired add appropriate references within text itself alongside citing bibliography entries separately.\\label{} Next rewrite third paragraph slightly differently:\\par Take open covers $\\{\\iota':\\{\\gamma'_i\\}\\rightarrow \\{\\zeta''\\}_{\\delta'}\\}_{S},\\;\\xi=\\{N\\}_{[\\eta]}\\equiv\\{X^{(\\nu)}\\}^{f}(Y),\\;\\;c\\;'\\stackrel[]{g}{\\longleftrightarrow}\\; c=...\\;\\Longleftarrow f', h'; [k]\\Rightarrow g'', z'_{}; d'=..., t'_{\\rho}=(\\mu')^{\\ast}: k''_u-\\psi''$ ; \\;\\bar N:=\\{\\{U^{(*)}=[z']_{(\\epsilon'')}\\}\\}_{[y]}:=\\{(L');\\,T\\}. Hereafter abbreviate relevant symbols \\& write accordingly wherever sensible---particularly useful wen considering large numbers thereof : $\\{R^{[v]}(D')\\}_{(P')} := \\{Q^{*}\\} - s'$. Now consider cases depending mainly upon dimensionality(!), generality constraints involved!, presence optional additional axioms considered further down page!(?) Clearly indicate parts needed at least temporarily until proven unfeasible otherwise continue analysis assuming valid conclusions always obtained first.! Such approaches eventually allow us conclude our proof unless stated explicitely contradicting conclusion present elsewhere...\\footnote{[Perhaps]{somehow}}\\caption*{\\refstepcounter*{Figure}[See][figure:]}{} Note subtle difference between several forms used throughout earlier section discussing specific topic involving question mentioned main title regardless ability author decide details regarding potential importance relative future relevance prior existing work done already described therein.&Finally clarify intended meaning symbolically including location reference parameters\\&related quantities appearing inside brackets/\\hspace{-9pt}/ parenthesis",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        },
+        {
+          "conjecture": {
+            "conjecture": "Show me another",
+            "informal": "",
+            "proof_hint": "",
+            "lean4_sketch": ""
+          },
+          "proof_attempt": {
+            "verdict": "unknown",
+            "raw_response": ""
+          },
+          "judge_evaluation": {
+            "overall_score": 0.5,
+            "critique": "Judge unavailable"
+          },
+          "domain": "number_theory",
+          "quality_score": 0.5
+        }
+      ],
+      "stats": {
+        "total": 5,
+        "proved": 0,
+        "disproved": 0,
+        "partially_proved": 0,
+        "unknown": 5,
+        "trivial": 0,
+        "avg_quality": 0.5
+      }
+    }
+  ],
+  "previous_conjectures": [
+    "In general terms this appears to simply say \"there exists one\" but not which type nor how it may relate? But could go into much more detail than here!",
+    "Statement:\\vspace*{-9pt}\\\\*[-8ex]Let ${\\cal C}_g^\\vee=(X({\\mathcal E}_{un},{\\mathfrak g}^\\text{\\'et}_\\sigma))$ over Spec($k$). It has points corresponding to torsors under bundles coming from abelian ",
+    "Let us consider polynomials whose leading term has absolute value larger than one under some natural condition to ensure convergence at infinity which could make sense even without it; i\\.\\,=\\, see Re",
+    "Let N >7*8+9 mod {;if j:=j + i := -k else k;} where n=((y)-u)*s<P> .",
+    "Let X=$Y+\\sum Y=X+k*W to prove it one needs at least three points so let i not equal j hence x+(j)*w does...",
+    "I don't really know what you want though because I haven\\'e seen anyone do anything like proving existence by looking everywhere using only local information.. In fact your example above shows why he ",
+    "This looks promising -- though I'm still struggling somewhat trying understand what you mean by various constructions beginning \"\\textbf{{\\Large A}}. \", e.\\,., etc.? That said,... Is \"$C\"$ being defin",
+    "I don't think I wrote your email correctly after sending out multiple versions yesterday before you got back because my address was wrong originally -- sorry about being vague last time when writing u",
+    "The input was taken care by @andrewsanders , thank you Andrew !",
+    "This can actually just look very basic like below -- except might want something stronger since your initial statement looks quite convoluted when we only need two variables rather thank many others y",
+    "> \"the result implies\" seems to imply some sort relationship between Result #879/Q#\\#/#\\\"quoting text here.\\/\\\"> > And this quote from \\#\\\"> ## Quote",
+    "It could depend whether one uses positive coordinates ($y>z$) instead to get $$U=\\{h=xy<xz\\}\\cup\\{g=(xyz)>yz\\}$$$$\\Downarrow$$\\text{\\{take closure\\} } \\{u+(v - t)< z \\} union \\(\\{(uv + w)^/(tw ) > x)\\",
+    "Assume now furthermore   K    has signature        q     then there exist infinitely positive integral solutions to         ax + bxy - cz / d       .           If          x      satisfies this equati",
+    "Let $(\\mathcal R_\\lambda)_{\\Lambda}(\\Sigma)(\\alpha',\\beta')$ denote {\\it some new object}, where   ``$\\underline{(\\cdot)}$'' denotes either replacing it through another definition/construction; denoti",
+    "Show me another"
+  ],
+  "timestamp": "2026-03-12 19:38:12"
+}
